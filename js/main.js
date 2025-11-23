@@ -108,6 +108,128 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    //Gestione dei 3 elementi multimediali del menu
+    // Stato globale
+    let currentAudio = null;
+    let currentVideo = null;
+    let currentButton = null;
+
+
+    function addMediaControl(btnId, audioUrl) {
+        const btn = document.getElementById(btnId);
+        const audio = new Audio(audioUrl);
+
+        btn.addEventListener("click", function () {
+
+            const item = this.closest(".timeline-item");
+            const video = item ? item.querySelector("video") : null;
+
+            // ==========================
+            // 1. STOP SE È LO STESSO BOTTONE
+            // ==========================
+            if (currentButton === this) {
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                }
+
+                if (currentVideo) {
+                    currentVideo.pause();
+                    currentVideo.currentTime = 0;
+                    currentVideo.playbackRate = 1;
+                }
+
+                currentAudio = null;
+                currentVideo = null;
+                currentButton = null;
+                return;
+
+            }
+
+            // ==========================
+            // 2. STOP DEL BLOCCO PRECEDENTE SE IL BOTTONE E' DIVERSO
+            // ==========================
+            if (currentAudio && currentAudio !== audio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            if (currentVideo && currentVideo !== video) {
+                currentVideo.pause();
+                currentVideo.currentTime = 0;
+                currentVideo.playbackRate = 1;
+            }
+
+            if (currentButton && currentButton !== this) {
+                currentButton.classList.remove('attivo');
+            }
+
+            // ==========================
+            // 3. AVVIO NUOVO AUDIO
+            // ==========================
+            audio.currentTime = 0;
+            audio.play();
+
+            // ==========================
+            // 4. AVVIO NUOVO VIDEO CON SOFT-START
+            // ==========================
+            if (video) {
+                video.currentTime = 0;
+                video.play();
+                video.playbackRate = 0.1;
+                //this.style.animation = '';
+
+                let rate = 0.1;
+                const interval = setInterval(() => {
+                    rate += 0.1;
+                    video.playbackRate = rate;
+                    if (rate >= 1) {
+                        video.playbackRate = 1;
+                        clearInterval(interval);
+                    }
+                }, 40);
+            }
+
+            // Aggiorna stato globale
+            currentAudio = audio;
+            currentVideo = video;
+            currentButton = this;
+        })
+
+    }
+
+    addMediaControl("music-start1", "../media/audio/thalassa.mp3");
+    addMediaControl("music-start2", "../media/audio/rihanna.mp3");
+    addMediaControl("music-start3", "../media/audio/thalassa.mp3");
+
+});
+
+//Gestione del bottone in descrizione piatto
+document.addEventListener('DOMContentLoaded', () => {
+    function addMediaControl2(btnId, audioUrl) {
+        //riproduzione della canzone
+        const playBtn = document.getElementById(btnId);
+        const audio = new Audio(audioUrl);
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                // Sostituisce completamente il contenuto del pulsante
+                playBtn.innerHTML = '<i class="bi bi-soundwave"></i>';
+                playBtn.classList.add('btn-sound', 'attivo');
+            } else {
+                audio.pause();
+                audio.currentTime = 0; // riporta all'inizio
+                playBtn.innerHTML = 'Riproduci <i class="bi bi-arrow-right"></i>';
+                playBtn.classList.remove('btn-sound', 'attivo');
+            }
+        });
+    }
+
+    addMediaControl2("music-startdesc1", "../media/audio/thalassa.mp3");
+    addMediaControl2("music-startdesc2", "../media/audio/thalassa.mp3");
+    addMediaControl2("music-startdesc3", "../media/audio/thalassa.mp3");
+
 });
 
 

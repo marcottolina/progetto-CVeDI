@@ -26,7 +26,7 @@
 
         <div class="container px-4 py-2">
             <a class="navbar-brand liquidGlass-text" href="../index.html">
-                <img src="../img/Logo.svg" alt="Logo" width="50" height="50">
+                <img src="../media/img/Logo.svg" alt="Logo" width="50" height="50">
             </a>
 
             <div class="liquidGlass-text">
@@ -52,12 +52,12 @@
 
                 <!-- LOGO -->
                 <div class="col-6 col-xl-2 order-1">
-                    <img src="../img/Logo.svg" alt="">
+                    <img src="../media/img/Logo.svg" alt="">
                 </div>
 
                 <!-- IMMAGINE (solo da xl) -->
                 <div class="col-xl-4 d-none d-xl-block order-2">
-                    <img src="../img/sfondo-prova-vetro.jpg" alt="" class="img-fluid full-y">
+                    <img src="../media/img/sfondo-prova-vetro.jpg" alt="" class="img-fluid full-y">
                 </div>
 
                 <!-- MENU -->
@@ -88,7 +88,7 @@
 <section class="full-y py-5" id="header-menu">
     <div class="header-wrapper">
         <div class="header-overlay"></div>
-        <img src="../img/Menu-header.webp" alt="Sfondo Menu" class="img-fluid">
+        <img src="../media/video/menu-coral.webm" alt="Sfondo Menu" class="img-fluid">
     </div>
     <div class="container mb-5 d-flex flex-column justify-content-end align-items-start h-100">
         <h1>Thalassa</h1>
@@ -99,7 +99,7 @@
     <div class="container text-center mt-5">
         <h2>Origine</h2>
         <p class="fs-4 lh-sm px-5">Un piatto che celebra l’adattamento e la rinascita. <br>I primi esperimenti con i coralli rigenerati hanno rivelato una materia capace di reagire alla temperatura e al tocco umano.<br>Da questa scoperta è nato il desiderio di trasformare il respiro del mare in un’esperienza gastronomica.</p>
-        </div>
+    </div>
 </section>
 
 <main class="pb-5">
@@ -112,16 +112,22 @@
                 </div>
                 <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
                     <img
+                            alt="Composizione"
+                            class="img-fluid w-100"
+                            loading="lazy"
+                            sizes="
+                                (min-width: 1200px) 600px,
+                                (min-width: 992px) 500px,
+                                (min-width: 768px) 400px,
+                                (min-width: 576px) 500px,
+                                100vw
+                                "
                             src="../media/img/descpiatto1-1-1200.webp"
                             srcset="
-                            ../media/img/descpiatto1-1-800.webp 800w,
-                            ../media/img/descpiatto1-1-1200.webp 1200w,
-                            ../media/img/descpiatto1-1-2000.webp 2000w
-                            "
-
-                            alt="Composizione"
-                            class="img-fluid"
-                            loading="lazy"
+                                ../media/img/descpiatto1-1-800.webp 800w,
+                                ../media/img/descpiatto1-1-1200.webp 1200w,
+                                ../media/img/descpiatto1-1-2000.webp 2000w
+                                "
                     >
                 </div>
             </div>
@@ -129,15 +135,22 @@
             <div class="row mb-5 align-items-center g-4">
                 <div class="col-xl-5 col-12 order-1 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
                     <img
+                            alt="Corallo rigenerato"
+                            class="img-fluid w-100"
+                            loading="lazy"
+                            sizes="
+                                (min-width: 1200px) 600px,
+                                (min-width: 992px) 500px,
+                                (min-width: 768px) 400px,
+                                (min-width: 576px) 500px,
+                                100vw
+                                "
                             src="../media/img/descpiatto1-2-1200.webp"
                             srcset="
-                        ../media/img/descpiatto1-2-800.webp 800w,
-                        ../media/img/descpiatto1-2-1200.webp 1200w,
-                        ../media/img/descpiatto1-2-2000.webp 2000w
-                        "
-                            alt="Corallo rigenerato"
-                            class="img-fluid"
-                            loading="lazy"
+                                ../media/img/descpiatto1-2-800.webp 800w,
+                                ../media/img/descpiatto1-2-1200.webp 1200w,
+                                ../media/img/descpiatto1-2-2000.webp 2000w
+                                "
                     >
                 </div>
                 <div class="col-xl-6 col-12 order-2 order-xl-2">
@@ -156,10 +169,8 @@
                     <h2>Nome musica</h2>
                     <p>Lorem ipsum dolor sit amet consectetur. Nam nisi vestibulum at tincidunt risus est proin facilisis. Viverra neque id convallis morbi a adipiscing. Mi amet orci fermentum congue volutpat ut turpis mollis odio. Eleifend facilisi quam condimentum massa ipsum. Sed pulvinar viverra tincidunt vehicula. Nisi etiam magna vulputate proin ipsum amet vestibulum.</p>
 
-                    <!-- Pulsante subito dopo il testo su desktop, sotto su mobile -->
                     <div class="d-flex justify-content-start mt-3 mt-lg-2">
-                        <audio id="audio-thalassa" src="../media/audio/thalassa.mp3"></audio>
-                        <button class="btn" id="music-start">
+                        <button class="btn" id="music-startdesc1">
                             Riproduci  <i class="bi bi-arrow-right"></i>
                         </button>
                     </div>
@@ -218,7 +229,7 @@
         <div class="col-12 mt-5">
             <div class="d-flex justify-content-between align-items-end">
                 <div>
-                    <img src="../img/Logo.svg" alt="" class="img-fluid">
+                    <img src="../media/img/Logo.svg" alt="" class="img-fluid">
                 </div>
                 <div>
                     <button class="btn btn-empty">A</button>
@@ -289,27 +300,6 @@
     </filter>
 </svg>
 
-<script src="../vendor/bootstrap/bootstrap-js/bootstrap.bundle.js"></script>
 
-<script>
-    //riproduzione della canzone
-    const playBtn = document.getElementById('music-start');
-    const audio = document.getElementById('audio-thalassa');
-
-    playBtn.addEventListener('click', () => {
-        if (audio.paused) {
-            audio.play();
-            // Sostituisce completamente il contenuto del pulsante
-            playBtn.innerHTML = '<i class="bi bi-soundwave"></i>';
-            playBtn.classList.add('btn-sound', 'attivo'); // puoi aggiungere classi extra
-        } else {
-            audio.pause();
-            audio.currentTime = 0; // riporta all'inizio
-            playBtn.innerHTML = 'Riproduci <i class="bi bi-arrow-right"></i>';
-            playBtn.classList.remove('btn-sound', 'attivo');
-        }
-    });
-
-</script>
 </body>
 </html>
