@@ -18,22 +18,27 @@
 <body>
 <div class="circle"></div>
 
-<!-- navbar -->
-<header class="navbar-wrapper">
+<!-- navbar (done) -->
+<header class="navbar-wrapper container-fluid">
     <nav class="navbar custom-navbar hoverable liquidGlass-wrapper mt-4 mx-2">
         <div class="liquidGlass-effect"></div>
         <div class="liquidGlass-shine"></div>
 
-        <div class="container px-4 py-2">
-            <a class="navbar-brand liquidGlass-text" href="../index.html">
-                <img src="../media/img/Logo.svg" alt="Logo" width="50" height="50">
+        <div class="container-fluid px-4 py-2">
+            <a class="navbar-brand liquidGlass-text" href="index.html">
+                <img alt="Logo" height="50" src="media/img/Logo.svg" width="50">
             </a>
 
             <div class="liquidGlass-text">
-                <button class="btn" type="button">
-                    Prenota <i class="bi bi-arrow-right"></i>
+                <button class="d-none d-md-block btn liquidGlass-wrapper">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota <i
+                            class="bi bi-arrow-right"></i></span>
                 </button>
-                <button class="btn btn-empty" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFull" aria-controls="offcanvasFull">
+                <button aria-controls="offcanvasFull" class="btn-empty" data-bs-target="#offcanvasFull" data-bs-toggle="offcanvas"
+                        type="button">
                     <i class="bi bi-list"></i>
                 </button>
             </div>
@@ -41,40 +46,49 @@
     </nav>
 </header>
 
-
-
-
-<!-- Offcanvas Fullpage -->
-<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasFull" aria-labelledby="offcanvasFullLabel">
+<!-- Off-canvas full-page (= opened hamburger menu) [updated] -->
+<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" id="offcanvasFull" tabindex="-1">
     <div class="offcanvas-body">
         <div class="container-fluid">
             <div class="row">
 
                 <!-- LOGO -->
-                <div class="col-6 col-xl-2 order-1">
-                    <img src="../media/img/Logo.svg" alt="">
+                <div class="col-6 col-md-2 order-1">
+                    <img alt="" src="media/img/Logo.svg">
                 </div>
 
-                <!-- IMMAGINE (solo da xl) -->
-                <div class="col-xl-4 d-none d-xl-block order-2">
-                    <img src="../media/img/sfondo-prova-vetro.jpg" alt="" class="img-fluid full-y">
+                <!-- IMMAGINE (solo da md) -->
+                <div class="col-md-4 d-none d-md-block order-2">
+                    <img alt="" class="img-fluid full-y" src="media/img/sfondo-prova-vetro.jpg">
                 </div>
 
                 <!-- MENU -->
-                <div class="col-xl-3 d-flex mt-5 mt-xl-0 flex-column order-3 order-xl-last">
-                    <button class="btn mb-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFull">
-                        Prenota <i class="bi bi-arrow-right"></i>
-                    </button>
-                    <button class="btn btn-empty" type="button">Home <i class="bi bi-arrow-right"></i></button>
-                    <button class="btn btn-empty" type="button">Ristorante <i class="bi bi-arrow-right"></i></button>
-                    <button class="btn btn-empty" type="button">Menu <i class="bi bi-arrow-right"></i></button>
-                    <button class="btn btn-empty" type="button">Informazioni <i class="bi bi-arrow-right"></i></button>
-                    <button class="btn btn-empty" type="button">Serate Speciali <i class="bi bi-arrow-right"></i></button>
+                <div class="col-md-3 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center">
+                    <div class="d-flex flex-column align-items-start">
+                        <button class="btn liquidGlass-wrapper mb-5">
+                            <span aria-hidden="true" class="liquidGlass-effect"></span>
+                            <span aria-hidden="true" class="liquidGlass-tint"></span>
+                            <span aria-hidden="true" class="liquidGlass-shine"></span>
+                            <span class="liquidGlass-text" onclick="'window.location.href: prenota.html'">Prenota <i
+                                    class="bi bi-arrow-right"></i></span>
+                        </button>
+                        <button class="btn-empty" onclick="window.location.href='index.html'" type="button">Home <i
+                                class="bi bi-arrow-right"></i></button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='ristorante.html'" type="button">
+                            Ristorante <i class="bi bi-arrow-right"></i></button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu <i
+                                class="bi bi-arrow-right"></i></button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">Informazioni
+                            <i class="bi bi-arrow-right"></i></button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'" type="button">
+                            Serate Speciali <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- PULSANTE CHIUSURA -->
-                <div class="col-6 col-xl-3 d-flex justify-content-end align-items-start order-2 order-xl-last">
-                    <button type="button" class="btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Chiudi">
+                <div class="col-6 col-md-3 d-flex justify-content-end align-items-start order-2 order-md-last">
+                    <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
                         <i class="bi bi-arrow-left"></i>
                     </button>
                 </div>
