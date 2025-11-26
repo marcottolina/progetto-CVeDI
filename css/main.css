@@ -14,6 +14,7 @@
 :root {
     /* --- Blues (main palette) --- */
     --blue-100: #070713;
+    --blue-70: rgba(7, 7, 19, 0.7);
     --blue-50: rgba(60, 56, 189, 0.3);
     --blue-30: rgba(7, 7, 19, 0.3);
     --blue-dark: #EAE9FB;
@@ -23,7 +24,7 @@
     --blue2-dark: #7E7AE8;
 
     --blue3-100: #3C38BD;
-    --blue3-50: rgba(60, 56, 189, 0.5);
+    --blue3-70: rgba(60, 56, 189, 0.7);
     --blue3-30: rgba(60, 56, 189, 0.3);
     --blue3-dark: #3C38BD;
 
@@ -98,7 +99,6 @@ h4, h5, h6 {
 h4 {
     font-size: 1.5rem;
     line-height: 2rem;
-    color: var(--orange-100);
 }
 
 h5 {
@@ -128,7 +128,7 @@ h6 {
 ---------------------------------------------------- */
 .circle {
     --circle-size: 50px;
-    background-image: radial-gradient(circle, cyan, transparent, transparent);
+    background-image: radial-gradient(circle, var(--pink-100), transparent, transparent);
     position: fixed;
     height: var(--circle-size);
     width: var(--circle-size);
@@ -189,6 +189,7 @@ h6 {
     background-color: var(--blue4-30) !important;
     gap: 0.5rem !important;
     padding: 1rem 1.5rem !important;
+    white-space: nowrap !important;
     border-radius: 100px;
     box-shadow: inset 0 2px 0.5px rgba(255, 255, 255, 0.1),
     0 1px 1px rgba(255, 255, 255, 0.06);
@@ -352,9 +353,11 @@ h6 {
   overflow: hidden;
   color: inherit;          /* lascia che il colore del testo sia ereditato dalla .btn */
   border-radius: inherit;  /* segue il border-radius del .btn */
-  display: inline-flex;
+  display: flex;
   border-radius: 1000px;
   align-items: center;
+  display: flex;
+  white-space: wrap;
   justify-content: center;
   isolation: isolate;      /* evita che il backdrop/filter influenzi elementi esterni */
 }
@@ -363,6 +366,17 @@ h6 {
 .liquidGlass-effect {
   position: absolute;
   border-radius: 1000px;
+  inset: 0;
+  z-index: 0;                        /* dietro il tint, lo shine e soprattutto il testo */
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);        /* blur più evidente per contrasto */
+  filter: url(#glass-distortion);    /* se usi SVG filter */
+  pointer-events: none;              /* non intercetta click */
+  opacity: 1;
+}
+
+.liquidGlass-effect-bg {
+  position: absolute;
   inset: 0;
   z-index: 0;                        /* dietro il tint, lo shine e soprattutto il testo */
   -webkit-backdrop-filter: blur(6px);
@@ -408,7 +422,6 @@ h6 {
   align-items: center;
   gap: .5rem;
   padding: 0 .25rem; /* piccolo padding interno per sicurezza */
-  white-space: nowrap; /* evita il wrapping del testo insieme allo sfondo */
   text-shadow: 0 1px 0 rgba(0,0,0,0.25); /* migliora leggibilità su sfondi complessi */
 }
 
@@ -417,8 +430,13 @@ h6 {
    VIDEO BACKGROUND
 ---------------------------------------------------- */
 .full-y {
-    height: 90vh;
-    height: 90svh;
+    height: 60vh;
+    height: 60svh;
+}
+
+#header-home {
+    height: 45vh;
+    height: 45svh;
 }
 
 .header-wrapper {
@@ -438,9 +456,22 @@ h6 {
 }
 
 .bg-video {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    overflow: hidden;
+}
+
+.bg-video-menu {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.top-overlay {
+    z-index: 10;
+    background-color: var(--blue-100);
 }
 
 .header-overlay {
@@ -450,10 +481,11 @@ h6 {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom,
-    rgba(7, 7, 19, 0) 0%,
+    rgba(7, 7, 19, 0) 0%, var(--blue-100) 80%,
     var(--blue-100) 100%);
     z-index: 1;
     pointer-events: none;
+    overflow: hidden;
 }
 
 /* ----------------------------------------------------
@@ -461,6 +493,10 @@ h6 {
 ---------------------------------------------------- */
 .section-bg-light {
     background-color: var(--blue2-30);
+}
+
+.section-bg-transparent {
+    background-color: var(--blue-70) !important;
 }
 
 .filter-luminosity {
@@ -480,7 +516,11 @@ h6 {
 /* ========================== */
 .timeline-container {
     position: relative;
-    padding: 50px 0;
+    z-index: 0;
+}
+
+.timeline-item{
+    z-index: 10;
 }
 
 /* Gray vertical line */
@@ -493,7 +533,7 @@ h6 {
     height: 100%;
     background: var(--blue5-30);
     transform: translateX(-50%);
-    z-index: -1;
+    z-index: -10;
 }
 
 /* Dynamic filling line (red) */
@@ -512,16 +552,12 @@ h6 {
 @media (max-width: 991px) {
     .timeline-container::before {
         width: 2px;
-        background-color: var(--blue4-dark);
+        background-color: var(--blue-100);
     }
 
     .timeline-fill {
         width: 2px;
-        background: var(--blue3-100);
-    }
-
-    .timeline-dot {
-        display: none;
+        background: var(--blue4-dark);
     }
 } 
 
@@ -535,33 +571,39 @@ h6 {
     left: 50%; /* linea verticale */
     width: 28px;
     height: 28px;
-    background: var(--blue5-100); /* colore iniziale */
+    background: var(--blue4-dark); /* colore iniziale */
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
+    transform: translate(-50%, 0%);
+    z-index: 0;
     transition: all 0.3s ease; /* animazione morbida */
 }
 
 /* Active dot */
 .timeline-dot.active {
-    background-color: var(--blue5-100);
+    background-color: var(--blue4-dark); /* colore attivo */
     transform: translate(-50%, -50%) scale(1.2); /* leggero ingrandimento */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* @media (max-width: 576px) {
-    .timeline-container::before {
-        display: none;
-    }
-
-    .timeline-fill {
-        display: none;
-    }
-
+@media (min-width: 992px) {
     .timeline-dot {
-        display: none;
+        position: absolute;
+        left: 50%; /* linea verticale */
+        width: 28px;
+        height: 28px;
+        background: var(--blu5-30); /* colore iniziale */
+        border-radius: 50%;
+        transform: translate(-50%, 0%);
+        z-index: 0;
+        transition: all 0.3s ease; /* animazione morbida */
     }
-} */
+
+    /* Active dot */
+    .timeline-dot.active {
+        background-color: var(--blue-dark); /* colore attivo */
+        transform: translate(-50%, -50%) scale(1.2); /* leggero ingrandimento */
+    }
+}
 
 .bubble-box {
     position: relative;
@@ -596,3 +638,63 @@ input:focus {
 .liquidGlass-shine {
     pointer-events: none !important;
 }
+
+footer{
+    background: linear-gradient(180deg, rgba(7, 7, 19, 0.00) 0%, var(--blue-5, #070713) 100%), var(--blue-15, #151439);
+}
+
+/* 1. Il contenitore (la "strada" su cui scorre la barra) */
+.swiper-reviews .swiper-pagination-progressbar {
+    background: rgba(255, 255, 255, 0.1); /* Sfondo semitrasparente */
+    height: 4px !important;               /* Altezza della barra */
+    position: absolute;
+    bottom: 0 !important;
+    top: auto !important;                 /* Forza in basso */
+    left: 0;
+    width: 100%;
+    z-index: 10;                          /* Assicurati che sia sopra le slide */
+}
+
+/* 2. Il riempimento (la parte che si muove) */
+.swiper-reviews .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background: var(--pink-100) !important;       /* IL COLORE DEL FILL (Bianco) */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: left top;           /* Fondamentale per l'animazione */
+    display: block;                       /* Assicura che sia visibile */
+}
+
+/* Forza l'origine dell'animazione a SINISTRA */
+.swiper-reviews .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    transform-origin: left top !important; 
+    left: 0 !important;
+    right: auto !important;
+}
+
+.chips{
+    background-color: transparent !important;
+    border-radius: 1000px !important;
+    border: 1px solid white!important;
+    padding: 0.75rem;
+    color: white !important ;
+    transition: all 0.5s ease;
+}
+
+.chips:hover{
+    border: 1px solid var(--pink-100) !important;
+}
+
+.chips-active{
+    background-image: var(--pink-100);
+    color: white !important;
+    border: 1px solid var(--pink-100) !important;
+    transition: all 0.5s ease;
+}
+
+#map {
+            height: 500px; /* O 100vh per tutto lo schermo */
+            width: 100%;
+        }

@@ -45,19 +45,23 @@ document.addEventListener("DOMContentLoaded", () => {
      TIMELINE
   ========================== */
     const timeline = document.querySelector(".timeline-container");
+const items = document.querySelectorAll(".timeline-item");
+let dots = []; // Array globale per i dot dinamici
+let isDesktop = false; // Flag per tracciare lo stato
 
-// Linea rossa
-    const fill = document.createElement("div");
-    fill.className = "timeline-fill";
-    timeline.appendChild(fill);
+// Linea rossa (Questa rimane fissa, se vuoi nasconderla su mobile fallo via CSS)
+const fill = document.createElement("div");
+fill.className = "timeline-fill";
+timeline.appendChild(fill);
 
-// Punti
-    const items = document.querySelectorAll(".timeline-item");
-    const dots = [];
+
+function createDots() {
+
+    if (dots.length > 0) return;
 
     items.forEach(item => {
         const dot = document.createElement("div");
-        dot.className = "timeline-dot";
+        dot.className = "timeline-dot"; // Assicurati di avere il CSS per .timeline-dot absolute
 
         const itemTop = item.offsetTop;
         const itemHeight = item.offsetHeight;
@@ -66,141 +70,206 @@ document.addEventListener("DOMContentLoaded", () => {
         timeline.appendChild(dot);
         dots.push(dot);
     });
+}
 
-    function updateTimeline() {
-        const scrollTop = window.scrollY;
-        const viewportHeight = window.innerHeight;
-        const timelineTop = timeline.offsetTop;
-        const timelineHeight = timeline.offsetHeight;
+function removeDots() {
+    dots.forEach(dot => dot.remove());
+    dots = [];
+}
 
-        let fillHeight = scrollTop + viewportHeight / 1.5 - timelineTop;
-        fillHeight = Math.max(0, Math.min(fillHeight, timelineHeight));
-        fill.style.height = fillHeight + "px";
+function updateTimeline() {
+    const scrollTop = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const timelineTop = timeline.offsetTop;
+    const timelineHeight = timeline.offsetHeight;
 
-        // Attiva SOLO i dot
+    let fillHeight = scrollTop + viewportHeight / 1.5 - timelineTop;
+    fillHeight = Math.max(0, Math.min(fillHeight, timelineHeight));
+    fill.style.height = fillHeight + "px";
+
+    if (dots.length > 0) {
         dots.forEach(dot => {
             const dotTop = dot.offsetTop;
             if (dotTop <= fillHeight) dot.classList.add("active");
             else dot.classList.remove("active");
         });
     }
-
-    window.addEventListener("scroll", updateTimeline);
-    window.addEventListener("resize", () => {
-        items.forEach((item, i) => {
-            const itemTop = item.offsetTop;
-            const itemHeight = item.offsetHeight;
-            dots[i].style.top = `${itemTop + itemHeight / 2}px`;
-        });
-        updateTimeline();
+}
+function recalcPositions() {
+    if (dots.length === 0) return;
+    items.forEach((item, i) => {
+        const itemTop = item.offsetTop;
+        const itemHeight = item.offsetHeight;
+        if(dots[i]) dots[i].style.top = `${itemTop + itemHeight / 2}px`;
     });
+}
 
-        // Ricalcola dot quando le immagini hanno finito di caricarsi
-    document.querySelectorAll('.timeline-item img').forEach(img => {
-        img.addEventListener('load', () => {
-            items.forEach((item, i) => {
-                const itemTop = item.offsetTop;
-                const itemHeight = item.offsetHeight;
-                dots[i].style.top = `${itemTop + itemHeight / 2}px`;
-            });
-            updateTimeline();
-        });
-    });
+function checkResolution() {
+    const width = window.innerWidth;
 
-
-    //Gestione dei 3 elementi multimediali del menu
-    // Stato globale
-    let currentAudio = null;
-    let currentVideo = null;
-    let currentButton = null;
-
-
-    function addMediaControl(btnId, audioUrl) {
-        const btn = document.getElementById(btnId);
-        const audio = new Audio(audioUrl);
-
-        btn.addEventListener("click", function () {
-
-            const item = this.closest(".timeline-item");
-            const video = item ? item.querySelector("video") : null;
-
-            // ==========================
-            // 1. STOP SE È LO STESSO BOTTONE
-            // ==========================
-            if (currentButton === this) {
-                if (currentAudio) {
-                    currentAudio.pause();
-                    currentAudio.currentTime = 0;
-                }
-
-                if (currentVideo) {
-                    currentVideo.pause();
-                    currentVideo.currentTime = 0;
-                    currentVideo.playbackRate = 1;
-                }
-
-                currentAudio = null;
-                currentVideo = null;
-                currentButton = null;
-                return;
-
-            }
-
-            // ==========================
-            // 2. STOP DEL BLOCCO PRECEDENTE SE IL BOTTONE E' DIVERSO
-            // ==========================
-            if (currentAudio && currentAudio !== audio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-            }
-
-            if (currentVideo && currentVideo !== video) {
-                currentVideo.pause();
-                currentVideo.currentTime = 0;
-                currentVideo.playbackRate = 1;
-            }
-
-            if (currentButton && currentButton !== this) {
-                currentButton.classList.remove('attivo');
-            }
-
-            // ==========================
-            // 3. AVVIO NUOVO AUDIO
-            // ==========================
-            audio.currentTime = 0;
-            audio.play();
-
-            // ==========================
-            // 4. AVVIO NUOVO VIDEO CON SOFT-START
-            // ==========================
-            if (video) {
-                video.currentTime = 0;
-                video.play();
-                video.playbackRate = 0.1;
-                //this.style.animation = '';
-
-                let rate = 0.1;
-                const interval = setInterval(() => {
-                    rate += 0.1;
-                    video.playbackRate = rate;
-                    if (rate >= 1) {
-                        video.playbackRate = 1;
-                        clearInterval(interval);
-                    }
-                }, 40);
-            }
-
-            // Aggiorna stato globale
-            currentAudio = audio;
-            currentVideo = video;
-            currentButton = this;
-        })
-
+    if (width >= 992) {
+        // Entriamo in Desktop
+        if (!isDesktop) {
+            createDots();
+            isDesktop = true;
+        }
+        recalcPositions();
+    } else {
+        // Entriamo in Mobile
+        if (isDesktop) {
+            removeDots();
+            isDesktop = false;
+        }
     }
+    updateTimeline();
+}
 
-    addMediaControl("music-start1", "../media/audio/thalassa.mp3");
-    addMediaControl("music-start2", "../media/audio/rihanna.mp3");
-    addMediaControl("music-start3", "../media/audio/thalassa.mp3");
+// --- Event Listeners ---
+window.addEventListener("scroll", updateTimeline);
+
+window.addEventListener("resize", () => {
+    checkResolution(); // Controlla se creare o distruggere
+});
+
+// Gestione immagini (ricalcola solo se siamo su desktop)
+document.querySelectorAll('.timeline-item img').forEach(img => {
+    img.addEventListener('load', () => {
+        if (isDesktop) {
+            recalcPositions();
+            updateTimeline();
+        }
+    });
+});
+
+// Avvio iniziale
+checkResolution();
+
+// ==========================
+// GLOBAL STATE
+// ==========================
+let currentAudio = null;
+let currentVideo = null;
+let currentButton = null;
+let currentInterval = null; // Manages the fade-in/out timer
+
+function addMediaControl(btnId, audioUrl) {
+    const btn = document.getElementById(btnId);
+    
+    // Audio is created once per button and stays in memory
+    const audio = new Audio(audioUrl); 
+
+    btn.addEventListener("click", function () {
+
+        const item = this.closest(".timeline-item");
+        const video = item ? item.querySelector("video") : null;
+
+        // IMPORTANT: Stop any ongoing speed/volume transition immediately
+        // to prevent conflicts between clicks.
+        if (currentInterval) clearInterval(currentInterval);
+
+        // ==========================
+        // 1. CASE: CLICK ON THE SAME BUTTON (STOP / PAUSE)
+        // ==========================
+        if (currentButton === this) {
+            
+            // Audio: Pause and RESET
+            // (Usually, music sounds better if it starts over, but you can remove 
+            // .currentTime = 0 if you want it to resume)
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0; 
+            }
+
+            // Video: FADE OUT (Slow down until stop)
+            if (currentVideo) {
+                let rate = currentVideo.playbackRate;
+                
+                currentInterval = setInterval(() => {
+                    rate -= 0.1; // Decrease speed
+                    
+                    if (rate <= 0.1) {
+                        currentVideo.pause(); 
+                        // KEY POINT: We DO NOT reset the time.
+                        // The video saves its position.
+                        clearInterval(currentInterval);
+                    } else {
+                        currentVideo.playbackRate = rate;
+                    }
+                }, 50);
+            }
+
+            // UI Update
+            this.classList.remove('attivo');
+            
+            // Reset Global Variables
+            currentAudio = null;
+            currentVideo = null;
+            currentButton = null;
+            return;
+        }
+
+        // ==========================
+        // 2. CASE: CLICK ON A DIFFERENT BUTTON (SWITCH ITEM)
+        // ==========================
+        
+        // Handle Previous Audio
+        if (currentAudio && currentAudio !== audio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+
+        // Handle Previous Video
+        if (currentVideo && currentVideo !== video) {
+            currentVideo.pause();
+            // We DO NOT reset currentTime here either.
+            // The previous video "freezes" exactly where it was.
+            currentVideo.playbackRate = 1; // Reset speed for the next time it plays
+        }
+
+        // Handle Previous Button UI
+        if (currentButton && currentButton !== this) {
+            currentButton.classList.remove('attivo');
+        }
+
+        // ==========================
+        // 3. START NEW AUDIO
+        // ==========================
+        audio.currentTime = 0;
+        audio.play();
+
+        // ==========================
+        // 4. START NEW VIDEO (FADE IN / SOFT START)
+        // ==========================
+        if (video) {
+            // Start at slow speed
+            video.playbackRate = 0.1;
+            video.play();
+
+            let rate = 0.1;
+            currentInterval = setInterval(() => {
+                rate += 0.1; // Increase speed
+                
+                if (rate >= 1) {
+                    video.playbackRate = 1; // Normal speed reached
+                    clearInterval(currentInterval);
+                } else {
+                    video.playbackRate = rate;
+                }
+            }, 50);
+        }
+
+        // Update global state with the new active button
+        currentAudio = audio;
+        currentVideo = video;
+        currentButton = this;
+        this.classList.add('attivo');
+    });
+}
+
+// Initialization
+addMediaControl("music-start1", "../media/audio/thalassa.mp3");
+addMediaControl("music-start2", "../media/audio/rihanna.mp3");
+addMediaControl("music-start3", "../media/audio/thalassa.mp3");
 
 });
 
@@ -335,6 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         pagination: {
             el: '.swiper-images .swiper-pagination', // Scoping specifico
+            type: 'progressbar',
         },
 
         // Scoping specifico dei bottoni: cerca solo dentro .swiper-images
@@ -352,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
        2. CAROSELLO RECENSIONI (Singolo)
        Usa la classe specifica .swiper-reviews
        ========================================= */
-const swiperReviews = new Swiper('.swiper-reviews', {
+let swiperReviews = new Swiper('.swiper-reviews', {
     direction: 'horizontal',
     loop: true,
     spaceBetween: 0,
@@ -373,13 +443,30 @@ const swiperReviews = new Swiper('.swiper-reviews', {
     },
 
     pagination: {
-        el: '.swiper-reviews .swiper-pagination'
+        el: '.swiper-pagination',
+        type: 'progressbar',
     },
 
     scrollbar: {
-        el: '.swiper-reviews .swiper-scrollbar'
+        el: '.swiper-scrollbar'
     }
+
 });
 
 
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleziona tutti i bottoni con classe 'chips'
+    const chipsButtons = document.querySelectorAll('.chips');
+
+    chipsButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Aggiunge o rimuove la classe 'chips-active'
+            this.classList.toggle('chips-active');
+            
+            // Opzionale: Log in console per verifica
+            console.log('Stato bottone:', this.classList.contains('chips-active') ? 'Attivo' : 'Inattivo');
+        });
+    });
 });
