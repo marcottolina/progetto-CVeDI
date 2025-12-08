@@ -19,6 +19,398 @@
     <!-- page title -->
     <title> informazioni </title>
 
+    <!-- Local CSS (toDo: put it into the main.css if I wrote some, or delete this section if I didn't need it) -->
+    <style>
+
+        #infoAccordion {
+            background-image: url("/media/img/info-accordion-background.webp");
+            background-repeat: no-repeat;
+        }
+
+        /* = Map Style = */
+
+        #map-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, var(--blue2-100) 0%, var(--blue-100) 100%);
+            overflow: hidden;
+        }
+
+        /* ex-nations style */
+        .country {
+            fill: var(--blue-100);
+            stroke: #1c2e4a;
+            stroke-width: 0.5px;
+            transition: all 0.3s ease;
+            cursor: crosshair; /* change mouse icon to a cross upon hovering over a country */
+        }
+
+        /* hover effect on ex-nations */
+        .country:hover {
+            fill: var(--blue2-100);
+            stroke: var(--blue-dark); /* it's actually the white that goes over the blue-dark */
+        }
+
+        /* sea labels */
+        .sea-label-text {
+            font-family: 'Manrope', sans-serif;
+            fill: var(--blue-dark); /* it's actually the white that goes over the blue-dark */
+            font-size: 1.125rem;
+            line-height: 1.35rem;
+            overflow-x: hidden;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            cursor: help;
+        }
+
+        /* hover effect on seas (P1) */
+        .sea-group {
+            cursor: help; /* change mouse icon to <icon + a question mark> upon hovering over a sea name */
+        }
+
+        /* hover effect on seas (P2) */
+        .sea-group:hover .sea-label-text {
+            fill: #ffffff;
+            opacity: 1;
+            text-shadow: 0 0 8px var(--blue-dark); /* it's actually the white that goes over the blue-dark */
+        }
+
+        /* Pop-up tooltip for various elements */
+        .tooltip {
+            position: absolute;
+            z-index: 1000; /* to put tooltips in front of the map (rather than behind it) */
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid var(--blue70-100); /* purple-neon effect on border */
+            color: var(--blue70-100); /* purple-neon effect on text */
+            padding: 8px 12px;
+            border-radius: 2px;
+            pointer-events: none;
+            font-size: 14px;
+
+            opacity: 0;
+            transition: opacity 0.2s;
+
+            box-shadow: 0 0 15px var(--blue4-30); /* purple-bluish shadow from the text-box (taken from template example and adapted in our color palette) */
+
+            transform: translate(-50%, -150%);
+            text-transform: uppercase; /* all caps */
+        }
+
+        /* --- Atlas & Riff (specific elements within map) Style --- */
+
+        /* container style */
+        .location-group {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Atlas circle */
+        .atlas-marker {
+            fill: var(--pink-30);
+            stroke: var(--pink-dark);
+            stroke-width: 2px;
+            filter: drop-shadow(0 0 5px var(--pink-30)); /* taken from example and adapted to our palette */
+        }
+
+        /* Riff's dot */
+        .riff-point {
+            fill: var(--blue5-100); /* white */
+            stroke: none;
+        }
+
+        /* Pulsing animation for Atlas (upon hovering over it) */
+        .location-group:hover .atlas-marker {
+            animation: pulse 1.5s infinite; /* pulse animation is defined later, infinite = repeats endlessly */
+            fill: var(--pink-30);
+        }
+
+        /* Atlas & Riff label */
+        .location-label {
+            font-family: 'Manrope', sans-serif;
+            fill: var(--pink-dark); /* violet color */
+            font-size: 0.9rem;
+            text-anchor: middle;
+            font-weight: bold;
+            text-shadow: 0 0 5px #000;
+            pointer-events: none;
+            transform: translateY(-25px); /* shifts text above (and not inside) the dot */
+        }
+
+        /* I'm getting errors on this animation but, as far as I can tell, it's actually working? toDo: investigate */
+        @keyframes pulse {
+            0% {
+                stroke-width: 2px;
+                r: 8px; /* Aggiunto 'px' */
+                opacity: 1;
+            }
+            50% {
+                stroke-width: 4px;
+                r: 10px; /* Aggiunto 'px' */
+                opacity: 0.6;
+            }
+            100% {
+                stroke-width: 2px;
+                r: 8px; /* Aggiunto 'px' */
+                opacity: 1;
+            }
+        }
+
+        /* --- STILE PANNELLO CONTROLLI (Istruzioni) --- */
+        .controls-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(2, 4, 18, 0.85);
+            border: 1px solid var(--blue70-100);
+            color: var(--blue70-100);
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.85rem;
+            pointer-events: none; /* Click passanti */
+            user-select: none;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 50;
+        }
+
+        .key-badge {
+            border: 1px solid var(--blue70-100);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            background: rgba(79, 195, 247, 0.1);
+        }
+
+        .key-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon {
+            font-size: 1.1em;
+        }
+
+    </style>
+
+    <!-- Local JS (toDo: put it into the main.css if I wrote some, or delete this section if I didn't need it) -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // = Size configuration =
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            const container = d3.select("#map-container"); // select the HTML container for the map
+            const svg = container.append("svg"); // append a SVG to this container
+
+            // code from now on is all about setting the SVG to be the interactive map
+
+            // add sizes (D3 notation for adding an attribute to an SVG that will be a map
+            svg.attr("width", width);
+            svg.attr("height", height);
+
+            // sub-element "g" will contain the actual map (with seas and nations)
+            const mapLayer = svg.append("g");
+
+            // Tooltip selection
+            const tooltip = d3.select("#tooltip");
+
+            // Helper functions for tooltip interaction
+            const moveTooltip = (event) => {
+
+                // get pointer's current coordinates
+                const [x, y] = d3.pointer(event, container.node());
+
+                // put the tooltip next to the pointer (on the interactive object)
+                tooltip
+                    .style("left", (x + 15) + "px")
+                    .style("top", (y + 15) + "px")
+                ;
+            };
+
+            const hideTooltip = () => {
+                tooltip.style("opacity", 0);
+            };
+
+            // Sea labels coordinates (only in the Restaurant's local area)
+            const seaData = [
+                {name: "Mare di Giava", coords: [112, -5]},
+                {name: "Mare di Celebes", coords: [122, 3]},
+                {name: "Mare di Banda", coords: [128, -5.5]},
+                {name: "Mare di Arafura", coords: [135, -9]},
+                {name: "Mare di Timor", coords: [126, -11]},
+                {name: "Mare di Bismarck", coords: [147, -3.5]},
+                {name: "Mare di Salomone", coords: [152, -8]},
+                {name: "Mare dei Coralli", coords: [152, -16]},
+                {name: "Mare delle Filippine", coords: [130, 15]}
+            ];
+
+            // Initial projection on Indonesia
+            const projection = d3.geoMercator();
+            projection.center([128, -5]);
+            projection.scale(2000); // initial zoom level
+            projection.translate([width / 2, height / 2]);
+
+            const path = d3.geoPath().projection(projection);
+
+            // --- ZOOM SETUP (MODIFICATO: Solo con ALT) ---
+            const zoom = d3.zoom()
+                .scaleExtent([1, 8])
+                .filter((event) => {
+                    // Filtro eventi:
+                    // Se è un evento rotellina (wheel) E il tasto ALT NON è premuto...
+                    if (event.type === 'wheel' && !event.altKey) {
+                        return false; // ...ignora l'evento (niente zoom, niente lampeggiamento)
+                    }
+                    // Altrimenti consenti (se è trascinamento o se ALT è premuto)
+                    return true;
+                })
+                .on("zoom", (event) => {
+                    mapLayer.attr("transform", event.transform);
+                });
+
+            svg.call(zoom)
+                .on("dblclick.zoom", null); // Opzionale: disabilita zoom doppio click
+
+            // Atlas and Riff's position (object)
+            const cityData = [
+                {
+                    regionName: "Atlas",
+                    pointName: "Riff",
+                    coords: [127, -7], // Coordinate leggermente spostate nel Mare di Banda
+                    desc: "Città Sommersa"
+                }
+            ];
+
+            // World-Map loading
+            d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then(function (data) {
+
+                // Draw STATES (Ex-Nations)
+                mapLayer.selectAll("path")
+                    .data(data.features)
+                    .join("path")
+                    .attr("class", "country")
+                    .attr("d", path)
+                    // Aggiunta interattività sui Paesi
+                    .on("mouseover", function (event, d) {
+                        d3.select(this).raise(); // Porta il paese in primo piano (sopra gli altri)
+
+                        // Logica "Ex-"
+                        const countryName = d.properties.name;
+                        const exName = "Ex-" + countryName;
+
+                        if (exName === "Ex-Australia") {
+                            tooltip.style("opacity", 1)
+                                .html(`${exName}<br/><b>Stato:</b> semi-sommerso <br><b>Nota: </b>accesso proibito`);
+                        } else {
+                            tooltip.style("opacity", 1)
+                                .html(`${exName}<br/><b>Stato:</b> sommerso`);
+                        }
+                    })
+                    .on("mousemove", moveTooltip)
+                    .on("mouseout", hideTooltip);
+
+                // Draw seas
+                const seas = mapLayer.selectAll(".sea-group")
+                    .data(seaData)
+                    .enter()
+                    .append("g")
+                    .attr("class", "sea-group")
+                    .attr("transform", d => `translate(${projection(d.coords)})`)
+                ;
+
+                // "hitbox" circle (for the pop-up)
+                seas.append("circle")
+                    .attr("r", 25)
+                    .attr("fill", "transparent")
+                ;
+
+                // Visible text
+                seas.append("text")
+                    .attr("class", "sea-label-text")
+                    .attr("y", 5)
+                    .text((d) => d.name)
+                ;
+
+                // mouseover for seas
+                seas.on("mouseover", function (event, d) {
+                    tooltip.style("opacity", 1)
+                        .html(`<b>Settore:</b> Oceano Australe<br> <b>Distretto:</b> ${d.name}`); // Usa .html per andare a capo
+                })
+                    .on("mousemove", moveTooltip)
+                    .on("mouseout", hideTooltip);
+
+                // = Draw Atlas & Riff =
+                const locations = mapLayer.selectAll(".location-group")
+                    .data(cityData)
+                    .enter()
+                    .append("g")
+                    .attr("class", "location-group")
+                    .attr("transform", d => `translate(${projection(d.coords)})`);
+
+                // Draw atlas circle
+                locations.append("circle")
+                    .attr("r", 16)
+                    .attr("class", "atlas-marker");
+
+                // Draw the internal point for the Riff
+                locations.append("circle")
+                    .attr("r", 2.5)
+                    .attr("class", "riff-point");
+
+                // Etichetta testuale
+                locations.append("text")
+                    .attr("class", "location-label")
+                    .text(d => d.regionName); // Scrive "Atlas"
+
+                // mouseover for Atlas & Riff
+                locations.on("mouseover", function (event, d) {
+                    tooltip.style("opacity", 1)
+                        .style("border-color", "#FF327A")
+                        .style("color", "#FF327A")
+                        .html(`<b>Riff</b><br/>Atlas, P.zza Corolleo 1 24°N - 46°O, -230 m<br/>Settore abissale Ovest`);
+                })
+                    .on("mousemove", moveTooltip)
+                    .on("mouseout", function () {
+                        hideTooltip();
+                        tooltip.style("border-color", "var(--blue70-100)")
+                            .style("color", "var(--blue70-100)");
+                    });
+
+            }).catch(err => console.error("Errore dati:", err));
+
+            // Resize responsive
+            window.addEventListener('resize', () => {
+                const w = window.innerWidth;
+                const h = window.innerHeight;
+                svg.attr("width", w).attr("height", h);
+                projection.translate([w / 2, h / 2]);
+
+                // Update countries
+                mapLayer.selectAll("path").attr("d", path);
+
+                // Update seas
+                mapLayer.selectAll(".sea-group")
+                    .attr("transform", (d) => `translate(${projection(d.coords)})`);
+
+                // Update Atlas & Riff
+                mapLayer.selectAll(".location-group")
+                    .attr("transform", (d) => `translate(${projection(d.coords)})`);
+            });
+
+        });
+
+    </script>
+
 </head>
 
 <body>
@@ -84,9 +476,11 @@
                             Ristorante <i class="bi bi-arrow-right"></i></button>
                         <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu <i
                                 class="bi bi-arrow-right"></i></button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">Informazioni
+                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">
+                            Informazioni
                             <i class="bi bi-arrow-right"></i></button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'" type="button">
+                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'"
+                                type="button">
                             Serate Speciali <i class="bi bi-arrow-right"></i>
                         </button>
                     </div>
@@ -118,189 +512,289 @@
     </div>
 </section>
 
-<!-- introduction -->
-<section class="container my-5 py-5">
+<!-- top-overlay to hide background video (it only pops up in specific sections) -->
+<div class="top-overlay">
 
-    <!-- section heading -->
-    <h2 class="text-center py-5">Dove talento e creatività si incontrano</h2>
+    <!-- introduction -->
+    <section class="container my-5 py-5 align-items-center">
 
-    <!-- dynamic container (with responsive settings) -->
-    <section class="container-fluid px-1 px-lg-5 w-75 my-3">
+        <!-- section heading -->
+        <h2 class="text-center py-3">Immersive Experience</h2>
 
-        <div class="row mb-5 align-items-center g-4">
-            <div class="col-xl-5 col-12 order-1 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
-                <!-- toDo: change image -->
-                <img
-                        alt="Corallo rigenerato"
-                        class="img-fluid"
-                        loading="lazy"
-                        src="./media/img/descpiatto1-2-1200.webp"
-                        srcset="
-                        ./media/img/descpiatto1-2-800.webp 800w,
-                        ./media/img/descpiatto1-2-1200.webp 1200w,
-                        ./media/img/descpiatto1-2-2000.webp 2000w
-                        "
-                >
-            </div>
-            <div class="col-xl-6 col-12 order-2 order-xl-2">
-                <h3>Immersive Experience</h3>
-                <p>Un’esperienza immersiva in cui suono, sapore e atmosfera si fondono in un unico linguaggio sensoriale
-                    in cui ogni piatto racconta il mare. Le luci trasformano la sala in un paesaggio in movimento e il
-                    suono risveglia la memoria.</p>
-            </div>
+        <!-- section content -->
+        <div class="container">
+            <p class="text-center body-lead">Un’esperienza immersiva in cui suono, sapore e atmosfera si fondono in un
+                unico
+                linguaggio sensoriale in cui ogni
+                piatto racconta il mare. <br/> <br/>
+                Le luci trasformano la sala in un paesaggio in movimento e il suono risveglia la memoria.
+            </p>
         </div>
     </section>
-</section>
 
-<!-- awards & collaboration (main content) -->
-<main class="container my-5 py-5">
+    <!-- after-intro -->
 
-    <!-- section heading -->
-    <h2 class="text-center py-5">Dove talento e creatività si incontrano</h2>
+    <section>
 
-    <!-- awards & collaboration list -->
-    <section class="container-fluid px-1 px-lg-5 w-75 my-3">
+        <!-- section heading -->
+        <h2 class="text-center py-5">Dove talento e creatività si incontrano</h2>
 
-        <!-- award (1st subsection) -->
-        <div class="row mb-5 align-items-center g-4">
-            <div class="col-xl-5 col-12 order-1 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
-                <!-- toDo: change image -->
-                <img
-                        alt="Corallo rigenerato"
-                        class="img-fluid"
-                        loading="lazy"
-                        src="./media/img/descpiatto1-2-1200.webp"
-                        srcset="
-                        ./media/img/descpiatto1-2-800.webp 800w,
-                        ./media/img/descpiatto1-2-1200.webp 1200w,
-                        ./media/img/descpiatto1-2-2000.webp 2000w
-                        "
-                >
-            </div>
-            <div class="col-xl-6 col-12 order-2 order-xl-2">
-                <h3>Oceanic Dining Awards</h3>
-                <p>Un prestigioso premio internazionale dedicato ai ristoranti che valorizzano l’ambiente marino
-                    attraverso sostenibilità, design e innovazione gastronomica. Il riconoscimento celebra la nostra
-                    capacità di trasformare il fondale di Atlas in uno spazio dove l’alta cucina incontra l’arte
-                    sensoriale in un’esperienza immersiva.</p>
-            </div>
-        </div>
-
-        <!-- collaboration 1 (2nd subsection) -->
-        <div class="row mb-5 align-items-center g-4">
+        <!-- first collaboration -->
+        <div class="row mb-5 align-items-center g-4 px-5">
             <div class="col-xl-5 col-12 order-2 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
                 <h3>Il design di Nara Elyon</h3>
-                <p>Riff ha collaborato con Nara Elyon, rinomata artista e interior designer, per l’arredamento delle sue
+                <p class="body-lead">Riff ha collaborato con Nara Elyon, rinomata artista e interior designer, per
+                    l’arredamento delle
+                    sue
                     numerose sale. Potrete apprezzare la sua integrazione armonica ed elegante del sistema acustico
                     Synesthesia nei nostri spazi al gusto sublime della nostra cucina.</p>
             </div>
             <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
-                <!-- toDo: change image -->
                 <img
                         alt="Composizione"
                         class="img-fluid"
 
                         loading="lazy"
-                        src="./media/img/descpiatto1-1-1200.webp"
+                        src="./media/img/informazioni-1-1200w.webp"
                         srcset="
-                            ./media/img/descpiatto1-1-800.webp 800w,
-                            ./media/img/descpiatto1-1-1200.webp 1200w,
-                            ./media/img/descpiatto1-1-2000.webp 2000w
-                            "
+                                ./media/img/informazioni-1-800w.webp 800w,
+                                ./media/img/informazioni-1-1200w.webp 1200w,
+                                ./media/img/informazioni-1-2000w.webp 2000w
+                                "
                 >
             </div>
         </div>
 
-        <!-- collaboration 2 (3rd subsection) -->
-        <div class="row mb-5 align-items-center g-4">
+        <!-- second collaboration -->
+        <div class="row align-items-center g-4 px-5">
             <div class="col-xl-5 col-12 order-1 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
-                <!-- toDo: change image -->
                 <img
                         alt="Corallo rigenerato"
                         class="img-fluid"
                         loading="lazy"
-                        src="./media/img/descpiatto1-2-1200.webp"
+                        src="./media/img/informazioni-2-1200w.webp"
                         srcset="
-                        ./media/img/descpiatto1-2-800.webp 800w,
-                        ./media/img/descpiatto1-2-1200.webp 1200w,
-                        ./media/img/descpiatto1-2-2000.webp 2000w
-                        "
+                                ./media/img/informazioni-2-800w.webp 800w,
+                                ./media/img/informazioni-2-1200w.webp 1200w,
+                                ./media/img/informazioni-2-2000w.webp 2000w
+                                "
                 >
             </div>
             <div class="col-xl-6 col-12 order-2 order-xl-2">
                 <h3>Collaborazione con la Kael Dynamics</h3>
-                <p>Collaboriamo con Liran Kael, rinomato designer di strumentazione per cucina molecolare
-                    ecosostenibile.<br>La sua tecnica di cottura a bassa pressione subacquea ha rilanciato Riff come uno
+                <p class="body-lead">Collaboriamo con Liran Kael, rinomato designer di strumentazione per cucina
+                    molecolare
+                    ecosostenibile.<br>La sua tecnica di cottura a bassa pressione subacquea ha rilanciato Riff come
+                    uno
                     dei locali più ecosostenibili e a minor impatto di tutta Atlas.</p>
             </div>
         </div>
+
     </section>
 
-</main>
+</div>
 
-<!-- footer (updated) -->
-<footer class="p-4 mt-5 section-bg-light">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <h5>Orari di apertura</h5>
-                <p>Martedì - Domenica <br> 19:00 - 01:00</p>
-                <h5>Contatti</h5>
-                <p>Riff <br> Atlas, P.zza Corolleo 1 <br>24°N - 46°O, -230 m <br><br>
-                    Settore abissale Ovest
-                </p>
-            </div>
-            <div class="col-6 col-md-3">
-                <h5>Prenotazioni</h5>
-                <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
-                    Atlas, è necessaria la prenotazione
-                </p>
-                <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
-                    <span aria-hidden="true" class="liquidGlass-effect"></span>
-                    <span aria-hidden="true" class="liquidGlass-tint"></span>
-                    <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
-                </button>
-            </div>
-            <div class="col-md-6">
-                <div class="row justify-content-md-end mt-3">
-                    <div class="col-md-6 col-8 d-flex flex-column">
-                        <h5>Linea abissale</h5>
-                        <p>
-                            Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
-                        </p>
-                        <form>
-                            <div class="mb-3">
-                                <label class="form-label" for="exampleInputEmail1">E-mail</label>
-                                <input class="form-control" id="exampleInputEmail1" type="email">
-                            </div>
-                            <button class="btn liquidGlass-wrapper" type="submit">
-                                <span aria-hidden="true" class="liquidGlass-effect"></span>
-                                <span aria-hidden="true" class="liquidGlass-tint"></span>
-                                <span aria-hidden="true" class="liquidGlass-shine"></span>
-                                <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
-                            </button>
-                        </form>
-
-                    </div>
-
-                </div>
-            </div>
+<!-- award section -->
+<section class="py-5 section-bg-transparent liquidGlass-wrapper" style="border-radius: 0 !important;">
+    <div class="liquidGlass-tint"></div>
+    <div class="liquidGlass-effect-bg"></div>
+    <div class="container liquidGlass-text  my-5">
+        <div class="d-flex flex-column align-items-center">
+            <h3>Oceanic Dining Awards</h3>
+            <p class="col-8 text-center body-lead">Un prestigioso premio internazionale dedicato ai ristoranti che
+                valorizzano
+                l’ambiente marino attraverso sostenibilità, design e innovazione gastronomica.<br> Il riconoscimento
+                celebra
+                la nostra capacità di trasformare il fondale di Atlas in uno spazio dove l’alta cucina incontra l’arte
+                sensoriale in un’esperienza immersiva.</p>
         </div>
-        <div class="col-12 mt-5">
-            <div class="d-flex justify-content-between align-items-end">
-                <div>
-                    <img alt="" class="img-fluid" src="./img/Logo.svg">
+    </div>
+</section>
+
+<!-- top-overlay to hide background video (second opening, previous section had to show it) -->
+<div class="top-overlay">
+
+
+    <!-- accordion section -->
+    <div id="infoAccordion">
+        <section class="container py-5">
+
+            <!-- actual accordion -->
+            <div class="accordion">
+
+                <!-- accordion item 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button aria-controls="panelsStayOpen-collapseOne" aria-expanded="true" class="accordion-button"
+                                data-bs-target="#panelsStayOpen-collapseOne" data-bs-toggle="collapse"
+                                type="button">
+                            Quali sono gli orari di apertura?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse collapse show" id="panelsStayOpen-collapseOne">
+                        <div class="accordion-body">
+                            Il ristorante è aperto dal martedì alla domenica dalle 19:00 alle 01:00
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
-                    <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
-                    <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
+
+                <!-- accordion item 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button aria-controls="panelsStayOpen-collapseTwo" aria-expanded="false"
+                                class="accordion-button collapsed"
+                                data-bs-target="#panelsStayOpen-collapseTwo" data-bs-toggle="collapse"
+                                type="button">
+                            Qual è il dress code?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse collapse" id="panelsStayOpen-collapseTwo">
+                        <div class="accordion-body">
+                            Il nostro ambiente riflette l’eleganza delle profondità marine. Consigliamo un abbigliamento
+                            formale, ispirato a tonalità sobrie e materiali leggeri.
+                        </div>
+                    </div>
                 </div>
+
+                <!-- accordion item 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button aria-controls="panelsStayOpen-collapseThree" aria-expanded="false"
+                                class="accordion-button collapsed"
+                                data-bs-target="#panelsStayOpen-collapseThree" data-bs-toggle="collapse"
+                                type="button">
+                            Come posso raggiungere Riff?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse collapse" id="panelsStayOpen-collapseThree">
+                        <div class="accordion-body">
+                            Riff si trova sul fondale di Atlas, a pochi flutti dalla piazza Corolleo. Puoi raggiungerci
+                            tramite il tunnel panoramico principale o le navette subacquee dirette dai quartieri
+                            centrali.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- accordion item 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button aria-controls="panelsStayOpen-collapseFour" aria-expanded="false"
+                                class="accordion-button collapsed"
+                                data-bs-target="#panelsStayOpen-collapseFour" data-bs-toggle="collapse"
+                                type="button">
+                            È necessaria la prenotazione?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse collapse" id="panelsStayOpen-collapseFour">
+                        <div class="accordion-body">
+                            Sì. Le nostre sale acustiche ospitano un numero limitato di tavoli per garantire
+                            un’esperienza intima e personalizzata. <br>Ti consigliamo di prenotare con anticipo tramite
+                            il nostro sito.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- accordion item 5 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button aria-controls="panelsStayOpen-collapseFive" aria-expanded="false"
+                                class="accordion-button collapsed"
+                                data-bs-target="#panelsStayOpen-collapseFive" data-bs-toggle="collapse"
+                                type="button">
+                            Sono offerte opzioni vegetariane o senza allergeni?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse collapse" id="panelsStayOpen-collapseFive">
+                        <div class="accordion-body">
+                            Sì. I nostri chef curano menu dedicati che rispettano ogni esigenza alimentare, mantenendo
+                            la coerenza sensoriale del percorso.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- trying a map with D3 -->
+    <div id="map-container">
+        <div class="tooltip" id="tooltip"></div>
+
+        <div class="controls-hint" id="map-controls-hint">
+            <div class="key-row">
+                <span class="key-badge">ALT</span> + <span class="icon">🖱️</span> <span>ZOOM</span>
+            </div>
+            <div class="key-row">
+                <span class="icon">👆</span> <span>TRASCINA</span>
             </div>
         </div>
     </div>
-</footer>
+
+    <!-- footer (updated) -->
+    <footer class="p-4 section-bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <h5>Orari di apertura</h5>
+                    <p>Martedì - Domenica <br> 19:00 - 01:00</p>
+                    <h5>Contatti</h5>
+                    <p>Riff <br> Atlas, P.zza Corolleo 1 <br>24°N - 46°O, -230 m <br><br>
+                        Settore abissale Ovest
+                    </p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h5>Prenotazioni</h5>
+                    <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
+                        Atlas, è necessaria la prenotazione
+                    </p>
+                    <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
+                        <span aria-hidden="true" class="liquidGlass-effect"></span>
+                        <span aria-hidden="true" class="liquidGlass-tint"></span>
+                        <span aria-hidden="true" class="liquidGlass-shine"></span>
+                        <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <div class="row justify-content-md-end mt-3">
+                        <div class="col-md-6 col-8 d-flex flex-column">
+                            <h5>Linea abissale</h5>
+                            <p>
+                                Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
+                            </p>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" for="exampleInputEmail1">E-mail</label>
+                                    <input class="form-control" id="exampleInputEmail1" type="email">
+                                </div>
+                                <button class="btn liquidGlass-wrapper" type="submit">
+                                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                                    <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-5">
+                <div class="d-flex justify-content-between align-items-end">
+                    <div>
+                        <img alt="" class="img-fluid" src="./img/Logo.svg">
+                    </div>
+                    <div>
+                        <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
+                        <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
+                        <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
 
 <!-- Empty div to set the mouse effect only when content is shown (doesn't work directly put on body) -->
 <div class="circle"></div>
@@ -362,5 +856,6 @@
         />
     </filter>
 </svg>
+
 </body>
 </html>
