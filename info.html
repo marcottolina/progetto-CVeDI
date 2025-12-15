@@ -24,10 +24,42 @@
 
         /* == ACCORDION == */
 
+        /*#accordionFAQ {*/
+        /*    background-image: url("./media/img/info-accordion-background.webp");*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-position: bottom left; !* image always says bottom left as accordion elements get opened *!*/
+        /*}*/
+
+        /* 1. Il contenitore padre deve avere position: relative */
         #accordionFAQ {
-            background-image: url("./media/img/info-accordion-background.webp");
-            background-repeat: no-repeat;
-            background-position: bottom left; /* image always says bottom left as accordion elements get opened */
+            position: relative;
+            /* Opzionale: overflow hidden se l'immagine non deve uscire dai bordi arrotondati */
+            overflow: hidden;
+            /* Assicurati che abbia uno z-index se necessario per il contesto */
+            z-index: 1;
+        }
+
+        /* 2. Il wrapper dell'immagine */
+        .accordion-bg-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            /* Z-index negativo o basso per stare DIETRO al testo */
+            z-index: -1;
+
+            /* IMPORTANTE: Impedisce all'immagine di bloccare i click sugli elementi sotto di essa */
+            pointer-events: none;
+
+            /* Opzionale: larghezza massima per evitare che l'immagine diventi enorme */
+            width: 100%;
+        }
+
+        /* 3. Stile dell'immagine stessa */
+        .accordion-bg-decoration img {
+            display: block; /* Rimuove lo spazio extra sotto le immagini inline */
+            width: 100%;
+            height: auto;
         }
 
         /* accordion container, large, transparent and without borders */
@@ -90,391 +122,7 @@
             border-top: 1px solid rgba(234, 255, 251, 0.1); /* line between title (button) and text (accordion content), rgb code is = #EAE9FB = (blue-dark), made semi-transparent */
         }
 
-        /* == MAP == */
-
-        /* Map's container */
-        #map-container {
-            width: 100vw;
-            height: 100vh;
-            position: relative;
-            background: radial-gradient(circle at 50% 50%, var(--blue2-100) 0%, var(--blue-100) 100%);
-            overflow: hidden;
-        }
-
-        /* ex-nations style */
-        .country {
-            fill: var(--blue-100);
-            stroke: #1c2e4a;
-            stroke-width: 0.5px;
-            transition: all 0.3s ease;
-            cursor: crosshair; /* change mouse icon to a cross upon hovering over a country */
-        }
-
-        /* hover effect on ex-nations */
-        .country:hover {
-            fill: var(--blue2-100);
-            stroke: var(--blue-dark); /* it's actually the white that goes over the blue-dark */
-        }
-
-        /* sea labels */
-        .sea-label-text {
-            font-family: 'Manrope', sans-serif;
-            fill: var(--blue-dark); /* it's actually the white that goes over the blue-dark */
-            font-size: 1.125rem;
-            line-height: 1.35rem;
-            overflow-x: hidden;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-            cursor: help;
-        }
-
-        /* hover effect on seas (P1) */
-        .sea-group {
-            cursor: help; /* change mouse icon to <icon + a question mark> upon hovering over a sea name */
-        }
-
-        /* hover effect on seas (P2) */
-        .sea-group:hover .sea-label-text {
-            fill: #ffffff;
-            opacity: 1;
-            text-shadow: 0 0 8px var(--blue-dark); /* it's actually the white that goes over the blue-dark */
-        }
-
-        /* Pop-up tooltip for various elements */
-        .tooltip {
-            position: absolute;
-            z-index: 1000; /* to put tooltips in front of the map (rather than behind it) */
-            background: rgba(0, 0, 0, 0.85);
-            border: 1px solid var(--blue70-100); /* purple-neon effect on border */
-            color: var(--blue70-100); /* purple-neon effect on text */
-            padding: 8px 12px;
-            border-radius: 2px;
-            pointer-events: none;
-            font-size: 14px;
-
-            opacity: 0;
-            transition: opacity 0.2s;
-
-            box-shadow: 0 0 15px var(--blue4-30); /* purple-bluish shadow from the text-box (taken from template example and adapted in our color palette) */
-
-            transform: translate(-50%, -150%);
-            text-transform: uppercase; /* all caps */
-        }
-
-        /* --- Atlas & Riff (specific elements within map) Style --- */
-
-        /* container style */
-        .location-group {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        /* Atlas circle */
-        .atlas-marker {
-            fill: var(--pink-30);
-            stroke: var(--pink-dark);
-            stroke-width: 2px;
-            filter: drop-shadow(0 0 5px var(--pink-30)); /* taken from example and adapted to our palette */
-        }
-
-        /* Riff's dot */
-        .riff-point {
-            fill: var(--blue5-100); /* white */
-            stroke: none;
-        }
-
-        /* Pulsing animation for Atlas (upon hovering over it) */
-        .location-group:hover .atlas-marker {
-            animation: pulse 1.5s infinite; /* pulse animation is defined later, infinite = repeats endlessly */
-            fill: var(--pink-30);
-        }
-
-        /* Atlas & Riff label */
-        .location-label {
-            font-family: 'Manrope', sans-serif;
-            fill: var(--pink-dark); /* violet color */
-            font-size: 0.9rem;
-            text-anchor: middle;
-            font-weight: bold;
-            text-shadow: 0 0 5px #000;
-            pointer-events: none;
-            transform: translateY(-25px); /* shifts text above (and not inside) the dot */
-        }
-
-        /* Pulse animation for "blinking" effect upon hovering over / selecting (on mobile) Atlas */
-        @keyframes pulse {
-            0% {
-                stroke-width: 2px;
-                r: 8px; /* Aggiunto 'px' */
-                opacity: 1;
-            }
-            50% {
-                stroke-width: 4px;
-                r: 10px; /* Aggiunto 'px' */
-                opacity: 0.6;
-            }
-            100% {
-                stroke-width: 2px;
-                r: 8px; /* Aggiunto 'px' */
-                opacity: 1;
-            }
-        }
-
-        /* = Instructions Panel Style = */
-
-        .controls-hint {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-            background: rgba(2, 4, 18, 0.85);
-            border: 1px solid var(--blue70-100);
-            color: var(--blue70-100);
-            padding: 10px 15px;
-            border-radius: 4px;
-            font-family: 'Manrope', sans-serif;
-            font-size: 0.85rem;
-            pointer-events: none; /* Click passanti */
-            user-select: none;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            z-index: 50;
-        }
-
-        .key-badge {
-            border: 1px solid var(--blue70-100);
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-weight: bold;
-            font-size: 0.75rem;
-            background: rgba(79, 195, 247, 0.1);
-        }
-
-        .key-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .icon {
-            font-size: 1.1em;
-        }
-
     </style>
-
-    <!-- Local JS (toDo: put it into the main.js) -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script>
-
-        document.addEventListener("DOMContentLoaded", function () {
-
-            // = Size configuration =
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-
-            const container = d3.select("#map-container"); // select the HTML container for the map
-            const svg = container.append("svg"); // append a SVG to this container
-
-            // code from now on is all about setting the SVG to be the interactive map
-
-            // add sizes (D3 notation for adding an attribute to an SVG that will be a map
-            svg.attr("width", width);
-            svg.attr("height", height);
-
-            // sub-element "g" will contain the actual map (with seas and nations)
-            const mapLayer = svg.append("g");
-
-            // Tooltip selection
-            const tooltip = d3.select("#tooltip");
-
-            // Helper functions for tooltip interaction
-            const moveTooltip = (event) => {
-
-                // get pointer's current coordinates
-                const [x, y] = d3.pointer(event, container.node());
-
-                // put the tooltip next to the pointer (on the interactive object)
-                tooltip
-                    .style("left", (x + 15) + "px")
-                    .style("top", (y + 15) + "px")
-                ;
-            };
-
-            const hideTooltip = () => {
-                tooltip.style("opacity", 0);
-            };
-
-            // Sea labels coordinates (only in the Restaurant's local area)
-            const seaData = [
-                {name: "Mare di Giava", coords: [112, -5]},
-                {name: "Mare di Celebes", coords: [122, 3]},
-                {name: "Mare di Banda", coords: [128, -5.5]},
-                {name: "Mare di Arafura", coords: [135, -9]},
-                {name: "Mare di Timor", coords: [126, -11]},
-                {name: "Mare di Bismarck", coords: [147, -3.5]},
-                {name: "Mare di Salomone", coords: [152, -8]},
-                {name: "Mare dei Coralli", coords: [152, -16]},
-                {name: "Mare delle Filippine", coords: [130, 15]}
-            ];
-
-            // Initial projection on Indonesia
-            const projection = d3.geoMercator();
-            projection.center([128, -5]);
-            projection.scale(2000); // initial zoom level
-            projection.translate([width / 2, height / 2]);
-
-            const path = d3.geoPath().projection(projection);
-
-            // --- ZOOM SETUP (MODIFICATO: Solo con ALT) ---
-            const zoom = d3.zoom()
-                .scaleExtent([1, 8])
-                .filter((event) => {
-                    // Filtro eventi:
-                    // Se è un evento rotellina (wheel) E il tasto ALT NON è premuto...
-                    if (event.type === 'wheel' && !event.altKey) {
-                        return false; // ...ignora l'evento (niente zoom, niente lampeggiamento)
-                    }
-                    // Altrimenti consenti (se è trascinamento o se ALT è premuto)
-                    return true;
-                })
-                .on("zoom", (event) => {
-                    mapLayer.attr("transform", event.transform);
-                });
-
-            svg.call(zoom)
-                .on("dblclick.zoom", null); // Opzionale: disabilita zoom doppio click
-
-            // Atlas and Riff's position (object)
-            const cityData = [
-                {
-                    regionName: "Atlas",
-                    pointName: "Riff",
-                    coords: [127, -7], // Coordinate leggermente spostate nel Mare di Banda
-                    desc: "Città Sommersa"
-                }
-            ];
-
-            // World-Map loading
-            d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then(function (data) {
-
-                // Draw STATES (Ex-Nations)
-                mapLayer.selectAll("path")
-                    .data(data.features)
-                    .join("path")
-                    .attr("class", "country")
-                    .attr("d", path)
-                    // Aggiunta interattività sui Paesi
-                    .on("mouseover", function (event, d) {
-                        d3.select(this).raise(); // Porta il paese in primo piano (sopra gli altri)
-
-                        // Logica "Ex-"
-                        const countryName = d.properties.name;
-                        const exName = "Ex-" + countryName;
-
-                        if (exName === "Ex-Australia") {
-                            tooltip.style("opacity", 1)
-                                .html(`${exName}<br/><b>Stato:</b> semi-sommerso <br><b>Nota: </b>accesso proibito`);
-                        } else {
-                            tooltip.style("opacity", 1)
-                                .html(`${exName}<br/><b>Stato:</b> sommerso`);
-                        }
-                    })
-                    .on("mousemove", moveTooltip)
-                    .on("mouseout", hideTooltip);
-
-                // Draw seas
-                const seas = mapLayer.selectAll(".sea-group")
-                    .data(seaData)
-                    .enter()
-                    .append("g")
-                    .attr("class", "sea-group")
-                    .attr("transform", d => `translate(${projection(d.coords)})`)
-                ;
-
-                // "hitbox" circle (for the pop-up)
-                seas.append("circle")
-                    .attr("r", 25)
-                    .attr("fill", "transparent")
-                ;
-
-                // Visible text
-                seas.append("text")
-                    .attr("class", "sea-label-text")
-                    .attr("y", 5)
-                    .text((d) => d.name)
-                ;
-
-                // mouseover for seas
-                seas.on("mouseover", function (event, d) {
-                    tooltip.style("opacity", 1)
-                        .html(`<b>Settore:</b> Oceano Australe<br> <b>Distretto:</b> ${d.name}`); // Usa .html per andare a capo
-                })
-                    .on("mousemove", moveTooltip)
-                    .on("mouseout", hideTooltip);
-
-                // = Draw Atlas & Riff =
-                const locations = mapLayer.selectAll(".location-group")
-                    .data(cityData)
-                    .enter()
-                    .append("g")
-                    .attr("class", "location-group")
-                    .attr("transform", d => `translate(${projection(d.coords)})`);
-
-                // Draw atlas circle
-                locations.append("circle")
-                    .attr("r", 16)
-                    .attr("class", "atlas-marker");
-
-                // Draw the internal point for the Riff
-                locations.append("circle")
-                    .attr("r", 2.5)
-                    .attr("class", "riff-point");
-
-                // Etichetta testuale
-                locations.append("text")
-                    .attr("class", "location-label")
-                    .text(d => d.regionName); // Scrive "Atlas"
-
-                // mouseover for Atlas & Riff
-                locations.on("mouseover", function (event, d) {
-                    tooltip.style("opacity", 1)
-                        .style("border-color", "#FF327A")
-                        .style("color", "#FF327A")
-                        .html(`<b>Riff</b><br/>Atlas, P.zza Corolleo 1 24°N - 46°O, -230 m<br/>Settore abissale Ovest`);
-                })
-                    .on("mousemove", moveTooltip)
-                    .on("mouseout", function () {
-                        hideTooltip();
-                        tooltip.style("border-color", "var(--blue70-100)")
-                            .style("color", "var(--blue70-100)");
-                    });
-
-            }).catch(err => console.error("Errore dati:", err));
-
-            // Resize responsive
-            window.addEventListener('resize', () => {
-                const w = window.innerWidth;
-                const h = window.innerHeight;
-                svg.attr("width", w).attr("height", h);
-                projection.translate([w / 2, h / 2]);
-
-                // Update countries
-                mapLayer.selectAll("path").attr("d", path);
-
-                // Update seas
-                mapLayer.selectAll(".sea-group")
-                    .attr("transform", (d) => `translate(${projection(d.coords)})`);
-
-                // Update Atlas & Riff
-                mapLayer.selectAll(".location-group")
-                    .attr("transform", (d) => `translate(${projection(d.coords)})`);
-            });
-
-        });
-
-    </script>
 
 </head>
 
@@ -598,7 +246,7 @@
     </section>
 
     <!-- after-intro -->
-    <section>
+    <section class="py-5">
 
         <!-- section heading -->
         <h2 class="text-center py-5">Dove talento e creatività si incontrano</h2>
@@ -680,13 +328,16 @@
 
     <div class="accordion p-5" id="accordionFAQ">
 
+        <div class="accordion-bg-decoration">
+            <img src="./media/img/info-accordion-background.webp" alt="" role="presentation">
+        </div>
+
         <!-- accordion item 1 -->
         <div class="accordion-item accordion-glass-item liquidGlass-wrapper mb-3">
 
             <div class="liquidGlass-effect" style="background: rgba(10, 10, 20, 0.6);"></div>
             <div class="liquidGlass-effect-bg"></div>
             <div class="liquidGlass-tint"></div>
-            <div class="liquidGlass-shine"></div>
 
             <div class="liquidGlass-text">
 
@@ -704,7 +355,7 @@
                 <div class="accordion-collapse collapse" data-bs-parent="#accordionRiff" id="collapseOne">
                     <div class="accordion-body accordion-glass-body">
                         <p class="mt-3">
-                        Il ristorante è aperto dal martedì alla domenica dalle 19:00 alle 01:00.
+                            Il ristorante è aperto dal martedì alla domenica dalle 19:00 alle 01:00.
                         </p>
                     </div>
                 </div>
@@ -717,7 +368,6 @@
             <div class="liquidGlass-effect" style="background: rgba(10, 10, 20, 0.6);"></div>
             <div class="liquidGlass-effect-bg"></div>
             <div class="liquidGlass-tint"></div>
-            <div class="liquidGlass-shine"></div>
 
             <div class="liquidGlass-text">
                 <h2 class="accordion-header m-0">
@@ -733,8 +383,8 @@
                 <div class="accordion-collapse collapse" data-bs-parent="#accordionRiff" id="collapseTwo">
                     <div class="accordion-body accordion-glass-body">
                         <p class="mt-3">
-                        Il nostro ambiente riflette l’eleganza delle profondità marine. Consigliamo un
-                        abbigliamento formale, ispirato a tonalità sobrie e materiali leggeri.
+                            Il nostro ambiente riflette l’eleganza delle profondità marine. Consigliamo un
+                            abbigliamento formale, ispirato a tonalità sobrie e materiali leggeri.
                         </p>
                     </div>
                 </div>
@@ -746,7 +396,6 @@
             <div class="liquidGlass-effect" style="background: rgba(10, 10, 20, 0.6);"></div>
             <div class="liquidGlass-effect-bg"></div>
             <div class="liquidGlass-tint"></div>
-            <div class="liquidGlass-shine"></div>
 
             <div class="liquidGlass-text">
                 <h2 class="accordion-header m-0">
@@ -762,10 +411,10 @@
                 <div class="accordion-collapse collapse" data-bs-parent="#accordionRiff" id="collapseThree">
                     <div class="accordion-body accordion-glass-body">
                         <p class="mt-3">
-                        Riff si trova sul fondale di Atlas, a pochi flutti dalla piazza Corolleo. Puoi
-                        raggiungerci tramite il tunnel panoramico principale o le navette subacquee dirette dai
-                        quartieri
-                        centrali.
+                            Riff si trova sul fondale di Atlas, a pochi flutti dalla piazza Corolleo. Puoi
+                            raggiungerci tramite il tunnel panoramico principale o le navette subacquee dirette dai
+                            quartieri
+                            centrali.
                         </p>
                     </div>
                 </div>
@@ -777,7 +426,6 @@
             <div class="liquidGlass-effect" style="background: rgba(10, 10, 20, 0.6);"></div>
             <div class="liquidGlass-effect-bg"></div>
             <div class="liquidGlass-tint"></div>
-            <div class="liquidGlass-shine"></div>
 
             <div class="liquidGlass-text">
                 <h2 class="accordion-header m-0">
@@ -793,10 +441,10 @@
                 <div class="accordion-collapse collapse" data-bs-parent="#accordionRiff" id="collapseFour">
                     <div class="accordion-body accordion-glass-body">
                         <p class="mt-3">
-                        Sì. Le nostre sale acustiche ospitano un numero limitato di tavoli per garantire
-                        un’esperienza intima e personalizzata. <br>Ti consigliamo di prenotare con anticipo
-                        tramite
-                        il nostro sito.
+                            Sì. Le nostre sale acustiche ospitano un numero limitato di tavoli per garantire
+                            un’esperienza intima e personalizzata. <br>Ti consigliamo di prenotare con anticipo
+                            tramite
+                            il nostro sito.
                         </p>
                     </div>
                 </div>
@@ -808,7 +456,6 @@
             <div class="liquidGlass-effect" style="background: rgba(10, 10, 20, 0.6);"></div>
             <div class="liquidGlass-effect-bg"></div>
             <div class="liquidGlass-tint"></div>
-            <div class="liquidGlass-shine"></div>
 
             <div class="liquidGlass-text">
                 <h2 class="accordion-header m-0">
@@ -824,28 +471,14 @@
                 <div class="accordion-collapse collapse" data-bs-parent="#accordionRiff" id="collapseFive">
                     <div class="accordion-body accordion-glass-body">
                         <p class="mt-3">
-                        Sì. I nostri chef curano menu dedicati che rispettano ogni esigenza alimentare,
-                        mantenendo la coerenza sensoriale del percorso.
+                            Sì. I nostri chef curano menu dedicati che rispettano ogni esigenza alimentare,
+                            mantenendo la coerenza sensoriale del percorso.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
-
-    <!-- trying a map with D3 -->
-    <div id="map-container">
-        <div class="tooltip" id="tooltip"></div>
-
-        <div class="controls-hint" id="map-controls-hint">
-            <div class="key-row">
-                <span class="key-badge">ALT</span> + <span class="icon">🖱️</span> <span>ZOOM</span>
-            </div>
-            <div class="key-row">
-                <span class="icon">👆</span> <span>TRASCINA</span>
-            </div>
-        </div>
     </div>
 
     <!-- footer (updated) -->
@@ -919,50 +552,19 @@
 
 <!-- Liquid glass filter pattern -->
 <svg style="display: none">
-    <filter
-            filterUnits="objectBoundingBox"
-            height="100%"
-            id="glass-distortion"
-            width="100%"
-            x="0%"
-            y="0%"
-    >
+    <filter id="glass-distortion-fixed">
         <feTurbulence
                 baseFrequency="0.01 0.01"
-                numOctaves="30"
+                numOctaves="1"
                 result="turbulence"
                 seed="31"
                 type="fractalNoise"
         />
 
-        <feComponentTransfer in="turbulence" result="mapped">
-            <feFuncR amplitude="1" exponent="10" offset="0.5" type="gamma"/>
-            <feFuncG amplitude="0" exponent="1" offset="0" type="gamma"/>
-            <feFuncB amplitude="0" exponent="1" offset="0.5" type="gamma"/>
-        </feComponentTransfer>
-
-        <feGaussianBlur in="turbulence" result="softMap" stdDeviation="3"/>
-
-        <feSpecularLighting
-                in="softMap"
-                lighting-color="white"
-                result="specLight"
-                specularConstant="1"
-                specularExponent="100"
-                surfaceScale="2"
-        >
-            <fePointLight x="-200" y="-200" z="300"/>
-        </feSpecularLighting>
-
-        <feComposite
-                in="specLight"
-                in2="specLight"
-                k1="0"
-                k2="1"
-                k3="1"
-                k4="0"
-                operator="arithmetic"
-                result="litImage"
+        <feGaussianBlur
+                in="turbulence"
+                stdDeviation="3"
+                result="softMap"
         />
 
         <feDisplacementMap
@@ -971,6 +573,28 @@
                 scale="30"
                 xChannelSelector="R"
                 yChannelSelector="G"
+                result="distortedImage"
+        />
+
+        <feSpecularLighting
+                in="softMap"
+                lighting-color="white"
+                specularConstant="1"
+                specularExponent="100"
+                surfaceScale="2"
+                result="specLight"
+        >
+            <fePointLight x="-200" y="-200" z="300"/>
+        </feSpecularLighting>
+
+        <feComposite
+                in="distortedImage"
+                in2="specLight"
+                operator="arithmetic"
+                k1="0"
+                k2="1"
+                k3="1"
+                k4="0"
         />
     </filter>
 </svg>

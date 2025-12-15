@@ -24,6 +24,17 @@
     <!-- Local CSS (toDo: put it into the main.css if I wrote some, or delete this section if I didn't need it) -->
     <style>
 
+        #values-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #070713, transparent, #070713);
+            z-index: 10;
+
+        }
+
         /* danger: this tyle is actually working on a later-instanced element, do not remove this style */
         .swiper-navigation-icon {
             display: none;
@@ -62,7 +73,8 @@
                     <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota <i
                             class="bi bi-arrow-right"></i></span>
                 </button>
-                <button aria-controls="offcanvasFull" class="btn-empty" data-bs-target="#offcanvasFull" data-bs-toggle="offcanvas"
+                <button aria-controls="offcanvasFull" class="btn-empty" data-bs-target="#offcanvasFull"
+                        data-bs-toggle="offcanvas"
                         type="button">
                     <i class="bi bi-list"></i>
                 </button>
@@ -104,9 +116,11 @@
                             Ristorante <i class="bi bi-arrow-right"></i></button>
                         <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu <i
                                 class="bi bi-arrow-right"></i></button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">Informazioni
+                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">
+                            Informazioni
                             <i class="bi bi-arrow-right"></i></button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'" type="button">
+                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'"
+                                type="button">
                             Serate Speciali <i class="bi bi-arrow-right"></i>
                         </button>
                     </div>
@@ -135,383 +149,398 @@
     </div>
 </section>
 <div class="top-overlay">
-        <div class="container-fluid d-flex flex-column justify-content-end align-items-start h-100">
-            <h1>Il ristorante</h1>
-            <span class="body-lead">Un'esperienza tra le note del tempo</span>
-        </div>
-
-<!-- introduction -->
-<section class="py-5 mt-5">
-    <div class="container text-center">
-        <h2>Riff, immersive experience </h2>
-        <p>
-            In un luogo dove la luce si dissolve e il silenzio diventa musica, nasce Riff: un luogo sospeso tra memoria
-            e sensazioni, in cui antiche melodie guidano l’esperienza gastronomica. Qui il gusto diventa linguaggio, la
-            musica diventa tempo, e il tempo si fa emozione.
-        </p>
+    <div class="container-fluid d-flex flex-column justify-content-end align-items-start h-100">
+        <h1>Il ristorante</h1>
+        <span class="body-lead">Un'esperienza tra le note del tempo</span>
     </div>
-</section>
 
-<!-- carousel -->
-<section>
-    <div class="container text-center mt-5">
-        <h2>Spazi che sussurrano</h2>
-        <!-- toDo: carousel is still a mess, needs fixing -->
-
-        <!-- Slider main container -->
-        <div class="swiper swiper-images">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper z-n1">
-                <!-- Slides -->
-                <div class="swiper-slide ratio ratio-1x1">
-                    <img
-                            src="./media/img/descpiatto1-1-800.webp"
-                    >
-                </div>
-                <div class="swiper-slide ratio ratio-1x1">
-                    <img
-                            src="./media/img/descpiatto2-1-800.webp"
-                    >
-                </div>
-                <div class="swiper-slide ratio ratio-1x1">
-                    <img
-                            src="./media/img/descpiatto3-1-800.webp"
-                    >
-                </div>
-                <div class="swiper-slide ratio ratio-1x1">
-                    <img
-                            src="./media/img/serate-speciali-main-1-800w.webp"
-                    >
-                </div>
-                <div class="swiper-slide ratio ratio-1x1">
-                    <img
-                            src="./media/img/serate-speciali-main-3-800w.webp"
-                    >
-                </div>
-            </div>
-
-            <!-- navigation buttons (inside slides because they are on top of them) -->
-            <div class="d-flex flex-row justify-content-between">
-                <button class="btn liquidGlass-wrapper swiper-button-prev position-absolute top-50 start-0">
-                    <span aria-hidden="true" class="liquidGlass-effect"></span>
-                    <span aria-hidden="true" class="liquidGlass-tint"></span>
-                    <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text"><i class="bi bi-arrow-left"></i></span>
-                </button>
-                <button class="btn liquidGlass-wrapper swiper-button-next position-absolute top-50 end-0">
-                    <span aria-hidden="true" class="liquidGlass-effect"></span>
-                    <span aria-hidden="true" class="liquidGlass-tint"></span>
-                    <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text"><i class="bi bi-arrow-right"></i></span>
-                </button>
-            </div>
-
+    <!-- introduction -->
+    <section class="py-5 mt-5">
+        <div class="container text-center">
+            <h2>Riff, immersive experience </h2>
+            <p>
+                In un luogo dove la luce si dissolve e il silenzio diventa musica, nasce Riff: un luogo sospeso tra
+                memoria
+                e sensazioni, in cui antiche melodie guidano l’esperienza gastronomica. Qui il gusto diventa linguaggio,
+                la
+                musica diventa tempo, e il tempo si fa emozione.
+            </p>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- main content -->
-<main class="container-fluid mt-5 py-5">
+    <!-- carousel -->
+    <section>
+        <div class="container text-center mt-5">
+            <h2>Spazi che sussurrano</h2>
+            <!-- toDo: carousel is still a mess, needs fixing -->
 
-    <!-- section heading -->
-    <h2 class="text-center py-5">I maestri sommersi</h2>
+            <!-- Slider main container -->
+            <div class="swiper swiper-images">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper z-n1">
+                    <!-- Slides -->
+                    <div class="swiper-slide ratio ratio-1x1">
+                        <img
+                                src="./media/img/descpiatto1-1-800.webp"
+                        >
+                    </div>
+                    <div class="swiper-slide ratio ratio-1x1">
+                        <img
+                                src="./media/img/descpiatto2-1-800.webp"
+                        >
+                    </div>
+                    <div class="swiper-slide ratio ratio-1x1">
+                        <img
+                                src="./media/img/descpiatto3-1-800.webp"
+                        >
+                    </div>
+                    <div class="swiper-slide ratio ratio-1x1">
+                        <img
+                                src="./media/img/serate-speciali-main-1-800w.webp"
+                        >
+                    </div>
+                    <div class="swiper-slide ratio ratio-1x1">
+                        <img
+                                src="./media/img/serate-speciali-main-3-800w.webp"
+                        >
+                    </div>
+                </div>
 
-    <!-- Chefs list -->
-    <section class="container-fluid px-1 px-lg-5 my-3">
-        <!-- Chef 1 -->
-        <div class="row mb-5 align-items-center">
-            <div class="col-lg-6 col-12 mb-4 mb-xl-0 col-md-12 col-xxl-6">
-                <img
-                        alt="Corallo rigenerato"
-                        class="img-fluid"
-                        loading="lazy"
-                        src="./media/img/descpiatto1-2-1200.webp"
-                        srcset="
-                        ./media/img/descpiatto1-2-800.webp 800w,
-                        ./media/img/descpiatto1-2-1200.webp 1200w,
-                        ./media/img/descpiatto1-2-2000.webp 2000w
-                        "
-                >
-            </div>
-            <div class="col-lg-6 col-12">
-                <h3>Chef dei coralli</h3>
-                <p>Seleziona ingredienti che nascono dall’intreccio con la barriera corallina, creando sapori mai
-                    provati prima. I suoi piatti combinando essenze intense e naturali, creando una connessione tra chi
-                    assaggia e l’ambiente circostante.</p>
-            </div>
-        </div>
+                <!-- navigation buttons (inside slides because they are on top of them) -->
+                <div class="d-flex flex-row justify-content-between">
+                    <button class="btn liquidGlass-wrapper swiper-button-prev position-absolute top-50 start-0">
+                        <span aria-hidden="true" class="liquidGlass-effect"></span>
+                        <span aria-hidden="true" class="liquidGlass-tint"></span>
+                        <span aria-hidden="true" class="liquidGlass-shine"></span>
+                        <span class="liquidGlass-text"><i class="bi bi-arrow-left"></i></span>
+                    </button>
+                    <button class="btn liquidGlass-wrapper swiper-button-next position-absolute top-50 end-0">
+                        <span aria-hidden="true" class="liquidGlass-effect"></span>
+                        <span aria-hidden="true" class="liquidGlass-tint"></span>
+                        <span aria-hidden="true" class="liquidGlass-shine"></span>
+                        <span class="liquidGlass-text"><i class="bi bi-arrow-right"></i></span>
+                    </button>
+                </div>
 
-        <!-- Chef 2 -->
-        <div class="row mb-5 align-items-center g-4">
-            <div class="col-lg-6 col-12 order-2 order-lg-1 mb-4 mb-xl-0 col-md-12 col-xxl-6">
-                <h3>Chef delle armonie</h3>
-                <p>Custode delle memorie musicali sommerse, traduce la musica del passato in sapori contemporanei.
-                    Ogni suo piatto è una composizione: per la sua filosofia, cucinare significa accordare il mare e
-                    la memoria in un’unica sinfonia sensoriale.</p>
-            </div>
-            <div class="col-lg-6 col-12 order-1 order-lg-2 mb-4 mb-xl-0">
-                <img
-                        alt="Composizione"
-                        class="img-fluid"
-
-                        loading="lazy"
-                        src="./media/img/descpiatto1-1-1200.webp"
-                        srcset="
-                            ./media/img/descpiatto1-1-800.webp 800w,
-                            ./media/img/descpiatto1-1-1200.webp 1200w,
-                            ./media/img/descpiatto1-1-2000.webp 2000w
-                            "
-                >
-            </div>
-        </div>
-
-        <!-- Chef 3 (sommelier) -->
-        <div class="row mb-5 align-items-center g-4">
-            <div class="col-lg-6 col-12 mb-4 mb-xl-0 col-md-12 col-xxl-6">
-                <img
-                        alt="Corallo rigenerato"
-                        class="img-fluid"
-                        loading="lazy"
-                        src="./media/img/descpiatto1-2-1200.webp"
-                        srcset="
-                        ./media/img/descpiatto1-2-800.webp 800w,
-                        ./media/img/descpiatto1-2-1200.webp 1200w,
-                        ./media/img/descpiatto1-2-2000.webp 2000w
-                        "
-                >
-            </div>
-            <div class="col-lg-6 col-12 ">
-                <h3>Alchimista delle correnti</h3>
-                <p>Maestro nell’arte dei sapori liquidi, seleziona e abbina vini e infusi come le correnti modellano
-                    il mare. Ogni scelta accompagna il piatto con equilibrio e leggerezza, creando combinazioni che
-                    risvegliano ricordi sommersi e nuove emozioni.</p>
             </div>
         </div>
     </section>
 
-</main>
+    <!-- main content -->
+    <main class="container-fluid mt-5 py-5">
+
+        <!-- section heading -->
+        <h2 class="text-center py-5">I maestri sommersi</h2>
+
+        <!-- Chefs list -->
+        <section class="container-fluid px-1 px-lg-5 my-3">
+            <!-- Chef 1 -->
+            <div class="row mb-5 align-items-center">
+                <div class="col-lg-6 col-12 mb-4 mb-xl-0 col-md-12 col-xxl-6">
+                    <img
+                            alt="Corallo rigenerato"
+                            class="img-fluid"
+                            loading="lazy"
+                            src="./media/img/descpiatto1-2-1200.webp"
+                            srcset="
+                        ./media/img/descpiatto1-2-800.webp 800w,
+                        ./media/img/descpiatto1-2-1200.webp 1200w,
+                        ./media/img/descpiatto1-2-2000.webp 2000w
+                        "
+                    >
+                </div>
+                <div class="col-lg-6 col-12">
+                    <h3>Chef dei coralli</h3>
+                    <p>Seleziona ingredienti che nascono dall’intreccio con la barriera corallina, creando sapori mai
+                        provati prima. I suoi piatti combinando essenze intense e naturali, creando una connessione tra
+                        chi
+                        assaggia e l’ambiente circostante.</p>
+                </div>
+            </div>
+
+            <!-- Chef 2 -->
+            <div class="row mb-5 align-items-center g-4">
+                <div class="col-lg-6 col-12 order-2 order-lg-1 mb-4 mb-xl-0 col-md-12 col-xxl-6">
+                    <h3>Chef delle armonie</h3>
+                    <p>Custode delle memorie musicali sommerse, traduce la musica del passato in sapori contemporanei.
+                        Ogni suo piatto è una composizione: per la sua filosofia, cucinare significa accordare il mare e
+                        la memoria in un’unica sinfonia sensoriale.</p>
+                </div>
+                <div class="col-lg-6 col-12 order-1 order-lg-2 mb-4 mb-xl-0">
+                    <img
+                            alt="Composizione"
+                            class="img-fluid"
+
+                            loading="lazy"
+                            src="./media/img/descpiatto1-1-1200.webp"
+                            srcset="
+                            ./media/img/descpiatto1-1-800.webp 800w,
+                            ./media/img/descpiatto1-1-1200.webp 1200w,
+                            ./media/img/descpiatto1-1-2000.webp 2000w
+                            "
+                    >
+                </div>
+            </div>
+
+            <!-- Chef 3 (sommelier) -->
+            <div class="row mb-5 align-items-center g-4">
+                <div class="col-lg-6 col-12 mb-4 mb-xl-0 col-md-12 col-xxl-6">
+                    <img
+                            alt="Corallo rigenerato"
+                            class="img-fluid"
+                            loading="lazy"
+                            src="./media/img/descpiatto1-2-1200.webp"
+                            srcset="
+                        ./media/img/descpiatto1-2-800.webp 800w,
+                        ./media/img/descpiatto1-2-1200.webp 1200w,
+                        ./media/img/descpiatto1-2-2000.webp 2000w
+                        "
+                    >
+                </div>
+                <div class="col-lg-6 col-12 ">
+                    <h3>Alchimista delle correnti</h3>
+                    <p>Maestro nell’arte dei sapori liquidi, seleziona e abbina vini e infusi come le correnti modellano
+                        il mare. Ogni scelta accompagna il piatto con equilibrio e leggerezza, creando combinazioni che
+                        risvegliano ricordi sommersi e nuove emozioni.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
 </div>
 
 <!-- after content -->
 <!-- toDo: mettere immagini di sfondo e mettere MD + XXL -->
-<section class="p-5 p-lg-5 p-xl-2 section-bg-transparent liquidGlass-wrapper" style="border-radius: 0 !important;">
-    <div class="liquidGlass-tint"></div>
-    <div class="liquidGlass-effect-bg"></div>
-    <div class="container px-4 liquidGlass-text  my-5">
-        <div class="row align-items-center">
-            <!-- Colonna testo + pulsante -->
-            <div class="d-flex flex-column">
-                <h2 class="text-center py-5">Le essenze che ci guidano</h2>
+<section class="p-5 p-lg-5 p-xl-2 section-bg-transparent liquidGlass-wrapper"
+         style="border-radius: 0 !important;">
+        <div class="liquidGlass-tint"></div>
+        <div class="liquidGlass-effect-bg"></div>
+        <div id="values-section"> </div>
+        <div class="container px-4 liquidGlass-text  my-5">
+            <div class="row align-items-center">
+                <!-- Colonna testo + pulsante -->
+                <div class="d-flex flex-column">
+                    <h2 class="text-center py-5">Le essenze che ci guidano</h2>
 
-                <!-- subsection 1 -->
-                <section class="p-3">
-                    <h3>Memoria</h3>
-                    <p> Custodiamo la tradizione del passato, trasformandola in emozioni che riaffiorano nel presente.
-                        Ogni
-                        piatto, ogni nota, sono un omaggio a ciò che il mare ha conservato: un ponte da ricordo e
-                        scoperta.</p>
-                </section>
+                    <!-- subsection 1 -->
+                    <section class="p-3">
+                        <h3>Memoria</h3>
+                        <p> Custodiamo la tradizione del passato, trasformandola in emozioni che riaffiorano nel
+                            presente.
+                            Ogni
+                            piatto, ogni nota, sono un omaggio a ciò che il mare ha conservato: un ponte da ricordo e
+                            scoperta.</p>
+                    </section>
 
-                <!-- subsection 2 -->
-                <section class="p-3">
-                    <h3>Simbiosi</h3>
-                    <p> La cucina nasce dall’armonia tra uomo e mare: ingredienti freschi, tecniche raffinate e una
-                        profonda
-                        connessione con l’ambiente circostante. <br>Ogni scelta, è guidata dal rispetto e
-                        dall’equilibrio
-                        tra natura e creatività.</p>
-                </section>
+                    <!-- subsection 2 -->
+                    <section class="p-3">
+                        <h3>Simbiosi</h3>
+                        <p> La cucina nasce dall’armonia tra uomo e mare: ingredienti freschi, tecniche raffinate e una
+                            profonda
+                            connessione con l’ambiente circostante. <br>Ogni scelta, è guidata dal rispetto e
+                            dall’equilibrio
+                            tra natura e creatività.</p>
+                    </section>
 
-                <!-- subsection 3 -->
-                <section class="p-3 pb-5">
-                    <h3>Sensi</h3>
-                    <p> Creiamo esperienze che coinvolgono tutti i sensi, dove gusto, suono e atmosfera si fondono in un
-                        unico racconto. Ogni dettaglio è pensato per risvegliare emozioni e far vivere ai nostri ospiti
-                        un’immersione completa nella memoria del mare.</p>
-                </section>
+                    <!-- subsection 3 -->
+                    <section class="p-3 pb-5">
+                        <h3>Sensi</h3>
+                        <p> Creiamo esperienze che coinvolgono tutti i sensi, dove gusto, suono e atmosfera si fondono
+                            in un
+                            unico racconto. Ogni dettaglio è pensato per risvegliare emozioni e far vivere ai nostri
+                            ospiti
+                            un’immersione completa nella memoria del mare.</p>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
 </section>
-
 
 
 <div class="top-overlay">
-<!-- user reviews -->
-<section>
-    <div class="container-fluid text-center p-5">
+    <!-- user reviews -->
+    <section>
+        <div class="container-fluid text-center p-5">
 
-        <div id="reviewsCarousel" class="carousel slide position-relative" data-bs-interval="false">
+            <div class="carousel slide position-relative" data-bs-interval="false" id="reviewsCarousel">
 
-            <div class="carousel-indicators" style="bottom: -50px;">
-                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
+                <div class="carousel-indicators" style="bottom: -50px;">
+                    <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0"
+                            data-bs-target="#reviewsCarousel" type="button"></button>
+                    <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#reviewsCarousel"
+                            type="button"></button>
+                    <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#reviewsCarousel"
+                            type="button"></button>
+                </div>
 
-            <div class="carousel-inner">
+                <div class="carousel-inner">
 
-                <div class="carousel-item active">
-                    <div class="container-fluid px-md-5">
-                        <div class="row align-items-center text-start px-md-5">
-                            
-                            <div class="d-none d-lg-block col-lg-3">
-                                <img class="img-fluid rounded" src="/media/img/recensioni-1.webp" alt="Recensione 1">
-                            </div>
+                    <div class="carousel-item active">
+                        <div class="container-fluid px-md-5">
+                            <div class="row align-items-center text-start px-md-5">
 
-                            <div class="col-12 col-lg-9">
-                                <div class="row align-items-end mb-3">
-                                    <div class="col-8">
-                                        <h4>Esperienza indimenticabile</h4>
-                                    </div>
-                                    <div class="col-4 text-end">
-                                        <div class="d-flex flex-column align-items-end">
-                                            <h6 class="text-uppercase mb-1">@maris.smith</h6>
-                                            <div class="d-flex align-items-baseline">
-                                                <p class="fs-4 mb-0 fw-bold">9.2</p>
-                                                <p class="fs-6 mb-0 ms-2 text-white-50">/ 10</p>
+                                <div class="d-none d-lg-block col-lg-3">
+                                    <img alt="Recensione 1" class="img-fluid rounded"
+                                         src="/media/img/recensioni-1.webp">
+                                </div>
+
+                                <div class="col-12 col-lg-9">
+                                    <div class="row align-items-end mb-3">
+                                        <div class="col-8">
+                                            <h4>Esperienza indimenticabile</h4>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <div class="d-flex flex-column align-items-end">
+                                                <h6 class="text-uppercase mb-1">@maris.smith</h6>
+                                                <div class="d-flex align-items-baseline">
+                                                    <p class="fs-4 mb-0 fw-bold">9.2</p>
+                                                    <p class="fs-6 mb-0 ms-2 text-white-50">/ 10</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <p class="lead">
+                                        Entrare in questo ristorante è come immergersi in un mondo sospeso: le melodie e
+                                        i piatti creano un’esperienza unica.
+                                        Ogni boccone ha risvegliato sensazioni incredibili insomma, un viaggio
+                                        sensoriale indimenticabile.
+                                    </p>
                                 </div>
-                                <p class="lead">
-                                    Entrare in questo ristorante è come immergersi in un mondo sospeso: le melodie e i piatti creano un’esperienza unica.
-                                    Ogni boccone ha risvegliato sensazioni incredibili insomma, un viaggio sensoriale indimenticabile.
-                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="carousel-item">
-                    <div class="container-fluid px-md-5">
-                         <div class="d-flex flex-column justify-content-center align-items-center py-5">
-                            <h4>Un viaggio nei sensi</h4>
-                            <p>@luca.bianchi</p>
-                            <p class="fs-4">9.5 / 10</p>
-                            <p>Assolutamente da provare, la combinazione di suoni e sapori è incredibile.</p>
+                    <div class="carousel-item">
+                        <div class="container-fluid px-md-5">
+                            <div class="d-flex flex-column justify-content-center align-items-center py-5">
+                                <h4>Un viaggio nei sensi</h4>
+                                <p>@luca.bianchi</p>
+                                <p class="fs-4">9.5 / 10</p>
+                                <p>Assolutamente da provare, la combinazione di suoni e sapori è incredibile.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="carousel-item">
-                    <div class="container-fluid px-md-5">
-                        <div class="d-flex flex-column justify-content-center align-items-center py-5">
-                            <h4>Servizio impeccabile</h4>
-                            <p>@giulia.rossi</p>
-                            <p class="fs-4">10 / 10</p>
-                            <p>Il personale è attento ad ogni dettaglio. Tornerò sicuramente.</p>
+                    <div class="carousel-item">
+                        <div class="container-fluid px-md-5">
+                            <div class="d-flex flex-column justify-content-center align-items-center py-5">
+                                <h4>Servizio impeccabile</h4>
+                                <p>@giulia.rossi</p>
+                                <p class="fs-4">10 / 10</p>
+                                <p>Il personale è attento ad ogni dettaglio. Tornerò sicuramente.</p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
-            </div>
-
-            <button class="btn d-none d-lg-block liquidGlass-wrapper position-absolute top-50 start-0 translate-middle-y z-3" 
-                    type="button" 
-                    data-bs-target="#reviewsCarousel" 
-                    data-bs-slide="prev"
-                    style="border: none;"> 
-                <span aria-hidden="true" class="liquidGlass-effect"></span>
-                <span aria-hidden="true" class="liquidGlass-tint"></span>
-                <span aria-hidden="true" class="liquidGlass-shine"></span>
-                <span class="liquidGlass-text">
+                <button class="btn d-none d-lg-block liquidGlass-wrapper position-absolute top-50 start-0 translate-middle-y z-3"
+                        data-bs-slide="prev"
+                        data-bs-target="#reviewsCarousel"
+                        style="border: none;"
+                        type="button">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">
                     <i class="bi bi-arrow-left"></i>
                 </span>
-            </button>
+                </button>
 
-            <button class="btn d-none d-lg-block liquidGlass-wrapper position-absolute top-50 end-0 translate-middle-y z-3" 
-                    type="button" 
-                    data-bs-target="#reviewsCarousel" 
-                    data-bs-slide="next"
-                    style="border: none;">
-                <span aria-hidden="true" class="liquidGlass-effect"></span>
-                <span aria-hidden="true" class="liquidGlass-tint"></span>
-                <span aria-hidden="true" class="liquidGlass-shine"></span>
-                <span class="liquidGlass-text">
+                <button class="btn d-none d-lg-block liquidGlass-wrapper position-absolute top-50 end-0 translate-middle-y z-3"
+                        data-bs-slide="next"
+                        data-bs-target="#reviewsCarousel"
+                        style="border: none;"
+                        type="button">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">
                     <i class="bi bi-arrow-right"></i>
                 </span>
-            </button>
+                </button>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<div id="map"></div>
+    <div id="map"></div>
 
-<!-- footer (updated) -->
-<footer class="p-4 pt-5 section-bg-light">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-7 col-md-4 col-lg-3 d-flex flex-column justify-content-between">
-                <div>
-                    <h5>Prenotazioni</h5>
-                    <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
-                        Atlas, è necessaria la prenotazione
-                    </p>
-                    <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
-                        <span aria-hidden="true" class="liquidGlass-effect"></span>
-                        <span aria-hidden="true" class="liquidGlass-tint"></span>
-                        <span aria-hidden="true" class="liquidGlass-shine"></span>
-                        <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
-                    </button>
-                </div>
-                <div>
-                    <img alt="" class="img-fluid d-none d-lg-block" src="/media/img/Logo.svg">
-                </div>
-            </div>
-            <div class="col-7 mt-4 mt-md-0 col-md-4 col-lg-3">
-                <h5>Orari di apertura</h5>
-                <p>Martedì - Domenica <br> 19:00 - 01:00</p>
-                <h5>Contatti</h5>
-                <p>Riff <br> Atlas, P.zza Corolleo 1 <br>24°N - 46°O, -230 m <br><br>
-                    Settore abissale Ovest
-                </p>
-            </div>
-            <div class="col-lg-6">
-                <div class="row justify-content-lg-end mt-3">
-                    <div class="col-md-7 col-9 d-flex flex-column">
-                        <h5>Linea abissale</h5>
-                        <p>
-                            Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
+    <!-- footer (updated) -->
+    <footer class="p-4 pt-5 section-bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-7 col-md-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <div>
+                        <h5>Prenotazioni</h5>
+                        <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del
+                            fondale di
+                            Atlas, è necessaria la prenotazione
                         </p>
-                        <form>
-                            <div class="mb-3">
-                                <label class="form-label" for="exampleInputEmail1">E-mail</label>
-                                <input class="form-control" id="exampleInputEmail1" type="email">
+                        <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'"
+                                type="submit">
+                            <span aria-hidden="true" class="liquidGlass-effect"></span>
+                            <span aria-hidden="true" class="liquidGlass-tint"></span>
+                            <span aria-hidden="true" class="liquidGlass-shine"></span>
+                            <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
+                        </button>
+                    </div>
+                    <div>
+                        <img alt="" class="img-fluid d-none d-lg-block" src="/media/img/Logo.svg">
+                    </div>
+                </div>
+                <div class="col-7 mt-4 mt-md-0 col-md-4 col-lg-3">
+                    <h5>Orari di apertura</h5>
+                    <p>Martedì - Domenica <br> 19:00 - 01:00</p>
+                    <h5>Contatti</h5>
+                    <p>Riff <br> Atlas, P.zza Corolleo 1 <br>24°N - 46°O, -230 m <br><br>
+                        Settore abissale Ovest
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row justify-content-lg-end mt-3">
+                        <div class="col-md-7 col-9 d-flex flex-column">
+                            <h5>Linea abissale</h5>
+                            <p>
+                                Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
+                            </p>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" for="exampleInputEmail1">E-mail</label>
+                                    <input class="form-control" id="exampleInputEmail1" type="email">
+                                </div>
+                                <button class="btn liquidGlass-wrapper" type="submit">
+                                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                                    <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
+                                </button>
+                            </form>
+                            <div class="d-none d-lg-block mt-5">
+                                <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
+                                <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
+                                <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
                             </div>
-                            <button class="btn liquidGlass-wrapper" type="submit">
-                                <span aria-hidden="true" class="liquidGlass-effect"></span>
-                                <span aria-hidden="true" class="liquidGlass-tint"></span>
-                                <span aria-hidden="true" class="liquidGlass-shine"></span>
-                                <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
-                            </button>
-                        </form>
-                    <div class="d-none d-lg-block mt-5">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-5">
+                <div class="d-flex justify-content-between align-items-end">
+                    <div>
+                        <img alt="" class="img-fluid d-lg-none" src="/media/img/Logo.svg">
+                    </div>
+                    <div class="d-lg-none">
                         <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
                         <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
                         <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
                     </div>
-                    </div>
-
                 </div>
             </div>
         </div>
-        <div class="col-12 mt-5">
-            <div class="d-flex justify-content-between align-items-end">
-                <div>
-                    <img alt="" class="img-fluid d-lg-none" src="/media/img/Logo.svg">
-                </div>
-                <div class="d-lg-none">
-                    <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
-                    <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
-                    <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 </div>
 <!-- Liquid glass filter pattern -->
 <svg style="display: none">
