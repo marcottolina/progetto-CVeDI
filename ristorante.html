@@ -110,18 +110,24 @@
 
 <!-- hero (updated) -->
 <section class="full-y">
+
     <div class="header-wrapper">
         <div class="header-overlay"></div>
         <video autoplay class="bg-video" loop muted playsinline>
             <source src="/media/video/restaurant-coral.webm" type="video/webm">
         </video>
     </div>
-</section>
-<div class="top-overlay">
+
+    <!-- page heading -->
     <div class="container-fluid d-flex flex-column justify-content-end align-items-start h-100">
         <h1>Il ristorante</h1>
         <span class="body-lead">Un'esperienza tra le note del tempo</span>
     </div>
+
+</section>
+
+<!-- <div> to hide background video (broken when background video needs to be seen-trough glass) -->
+<div class="top-overlay">
 
     <!-- introduction -->
     <section class="py-5 mt-5">
@@ -334,15 +340,15 @@
             <div class="row mb-5 align-items-center">
                 <div class="col-lg-6 col-12 mb-4 mb-xl-0 col-md-12 col-xxl-6">
                     <img
-                            alt="Corallo rigenerato"
+                            alt="Chef creativa con coralli sull'uniforme che versa una salsa rossa in un'atmosfera blu sottomarina"
                             class="img-fluid"
                             loading="lazy"
-                            src="./media/img/descpiatto1-2-1200.webp"
+                            src="./media/img/ristorante-chef-1-1200w.webp"
                             srcset="
-                        ./media/img/descpiatto1-2-800.webp 800w,
-                        ./media/img/descpiatto1-2-1200.webp 1200w,
-                        ./media/img/descpiatto1-2-2000.webp 2000w
-                        "
+                                ./media/img/ristorante-chef-1-800w.webp 800w,
+                                ./media/img/ristorante-chef-1-1200w.webp 1200w,
+                                ./media/img/ristorante-chef-1-2000w.webp 2000w
+                            "
                     >
                 </div>
                 <div class="col-lg-6 col-12">
@@ -368,15 +374,15 @@
                 </div>
                 <div class="col-lg-6 col-12 order-1 order-lg-2 mb-4 mb-xl-0">
                     <img
-                            alt="Composizione"
+                            alt="Chef con dettagli corallini sull'uniforme che esamina con attenzione una grande conchiglia blu"
                             class="img-fluid"
 
                             loading="lazy"
-                            src="./media/img/descpiatto1-1-1200.webp"
+                            src="./media/img/ristorante-chef-2-1200w.webp"
                             srcset="
-                            ./media/img/descpiatto1-1-800.webp 800w,
-                            ./media/img/descpiatto1-1-1200.webp 1200w,
-                            ./media/img/descpiatto1-1-2000.webp 2000w
+                                ./media/img/ristorante-chef-2-800w.webp 800w,
+                                ./media/img/ristorante-chef-2-1200w.webp 1200w,
+                                ./media/img/ristorante-chef-2-2000w.webp 2000w
                             "
                     >
                 </div>
@@ -386,15 +392,15 @@
             <div class="row mb-5 align-items-center g-4">
                 <div class="col-lg-6 col-12 mb-4 mb-xl-0 col-md-12 col-xxl-6">
                     <img
-                            alt="Corallo rigenerato"
+                            alt="Donna elegante con coralli tra i capelli che regge un calice con una sfera sospesa in un ambiente sottomarino blu"
                             class="img-fluid"
                             loading="lazy"
-                            src="./media/img/descpiatto1-2-1200.webp"
+                            src="./media/img/ristorante-chef-3-1200w.webp"
                             srcset="
-                        ./media/img/descpiatto1-2-800.webp 800w,
-                        ./media/img/descpiatto1-2-1200.webp 1200w,
-                        ./media/img/descpiatto1-2-2000.webp 2000w
-                        "
+                                ./media/img/ristorante-chef-3-800w.webp 800w,
+                                ./media/img/ristorante-chef-3-1200w.webp 1200w,
+                                ./media/img/ristorante-chef-3-2000w.webp 2000w
+                            "
                     >
                 </div>
                 <div class="col-lg-6 col-12 ">
@@ -414,15 +420,23 @@
 
 <!-- after content -->
 <!-- toDo: mettere immagini di sfondo e mettere MD + XXL -->
-<section class="p-5 p-lg-5 p-xl-2 section-bg-transparent liquidGlass-wrapper"
-         style="border-radius: 0 !important;">
+<section class="p-5 p-lg-5 p-xl-2 section-bg-transparent liquidGlass-wrapper" style="border-radius: 0 !important;"> <!-- toDo: put this inline style in a class / id -->
+
+    <!-- liquid glass effects -->
     <div class="liquidGlass-tint"></div>
     <div class="liquidGlass-effect-bg"></div>
+
+    <!-- local style (with ID) -->
     <div id="values-section"></div>
+
     <div class="container px-4 liquidGlass-text  my-5">
+
         <div class="row align-items-center">
-            <!-- Colonna testo + pulsante -->
+
+            <!-- column + button -->
             <div class="d-flex flex-column">
+
+                <!-- section heading -->
                 <h2 class="text-center py-5">Le essenze che ci guidano</h2>
 
                 <!-- subsection 1 -->
@@ -644,6 +658,7 @@
         </div>
     </footer>
 </div>
+
 <!-- Liquid glass filter pattern -->
 <svg style="display: none">
     <filter
