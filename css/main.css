@@ -1,6 +1,5 @@
-/* ----------------------------------------------------
-   FONT
----------------------------------------------------- */
+
+/* === FONTS === */
 @font-face {
     font-family: 'Kaftan';
     src: url('../vendor/fonts/kaftan-trial.otf') format('opentype');
@@ -8,52 +7,53 @@
     font-style: normal;
 }
 
-/* ----------------------------------------------------
-   COLOR PALETTE
----------------------------------------------------- */
+/* === COLOR PALETTE === */
 :root {
-    /* --- Blues (main palette) --- */
-    --blue-100: #070713;
-    --blue-70: rgba(7, 7, 19, 0.7);
-    --blue-50: rgba(60, 56, 189, 0.3);
-    --blue-30: rgba(7, 7, 19, 0.3);
-    --blue-dark: #EAE9FB;
 
-    --blue2-100: #16153C;
-    --blue2-30: rgba(22, 21, 60, 0.3);
-    --blue2-dark: #7E7AE8;
+    /* blue 5 subsection */
+    --blue-5: #070713;
+    --blue-5-70: rgba(7, 7, 19, 0.7);
+    --blue-5-30: rgba(7, 7, 19, 0.3);
 
-    --blue3-100: #3C38BD;
-    --blue3-70: rgba(60, 56, 189, 0.7);
-    --blue3-30: rgba(60, 56, 189, 0.3);
-    --blue3-dark: #3C38BD;
+    /* blue 15 subsection */
+    --blue-15: #151439;
+    --blue-15-70: rgba(21, 20, 57, 0.7);
+    --blue-15-30: rgba(21, 20, 57, 0.3);
 
-    --blue4-100: #7E7AE8;
-    --blue4-30: rgba(126, 122, 232, 0.3);
-    --blue4-dark: #16153C;
+    /* blue 50 subsection */
+    --blue-50: #4642BD;
+    --blue-50-70: rgba(60, 56, 189, 0.7);
+    --blue-50-30: rgba(60, 56, 189, 0.3);
 
-    --blue5-100: #EAE9FB;
-    --blue5-30: rgba(234, 233, 251, 0.3);
-    --blue5-dark: #070713;
+    /* blue 70 subsection */
+    --blue-70: #817DE8;
+    --blue-70-70: rgba(126, 122, 232, 0.7);
+    --blue-70-30: rgba(126, 122, 232, 0.3);
 
-    --blue70-100: #817de8;
+    /* blue 85 subsection */
+    --blue-85: #C0BEF4;
+    --blue-85-70: rgba(192, 190, 244, 0.7);
+    --blue-85-30: rgba(192, 190, 244, 0.3);
+
+    /* blue 95 subsection */
+    --blue-95: #EAE9FB; /* the white that goes over the blue-5 */
+    --blue-95-70: rgba(234, 233, 251, 0.7);
+    --blue-95-30: rgba(234, 233, 251, 0.3);
 
     /* --- Pinks (highlights) --- */
-    --pink-100: #FF327A;
-    --pink-30: rgba(255, 50, 122, 0.3);
-    --pink-dark: #FF327A;
+    --pink: #FF3276;
+    /*--pink-30: rgba(255, 50, 122, 0.3);*/ /* toDo: check if it's needed or to remove it (I'm using it in the map but it's not from the palette */
 
     /* --- Oranges (highlights) --- */
-    --orange-100: #F66755;
-    --orange-30: rgba(246, 103, 85, 0.3);
-    --orange-dark: #F66755;
+    --orange: #F67055;
 }
 
-/* ----------------------------------------------------
-   BASE STYLES
----------------------------------------------------- */
+/* === BASE STYLES === */
+/* <editor-fold> */
+
+/* == body == */
 body {
-    background-color: var(--blue-100);
+    background-color: var(--blue-5);
     font-family: 'Manrope', sans-serif;
     color: #fff;
     font-size: 1.125rem;
@@ -71,12 +71,18 @@ body.no-scroll {
     height: 100vh !important;
 }
 
+/* == Typography == */
 
-/* Typography */
+/* = headings = */
 h1, h2, h3 {
     font-family: 'Kaftan', sans-serif;
     font-weight: 400;
     color: #fff;
+}
+
+h4, h5, h6 {
+    font-weight: 700;
+    color: #fff; /* toDo: check if this is the right color (doubt it) */
 }
 
 h1 {
@@ -89,11 +95,6 @@ h2 {
 
 h3 {
     font-size: 2rem;
-}
-
-h4, h5, h6 {
-    font-weight: 700;
-    color: #fff;
 }
 
 h4 {
@@ -111,6 +112,8 @@ h6 {
     line-height: 1rem;
 }
 
+/* = content = */
+
 .body-lead {
     font-size: 1.5rem;
     line-height: 1.8rem;
@@ -123,12 +126,15 @@ h6 {
     font-weight: 400;
 }
 
-/* ----------------------------------------------------
-   CURSOR EFFECT
----------------------------------------------------- */
+/* </editor-fold> */
+
+/* === CURSOR EFFECTS === */
+/* <editor-fold> */
+
+/* circle effect around cursor */
 .circle {
     --circle-size: 50px;
-    background-image: radial-gradient(circle, var(--pink-100), transparent, transparent);
+    background-image: radial-gradient(circle, var(--pink), transparent, transparent);
     position: fixed;
     height: var(--circle-size);
     width: var(--circle-size);
@@ -140,74 +146,83 @@ h6 {
     transition: border, opacity 0.3s;
 }
 
+/* remove cursor on devices smaller than a PC */
 @media (max-width: 992px) {
     .circle {
         display: none;
     }
 }
 
+/* decrease opacity upon entering an hoverable item */
 .hovered {
     opacity: 0.3;
 }
 
-/* ----------------------------------------------------
-   GENERIC ELEMENTS
----------------------------------------------------- */
-#prova {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+/* </editor-fold> */
 
-.glass {
-    background: rgba(255, 255, 255, .08);
-    border: 2px solid transparent;
-    backdrop-filter: url(#frosted);
-    -webkit-backdrop-filter: url(#frosted);
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    outline: 0;
-}
-
-/* ----------------------------------------------------
-   OFFCANVAS
----------------------------------------------------- */
-#offcanvasFull {
+/* === OFFCANVAS FULLPAGE (= opened hamburger menu) === */
+#offCanvasFull {
     width: 100vw !important;
     height: 100vh !important;
     overflow: hidden !important;
+    background-color: var(--blue-5-70); /* toDo: delete upon having the Designer's greenlight */
+    background-color: rgba(7, 7, 19, 0.9); /* toDo: notify the designers that 70% opacity isn't readable enough, we did with 90% opacity */
+    color: white !important;
 }
 
-/* ----------------------------------------------------
-   BUTTONS
----------------------------------------------------- */
+/* === BUTTONS === */
+/* <editor-fold> */
+
+/* toDo: edit button's style */
 .btn {
-    color: white !important;
-    width: fit-content !important;
-    background-color: var(--blue4-30) !important;
-    gap: 0.5rem !important;
-    padding: 1rem 1.5rem !important;
-    white-space: nowrap !important;
+    color: white;
+    width: fit-content;
+    background-color: var(--blue-50-30);
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
     border-radius: 100px;
-    box-shadow: inset 0 2px 0.5px rgba(255, 255, 255, 0.1),
-    0 1px 1px rgba(255, 255, 255, 0.06);
+    box-shadow:
+            0 6px 6px rgba(0, 0, 0, 0.2),
+            0 0 20px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    cursor: pointer;
+    position: relative; /* required if .btn and .liquidGlass-wrapper are used together */
+    overflow: visible;
+    line-height: 1;
+}
+
+/* toDo: edit button's style (REMEMBER TO EDIT THE BTN-NAV ASWELL) */
+.btn-nav{
+    color: white;
+    width: fit-content;
+    background-color: var(--blue-15-30);
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 100px;
+    box-shadow:
+            0 6px 6px rgba(0, 0, 0, 0.2),
+            0 0 20px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    cursor: pointer;
+    position: relative; /* required if .btn and .liquidGlass-wrapper are used together */
+    overflow: visible;
+    line-height: 1;
+}
+
+/* focus for accessibility */
+.btn:focus-visible {
+    outline: 3px solid rgba(255,255,255,0.12);
+    outline-offset: 3px;
 }
 
 .btn:hover{
-    background-image: radial-gradient(var(--pink-100), transparent);
-}
-
-.btn .btn-nav{
-    background-color: var(--blue3-50) !important;
-        position: relative;
-    display: flex;
-    font-weight: 600;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2),
-    0 0 20px rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(var(--pink), transparent);
 }
 
 .btn-empty {
@@ -219,7 +234,7 @@ h6 {
 
 .btn-sound {
     border-radius: 50% !important;
-    background-image: radial-gradient(circle, var(--pink-100), var(--orange-30)) !important;
+    background-image: radial-gradient(circle, var(--pink), var(--orange)) !important;
     aspect-ratio: 1 / 1 !important;
 }
 
@@ -244,7 +259,6 @@ h6 {
     }
 }
 
-
 @keyframes attivo {
     0% {
         box-shadow: 0 0 10px #F66755, 0 0 15px #5d251d;
@@ -260,9 +274,11 @@ h6 {
     }
 }
 
-/* ----------------------------------------------------
-   NAVBAR
----------------------------------------------------- */
+/* </editor-fold> */
+
+/* === NAVBAR === */
+/* <editor-fold> */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -293,12 +309,7 @@ h6 {
     position: relative;
     border-radius: 100px;
     overflow: hidden;
-    background: var(--blue-50);
-}
-
-#offcanvasFull {
-    background-color: var(--blue-100);
-    color: white !important;
+    background: var(--blue-5-70);
 }
 
 .btn-close-custom {
@@ -315,127 +326,111 @@ h6 {
     transition: 0.2s ease;
 }
 
-
-/* ----------------------------------------------------
-   LIQUID GLASS EFFECT
----------------------------------------------------- */
-/* ---------- BUTTON BASE (usa .liquidGlass-wrapper assieme a .btn) ---------- */
-.btn {
-  /* mantiene il tuo stile originale, ma rendiamo il bottone un inline-flex per allineare il testo */
-  color: white !important;
-  width: fit-content !important;
-  background-color: var(--blue4-30) !important;
-  gap: 0.5rem !important;
-  padding: 1rem 1.5rem !important;
-  border-radius: 100px;
-  box-shadow:
-    0 6px 6px rgba(0, 0, 0, 0.2),
-    0 0 20px rgba(0, 0, 0, 0.1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  cursor: pointer;
-  position: relative; /* necessario se .btn e .liquidGlass-wrapper sono usati insieme */
-  overflow: visible;
-  line-height: 1;
+/* to not make the navbar go over a sticky element (used in pagina-libera.html's sticky elements) */
+.spaceFromNavbar {
+    top: 5rem;
 }
 
-/* focus per accessibilità */
-.btn:focus-visible {
-  outline: 3px solid rgba(255,255,255,0.12);
-  outline-offset: 3px;
-}
+/* </editor-fold> */
 
-/* ---------- LIQUID GLASS WRAPPER (posiziona gli strati) ---------- */
+/* === LIQUID GLASS EFFECT (using SVG as reflections reference) === */
+/* <editor-fold> */
+
+/* ---------- liquid glass wrapper (positions the layers) ---------- */
 .liquidGlass-wrapper {
-  position: relative;      /* ancoraggio per gli elementi assoluti interni */
-  overflow: hidden;
-  color: inherit;          /* lascia che il colore del testo sia ereditato dalla .btn */
-  border-radius: inherit;  /* segue il border-radius del .btn */
-  display: flex;
-  border-radius: 1000px;
-  align-items: center;
-  display: flex;
-  white-space: wrap;
-  justify-content: center;
-  isolation: isolate;      /* evita che il backdrop/filter influenzi elementi esterni */
+    position: relative; /* anchor for internal absolute elements */
+    overflow: hidden;
+    color: inherit; /* lets text color be inherited from .btn */
+    display: flex;
+    border-radius: 1000px;
+    align-items: center;
+    white-space: wrap;
+    justify-content: center;
+    isolation: isolate; /* prevents backdrop/filter from affecting external elements */
 }
 
-/* ---------- EFFETTI (DIETRO IL TESTO) ---------- */
+/* ---------- effects (behind the text) ---------- */
 .liquidGlass-effect {
-  position: absolute;
-  border-radius: 1000px;
-  inset: 0;
-  z-index: 0;                        /* dietro il tint, lo shine e soprattutto il testo */
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);        /* blur più evidente per contrasto */
-  filter: url(#glass-distortion);    /* se usi SVG filter */
-  pointer-events: none;              /* non intercetta click */
-  opacity: 1;
+    position: absolute;
+    border-radius: 1000px;
+    inset: 0;
+    z-index: 0;                        /* behind the tint, the shine and especially the text */
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);        /* more evident blur for contrast */
+    filter: url(#glass-distortion);    /* if using svg filter */
+    pointer-events: none;              /* does not intercept clicks */
+    opacity: 1;
 }
 
 .liquidGlass-effect-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;                        /* dietro il tint, lo shine e soprattutto il testo */
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);        /* blur più evidente per contrasto */
-  filter: url(#glass-distortion);    /* se usi SVG filter */
-  pointer-events: none;              /* non intercetta click */
-  opacity: 1;
+    position: absolute;
+    inset: 0;
+    z-index: 0;                        /* behind the tint, the shine and especially the text */
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);        /* more evident blur for contrast */
+    filter: url(#glass-distortion);    /* if using svg filter */
+    pointer-events: none;              /* does not intercept clicks */
+    opacity: 1;
 }
 
-/* una leggera tinta sopra il blur per aumentare contrasto testo/sfondo */
+/* a slight tint over the blur to increase text/background contrast */
 .liquidGlass-tint {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.06); /* leggero stratino per aumentare contrasto */
-  pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.06); /* slight layer to increase contrast */
+    pointer-events: none;
 }
 
-/* luce/inset highlight sopra la tint ma sempre dietro al testo */
+/* light/inset highlight over the tint but always behind the text */
 .liquidGlass-shine {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  border-radius: inherit;
-  overflow: hidden;
-  box-shadow:
-    inset 0px 0px 0.5px rgba(255, 255, 255, 0.5),
-    inset 0.5px -1px 0.5px rgba(255, 255, 255, 0.5);
-  pointer-events: none;
-  mix-blend-mode: normal;
-  opacity: 0.9;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    overflow: hidden;
+    box-shadow:
+            inset 0px 0px 0.5px rgba(255, 255, 255, 0.5),
+            inset 0.5px -1px 0.5px rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    mix-blend-mode: normal;
+    opacity: 0.9;
 }
 
-/* ---------- TESTO (DAVANTI) ---------- */
+/* ---------- text (in front) ---------- */
 .liquidGlass-text {
-  position: relative; /* posizionamento sopra gli strati */
-  z-index: 10;        /* sicuramente davanti a tutto */
-  color: inherit;     /* eredita il colore impostato su .btn (white) */
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  pointer-events: auto; /* il testo deve essere cliccabile quando dentro un button */
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: 0 .25rem; /* piccolo padding interno per sicurezza */
-  text-shadow: 0 1px 0 rgba(0,0,0,0.25); /* migliora leggibilità su sfondi complessi */
+    position: relative; /* positioning above layers */
+    z-index: 10;        /* definitely in front of everything */
+    color: inherit;     /* inherits color set on .btn (white) */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    pointer-events: auto; /* text must be clickable when inside a button */
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 0 .25rem; /* small internal padding for safety */
+    text-shadow: 0 1px 0 rgba(0,0,0,0.25); /* improves readability on complex backgrounds */
 }
 
+/* fix to ensure buttons can't be pressed when nearby but only when on top of the actual button (when it's a liquid glass button) */
+.liquidGlass-effect,
+.liquidGlass-tint,
+.liquidGlass-shine {
+    pointer-events: none !important;
+}
 
-/* ----------------------------------------------------
-   VIDEO BACKGROUND
----------------------------------------------------- */
+/* </editor-fold> */
+
+/* === VIDEO BACKGROUND STYLES === */
+/* <editor-fold> */
+
+/* to set header's height in all pages (but home) */
 .full-y {
-    height: 60vh;
     height: 60svh;
 }
 
+/* override heder's height in home (as it contains an additional button) */
 #header-home {
-    height: 45vh;
     height: 45svh;
 }
 
@@ -471,7 +466,7 @@ h6 {
 
 .top-overlay {
     z-index: 10;
-    background-color: var(--blue-100);
+    background-color: var(--blue-5);
 }
 
 .header-overlay {
@@ -481,22 +476,20 @@ h6 {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom,
-    rgba(7, 7, 19, 0) 0%, var(--blue-100) 80%,
-    var(--blue-100) 100%);
+    rgba(7, 7, 19, 0) 0%, var(--blue-5) 80%,
+    var(--blue-5) 100%);
     z-index: 1;
     pointer-events: none;
     overflow: hidden;
 }
 
-/* ----------------------------------------------------
-   SECTION STYLES
----------------------------------------------------- */
-.section-bg-light {
-    background-color: var(--blue2-30);
-}
+/* </editor-fold> */
+
+/* === SECTION STYLES ===  */
+/* <editor-fold> */
 
 .section-bg-transparent {
-    background-color: var(--blue-70) !important;
+    background-color: var(--blue-5-70) !important;
 }
 
 .filter-luminosity {
@@ -505,20 +498,36 @@ h6 {
 
 /* You can't use mix-blend-mode on the background-image */
 #home-serate-speciali {
-    background-image: url(../img/home-serate-speciali.svg);
+    background-image: url(../media/img/home-serate-speciali.svg);
     background-position: right;
     background-repeat: no-repeat;
     /* mix-blend-mode must be on an img, not on a background */
 }
 
-/* ========================== */
-/* Timeline element container */
-/* ========================== */
+/* Restaurant's values section (ristorante.html) */
+#values-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #070713, transparent, #070713);
+    z-index: 10;
+
+}
+
+/* </editor-fold> */
+
+/* === TIMELINE ELEMENT === */
+/* <editor-fold> */
+
+/* container */
 .timeline-container {
     position: relative;
     z-index: 0;
 }
 
+/* item itself */
 .timeline-item{
     z-index: 10;
 }
@@ -531,77 +540,77 @@ h6 {
     left: 50%;
     width: 4px;
     height: 100%;
-    background: var(--blue5-30);
+    background: var(--blue-95-30);
     transform: translateX(-50%);
     z-index: -10;
 }
 
-/* Dynamic filling line (red) */
+/* Dynamic filling line */
 .timeline-fill {
     position: absolute;
     left: 50%;
     top: 0;
     width: 4px;
-    height: 0; /* modificata via JS */
-    background: var(--blue5-100);
+    height: 0; /* modified via JS */
+    background: var(--blue-95);
     transform: translateX(-50%);
     z-index: -1;
-    transition: height 0.2s linear; /* animazione morbida */
+    transition: height 0.2s linear; /* smooth animation */
 }
 
+/* colors on small screens */
 @media (max-width: 991px) {
+
     .timeline-container::before {
         width: 2px;
-        background-color: var(--blue-100);
+        background-color: var(--blue-5);
     }
 
     .timeline-fill {
         width: 2px;
-        background: var(--blue4-dark);
+        background: var(--blue-15);
     }
-} 
-
-/* ========================== */
-/* Red dots on the line       */
-/* ========================== */
+}
 
 /* Timeline dots */
 .timeline-dot {
     position: absolute;
-    left: 50%; /* linea verticale */
+    left: 50%; /* vertical line */
     width: 28px;
     height: 28px;
-    background: var(--blue4-dark); /* colore iniziale */
+    background: var(--blue-15); /* initial color */
     border-radius: 50%;
     transform: translate(-50%, 0%);
     z-index: 0;
-    transition: all 0.3s ease; /* animazione morbida */
+    transition: all 0.3s ease; /* smooth animation */
 }
 
 /* Active dot */
 .timeline-dot.active {
-    background-color: var(--blue4-dark); /* colore attivo */
-    transform: translate(-50%, -50%) scale(1.2); /* leggero ingrandimento */
+    background-color: var(--blue-15); /* active color */
+    transform: translate(-50%, -50%) scale(1.2); /* slight enlargement */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* colors on large screens */
 @media (min-width: 992px) {
+
     .timeline-dot {
         position: absolute;
-        left: 50%; /* linea verticale */
+        left: 50%; /* vertical line */
         width: 28px;
         height: 28px;
-        background: var(--blu5-30); /* colore iniziale */
+        background: var(--blue-95); /* initial color */
         border-radius: 50%;
         transform: translate(-50%, 0%);
         z-index: 0;
-        transition: all 0.3s ease; /* animazione morbida */
+        transition: all 0.3s ease; /* smooth animation */
     }
 
     /* Active dot */
     .timeline-dot.active {
-        background-color: var(--blue-dark); /* colore attivo */
-        transform: translate(-50%, -50%) scale(1.2); /* leggero ingrandimento */
+        background-color: var(--blue-95); /* active color */
+        transform: translate(-50%, -50%) scale(1.2); /* slight enlargement */
     }
 }
 
@@ -612,67 +621,81 @@ h6 {
     width: 50%;
 }
 
-input{
-    background-color: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    border-bottom: 1px solid var(--blue70-100) !important;
-    color: white !important;
-}
+/* </editor-fold> */
 
-input:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
+/* === INPUTS === */
+/* <editor-fold> */
 
+/* toDo: entire element's style */
+
+/* </editor-fold> */
+
+/* === CAROUSEL STYLES (swiperJS default's style adaptation) === */
+/* <editor-fold> */
+
+/* = swiper reviews style =  */
 .swiper-reviews .swiper-button-prev,
 .swiper-reviews .swiper-button-next {
     z-index: 9999 !important;
     pointer-events: auto !important;
 }
+
 .swiper-reviews * {
     pointer-events: auto !important;
 }
-.liquidGlass-effect,
-.liquidGlass-tint,
-.liquidGlass-shine {
-    pointer-events: none !important;
-}
 
-footer{
-    background: linear-gradient(180deg, rgba(7, 7, 19, 0.00) 0%, var(--blue-5, #070713) 100%), var(--blue-15, #151439);
-}
-
-/* 1. Il contenitore (la "strada" su cui scorre la barra) */
+/* P1: The container (the "track" the bar slides on) */
 .swiper-reviews .swiper-pagination-progressbar {
-    background: rgba(255, 255, 255, 0.1); /* Sfondo semitrasparente */
-    height: 4px !important;               /* Altezza della barra */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    height: 4px !important; /* Bar height */
     position: absolute;
     bottom: 0 !important;
-    top: auto !important;                 /* Forza in basso */
+    top: auto !important; /* Forces it to the bottom */
     left: 0;
     width: 100%;
-    z-index: 10;                          /* Assicurati che sia sopra le slide */
+    z-index: 10; /* Make sure it's above the slides */
 }
 
-/* 2. Il riempimento (la parte che si muove) */
+/* P2: The fill (the moving part) */
 .swiper-reviews .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-    background: var(--pink-100) !important;       /* IL COLORE DEL FILL (Bianco) */
+    background: var(--pink) !important; /* THE FILL COLOR (White) */
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    transform-origin: left top;           /* Fondamentale per l'animazione */
-    display: block;                       /* Assicura che sia visibile */
+    transform-origin: left top; /* Essential for the animation */
+    display: block; /* Ensures it is visible */
 }
 
-/* Forza l'origine dell'animazione a SINISTRA */
+/* Forces the animation origin to the LEFT */
 .swiper-reviews .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-    transform-origin: left top !important; 
+    transform-origin: left top !important;
     left: 0 !important;
     right: auto !important;
 }
+
+.swiper-navigation-icon {
+    display: none;
+}
+
+.swiper-reviews .swiper-slide {
+    display: none;
+}
+
+.swiper-reviews .swiper-slide-active {
+    display: block;
+}
+
+/* </editor-fold> */
+
+/* === FOOTER === */
+footer{
+    background: linear-gradient(180deg, rgba(7, 7, 19, 0.00) 0%, var(--blue-5, #070713) 100%), var(--blue-15, #151439);
+}
+
+/* === CHIPS (allergens) === */
+/* <editor-fold> */
 
 .chips{
     background-color: transparent !important;
@@ -684,17 +707,304 @@ footer{
 }
 
 .chips:hover{
-    border: 1px solid var(--pink-100) !important;
+    border: 1px solid var(--pink) !important;
 }
 
 .chips-active{
-    background-image: var(--pink-100);
+    background-image: var(--pink);
     color: white !important;
-    border: 1px solid var(--pink-100) !important;
+    border: 1px solid var(--pink) !important;
     transition: all 0.5s ease;
 }
 
-#map {
-            height: 500px; /* O 100vh per tutto lo schermo */
-            width: 100%;
-        }
+/* </editor-fold> */
+
+/* === CALENDAR (prenota.html, inside form) === */
+/* <editor-fold> */
+/* toDo: @YuYU adjust from prenota.html to import here without catastrophic overrides */
+/* code goes here */
+/* </editor-fold> */
+
+/* === MAP (prenota.html) === */
+/* <editor-fold> */
+
+/* Map's container */
+#map-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    /* Using blue-15 in the center for depth and blue-5 (darker) on the edges */
+    background: radial-gradient(circle at 50% 50%, var(--blue-15) 0%, var(--blue-5) 100%);
+    overflow: hidden;
+}
+
+/* ex-nations style */
+.country {
+    fill: var(--blue-5); /* Dark base to blend with the sea */
+    stroke: var(--blue-50); /* Mid-blue border for definition */
+    stroke-width: 0.5px;
+    transition: all 0.3s ease;
+    cursor: crosshair; /* Change mouse icon to a cross upon hovering over a country */
+}
+
+/* hover effect on ex-nations */
+.country:hover {
+    fill: var(--blue-50); /* Lights up with mid-blue */
+    stroke: var(--blue-95); /* White/Light border */
+}
+
+/* sea labels */
+.sea-label-text {
+    font-family: 'Manrope', sans-serif;
+    fill: var(--blue-95); /* The white that goes over the dark blue */
+    font-size: 1.125rem;
+    line-height: 1.35rem;
+    overflow-x: hidden;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    cursor: help;
+}
+
+/* hover effect on seas (P1) */
+.sea-group {
+    cursor: help; /* Change mouse icon to <icon + a question mark> upon hovering over a sea name */
+}
+
+/* hover effect on seas (P2) */
+.sea-group:hover .sea-label-text {
+    fill: #ffffff;
+    opacity: 1;
+    text-shadow: 0 0 8px var(--blue-95); /* White glow effect */
+}
+
+/* Pop-up tooltip for various elements */
+.tooltip {
+    position: absolute;
+    z-index: 1000; /* To put tooltips in front of the map (rather than behind it) */
+    background: var(--blue-5-70); /* Dark semi-transparent background from palette */
+    border: 1px solid var(--blue-70); /* Light purple/blue neon border effect */
+    color: var(--blue-70); /* Light purple/blue neon text effect */
+    padding: 8px 12px;
+    border-radius: 2px;
+    pointer-events: none;
+    font-size: 14px;
+
+    opacity: 0;
+    transition: opacity 0.2s;
+
+    box-shadow: 0 0 15px var(--blue-50-30); /* Mid-blue/transparent shadow glow */
+
+    transform: translate(-50%, -150%);
+    text-transform: uppercase; /* All caps */
+}
+
+/* = Atlas & Riff (specific elements within map) Style = */
+
+/* container style */
+.location-group {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Atlas circle */
+.atlas-marker {
+    fill: rgba(255, 50, 118, 0.3);
+    stroke: var(--pink);
+    stroke-width: 2px;
+    /* Drop shadow using pink with opacity */
+    filter: drop-shadow(0 0 5px rgba(255, 50, 118, 0.5));
+}
+
+/* Riff's dot */
+.riff-point {
+    fill: var(--blue-95); /* White */
+    stroke: none;
+}
+
+/* Pulsing animation for Atlas (upon hovering over it) */
+.location-group:hover .atlas-marker {
+    animation: pulse 1.5s infinite; /* Pulse animation is defined later, infinite = repeats endlessly */
+    fill: rgba(255, 50, 118, 0.5); /* Slightly more intense fill on hover */
+}
+
+/* Atlas & Riff label */
+.location-label {
+    font-family: 'Manrope', sans-serif;
+    fill: var(--pink); /* Use the main pink for text */
+    font-size: 0.9rem;
+    text-anchor: middle;
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--blue-5); /* Dark shadow for readability */
+    pointer-events: none;
+    transform: translateY(-25px); /* Shifts text above (and not inside) the dot */
+}
+
+/* Pulse animation for "blinking" effect upon hovering over / selecting (on mobile) Atlas */
+@keyframes pulse {
+    0% {
+        stroke-width: 2px;
+        r: 8px; /* Added 'px' */
+        opacity: 1;
+    }
+    50% {
+        stroke-width: 4px;
+        r: 10px; /* Added 'px' */
+        opacity: 0.6;
+    }
+    100% {
+        stroke-width: 2px;
+        r: 8px; /* Added 'px' */
+        opacity: 1;
+    }
+}
+
+/* = Instructions Panel Style = */
+
+.controls-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: var(--blue-5-70); /* Background consistent with the tooltip */
+    border: 1px solid var(--blue-70); /* Neon border */
+    color: var(--blue-70);
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.85rem;
+    pointer-events: none; /* Clicks pass through */
+    user-select: none;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 50;
+}
+
+.key-badge {
+    border: 1px solid var(--blue-70);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 0.75rem;
+    background: var(--blue-50-30); /* Lightly colored background for keys */
+    color: var(--blue-95);
+}
+
+.key-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    font-size: 1.1em;
+}
+
+/* </editor-fold> */
+
+/* === ACCORDION (info.html) === */
+/* <editor-fold> */
+
+/* Old way of handling background image (toDo: delete) */
+/*
+#accordionFAQ {
+    background-image: url("./media/img/info-accordion-background.webp");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+*/
+
+/* 1. The parent container must have position: relative */
+#accordionFAQ {
+    position: relative;
+    /* Optional: overflow hidden if the image must not go outside rounded borders */
+    overflow: hidden;
+    /* Make sure it has a z-index if needed for the stacking context */
+    z-index: 1;
+}
+
+/* 2. The image wrapper */
+.accordion-bg-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    /* Negative or low z-index to stay BEHIND the text */
+    z-index: -1;
+
+    /* IMPORTANT: Prevents the image from blocking clicks on the elements beneath it */
+    pointer-events: none;
+
+    /* Optional: max width to prevent the image from becoming huge */
+    width: 100%;
+}
+
+/* 3. Style of the image itself */
+.accordion-bg-decoration img {
+    display: block; /* Removes extra space below inline images */
+    width: 100%;
+    height: auto;
+}
+
+/* accordion container, large, transparent and without borders */
+.accordion-glass-item {
+    background: transparent !important; /* remove white background (default in Bootstrap accordion) */
+    border: none !important; /* Remove borders (default in Boostrap accordion) */
+    width: 100% !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch !important; /* stretch to fit the whole accordion (width: 100% didn't suffice) */
+    justify-content: flex-start !important;
+
+    border-radius: 50px !important;
+    overflow: hidden; /* To contain background effects */
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* alignment and size for liquid-glass accordion items */
+.accordion-glass-item .liquidGlass-text {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important; /* to make items fit the entire width of the container */
+    width: 100% !important;
+    padding: 0 !important; /* padding handled by bootstrap */
+}
+
+/* heavy styling for the button (also making it liquid glass), as it replaces the accordion's containing box (which is transparent) */
+.accordion-glass-button {
+
+    background-color: transparent !important;
+    box-shadow: none !important; /* the default blue shadow of buttons is causing a weird issue when opening the accordion (it creates a blue bar) - I needed to remove it */
+    color: var(--blue-95) !important; /* --blue-dark is actually the white that goes over the blue-100 background */
+
+    padding: 1.25rem 2rem;
+
+    width: 100%;
+
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* to make the text be on the left and the accordion open/closed arrow be on the right */
+}
+
+/* Chevron (arrow) handling */
+.accordion-glass-button::after {
+    filter: invert(1) brightness(2); /* Makes the arrow white */
+    margin-left: auto;
+}
+
+/* Style of content within the accordion (once opened) */
+.accordion-glass-body {
+    color: var(--blue-95);
+    padding: 1.5rem 2rem 1.5rem 2rem; /* padding for elements within the accordion (toDo: recheck sizing, something feels weird about it) */
+    text-align: left;
+    border-top: 1px solid rgba(234, 255, 251, 0.1); /* line between title (button) and text (accordion content), rgb code is = #EAE9FB = (blue-dark), made semi-transparent */
+}
+
+/* </editor-fold> */

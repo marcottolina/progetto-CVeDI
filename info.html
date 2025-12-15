@@ -19,116 +19,11 @@
     <!-- page title -->
     <title> informazioni </title>
 
-    <!-- Local CSS (toDo: put it into the main.css) -->
-    <style>
-
-        /* == ACCORDION == */
-
-        /*#accordionFAQ {*/
-        /*    background-image: url("./media/img/info-accordion-background.webp");*/
-        /*    background-repeat: no-repeat;*/
-        /*    background-position: bottom left; !* image always says bottom left as accordion elements get opened *!*/
-        /*}*/
-
-        /* 1. Il contenitore padre deve avere position: relative */
-        #accordionFAQ {
-            position: relative;
-            /* Opzionale: overflow hidden se l'immagine non deve uscire dai bordi arrotondati */
-            overflow: hidden;
-            /* Assicurati che abbia uno z-index se necessario per il contesto */
-            z-index: 1;
-        }
-
-        /* 2. Il wrapper dell'immagine */
-        .accordion-bg-decoration {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-
-            /* Z-index negativo o basso per stare DIETRO al testo */
-            z-index: -1;
-
-            /* IMPORTANTE: Impedisce all'immagine di bloccare i click sugli elementi sotto di essa */
-            pointer-events: none;
-
-            /* Opzionale: larghezza massima per evitare che l'immagine diventi enorme */
-            width: 100%;
-        }
-
-        /* 3. Stile dell'immagine stessa */
-        .accordion-bg-decoration img {
-            display: block; /* Rimuove lo spazio extra sotto le immagini inline */
-            width: 100%;
-            height: auto;
-        }
-
-        /* accordion container, large, transparent and without borders */
-        .accordion-glass-item {
-            background: transparent !important; /* remove white background (default in Bootstrap accordion) */
-            border: none !important; /* Remove borders (default in Boostrap accordion) */
-            width: 100% !important;
-
-            display: flex;
-            flex-direction: column;
-            align-items: stretch !important; /* stretch to fit the whole accordion (width: 100% didn't suffice) */
-            justify-content: flex-start !important;
-
-            border-radius: 50px !important;
-            overflow: hidden; /* Per contenere gli effetti di sfondo */
-            position: relative;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* alignment and size for liquid-glass accordion items */
-        .accordion-glass-item .liquidGlass-text {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: stretch !important; /* to make items fit the entire width of the container */
-            width: 100% !important;
-            padding: 0 !important; /* padding handled from bootstrap */
-        }
-
-        /* heavy styling for the button (also making it liquid glass), as it replaces the accordion's containing box (which is transparent) */
-        .accordion-glass-button {
-
-            background-color: transparent !important;
-            box-shadow: none !important; /* the default blue shadow of buttons is making a wierd problem upon opening the accordion (it makes a blue bar) - I needed to remove it */
-            color: var(--blue-dark) !important; /* --blue-dark is actually the white that goes over the blue-100 background */
-
-            padding: 1.25rem 2rem;
-
-            width: 100%;
-
-            font-weight: 500;
-            font-size: 1.1rem;
-            text-align: left;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* to make the text be on the left and the accordion open/closed arrow be on the right */
-        }
-
-        /* Gestione della freccia (chevron) */
-        .accordion-glass-button::after {
-            filter: invert(1) brightness(2); /* Rende la freccia bianca */
-            margin-left: auto;
-        }
-
-        /* Style of content within the accordion (once opened) */
-        .accordion-glass-body {
-            color: var(--blue-dark);
-            padding: 1.5rem 2rem 1.5rem 2rem; /* padding for elements within the accordion (toDo: check again sizing, something feels wierd about it) */
-            text-align: left;
-            border-top: 1px solid rgba(234, 255, 251, 0.1); /* line between title (button) and text (accordion content), rgb code is = #EAE9FB = (blue-dark), made semi-transparent */
-        }
-
-    </style>
-
 </head>
 
 <body>
 
-<!-- navbar (done) -->
+<!-- navbar -->
 <header class="navbar-wrapper container-fluid">
     <nav class="navbar custom-navbar hoverable liquidGlass-wrapper mt-4 mx-2">
         <div class="liquidGlass-effect"></div>
@@ -140,15 +35,13 @@
             </a>
 
             <div class="liquidGlass-text">
-                <button class="d-none d-md-block btn liquidGlass-wrapper">
+                <button class="d-none d-md-block btn-nav liquidGlass-wrapper">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota <i
-                            class="bi bi-arrow-right"></i></span>
+                    <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota</span>
                 </button>
-                <button aria-controls="offcanvasFull" class="btn-empty" data-bs-target="#offcanvasFull"
-                        data-bs-toggle="offcanvas"
+                <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull" data-bs-toggle="offcanvas"
                         type="button">
                     <i class="bi bi-list"></i>
                 </button>
@@ -158,7 +51,7 @@
 </header>
 
 <!-- Off-canvas full-page (= opened hamburger menu) [updated] -->
-<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" id="offcanvasFull" tabindex="-1">
+<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" id="offCanvasFull" tabindex="-1">
     <div class="offcanvas-body">
         <div class="container-fluid">
             <div class="row">
