@@ -6,8 +6,6 @@
     <title>Bioluma</title>
     <!-- <link rel="icon" type="image/jpeg" href="/assets/images/others/logo.jpg"> -->
     <link rel="stylesheet" href="../css/main.css">
-    <!-- BOOTSTRAP ICONS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- BOOTSTRAP CSS -->
     <link href="../vendor/bootstrap/bootstrap-css/bootstrap.css" rel="stylesheet">
     <!-- BOOTSTRAP JS BUNDLE -->
@@ -18,28 +16,27 @@
 <body>
 <div class="circle"></div>
 
-<!-- navbar (done) -->
+<!-- navbar -->
 <header class="navbar-wrapper container-fluid">
     <nav class="navbar custom-navbar hoverable liquidGlass-wrapper mt-4 mx-2">
         <div class="liquidGlass-effect"></div>
         <div class="liquidGlass-shine"></div>
 
         <div class="container-fluid px-4 py-2">
-            <a class="navbar-brand liquidGlass-text" href="index.html">
-                <img alt="Logo" height="50" src="media/img/Logo.svg" width="50">
+            <a class="navbar-brand liquidGlass-text" href="../index.html">
+                <img alt="Logo" height="50" src="../media/img/Logo.svg" width="50">
             </a>
 
             <div class="liquidGlass-text">
-                <button class="d-none d-md-block btn liquidGlass-wrapper">
+                <button class="d-none d-md-block btn-nav liquidGlass-wrapper">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota <i
-                            class="bi bi-arrow-right"></i></span>
+                    <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota</span>
                 </button>
-                <button aria-controls="offcanvasFull" class="btn-empty" data-bs-target="#offcanvasFull" data-bs-toggle="offcanvas"
+                <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull" data-bs-toggle="offcanvas"
                         type="button">
-                    <i class="bi bi-list"></i>
+                    <img src="/media/icon/hamburger-menu.svg" alt="hamburger-menu"/>
                 </button>
             </div>
         </div>
@@ -54,12 +51,12 @@
 
                 <!-- LOGO -->
                 <div class="col-6 col-md-2 order-1">
-                    <img alt="" src="media/img/Logo.svg">
+                    <img alt="" src="../media/img/Logo.svg">
                 </div>
 
-                <!-- IMMAGINE (solo da md) -->
+                <!-- IMAGE (when big enough) -->
                 <div class="col-md-4 d-none d-md-block order-2">
-                    <img alt="" class="img-fluid full-y" src="media/img/sfondo-prova-vetro.jpg">
+                    <img alt="" class="img-fluid full-y" src="../media/img/sfondo-prova-vetro.jpg">
                 </div>
 
                 <!-- MENU -->
@@ -69,27 +66,23 @@
                             <span aria-hidden="true" class="liquidGlass-effect"></span>
                             <span aria-hidden="true" class="liquidGlass-tint"></span>
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
-                            <span class="liquidGlass-text" onclick="'window.location.href: prenota.html'">Prenota <i
-                                    class="bi bi-arrow-right"></i></span>
+                            <span class="liquidGlass-text" onclick="'window.location.href: prenota.html'">Prenota</span>
                         </button>
-                        <button class="btn-empty" onclick="window.location.href='index.html'" type="button">Home <i
-                                class="bi bi-arrow-right"></i></button>
+                        <button class="btn-empty" onclick="window.location.href='index.html'" type="button">Home</button>
                         <button class="btn-empty mt-3" onclick="window.location.href='ristorante.html'" type="button">
-                            Ristorante <i class="bi bi-arrow-right"></i></button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu <i
-                                class="bi bi-arrow-right"></i></button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">Informazioni
-                            <i class="bi bi-arrow-right"></i></button>
+                            Ristorante</button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu</button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">Informazioni</button>
                         <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'" type="button">
-                            Serate Speciali <i class="bi bi-arrow-right"></i>
+                            Serate Speciali
                         </button>
                     </div>
                 </div>
 
-                <!-- PULSANTE CHIUSURA -->
+                <!-- BUTTON TO CLOSE -->
                 <div class="col-6 col-md-3 d-flex justify-content-end align-items-start order-2 order-md-last">
                     <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
-                        <i class="bi bi-arrow-left"></i>
+                        <img src="../media/icon/arrow-left.svg" alt="arrow-left"/>
                     </button>
                 </div>
 
