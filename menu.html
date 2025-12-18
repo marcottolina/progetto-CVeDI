@@ -18,142 +18,150 @@
 </head>
 
 <body>
-    <div class="circle"></div>
+<div class="circle"></div>
 
-    <!-- navbar -->
-    <header class="navbar-wrapper container-fluid">
-        <nav class="navbar custom-navbar hoverable liquidGlass-wrapper mt-4 mx-2">
-            <div class="liquidGlass-effect"></div>
-            <div class="liquidGlass-shine"></div>
+<!-- navbar -->
+<header class="navbar-wrapper container-fluid">
+    <nav class="navbar custom-navbar hoverable liquidGlass-wrapper mt-4 mx-2">
+        <div class="liquidGlass-effect"></div>
+        <div class="liquidGlass-shine"></div>
 
-            <div class="container-fluid px-4 py-2">
-                <a class="navbar-brand liquidGlass-text" href="index.html">
-                    <img alt="Logo" height="50" src="media/img/Logo.svg" width="50">
-                </a>
+        <div class="container-fluid px-4 py-2">
+            <a class="navbar-brand liquidGlass-text" href="index.html">
+                <img alt="Logo" height="50" src="media/img/Logo.svg" width="50">
+            </a>
 
-                <div class="liquidGlass-text">
-                    <button class="d-none d-md-block btn-nav liquidGlass-wrapper">
-                        <span aria-hidden="true" class="liquidGlass-effect"></span>
-                        <span aria-hidden="true" class="liquidGlass-tint"></span>
-                        <span aria-hidden="true" class="liquidGlass-shine"></span>
-                        <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota</span>
-                    </button>
-                    <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull" data-bs-toggle="offcanvas"
-                            type="button">
-                        <img src="/media/icon/hamburger-menu.svg" alt="hamburger-menu"/>
-                    </button>
-                </div>
+            <div class="liquidGlass-text">
+                <button class="d-none d-md-block btn-nav liquidGlass-wrapper">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota</span>
+                </button>
+                <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull"
+                        data-bs-toggle="offcanvas"
+                        type="button">
+                    <img alt="hamburger-menu" src="/media/icon/hamburger-menu.svg"/>
+                </button>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
+<!-- Off-canvas full-page (= opened hamburger menu) [updated] -->
+<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" id="offCanvasFull" tabindex="-1">
+    <div class="offcanvas-body">
+        <div class="container-fluid">
+            <div class="row">
 
-    <!-- Offcanvas Fullpage -->
-    <!-- Off-canvas full-page (= opened hamburger menu) [updated] -->
-    <div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" id="offCanvasFull" tabindex="-1">
-        <div class="offcanvas-body">
-            <div class="container-fluid">
-                <div class="row">
+                <!-- LOGO -->
+                <div class="col-6 col-md-2 order-1">
+                    <img alt="" src="media/img/Logo.svg">
+                </div>
 
-                    <!-- LOGO -->
-                    <div class="col-6 col-md-2 order-1">
-                        <img alt="" src="media/img/Logo.svg">
-                    </div>
+                <!-- IMAGE (when big enough) -->
+                <div class="col-md-4 d-none d-md-block order-2">
+                    <img alt="" class="img-fluid full-y" src="media/img/sfondo-prova-vetro.jpg">
+                </div>
 
-                    <!-- IMAGE (when big enough) -->
-                    <div class="col-md-4 d-none d-md-block order-2">
-                        <img alt="" class="img-fluid full-y" src="media/img/sfondo-prova-vetro.jpg">
-                    </div>
-
-                    <!-- MENU -->
-                    <div class="col-md-3 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center">
-                        <div class="d-flex flex-column align-items-start">
-                            <button class="btn liquidGlass-wrapper mb-5">
-                                <span aria-hidden="true" class="liquidGlass-effect"></span>
-                                <span aria-hidden="true" class="liquidGlass-tint"></span>
-                                <span aria-hidden="true" class="liquidGlass-shine"></span>
-                                <span class="liquidGlass-text" onclick="'window.location.href: prenota.html'">Prenota</span>
-                            </button>
-                            <button class="btn-empty" onclick="window.location.href='index.html'" type="button">Home</button>
-                            <button class="btn-empty mt-3" onclick="window.location.href='ristorante.html'" type="button">
-                                Ristorante</button>
-                            <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu</button>
-                            <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">Informazioni</button>
-                            <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'" type="button">
-                                Serate Speciali
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- BUTTON TO CLOSE -->
-                    <div class="col-6 col-md-3 d-flex justify-content-end align-items-start order-2 order-md-last">
-                        <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
-                            <img src="media/icon/arrow-left.svg" alt="arrow-left"/>
+                <!-- MENU -->
+                <div class="col-md-3 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center">
+                    <div class="d-flex flex-column align-items-start">
+                        <button class="btn liquidGlass-wrapper mb-5">
+                            <span aria-hidden="true" class="liquidGlass-effect"></span>
+                            <span aria-hidden="true" class="liquidGlass-tint"></span>
+                            <span aria-hidden="true" class="liquidGlass-shine"></span>
+                            <span class="liquidGlass-text" onclick="'window.location.href: prenota.html'">Prenota</span>
+                        </button>
+                        <button class="btn-empty" onclick="window.location.href='index.html'" type="button">Home
+                        </button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='ristorante.html'" type="button">
+                            Ristorante
+                        </button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu
+                        </button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">
+                            Informazioni
+                        </button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'"
+                                type="button">
+                            Serate Speciali
                         </button>
                     </div>
-
                 </div>
+
+                <!-- BUTTON TO CLOSE -->
+                <div class="col-6 col-md-3 d-flex justify-content-end align-items-start order-2 order-md-last">
+                    <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
+                        <img alt="arrow-left" src="media/icon/arrow-left.svg"/>
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>
+</div>
 
+<!-- Hero P1 (background) -->
+<section class="full-y">
+    <div class="header-wrapper">
+        <div class="header-overlay"></div>
+        <video autoplay class="bg-video" loop muted playsinline>
+            <source src="/media/video/restaurant-coral.webm" type="video/webm">
+        </video>
+    </div>
+</section>
 
-    <section class="full-y">
-        <div class="header-wrapper">
-            <div class="header-overlay"></div>
-            <video autoplay class="bg-video" loop muted playsinline>
-                <source src="/media/video/restaurant-coral.webm" type="video/webm">
-            </video>
+<!-- hide background video -->
+<div class="top-overlay">
+
+    <!-- Hero P2 (foreground) -->
+    <div class="container-fluid d-flex flex-column justify-content-end align-items-start h-100">
+        <h1>Percorsi</h1>
+        <span class="body-lead">Un racconto in ogni portata</span>
+    </div>
+
+    <!-- Introduction -->
+    <section class="py-5">
+        <div class="container text-center mt-5">
+            <h2>Synestesia</h2>
+            <p>
+                Ogni piatto racconta ciò che il mare ha custodito e che l’uomo ha imparato di nuovo ad ascoltare.
+                <br>
+                Le pietanze sono accompagnate da una melodia percepita solo dal suo commensale: grazie a Synestesia,
+                un sistema di micro-vibrazioni diffuse nel piatto, il suono si propaga direttamente nei sensi
+                trasformando
+                ogni
+                portata in una composizione dove gusto e suono si fondono.
+            </p>
         </div>
     </section>
 
-    <div class="top-overlay">
+    <!-- Allergens list -->
+    <div class="container">
+        <button class="chips me-2">
+            <img alt="Allergene 1" src="/media/icon/footer-1.svg">
+            <span>Derivati algali</span>
+        </button>
+        <button class="chips me-2">
+            <img alt="Allergene 2" src="/media/icon/footer-2.svg">
+            <span>Polline marino</span>
+        </button>
+        <button class="chips me-2">
+            <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            <span>Idromiele</span>
+        </button>
+        <button class="chips me-2">
+            <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            <span>Derivati di medusa</span>
+        </button>
+        <button class="chips me-2">
+            <img alt="Allergene 3" class="img-fluid" src="/media/icon/footer-3.svg">
+            <span class="caption">Plankton</span>
+        </button>
+    </div>
 
-        <div class="container-fluid d-flex flex-column justify-content-end align-items-start h-100">
-            <h1>Percorsi</h1>
-            <span class="body-lead">Un racconto in ogni portata</span>
-        </div>
-
-        <section class="py-5">
-            <div class="container text-center mt-5">
-                <h2>Synestesia</h2>
-                <p>
-                    Ogni piatto racconta ciò che il mare ha custodito e che l’uomo ha imparato di nuovo ad ascoltare.
-                    <br>
-                    Le pietanze sono accompagnate da una melodia percepita solo dal suo commensale: grazie a Synestesia,
-                    un sistema di micro-vibrazioni diffuse nel piatto, il suono si propaga direttamente nei sensi
-                    trasformando
-                    ogni
-                    portata in una composizione dove gusto e suono si fondono.
-                </p>
-
-            </div>
-    </section>
-
-    
-        <div class="container">
-            <button class="chips me-2">
-                <img src="/media/icon/footer-1.svg" alt="Allergene 1">
-                <span>Derivati algali</span>
-            </button>
-            <button class="chips me-2">
-                <img src="/media/icon/footer-2.svg" alt="Allergene 2">
-                <span>Polline marino</span>
-            </button>
-            <button class="chips me-2">
-                <img src="/media/icon/footer-3.svg" alt="Allergene 3">
-                <span>Idromiele</span>
-            </button>
-            <button class="chips me-2">
-                <img src="/media/icon/footer-3.svg" alt="Allergene 3">
-                <span>Derivati di medusa</span>
-            </button>
-            <button class="chips me-2">
-                <img src="/media/icon/footer-3.svg" alt="Allergene 3" class="img-fluid">
-                <span class="caption">Plankton</span>
-            </button>
-        </div>
-
+    <!-- Special Menu (timeline section) -->
     <section class="timeline-section py-5">
         <div class="container timeline-container">
 
@@ -168,14 +176,14 @@
                             (min-width: 768px) 400px,
                             (min-width: 576px) 500px,
                             100vw
-                        " src="./media/img/home-1-1200.webp" srcset="
-                        ./media/img/menu-1-800.webp 800w,
-                        ./media/img/menu-1-1200.webp 1200w,
-                        ./media/img/menu-1-2000.webp 2000w
+                        " src="./media/img/home-1-1200w.webp" srcset="
+                            ./media/img/menu-1-800.webp 800w,
+                            ./media/img/menu-1-1200.webp 1200w,
+                            ./media/img/menu-1-2000.webp 2000w
                         ">
                         <div class="bubble-box">
                             <video class="bg-video-menu" loop muted playsinline>
-                                <source src="../media/video/menu-coral.webm" type="video/webm">
+                                <source src="/media/video/menu-coral.webm" type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -187,8 +195,8 @@
                     <div class="col-lg-6 mt-2 mt-lg-0 ps-lg-5">
                         <h2>Thalassa</h2>
                         <div class="d-flex justify-items-start my-3">
-                            <img src="/media/icon/footer-3.svg" alt="Allergene 3" class="img-fluid me-3">
-                            <img src="/media/icon/footer-3.svg" alt="Allergene 3" class="img-fluid">
+                            <img alt="Allergene 3" class="img-fluid me-3" src="/media/icon/footer-3.svg">
+                            <img alt="Allergene 3" class="img-fluid" src="/media/icon/footer-3.svg">
                         </div>
                         <p>Un intreccio di corallo rigenerato, in una mousse di plankton fermentato e perle di salinità
                             cangiante.
@@ -199,12 +207,16 @@
                                 <span aria-hidden="true" class="liquidGlass-effect"></span>
                                 <span aria-hidden="true" class="liquidGlass-tint"></span>
                                 <span aria-hidden="true" class="liquidGlass-shine"></span>
-                                <span class="liquidGlass-text"><dotlottie-wc autoplay loop
-                                        src="https://lottie.host/ea858305-cea5-4b8c-bc8e-717903542021/H5lwSIiiO3.lottie"
-                                        style="width: 1rem;height: 1rem"></dotlottie-wc></span>
+                                <span class="liquidGlass-text">
+                                    <dotlottie-wc autoplay loop
+                                                  src="https://lottie.host/ea858305-cea5-4b8c-bc8e-717903542021/H5lwSIiiO3.lottie"
+                                                  style="width: 1rem;height: 1rem">
+
+                                    </dotlottie-wc>
+                                </span>
                             </button>
                             <button class="btn mt-2 liquidGlass-wrapper"
-                                onclick="window.location.href='menu/descrizione-piatto-1.html'">
+                                    onclick="window.location.href='menu/descrizione-piatto-1.html'">
                                 <span aria-hidden="true" class="liquidGlass-effect"></span>
                                 <span aria-hidden="true" class="liquidGlass-tint"></span>
                                 <span aria-hidden="true" class="liquidGlass-shine"></span>
@@ -222,20 +234,26 @@
                 <div class="row align-items-start mt-5 mt-lg-0">
 
                     <div class="col-lg-6 mt-5 mt-md-0 pe-lg-5">
-                        <img alt="Secondo piatto" class="img-fluid timeline-img" loading="lazy" sizes="
-                            (min-width: 1200px) 600px,
-                            (min-width: 992px) 500px,
-                            (min-width: 768px) 400px,
-                            (min-width: 576px) 500px,
-                            100vw
-                        " src="./media/img/home-2-1200.webp" srcset="
-                        ./media/img/menu-2-800.webp 800w,
-                        ./media/img/menu-2-1200.webp 1200w,
-                        ./media/img/menu-2-2000.webp 2000w
-                        ">
+                        <img
+                                alt="Secondo piatto"
+                                class="img-fluid timeline-img"
+                                loading="lazy"
+                                sizes="
+                                    (min-width: 1200px) 600px,
+                                    (min-width: 992px) 500px,
+                                    (min-width: 768px) 400px,
+                                    (min-width: 576px) 500px,
+                                    100vw
+                                "
+                                src="./media/img/home-2-1200w.webp" srcset="
+                                    ./media/img/menu-2-800.webp 800w,
+                                    ./media/img/menu-2-1200.webp 1200w,
+                                    ./media/img/menu-2-2000.webp 2000w
+                                "
+                        >
                         <div class="bubble-box">
                             <video class="bg-video-menu" loop muted playsinline>
-                                <source src="../media/video/bioluma-coral.webm" type="video/webm">
+                                <source src="/media/video/bioluma-coral.webm" type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -256,12 +274,16 @@
                                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                                    <span class="liquidGlass-text"><dotlottie-wc autoplay loop
-                                            src="https://lottie.host/ea858305-cea5-4b8c-bc8e-717903542021/H5lwSIiiO3.lottie"
-                                            style="width: 1rem;height: 1rem"></dotlottie-wc></span>
+                                    <span class="liquidGlass-text">
+                                        <dotlottie-wc autoplay loop
+                                                      src="https://lottie.host/ea858305-cea5-4b8c-bc8e-717903542021/H5lwSIiiO3.lottie"
+                                                      style="width: 1rem;height: 1rem">
+
+                                        </dotlottie-wc>
+                                    </span>
                                 </button>
                                 <button class="btn mt-2 liquidGlass-wrapper"
-                                    onclick="window.location.href='menu/descrizione-piatto-2.html'">
+                                        onclick="window.location.href='menu/descrizione-piatto-2.html'">
                                     <div aria-hidden="true" class="liquidGlass-effect"></div>
                                     <div aria-hidden="true" class="liquidGlass-tint"></div>
                                     <div aria-hidden="true" class="liquidGlass-shine"></div>
@@ -317,11 +339,11 @@
                                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                                     <span class="liquidGlass-text"><dotlottie-wc autoplay loop
-                                            src="https://lottie.host/ea858305-cea5-4b8c-bc8e-717903542021/H5lwSIiiO3.lottie"
-                                            style="width: 1rem;height: 1rem"></dotlottie-wc></span>
+                                                                                 src="https://lottie.host/ea858305-cea5-4b8c-bc8e-717903542021/H5lwSIiiO3.lottie"
+                                                                                 style="width: 1rem;height: 1rem"></dotlottie-wc></span>
                                 </button>
                                 <button class="btn mt-2 liquidGlass-wrapper"
-                                    onclick="window.location.href='menu/descrizione-piatto-3.html'">
+                                        onclick="window.location.href='menu/descrizione-piatto-3.html'">
                                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                                     <span aria-hidden="true" class="liquidGlass-shine"></span>
@@ -336,11 +358,237 @@
 
             </div>
         </div>
- 
+
     </section>
 
-    
-<div id="map"></div>
+    <!-- a-la-carte menu -->
+
+    <section>
+
+        <!-- a-la-carte menu introduction -->
+        <section>
+            <h2>Il menu</h2>
+            <p>
+                La nostra è una partitura commestibile dedicata all'oceano, in cui gli ingredienti più esclusivi e
+                ricercati del mare non vengono solo cucinati, ma orchestrati. <br/>
+                Ogni ingrediente è una nota precisa, e ogni piatto un accordo studiato per creare una risonanza armonica
+                sul palato, trasformando la degustazione in un ascolto profondo della natura.
+            </p>
+        </section>
+
+        <!-- a-la-carte menu -->
+        <section>
+
+            <!-- a-la-carte menu subsection 1 of 3 -->
+            <section>
+
+                <!-- subsection heading -->
+                <h3>Superfici</h3>
+
+                <!-- subsection item 1 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+                <!-- subsection item 2 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+                <!-- subsection item 3 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+                <!-- subsection item 4 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- a-la-carte menu subsection 2 of 3 -->
+            <section>
+
+                <!-- subsection heading -->
+                <h3>Correnti</h3>
+
+                <!-- subsection item 1 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+                <!-- subsection item 2 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+                <!-- subsection item 3 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+                <!-- subsection item 4 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- a-la-carte menu subsection 3 of 3 -->
+            <section>
+
+                <!-- subsection heading -->
+                <h3>Fondali</h3>
+
+                <!-- subsection item 1 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+                <!-- subsection item 2 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+                <!-- subsection item 3 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+                <!-- subsection item 4 of 4 -->
+                <div>
+                    <h4>Nome piatto</h4>
+                    <p>Descrizione piatto</p>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                    </button>
+                </div>
+
+            </section>
+
+        </section>
+
+    </section>
+
+
+    <div id="map"></div> <!-- toDo: figure out what this does, remove it if it's unnecessary -->
 
 
     <footer class="p-4 mt-5 section-bg-light">
@@ -395,9 +643,9 @@
                 <div class="d-flex justify-content-between align-items-end">
                     <div>
                         <img alt="" class="img-fluid" src="../media/img/Logo.svg"">
-                </div>
-                <div>
-                    <button class=" btn-empty"><img alt="Social 1" src="../media/icon/footer-1.svg"></button>
+                    </div>
+                    <div>
+                        <button class=" btn-empty"><img alt="Social 1" src="../media/icon/footer-1.svg"></button>
                         <button class="btn-empty"><img alt="Social 2" src="../media/icon/footer-2.svg"></button>
                         <button class="btn-empty"><img alt="Social 3" src="../media/icon/footer-3.svg"></button>
                     </div>
@@ -406,35 +654,35 @@
         </div>
     </footer>
 
-           </div>
+</div>
 
 
-    <!-- PATTERN PER IL FILTRO GLASS-LIQUID -->
-    <svg style="display: none">
-        <filter filterUnits="objectBoundingBox" height="100%" id="glass-distortion" width="100%" x="0%" y="0%">
-            <feTurbulence baseFrequency="0.01 0.01" numOctaves="30" result="turbulence" seed="7" type="fractalNoise" />
-            <!-- Seeds: 14, 17,  -->
+<!-- PATTERN PER IL FILTRO GLASS-LIQUID -->
+<svg style="display: none">
+    <filter filterUnits="objectBoundingBox" height="100%" id="glass-distortion" width="100%" x="0%" y="0%">
+        <feTurbulence baseFrequency="0.01 0.01" numOctaves="30" result="turbulence" seed="7" type="fractalNoise"/>
+        <!-- Seeds: 14, 17,  -->
 
-            <feComponentTransfer in="turbulence" result="mapped">
-                <feFuncR amplitude="1" exponent="10" offset="0.5" type="gamma" />
-                <feFuncG amplitude="0" exponent="1" offset="0" type="gamma" />
-                <feFuncB amplitude="0" exponent="1" offset="0.5" type="gamma" />
-            </feComponentTransfer>
+        <feComponentTransfer in="turbulence" result="mapped">
+            <feFuncR amplitude="1" exponent="10" offset="0.5" type="gamma"/>
+            <feFuncG amplitude="0" exponent="1" offset="0" type="gamma"/>
+            <feFuncB amplitude="0" exponent="1" offset="0.5" type="gamma"/>
+        </feComponentTransfer>
 
-            <feGaussianBlur in="turbulence" result="softMap" stdDeviation="3" />
+        <feGaussianBlur in="turbulence" result="softMap" stdDeviation="3"/>
 
-            <feSpecularLighting in="softMap" lighting-color="white" result="specLight" specularConstant="1"
-                specularExponent="100" surfaceScale="2">
-                <fePointLight x="-200" y="-200" z="300" />
-            </feSpecularLighting>
+        <feSpecularLighting in="softMap" lighting-color="white" result="specLight" specularConstant="1"
+                            specularExponent="100" surfaceScale="2">
+            <fePointLight x="-200" y="-200" z="300"/>
+        </feSpecularLighting>
 
-            <feComposite in="specLight" k1="0" k2="1" k3="1" k4="0" operator="arithmetic" result="litImage" />
+        <feComposite in="specLight" k1="0" k2="1" k3="1" k4="0" operator="arithmetic" result="litImage"/>
 
-            <feDisplacementMap in="SourceGraphic" in2="softMap" scale="30" xChannelSelector="R" yChannelSelector="G" />
-        </filter>
-    </svg>
+        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="30" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+</svg>
 
-    <!-- scale è il valore che determina l'intensità della distorsione -->
+<!-- scale è il valore che determina l'intensità della distorsione -->
 
 </body>
 
