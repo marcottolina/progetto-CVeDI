@@ -15,6 +15,26 @@
     <link href="css/main.css" rel="stylesheet">
     <!-- LINK FOR ANIMATED ICON SOUND-->
 
+    <!-- Local Styles toDo: bring it to main.css -->
+    <style>
+
+        #a-la-carte-menu {
+            background: linear-gradient(
+                    180deg,
+                    var(--blue-5, #070713) 0%,
+                    rgba(7, 7, 19, 0.85) 50%, /* 0.85 opaqueness to make it look (much) darker even in the most visible spot */
+                    var(--blue-5, #070713) 100%
+            );
+        }
+
+
+        #last-hr {
+            margin-top: 1em;
+            margin-bottom: 0;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -136,30 +156,6 @@
             </p>
         </div>
     </section>
-
-    <!-- Allergens list -->
-    <div class="container">
-        <button class="chips me-2">
-            <img alt="Allergene 1" src="/media/icon/footer-1.svg">
-            <span>Derivati algali</span>
-        </button>
-        <button class="chips me-2">
-            <img alt="Allergene 2" src="/media/icon/footer-2.svg">
-            <span>Polline marino</span>
-        </button>
-        <button class="chips me-2">
-            <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-            <span>Idromiele</span>
-        </button>
-        <button class="chips me-2">
-            <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-            <span>Derivati di medusa</span>
-        </button>
-        <button class="chips me-2">
-            <img alt="Allergene 3" class="img-fluid" src="/media/icon/footer-3.svg">
-            <span class="caption">Plankton</span>
-        </button>
-    </div>
 
     <!-- Special Menu (timeline section) -->
     <section class="timeline-section py-5">
@@ -304,20 +300,25 @@
                 <div class="row align-items-start">
 
                     <div class="col-lg-6 mt-2 mt-lg-0 pe-lg-5">
-                        <img alt="Terzo piatto" class="img-fluid timeline-img" loading="lazy" sizes="
-                            (min-width: 1200px) 600px,
-                            (min-width: 992px) 500px,
-                            (min-width: 768px) 400px,
-                            (min-width: 576px) 500px,
-                            100vw
-                        " src="./media/img/home-3-1200.webp" srcset="
-                        ./media/img/menu-3-800.webp 800w,
-                        ./media/img/menu-3-1200.webp 1200w,
-                        ./media/img/menu-3-2000.webp 2000w
-                        ">
+                        <img alt="Terzo piatto" c
+                             lass="img-fluid timeline-img"
+                             loading="lazy"
+                             sizes="
+                                (min-width: 1200px) 600px,
+                                (min-width: 992px) 500px,
+                                (min-width: 768px) 400px,
+                                (min-width: 576px) 500px,
+                                100vw
+                            "
+                             src="./media/img/home-3-1200w.webp" srcset="
+                            ./media/img/menu-3-800.webp 800w,
+                            ./media/img/menu-3-1200.webp 1200w,
+                            ./media/img/menu-3-2000.webp 2000w
+                            "
+                        >
                         <div class="bubble-box">
                             <video class="bg-video-menu" loop muted playsinline>
-                                <source src="../media/video/bioluma-coral.webm" type="video/webm">
+                                <source src="/media/video/bioluma-coral.webm" type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -338,9 +339,13 @@
                                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                                    <span class="liquidGlass-text"><dotlottie-wc autoplay loop
-                                                                                 src="https://lottie.host/ea858305-cea5-4b8c-bc8e-717903542021/H5lwSIiiO3.lottie"
-                                                                                 style="width: 1rem;height: 1rem"></dotlottie-wc></span>
+                                    <span class="liquidGlass-text">
+                                        <dotlottie-wc autoplay loop
+                                                      src="https://lottie.host/ea858305-cea5-4b8c-bc8e-717903542021/H5lwSIiiO3.lottie"
+                                                      style="width: 1rem;height: 1rem">
+
+                                        </dotlottie-wc>
+                                    </span>
                                 </button>
                                 <button class="btn mt-2 liquidGlass-wrapper"
                                         onclick="window.location.href='menu/descrizione-piatto-3.html'">
@@ -361,237 +366,322 @@
 
     </section>
 
-    <!-- a-la-carte menu -->
-
-    <section>
-
-        <!-- a-la-carte menu introduction -->
-        <section>
-            <h2>Il menu</h2>
-            <p>
+    <!-- a-la-carte menu introduction -->
+    <section class="container d-flex flex-column p-5">
+        <div class="row justify-content-center">
+            <h2 class="text-center">Il menu</h2>
+            <p class="text-center col-6">
                 La nostra è una partitura commestibile dedicata all'oceano, in cui gli ingredienti più esclusivi e
-                ricercati del mare non vengono solo cucinati, ma orchestrati. <br/>
+                ricercati del mare non vengono solo cucinati, ma orchestrati. <br/> <br/>
                 Ogni ingrediente è una nota precisa, e ogni piatto un accordo studiato per creare una risonanza armonica
                 sul palato, trasformando la degustazione in un ascolto profondo della natura.
             </p>
-        </section>
+        </div>
+    </section>
 
-        <!-- a-la-carte menu -->
-        <section>
+    <!-- allergens settings -->
+    <section class="container py-5">
 
-            <!-- a-la-carte menu subsection 1 of 3 -->
-            <section>
+        <!-- Allergen settings toggle button -->
+        <div class="container d-flex justify-content-end">
+            <button class="chips me-2">
+                <span>Filtra</span>
+                <img alt="Allergene 1" src="/media/icon/allergen-settings.svg">
+            </button>
+        </div>
 
-                <!-- subsection heading -->
-                <h3>Superfici</h3>
-
-                <!-- subsection item 1 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-                <!-- subsection item 2 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-                <!-- subsection item 3 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-                <!-- subsection item 4 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-            </section>
-
-            <!-- a-la-carte menu subsection 2 of 3 -->
-            <section>
-
-                <!-- subsection heading -->
-                <h3>Correnti</h3>
-
-                <!-- subsection item 1 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-                <!-- subsection item 2 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-                <!-- subsection item 3 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-                <!-- subsection item 4 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-            </section>
-
-            <!-- a-la-carte menu subsection 3 of 3 -->
-            <section>
-
-                <!-- subsection heading -->
-                <h3>Fondali</h3>
-
-                <!-- subsection item 1 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-                <!-- subsection item 2 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-                <!-- subsection item 3 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-                <!-- subsection item 4 of 4 -->
-                <div>
-                    <h4>Nome piatto</h4>
-                    <p>Descrizione piatto</p>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                    </button>
-                </div>
-
-            </section>
-
-        </section>
+        <!-- Allergens list (when allergen setting is enabled)  -->
+        <div class="container">
+            <button class="chips me-2">
+                <img alt="Allergene 1" src="/media/icon/footer-1.svg">
+                <span>Derivati algali</span>
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 2" src="/media/icon/footer-2.svg">
+                <span>Polline marino</span>
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                <span>Idromiele</span>
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+                <span>Derivati di medusa</span>
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" class="img-fluid" src="/media/icon/footer-3.svg">
+                <span class="caption">Plankton</span>
+            </button>
+        </div>
 
     </section>
 
+</div> <!-- end transparency stop (a-la-carte menu is see-trough with gradient) -->
+
+<!-- a-la-carte menu -->
+<section id="a-la-carte-menu">
+
+    <!-- a-la-carte menu subsection 1 of 3 -->
+    <section>
+
+        <!-- subsection heading -->
+        <h3 class="text-center">Superfici</h3>
+
+        <!-- subsection item 1 of 4 -->
+        <div class="px-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+        <!-- subsection item 2 of 4 -->
+        <div class="px-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+        <!-- subsection item 3 of 4 -->
+        <div class="px-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+        <!-- subsection item 4 of 4 -->
+        <div class="px-5 pb-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+    </section>
+
+    <!-- a-la-carte menu subsection 2 of 3 -->
+    <section>
+
+        <!-- subsection heading -->
+        <h3 class="text-center">Correnti</h3>
+
+        <!-- subsection item 1 of 4 -->
+        <div class="px-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+        <!-- subsection item 2 of 4 -->
+        <div class="px-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+        <!-- subsection item 3 of 4 -->
+        <div class="px-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+        <!-- subsection item 4 of 4 -->
+        <div class="px-5 pb-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+    </section>
+
+    <!-- a-la-carte menu subsection 3 of 3 -->
+    <section>
+
+        <!-- subsection heading -->
+        <h3 class="text-center">Fondali</h3>
+
+        <!-- subsection item 1 of 4 -->
+        <div class="px-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+        <!-- subsection item 2 of 4 -->
+        <div class="px-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+        <!-- subsection item 3 of 4 -->
+        <div class="px-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr/>
+        </div>
+
+        <!-- subsection item 4 of 4 -->
+        <div class="px-5 pb-5">
+            <div class="d-flex flex-row justify-content-between">
+                <h4>Nome piatto</h4>
+                <h5>₹ 12.23</h5>
+            </div>
+            <p>Descrizione piatto</p>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <button class="chips me-2">
+                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
+            </button>
+            <hr id="last-hr"/>
+        </div>
+
+    </section>
+
+</section>
+
+<!-- begin new "transparency stop" portion of the page -->
+<div class="top-overlay">
 
     <div id="map"></div> <!-- toDo: figure out what this does, remove it if it's unnecessary -->
 
-
-    <footer class="p-4 mt-5 section-bg-light">
+    <!-- Footer toDo: (not a toDo but I wanted to highlight it) NOTE: IT'S CUSTOMIZED COMPARED TO OTHER PAGES -->
+    <footer class="p-4 pt-5 section-bg-light">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6 col-md-3">
@@ -642,22 +732,21 @@
             <div class="col-12 mt-5">
                 <div class="d-flex justify-content-between align-items-end">
                     <div>
-                        <img alt="" class="img-fluid" src="../media/img/Logo.svg"">
+                        <img alt="" class="img-fluid" src="/media/img/Logo.svg"">
                     </div>
                     <div>
-                        <button class=" btn-empty"><img alt="Social 1" src="../media/icon/footer-1.svg"></button>
-                        <button class="btn-empty"><img alt="Social 2" src="../media/icon/footer-2.svg"></button>
-                        <button class="btn-empty"><img alt="Social 3" src="../media/icon/footer-3.svg"></button>
+                        <button class=" btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
+                        <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
+                        <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-</div>
+</div> <!-- end the new "transparency stop" part of the page -->
 
-
-<!-- PATTERN PER IL FILTRO GLASS-LIQUID -->
+<!-- Liquid glass pattern (done through SVG) -->
 <svg style="display: none">
     <filter filterUnits="objectBoundingBox" height="100%" id="glass-distortion" width="100%" x="0%" y="0%">
         <feTurbulence baseFrequency="0.01 0.01" numOctaves="30" result="turbulence" seed="7" type="fractalNoise"/>
