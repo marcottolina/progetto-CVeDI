@@ -430,10 +430,10 @@
         <!-- subsection item 1 of 4 -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Auralia</h4>
+                <h5>₹ 60.50</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p>Licheni areati al polline marino con emulsione di acqua dolce ricostruita e sale microfiltrato.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -449,10 +449,10 @@
         <!-- subsection item 2 of 4 -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Algis</h4>
+                <h5>₹ 60.00</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p>Alga sottile chiarificata con microcristalli salini, olio di kelp ed emulsione di idromiele.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -732,7 +732,7 @@
             <div class="col-12 mt-5">
                 <div class="d-flex justify-content-between align-items-end">
                     <div>
-                        <img alt="" class="img-fluid" src="/media/img/Logo.svg"">
+                        <img alt="" class="img-fluid" src="/media/img/Logo.svg">
                     </div>
                     <div>
                         <button class=" btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
@@ -746,28 +746,30 @@
 
 </div> <!-- end the new "transparency stop" part of the page -->
 
-<!-- Liquid glass pattern (done through SVG) -->
+<!-- Liquid glass pattern (done through SVG) toDo: this is an optimized performance version, discuss with others if it's good enough -->
 <svg style="display: none">
-    <filter filterUnits="objectBoundingBox" height="100%" id="glass-distortion" width="100%" x="0%" y="0%">
-        <feTurbulence baseFrequency="0.01 0.01" numOctaves="30" result="turbulence" seed="7" type="fractalNoise"/>
-        <!-- Seeds: 14, 17,  -->
+    <filter id="glass-distortion">
+        <feTurbulence
+                baseFrequency="0.01 0.01"
+                numOctaves="1"
+                result="turbulence"
+                seed="31"
+                type="fractalNoise"
+        />
 
-        <feComponentTransfer in="turbulence" result="mapped">
-            <feFuncR amplitude="1" exponent="10" offset="0.5" type="gamma"/>
-            <feFuncG amplitude="0" exponent="1" offset="0" type="gamma"/>
-            <feFuncB amplitude="0" exponent="1" offset="0.5" type="gamma"/>
-        </feComponentTransfer>
+        <feGaussianBlur
+                in="turbulence"
+                stdDeviation="3"
+                result="softMap"
+        />
 
-        <feGaussianBlur in="turbulence" result="softMap" stdDeviation="3"/>
-
-        <feSpecularLighting in="softMap" lighting-color="white" result="specLight" specularConstant="1"
-                            specularExponent="100" surfaceScale="2">
-            <fePointLight x="-200" y="-200" z="300"/>
-        </feSpecularLighting>
-
-        <feComposite in="specLight" k1="0" k2="1" k3="1" k4="0" operator="arithmetic" result="litImage"/>
-
-        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="30" xChannelSelector="R" yChannelSelector="G"/>
+        <feDisplacementMap
+                in="SourceGraphic"
+                in2="softMap"
+                scale="30"
+                xChannelSelector="R"
+                yChannelSelector="G"
+        />
     </filter>
 </svg>
 
