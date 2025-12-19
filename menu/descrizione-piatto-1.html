@@ -17,6 +17,28 @@
 
     <!-- title -->
     <title>Thalassa</title>
+    <style>
+        #music-section {
+            background: linear-gradient(
+                    to bottom,
+
+                    var(--blue-5, #070713),
+
+                    var(--blue-5-70, #070713),
+
+                    var(--blue-5, #070713)
+            );
+        }
+
+        .btn-plate {
+            border-radius: 28px;
+            padding-left: 10px;
+            background: radial-gradient(62.44% 72.74% at 50% 50%, var(--orange, #F67055) 0%, rgba(246, 112, 85, 0.00) 100%);
+        }
+
+        .btn-plate:hover {
+        }
+    </style>
 
 </head>
 <body>
@@ -97,113 +119,151 @@
     </div>
 </div>
 
-
-<section class="full-y py-5" id="header-menu">
+<!-- hero (updated) -->
+<section class="full-y py-5">
     <div class="header-wrapper">
         <div class="header-overlay"></div>
-        <img src="../media/video/menu-coral.webm" alt="Sfondo Menu" class="img-fluid">
+        <video autoplay class="bg-video" loop muted playsinline>
+            <source src="/media/video/thalassa-coral.webm" type="video/webm">
+        </video>
     </div>
-    <div class="container mb-5 d-flex flex-column justify-content-end align-items-start h-100">
+    <div class="container-fluid mb-5 mx-4 d-flex flex-column justify-content-end align-items-start h-100">
         <h1>Thalassa</h1>
     </div>
 </section>
 
-<section class="my-5 p-2 p-lg-5">
-    <div class="container text-center mt-5">
-        <h2>Origine</h2>
-        <p class="fs-4 lh-sm px-5">Un piatto che celebra l’adattamento e la rinascita. <br>I primi esperimenti con i coralli rigenerati hanno rivelato una materia capace di reagire alla temperatura e al tocco umano.<br>Da questa scoperta è nato il desiderio di trasformare il respiro del mare in un’esperienza gastronomica.</p>
-    </div>
-</section>
 
-<main class="pb-5">
-    <section>
-        <div class="container-fluid px-1 px-lg-5 w-75 my-3">
-            <div class="row mb-5 align-items-center g-4">
-                <div class="col-xl-5 col-12 order-2 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
-                    <h3>La composizione</h3>
-                    <p>Thalassa è un intreccio di corallo rigenerato adagiato su una mousse di plankton fermentato con perle di salinità cangiante. Il piatto evolve termicamente, variando consistenza e colore in base al calore della pelle.<br> Servito a 12°C per mantenere attiva la microflora fermentata.<br><strong>Allergeni:</strong> derivati di algali, polline marino, plankton.</p>
+<div class="top-overlay"> <!-- begin "do not show background video" -->
+
+    <!-- introduction -->
+    <section class="container mt-5 text-center">
+        <h2 class="mt-5 mb-3">Origine</h2>
+        <p class="body-lead px-5">
+            <b>Un piatto che celebra l’adattamento e la rinascita. </b><br><br>I primi esperimenti con i coralli rigenerati hanno
+            rivelato una materia capace di reagire alla temperatura e al tocco umano.<br><br>Da questa scoperta è nato il
+            desiderio di trasformare il respiro del mare in un’esperienza gastronomica.
+        </p>
+    </section>
+
+    <!-- after-intro -->
+    <section class="py-5">
+
+        <!-- first collaboration -->
+        <div class="row mb-5 align-items-center g-4 px-5">
+            <div class="col-xl-5 col-12 order-2 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
+                <h3>La composizione</h3>
+                <p>Thalassa è un intreccio di corallo rigenerato adagiato su una mousse di plankton fermentato con perle
+                    di salinità cangiante. Il piatto evolve termicamente, variando consistenza e colore in base al
+                    calore della pelle.Servito a 12°C per mantenere attiva la microflora fermentata.</p>
+                <div class="d-flex justify-content-start flex-wrap">
+                    <button class="chips me-2">
+                        <img alt="Allergene 2" src="/media/icon/PollineMarino.svg">
+                        <span>Polline marino</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/Plancton.svg">
+                        <span>Plancton</span>
+                    </button>
                 </div>
-                <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
-                    <img
-                            alt="Composizione"
-                            class="img-fluid w-100"
-                            loading="lazy"
-                            sizes="
+            </div>
+            <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
+                <img
+                        alt="Composizione"
+                        class="img-fluid w-100"
+                        loading="lazy"
+                        sizes="
                                 (min-width: 1200px) 600px,
                                 (min-width: 992px) 500px,
                                 (min-width: 768px) 400px,
                                 (min-width: 576px) 500px,
                                 100vw
                                 "
-                            src="../media/img/descpiatto1-1-1200.webp"
-                            srcset="
+                        src="../media/img/descpiatto1-1-1200.webp"
+                        srcset="
                                 ../media/img/descpiatto1-1-800.webp 800w,
                                 ../media/img/descpiatto1-1-1200.webp 1200w,
                                 ../media/img/descpiatto1-1-2000.webp 2000w
                                 "
-                    >
-                </div>
+                >
             </div>
+        </div>
 
-            <div class="row mb-5 align-items-center g-4">
-                <div class="col-xl-5 col-12 order-1 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
-                    <img
-                            alt="Corallo rigenerato"
-                            class="img-fluid w-100"
-                            loading="lazy"
-                            sizes="
+        <!-- second collaboration -->
+        <div class="row align-items-center g-4 px-5">
+            <div class="col-xl-5 col-12 order-1 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
+                <img
+                        alt="Corallo rigenerato"
+                        class="img-fluid w-100"
+                        loading="lazy"
+                        sizes="
                                 (min-width: 1200px) 600px,
                                 (min-width: 992px) 500px,
                                 (min-width: 768px) 400px,
                                 (min-width: 576px) 500px,
                                 100vw
                                 "
-                            src="../media/img/descpiatto1-2-1200.webp"
-                            srcset="
+                        src="../media/img/descpiatto1-2-1200.webp"
+                        srcset="
                                 ../media/img/descpiatto1-2-800.webp 800w,
                                 ../media/img/descpiatto1-2-1200.webp 1200w,
                                 ../media/img/descpiatto1-2-2000.webp 2000w
                                 "
-                    >
-                </div>
-                <div class="col-xl-6 col-12 order-2 order-xl-2">
-                    <h3>Il corallo rigenerato</h3>
-                    <p>Il corallo rigenerato è una coltura biotecnologica derivata da antiche barriere, rianimate attraverso simbiosi microbiche. Oltre a essere completamente commestibile, conserva la struttura porosa natural e che trattiene umidità e sapidità come una spugna vivente. <br> Al gusto unisce la mineralità dell’acqua salata a note delicate di spugna marina e alga dolce: un equilibrio di sapori unici.</p>
-                </div>
+                >
+            </div>
+            <div class="col-xl-6 col-12 order-2 order-xl-2">
+                <h3>Il corallo rigenerato</h3>
+                <p>Il corallo rigenerato è una coltura biotecnologica derivata da antiche barriere, rianimate attraverso
+                    simbiosi microbiche. Oltre a essere completamente commestibile, conserva la struttura porosa naturale
+                    che trattiene umidità e sapidità come una spugna vivente. <br> <br>Al gusto unisce la mineralità
+                    dell’acqua salata a note delicate di spugna marina e alga dolce: un equilibrio di sapori unici.</p>
             </div>
         </div>
     </section>
+</div>
 
-    <section class="p-5 p-lg-5 p-xl-2 section-bg-light">
-        <div class="container-fluid px-4 h-100">
-            <div class="row align-items-center h-100">
-                <!-- Colonna testo + pulsante -->
-                <div class="col-lg-8 col-12 d-flex flex-column">
-                    <h2>Nome musica</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur. Nam nisi vestibulum at tincidunt risus est proin facilisis. Viverra neque id convallis morbi a adipiscing. Mi amet orci fermentum congue volutpat ut turpis mollis odio. Eleifend facilisi quam condimentum massa ipsum. Sed pulvinar viverra tincidunt vehicula. Nisi etiam magna vulputate proin ipsum amet vestibulum.</p>
 
-                    <div class="d-flex justify-content-start mt-3 mt-lg-2">
-                        <button class="btn" id="music-startdesc1">
-                            Riproduci  <i class="bi bi-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
+<section class="p-5 px-5 py-5 p-lg-5 p-xl-2" id="music-section">
 
-                <!-- Colonna immagine a destra su desktop -->
-                <div class="col-lg-4 col-12 d-flex justify-content-center justify-content-lg-end align-items-start mt-3 mt-lg-0">
-                    <img src="../media/img/musica.webp" alt="Nome musica - GIF" class="img-fluid">
+    <div class="container-fluid px-5 py-5 h-100">
+        <div class="row align-items-center h-100">
+            <!-- Colonna testo + pulsante -->
+            <div class="col-lg-8 col-12 d-flex flex-column">
+                <h2>Cornfields</h2>
+                <p>Una canzone di Hans Zimmer che si sposa al piatto come un moto ondoso sonoro: un crescendo che
+                    richiama il respiro del mare, l’attesa e la rinascita.<br><br>
+                    Le note iniziali, leggere e pulsanti; poi la melodia si espande, come una corrente che
+                    accompagna ogni boccone, sospingendo il palato in un viaggio tra profondità e freschezza.<br><br>
+                    La musica avvolge Thalassa come un’onda che si infrange e si ritira così come il corallo
+                    rigenerato chiude e riapre i suoi petali.</p>
+
+                <div class="d-flex justify-content-start mt-3 mt-lg-2">
+                    <button class="btn btn-plate mt-2 liquidGlass-wrapper" id="music-startdesc1">>
+                        <span aria-hidden="true" class="liquidGlass-effect"></span>
+                        <span aria-hidden="true" class="liquidGlass-tint"></span>
+                        <span aria-hidden="true" class="liquidGlass-shine"></span>
+                        <span class="liquidGlass-text">Ascolta
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M2 10V13M6 6V17M10 3V21M14 8V15M18 5V18M22 10V13" stroke="#EAE9FB" stroke-width="2.18" stroke-linecap="round"
+                             stroke-linejoin="round"/>
+                        </svg>
+                        </span>
+                    </button>
                 </div>
             </div>
+
+            <!-- Colonna immagine a destra su desktop -->
+            <div class="col-lg-4 col-12 d-flex justify-content-center justify-content-lg-end align-items-start mt-3 mt-lg-0">
+                <img src="../media/img/musica.webp" alt="Nome musica - GIF" class="img-fluid">
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-</main>
-
-
-<footer class="py-4 mt-5 section-bg-light">
-    <div class="container">
+<!-- footer (updated) -->
+<footer class="p-4 section-bg-light">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-6 col-xl-3">
+            <div class="col-6 col-md-3">
                 <h5>Orari di apertura</h5>
                 <p>Martedì - Domenica <br> 19:00 - 01:00</p>
                 <h5>Contatti</h5>
@@ -211,27 +271,36 @@
                     Settore abissale Ovest
                 </p>
             </div>
-            <div class="col-6 col-lg-3">
+            <div class="col-6 col-md-3">
                 <h5>Prenotazioni</h5>
-                <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di Atlas, è necessaria la prenotazione
+                <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
+                    Atlas, è necessaria la prenotazione
                 </p>
-                <button class="btn mt-2">
-                    Prenota <i class="bi bi-arrow-right"></i>
+                <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
                 </button>
             </div>
-            <div class="col-lg-6">
-                <div class="row justify-content-lg-end mt-3">
-                    <div class="col-lg-6 col-8 d-flex flex-column">
+            <div class="col-md-6">
+                <div class="row justify-content-md-end mt-3">
+                    <div class="col-md-6 col-8 d-flex flex-column">
                         <h5>Linea abissale</h5>
                         <p>
                             Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
                         </p>
                         <form>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">E-mail</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                <label class="form-label" for="exampleInputEmail1">E-mail</label>
+                                <input class="form-control" id="exampleInputEmail1" type="email">
                             </div>
-                            <button type="submit" class="btn btn-primary">Iscriviti <i class="bi bi-arrow-right"></i></button>
+                            <button class="btn liquidGlass-wrapper" type="submit">
+                                <span aria-hidden="true" class="liquidGlass-effect"></span>
+                                <span aria-hidden="true" class="liquidGlass-tint"></span>
+                                <span aria-hidden="true" class="liquidGlass-shine"></span>
+                                <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
+                            </button>
                         </form>
 
                     </div>
@@ -242,12 +311,12 @@
         <div class="col-12 mt-5">
             <div class="d-flex justify-content-between align-items-end">
                 <div>
-                    <img src="../media/img/Logo.svg" alt="" class="img-fluid">
+                    <img alt="" class="img-fluid" src="./img/Logo.svg">
                 </div>
                 <div>
-                    <button class="btn btn-empty">A</button>
-                    <button class="btn btn-empty">B</button>
-                    <button class="btn btn-empty">C</button>
+                    <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
+                    <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
+                    <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
                 </div>
             </div>
         </div>
