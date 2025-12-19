@@ -17,6 +17,14 @@
     <!-- page title -->
     <title> serate speciali </title>
 
+    <!-- Local CSS toDo: bring it to main.css -->
+    <style>
+        #pagina-libera-overlay {
+            position: relative; /* note: do not put absolute otherwise it interferes with the navbar, as it is absolute as well */
+            z-index: 10;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -39,9 +47,10 @@
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota</span>
                 </button>
-                <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull" data-bs-toggle="offcanvas"
+                <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull"
+                        data-bs-toggle="offcanvas"
                         type="button">
-                    <img src="/media/icon/hamburger-menu.svg" alt="hamburger-menu"/>
+                    <img alt="hamburger-menu" src="/media/icon/hamburger-menu.svg"/>
                 </button>
             </div>
         </div>
@@ -73,12 +82,18 @@
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
                             <span class="liquidGlass-text" onclick="'window.location.href: prenota.html'">Prenota</span>
                         </button>
-                        <button class="btn-empty" onclick="window.location.href='index.html'" type="button">Home</button>
+                        <button class="btn-empty" onclick="window.location.href='index.html'" type="button">Home
+                        </button>
                         <button class="btn-empty mt-3" onclick="window.location.href='ristorante.html'" type="button">
-                            Ristorante</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">Informazioni</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'" type="button">
+                            Ristorante
+                        </button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu
+                        </button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">
+                            Informazioni
+                        </button>
+                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'"
+                                type="button">
                             Serate Speciali
                         </button>
                     </div>
@@ -87,7 +102,7 @@
                 <!-- BUTTON TO CLOSE -->
                 <div class="col-6 col-md-3 d-flex justify-content-end align-items-start order-2 order-md-last">
                     <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
-                        <img src="media/icon/arrow-left.svg" alt="arrow-left"/>
+                        <img alt="arrow-left" src="media/icon/arrow-left.svg"/>
                     </button>
                 </div>
 
@@ -110,245 +125,272 @@
     </div>
 </section>
 
-<!-- introduction -->
-<section class="container mt-5">
-    <h2 class="text-center mt-5 mb-3">Incontri dal profondo</h2>
-    <p class="body-lead px-5">
-        Le nostre serate speciali sono rituali sensoriali in cui gastronomia, suono e tecnologia si uniscono per creare
-        esperienze irripetibili. <br>
-        Ogni evento è un incontro: tra elementi, emozioni e memorie che riaffiorano dal profondo. Un invito a vivere il
-        mare in una forma diversa, ogni volta unica.
-    </p>
-</section>
+<div class="top-overlay" id="pagina-libera-overlay"> <!-- begin "do not show background video" -->
 
-<!-- special events list (main page content) -->
-<!-- fluid container, padding in all directions = 5 -->
-<main class="container-fluid p-5" id="events-list">
+    <!-- introduction -->
+    <section class="container mt-5">
+        <h2 class="text-center mt-5 mb-3">Incontri dal profondo</h2>
+        <p class="body-lead px-5">
+            Le nostre serate speciali sono rituali sensoriali in cui gastronomia, suono e tecnologia si uniscono per
+            creare
+            esperienze irripetibili. <br>
+            Ogni evento è un incontro: tra elementi, emozioni e memorie che riaffiorano dal profondo. Un invito a vivere
+            il
+            mare in una forma diversa, ogni volta unica.
+        </p>
+    </section>
 
-    <!-- element 1-->
-    <!-- display: flex, (by default) flex is a column, (when >= medium = 768px) flex is a row, content occupies 100% of the height, items within content occupy 100% of the height, margin both top and bottom (y) to 5 = ($spacer * 3), padding both top and bottom (y) to 3 = ($spacer * 1) -->
-    <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
-        <!-- display: flex, flex is a column, content is {justify-content = in the direction of the main axis = vertical in a column / horizontal in a row} aligned to the start (top/left), content is {align-items = perpendicular to main axis = horizontal in a column / vertical in a row} = aligned to the start (left/top), items within grow to their maximum size (flex-grow = 1), (by default) content must fill all the 12 columns, (when >= medium = 768px) content must fill only 6 columns, (when >= medium = 768px) position to sticky-top, content has height = 50% of screen, when >= medium-size padding-end to 5, when >= large padding-start to 5, z-index to -1 (z-n1) so that the element is further back than the nav-bar -->
-        <!-- toDo: need custom CSS if we are to make a padding-end larger than pe-5, to use it in place of current pe-md-5 -->
-        <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 z-n1 spaceFromNavbar">
-            <!-- toDo: figure out how to add padding that acts only against another sticky element (the nav-bar) and not in general -->
-            <!-- each element but the last has a bottom-padding of 1*$spacer (pb-3) -->
-            <h6 class="pb-3">03/11/2531</h6>
-            <h3 class="pb-3">Luce liquida</h3>
-            <p class="pb-3">
-                Una cena-performance in cui la luce si trasforma in ingrediente. Proiezioni, riflessi e ombre danzano
-                sulla
-                tavola, mutando al ritmo del servizio. I piatti reagiscono alla luminosità, rivelando colori e
-                consistenze
-                inaspettate.
-            </p>
-            <!-- bottom button has a margin-bottom of 3*$spacer to not make it stick to the image on mobile -->
-            <button class="btn hoverable mb-5">
-                Prenota
-                <i class="bi bi-arrow-right"></i>
-            </button>
-        </div>
-        <!-- display: flex, content is {align-items = perpendicular to main axis = horizontal in a column / vertical in a row} = aligned to the end (right/bottom), if content >= small (but < medium) align items at start (done to avoid wierd small-tabled behavior), if >= medium resume end-alignment, (by default) occupy 12 columns, (when >= medium = 768px) occupy 6 columns -->
-        <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
-            <img
-                    alt="Immagine dell'evento luce liquida"
-                    class="img-fluid w-100"
-                    loading="lazy"
-                    sizes="
+    <!-- special events list (main page content) -->
+    <!-- fluid container, padding in all directions = 5 -->
+    <main class="container-fluid p-5" id="events-list">
+
+        <!-- element 1-->
+        <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
+            <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 spaceFromNavbar">
+                <!-- each element but the last has a bottom-padding of 1*$spacer (pb-3) -->
+                <h6 class="pb-3">03/11/2531</h6>
+                <h3 class="pb-3">Luce liquida</h3>
+                <p class="pb-3">
+                    Una cena-performance in cui la luce si trasforma in ingrediente. Proiezioni, riflessi e ombre
+                    danzano sulla tavola, mutando al ritmo del servizio. I piatti reagiscono alla luminosità, rivelando
+                    colori e
+                    consistenze inaspettate.
+                </p>
+                <!-- bottom button has a margin-bottom of 3*$spacer to not make it stick to the image on mobile -->
+                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='prenota.html'">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">Prenota</span>
+                </button>
+            </div>
+            <!-- display: flex, content is {align-items = perpendicular to main axis = horizontal in a column / vertical in a row} = aligned to the end (right/bottom), if content >= small (but < medium) align items at start (done to avoid wierd small-tabled behavior), if >= medium resume end-alignment, (by default) occupy 12 columns, (when >= medium = 768px) occupy 6 columns -->
+            <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
+                <img
+                        alt="Immagine dell'evento luce liquida"
+                        class="img-fluid w-100"
+                        loading="lazy"
+                        sizes="
                         (min-width: 1200px) 600px,
                         (min-width: 992px) 500px,
                         (min-width: 768px) 400px,
                         (min-width: 576px) 500px,
                         100vw
                     "
-                    src="media/img/serate-speciali-main-1-1200w.webp"
-                    srcset="
+                        src="media/img/serate-speciali-main-1-1200w.webp"
+                        srcset="
                         media/img/serate-speciali-main-1-800w.webp 800w,
                         media/img/serate-speciali-main-1-1200w.webp 1200w,
                         media/img/serate-speciali-main-1-2000w.webp 2000w
                     "
-            />
-        </div>
-    </div>
-
-    <!-- element 2-->
-    <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
-        <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 z-n1 spaceFromNavbar">
-            <h6 class="pb-3">21/11/2531</h6>
-            <h3 class="pb-3">Metamorfosi</h3>
-            <p class="pb-3">
-                Nulla resta uguale, nemmeno per un istante. Durante la serata, la materia si trasforma davanti agli
-                occhi: il calore, la luce e il suono mutano la sostanza dei piatti in tempo reale. Ogni portata è un
-                atto di metamorfosi, un invito ad assaporare il cambiamento, a percepire il mare non come luogo, ma come
-                organismo in continua evoluzione.
-            </p>
-            <button class="btn hoverable mb-5">
-                Prenota
-                <i class="bi bi-arrow-right"></i>
-            </button>
-        </div>
-        <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
-            <!-- ratio of 1x1 to make the image the same size as the (square) images, z-index to -1 (z-n1) so that the element is further back than the nav-bar -->
-            <div class="ratio ratio-1x1 z-n1">
-                <!-- object fit to cover to make it fill the entire square (cutting top and both, as videos are more tall than they are large, but this is by design) -->
-                <video autoplay class="img-fluid w-100 object-fit-cover" loop muted playsinline>
-                    <source src="/media/img/serate-speciali-main-2.webm" type="video/webm">
-                    <!-- toDo: see if we need a lower-res version as well -->
-                </video>
+                />
             </div>
         </div>
-    </div>
 
-    <!-- element 3 -->
-    <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
-        <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 z-n1 spaceFromNavbar">
-            <h6 class="pb-3">06/12/2531</h6>
-            <h3 class="pb-3">Silenzio profondo</h3>
-            <p class="pb-3">
-                Per una notte, la musica tace e lascia spazio al suono naturale del respiro, del mare e dei gesti. Ogni
-                piatto è servito come un’eco visiva, accompagnato solo da giochi di luce e vibrazioni sottili
-                percepibili sotto la pelle. Un’esperienza di ascolto profondo e consapevolezza, dove l’assenza diventa
-                presenza.
-            </p>
-            <button class="btn hoverable mb-5">
-                Prenota
-                <i class="bi bi-arrow-right"></i>
-            </button>
+        <!-- element 2-->
+        <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
+            <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 spaceFromNavbar">
+                <h6 class="pb-3">21/11/2531</h6>
+                <h3 class="pb-3">Metamorfosi</h3>
+                <p class="pb-3">
+                    Nulla resta uguale, nemmeno per un istante. Durante la serata, la materia si trasforma davanti agli
+                    occhi: il calore, la luce e il suono mutano la sostanza dei piatti in tempo reale. Ogni portata è un
+                    atto di metamorfosi, un invito ad assaporare il cambiamento, a percepire il mare non come luogo, ma
+                    come
+                    organismo in continua evoluzione.
+                </p>
+                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='prenota.html'">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">Prenota</span>
+                </button>
+            </div>
+            <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
+                <!-- ratio of 1x1 to make the image the same size as the (square) images, z-index to -1 (z-n1) so that the element is further back than the nav-bar -->
+                <div class="ratio ratio-1x1 z-n1">
+                    <!-- object fit to cover to make it fill the entire square (cutting top and both, as videos are more tall than they are large, but this is by design) -->
+                    <video autoplay class="img-fluid w-100 object-fit-cover" loop muted playsinline>
+                        <source src="/media/video/serate-speciali-main-2.webm" type="video/webm">
+                        <!-- toDo: see if we need a lower-res version as well -->
+                    </video>
+                </div>
+            </div>
         </div>
-        <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
-            <img
-                    alt="Immagine dell'evento silenzio profondo"
-                    class="img-fluid w-100"
-                    loading="lazy"
-                    sizes="
+
+        <!-- element 3 -->
+        <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
+            <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 spaceFromNavbar">
+                <h6 class="pb-3">06/12/2531</h6>
+                <h3 class="pb-3">Silenzio profondo</h3>
+                <p class="pb-3">
+                    Per una notte, la musica tace e lascia spazio al suono naturale del respiro, del mare e dei gesti.
+                    Ogni
+                    piatto è servito come un’eco visiva, accompagnato solo da giochi di luce e vibrazioni sottili
+                    percepibili sotto la pelle. Un’esperienza di ascolto profondo e consapevolezza, dove l’assenza
+                    diventa
+                    presenza.
+                </p>
+                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='prenota.html'">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">Prenota</span>
+                </button>
+            </div>
+            <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
+                <img
+                        alt="Immagine dell'evento silenzio profondo"
+                        class="img-fluid w-100"
+                        loading="lazy"
+                        sizes="
                         (min-width: 1200px) 600px,
                         (min-width: 992px) 500px,
                         (min-width: 768px) 400px,
                         (min-width: 576px) 500px,
                         100vw
                     "
-                    src="media/img/serate-speciali-main-3-1200w.webp"
-                    srcset="
-                    media/img/serate-speciali-main-3-800w.webp 800w,
-                    media/img/serate-speciali-main-3-1200w.webp 1200w,
-                    media/img/serate-speciali-main-3-2000w.webp 2000w
+                        src="media/img/serate-speciali-main-3-1200w.webp"
+                        srcset="
+                        media/img/serate-speciali-main-3-800w.webp 800w,
+                        media/img/serate-speciali-main-3-1200w.webp 1200w,
+                        media/img/serate-speciali-main-3-2000w.webp 2000w
                     "
-            />
-        </div>
-    </div>
-
-    <!-- toDo: cambiare sizes in valori assoluti, in particolari px -->
-
-    <!-- element 4 -->
-    <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
-        <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 z-n1 spaceFromNavbar">
-            <h6 class="pb-3">08/03/2532</h6>
-            <h3 class="pb-3">Festa del tritone</h3>
-            <p class="pb-3">
-                In occasione della festa del tritone, Riff dedica un percorso a quello che una volta era il genere
-                maschile. Insieme ai piatti sofisticati, verranno proposte musiche riscoperte da artisti degli anni 2000
-                che omaggiavano gli uomini tra cui Barbie Girl di Aqua.
-            </p>
-            <button class="btn hoverable mb-5">
-                Prenota
-                <i class="bi bi-arrow-right"></i>
-            </button>
-        </div>
-        <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
-            <div class="ratio ratio-1x1 z-n1">
-                <video autoplay class="img-fluid w-100 object-fit-cover" loop muted playsinline>
-                    <source src="/media/img/serate-speciali-main-4.webm" type="video/webm">
-                    <!-- toDo: see if we need a lower-res version as well -->
-                </video>
+                />
             </div>
         </div>
-    </div>
 
-</main>
+        <!-- toDo: cambiare sizes in valori assoluti, in particolari px -->
 
-<!-- footer (updated) -->
-<footer class="p-4 mt-5 section-bg-light">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <h5>Orari di apertura</h5>
-                <p>Martedì - Domenica <br> 19:00 - 01:00</p>
-                <h5>Contatti</h5>
-                <p>Riff <br> Atlas, P.zza Corolleo 1 <br>24°N - 46°O, -230 m <br><br>
-                    Settore abissale Ovest
+        <!-- element 4 -->
+        <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
+            <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 spaceFromNavbar">
+                <h6 class="pb-3">08/03/2532</h6>
+                <h3 class="pb-3">Festa del tritone</h3>
+                <p class="pb-3">
+                    In occasione della festa del tritone, Riff dedica un percorso a quello che una volta era il genere
+                    maschile. Insieme ai piatti sofisticati, verranno proposte musiche riscoperte da artisti degli anni
+                    2000
+                    che omaggiavano gli uomini tra cui Barbie Girl di Aqua.
                 </p>
-            </div>
-            <div class="col-6 col-md-3">
-                <h5>Prenotazioni</h5>
-                <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
-                    Atlas, è necessaria la prenotazione
-                </p>
-                <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
+                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='prenota.html'">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
+                    <span class="liquidGlass-text">Prenota</span>
                 </button>
             </div>
-            <div class="col-md-6">
-                <div class="row justify-content-md-end mt-3">
-                    <div class="col-md-6 col-8 d-flex flex-column">
-                        <h5>Linea abissale</h5>
-                        <p>
-                            Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
-                        </p>
-                        <form>
-                            <div class="mb-3">
-                                <label class="form-label" for="exampleInputEmail1">E-mail</label>
-                                <input class="form-control" id="exampleInputEmail1" type="email">
-                            </div>
-                            <button class="btn liquidGlass-wrapper" type="submit">
-                                <span aria-hidden="true" class="liquidGlass-effect"></span>
-                                <span aria-hidden="true" class="liquidGlass-tint"></span>
-                                <span aria-hidden="true" class="liquidGlass-shine"></span>
-                                <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
-                            </button>
-                        </form>
+            <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
+                <div class="ratio ratio-1x1 z-n1">
+                    <img
+                            alt="Immagine dell'evento silenzio profondo"
+                            class="img-fluid w-100"
+                            loading="lazy"
+                            sizes="
+                        (min-width: 1200px) 600px,
+                        (min-width: 992px) 500px,
+                        (min-width: 768px) 400px,
+                        (min-width: 576px) 500px,
+                        100vw
+                    "
+                            src="media/img/serate-speciali-main-4-1200w.webp"
+                            srcset="
+                        media/img/serate-speciali-main-4-800w.webp 800w,
+                        media/img/serate-speciali-main-4-1200w.webp 1200w,
+                        media/img/serate-speciali-main-4-2000w.webp 2000w
+                    "
+                    />
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- footer (updated) -->
+    <footer class="p-4 mt-5 section-bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <h5>Orari di apertura</h5>
+                    <p>Martedì - Domenica <br> 19:00 - 01:00</p>
+                    <h5>Contatti</h5>
+                    <p>Riff <br> Atlas, P.zza Corolleo 1 <br>24°N - 46°O, -230 m <br><br>
+                        Settore abissale Ovest
+                    </p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h5>Prenotazioni</h5>
+                    <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
+                        Atlas, è necessaria la prenotazione
+                    </p>
+                    <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
+                        <span aria-hidden="true" class="liquidGlass-effect"></span>
+                        <span aria-hidden="true" class="liquidGlass-tint"></span>
+                        <span aria-hidden="true" class="liquidGlass-shine"></span>
+                        <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <div class="row justify-content-md-end mt-3">
+                        <div class="col-md-6 col-8 d-flex flex-column">
+                            <h5>Linea abissale</h5>
+                            <p>
+                                Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
+                            </p>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" for="exampleInputEmail1">E-mail</label>
+                                    <input class="form-control" id="exampleInputEmail1" type="email">
+                                </div>
+                                <button class="btn liquidGlass-wrapper" type="submit">
+                                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                                    <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
+                                </button>
+                            </form>
+
+                        </div>
 
                     </div>
+                </div>
+            </div>
+            <div class="col-12 mt-5">
+                <div class="d-flex justify-content-between align-items-end">
+                    <div>
+                        <img alt="" class="img-fluid" src="./img/Logo.svg">
+                    </div>
+                    <div>
+                        <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
+                        <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
+                        <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-12 mt-5">
-            <div class="d-flex justify-content-between align-items-end">
-                <div>
-                    <img alt="" class="img-fluid" src="./img/Logo.svg">
-                </div>
-                <div>
-                    <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
-                    <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
-                    <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+</div> <!-- end "do not show background video" -->
 
 <!-- Empty div to set the mouse effect only when content is shown (doesn't work directly put on body) -->
 <div class="circle"></div>
 
 <!-- Liquid glass pattern (done through SVG) toDo: this is a fixed version with the lighting removed (as it wasn't working) -->
 <svg style="display: none">
-    <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+    <filter height="100%" id="glass-distortion" width="100%" x="0%" y="0%">
 
         <feTurbulence
-                type="fractalNoise"
                 baseFrequency="0.01 0.01"
                 numOctaves="30"
                 result="turbulence"
                 seed="31"
+                type="fractalNoise"
         />
 
         <feGaussianBlur
                 in="turbulence"
-                stdDeviation="3"
                 result="softMap"
+                stdDeviation="3"
         />
 
         <feDisplacementMap

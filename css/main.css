@@ -144,6 +144,7 @@ h6 {
     left: calc(var(--circle-size) / 2 * -1);
     pointer-events: none;
     transition: border, opacity 0.3s;
+    z-index: 900000000000;
 }
 
 /* remove cursor on devices smaller than a PC */
@@ -695,7 +696,7 @@ h6 {
 
 /* === FOOTER === */
 footer{
-    background: linear-gradient(180deg, rgba(7, 7, 19, 0.00) 0%, var(--blue-5, #070713) 100%), var(--blue-15, #151439);
+    background: var(--blue-5);
 }
 
 /* === CHIPS (allergens) === */
