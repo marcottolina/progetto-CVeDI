@@ -644,6 +644,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* === INTERACTIVE MAP WITH D3 === */
 /* toDo: finish converting comments to Italian */
+/*
+capire che sta catturando l'evento del d3-drag per il problema del simbolino del mouse.
+Il problema è che d3 sta andando ad impedire al browser / al layer più esterno di prendere l'evento - fa da captive portal per l'evento.
+Dunque dovremo aggiornare manualmente la posizione del puntatore da D3.
+ */
 document.addEventListener("DOMContentLoaded", function () {
 
     // = Size configuration =
