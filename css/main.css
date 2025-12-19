@@ -120,10 +120,15 @@ h6 {
     font-weight: 400;
 }
 
-.caption {
+.caption, .chips {
     font-size: 0.875rem;
     line-height: 1.05rem;
     font-weight: 400;
+}
+
+.link{
+    font-size: 1.125rem;
+    line-height: 1.5rem;
 }
 
 /* </editor-fold> */
@@ -214,6 +219,13 @@ h6 {
     position: relative; /* required if .btn and .liquidGlass-wrapper are used together */
     overflow: visible;
     line-height: 1;
+}
+
+.btn-secondary{
+    color: white;
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
 }
 
 .btn-circular {
@@ -705,21 +717,26 @@ footer{
 .chips{
     background-color: transparent !important;
     border-radius: 1000px !important;
-    border: 1px solid white!important;
-    padding: 0.75rem;
+    padding: 0.5rem;
+    border: none;
     color: white !important ;
-    transition: all 0.5s ease;
 }
 
-.chips:hover{
-    border: 1px solid var(--pink) !important;
+.chips:not(.chips-active):hover {
+    background-image: radial-gradient(var(--orange), transparent, transparent);
 }
 
 .chips-active{
-    background-image: var(--pink);
-    color: white !important;
-    border: 1px solid var(--pink) !important;
-    transition: all 0.5s ease;
+    background-image: radial-gradient(var(--orange), transparent);
+}
+
+#allergens{
+    background-color: var(--blue-15);
+    border-radius: 28px;
+}
+
+video {
+    mix-blend-mode: screen !important;
 }
 
 /* </editor-fold> */
