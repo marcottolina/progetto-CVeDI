@@ -35,6 +35,18 @@
 
     </style>
 
+    <script>
+        // Correzione nel JS
+        document.addEventListener('DOMContentLoaded', () => {
+            let f = document.getElementById('filter'); // ID corretto
+            let a = document.getElementById('allergens');
+
+            f.addEventListener('click', () => {
+                a.classList.toggle('d-none');
+            });
+        });
+    </script>
+
 </head>
 
 <body>
@@ -172,7 +184,7 @@
                             (min-width: 768px) 400px,
                             (min-width: 576px) 500px,
                             100vw
-                        " src="./media/img/home-1-1200w.webp" srcset="
+                        " src="./media/img/menu-1-1200.webp" srcset="
                             ./media/img/menu-1-800.webp 800w,
                             ./media/img/menu-1-1200.webp 1200w,
                             ./media/img/menu-1-2000.webp 2000w
@@ -241,7 +253,7 @@
                                     (min-width: 576px) 500px,
                                     100vw
                                 "
-                                src="./media/img/home-2-1200w.webp" srcset="
+                                src="./media/img/menu-2-1200.webp" srcset="
                                     ./media/img/menu-2-800.webp 800w,
                                     ./media/img/menu-2-1200.webp 1200w,
                                     ./media/img/menu-2-2000.webp 2000w
@@ -249,7 +261,7 @@
                         >
                         <div class="bubble-box">
                             <video class="bg-video-menu" loop muted playsinline>
-                                <source src="/media/video/bioluma-coral.webm" type="video/webm">
+                                <source src="/media/video/bolla2.mp4" type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -300,8 +312,8 @@
                 <div class="row align-items-start">
 
                     <div class="col-lg-6 mt-2 mt-lg-0 pe-lg-5">
-                        <img alt="Terzo piatto" c
-                             lass="img-fluid timeline-img"
+                        <img alt="Terzo piatto"
+                             class="img-fluid timeline-img"
                              loading="lazy"
                              sizes="
                                 (min-width: 1200px) 600px,
@@ -310,7 +322,7 @@
                                 (min-width: 576px) 500px,
                                 100vw
                             "
-                             src="./media/img/home-3-1200w.webp" srcset="
+                             src="./media/img/menu-3-1200.webp" srcset="
                             ./media/img/menu-3-800.webp 800w,
                             ./media/img/menu-3-1200.webp 1200w,
                             ./media/img/menu-3-2000.webp 2000w
@@ -384,34 +396,74 @@
 
         <!-- Allergen settings toggle button -->
         <div class="container d-flex justify-content-end">
-            <button class="chips me-2">
-                <span>Filtra</span>
-                <img alt="Allergene 1" src="/media/icon/allergen-settings.svg">
+            <button class="btn mt-2 liquidGlass-wrapper" id="filter">
+                <span aria-hidden="true" class="liquidGlass-effect"></span>
+                <span aria-hidden="true" class="liquidGlass-tint"></span>
+                <span aria-hidden="true" class="liquidGlass-shine"></span>
+                <span class="liquidGlass-text">Filtra
+                    <img alt="Allergene 1" src="/media/icon/allergen-settings.svg">
+                </span>
             </button>
         </div>
 
         <!-- Allergens list (when allergen setting is enabled)  -->
-        <div class="container">
-            <button class="chips me-2">
-                <img alt="Allergene 1" src="/media/icon/footer-1.svg">
-                <span>Derivati algali</span>
-            </button>
-            <button class="chips me-2">
-                <img alt="Allergene 2" src="/media/icon/footer-2.svg">
-                <span>Polline marino</span>
-            </button>
-            <button class="chips me-2">
-                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                <span>Idromiele</span>
-            </button>
-            <button class="chips me-2">
-                <img alt="Allergene 3" src="/media/icon/footer-3.svg">
-                <span>Derivati di medusa</span>
-            </button>
-            <button class="chips me-2">
-                <img alt="Allergene 3" class="img-fluid" src="/media/icon/footer-3.svg">
-                <span class="caption">Plankton</span>
-            </button>
+        <div class="container p-5" id="allergens">
+            <section>
+                <h5>Allergie o Intolleranze</h5>
+                <div class="d-flex justify-content-start flex-wrap">
+                    <button class="chips me-2">
+                        <img alt="Allergene 1" src="/media/icon/DetivatiAlgali.svg">
+                        <span>Derivati algali</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 2" src="/media/icon/PollineMarino.svg">
+                        <span>Polline marino</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/Plancton.svg">
+                        <span>Plancton</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/Idromiele.svg">
+                        <span>Idromiele</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" class="img-fluid" src="/media/icon/DerivatiMedusa.svg">
+                        <span>Derivati di medusa</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="mt-4">
+                <h5>Preferenze</h5>
+                <div class="d-flex justify-content-start">
+                    <button class="chips me-2">
+                        <img alt="Allergene 1" src="/media/icon/CibiRigenerati.svg">
+                        <span>Cibi rigenerati</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 2" src="/media/icon/Bioluminescenze.svg">
+                        <span>Bioluminescenze</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/ProteineAbissali.svg">
+                        <span>Proteine abissali</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" src="/media/icon/TermoReattivi.svg">
+                        <span>Termo-reattivi</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 3" class="img-fluid" src="/media/icon/VegetaliSinaptici.svg">
+                        <span>Vegetali sinaptici</span>
+                    </button>
+                </div>
+            </section>
+
+            <div class="d-flex justify-content-end mt-4">
+                <button class="btn-secondary link">Cancella filtri</button>
+            </div>
+
         </div>
 
     </section>
@@ -433,7 +485,7 @@
                 <h4>Auralia</h4>
                 <h5>₹ 60.50</h5>
             </div>
-            <p>Licheni areati al polline marino con emulsione di acqua dolce ricostruita e sale microfiltrato.</p>
+            <p class="col-10 col-lg-6">Licheni areati al polline marino con emulsione di acqua dolce ricostruita e sale microfiltrato.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -452,7 +504,7 @@
                 <h4>Algis</h4>
                 <h5>₹ 60.00</h5>
             </div>
-            <p>Alga sottile chiarificata con microcristalli salini, olio di kelp ed emulsione di idromiele.</p>
+            <p class="col-10 col-lg-6">Alga sottile chiarificata con microcristalli salini, olio di kelp ed emulsione di idromiele.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -468,10 +520,10 @@
         <!-- subsection item 3 of 4 -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Thalassa</h4>
+                <h5>₹ 60.00</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p class="col-10 col-lg-6">Corallo e mousse di plankton dalla consistenza mutevole, un’esperienza che racchiude l’essenza del mare in trasformazione.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -487,10 +539,10 @@
         <!-- subsection item 4 of 4 -->
         <div class="px-5 pb-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Arborea</h4>
+                <h5>₹ 65.50</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p class="col-10 col-lg-6">Fusti vegetali marini marinati e serviti freddi con gel di superficie e riduzione pollinea.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -514,10 +566,10 @@
         <!-- subsection item 1 of 4 -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Madreperla</h4>
+                <h5>₹ 80.50</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p class="col-10 col-lg-6">Conchiglia termica che svela alghe e medusa, creando un’armonia unica tra dolcezza marina e note metalliche.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -533,10 +585,10 @@
         <!-- subsection item 2 of 4 -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Helyx</h4>
+                <h5>₹ 82.00</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p class="col-10 col-lg-6">Proteina abissale a spirale con riduzione di idromiele e polvere di mare profondo.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -552,10 +604,10 @@
         <!-- subsection item 3 of 4 -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Takete</h4>
+                <h5>₹ 75.50</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p class="col-10 col-lg-6">Strato proteico che si espande al calore del plancton stabilizzato, servito in salsa di polline marino.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -571,10 +623,10 @@
         <!-- subsection item 4 of 4 -->
         <div class="px-5 pb-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Syne</h4>
+                <h5>₹ 78.80</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p class="col-10 col-lg-6">Nodo di kelp fermentato in infusione salina e alghe reattive, servito in riduzione di idromiele.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -598,10 +650,10 @@
         <!-- subsection item 1 of 4 -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Korai</h4>
+                <h5>₹ 75.50</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p class="col-10 col-lg-6">Strutture zuccherine idroattive con licheni dolci e gel algale freddo.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -617,10 +669,10 @@
         <!-- subsection item 2 of 4 -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Marea</h4>
+                <h5>₹ 62.00</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p class="col-10 col-lg-6">Sfera morbida di acqua profonda e plancton dolce.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -636,10 +688,10 @@
         <!-- subsection item 3 of 4 -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Bioluma</h4>
+                <h5>₹ 62.00</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p class="col-10 col-lg-6">Sfera bioluminescente che reagisce al respiro, custodendo un cuore prezioso di lichene cristallizzato e idromiele profondo.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
@@ -655,10 +707,10 @@
         <!-- subsection item 4 of 4 -->
         <div class="px-5 pb-5">
             <div class="d-flex flex-row justify-content-between">
-                <h4>Nome piatto</h4>
-                <h5>₹ 12.23</h5>
+                <h4>Sublimea</h4>
+                <h5>₹ 70.50</h5>
             </div>
-            <p>Descrizione piatto</p>
+            <p class="col-10 col-lg-6">Cubo di alga nori con zucchero di kelp e idromiele.</p>
             <button class="chips me-2">
                 <img alt="Allergene 3" src="/media/icon/footer-3.svg">
             </button>
