@@ -928,43 +928,29 @@ video {
 /* === ACCORDION (info.html) === */
 /* <editor-fold> */
 
-/* Old way of handling background image (toDo: delete) */
-/*
+/* section wrapper */
 #accordionFAQ {
-    background-image: url("./media/img/info-accordion-background.webp");
-    background-repeat: no-repeat;
-    background-position: bottom left;
-}
-*/
-
-/* 1. The parent container must have position: relative */
-#accordionFAQ {
-    position: relative;
-    /* Optional: overflow hidden if the image must not go outside rounded borders */
-    overflow: hidden;
-    /* Make sure it has a z-index if needed for the stacking context */
-    z-index: 1;
+    position: relative; /* container (#accordionFAQ) must be relative for the filter to work on the rest of the accordion */
+    overflow: hidden; /* to not make the image spill outside the container */
+    z-index: 1; /* to not make it go over the filter (needs to be under) */
 }
 
-/* 2. The image wrapper */
+/* image wrapper */
 .accordion-bg-decoration {
     position: absolute;
     bottom: 0;
     left: 0;
 
-    /* Negative or low z-index to stay BEHIND the text */
-    z-index: -1;
+    z-index: -1; /* -1 to make the image stay behind the text */
+    pointer-events: none; /* prevents the image from blocking clicks on the elements beneath it */
 
-    /* IMPORTANT: Prevents the image from blocking clicks on the elements beneath it */
-    pointer-events: none;
-
-    /* Optional: max width to prevent the image from becoming huge */
-    width: 100%;
+    width: auto;
+    max-height: 100%;
 }
 
-/* 3. Style of the image itself */
+/* style of the image in the accordion */
 .accordion-bg-decoration img {
-    display: block; /* Removes extra space below inline images */
+    display: block; /* removes extra space below inline images */
     width: 100%;
     height: auto;
 }

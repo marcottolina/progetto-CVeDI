@@ -19,6 +19,15 @@
     <!-- page title -->
     <title> informazioni </title>
 
+    <!-- Local Styles toDo: bring it to main.css -->
+    <style>
+
+        .blue-gradient {
+            background: linear-gradient(180deg, var(--blue-5, #070713) 0%, rgba(21, 20, 57, 0.00) 50%, var(--blue-5, #070713) 100%);
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -194,7 +203,7 @@
 </div>
 
 <!-- award section -->
-<section class="py-5 section-bg-transparent liquidGlass-wrapper" style="border-radius: 0 !important;">
+<section class="py-5 section-bg-transparent liquidGlass-wrapper blue-gradient" style="border-radius: 0 !important;">
     <div class="liquidGlass-tint"></div>
     <div class="liquidGlass-effect-bg"></div>
     <div class="container liquidGlass-text  my-5">
@@ -213,10 +222,18 @@
 <!-- top-overlay to hide background video (second opening, previous section had to show it) -->
 <div class="top-overlay">
 
-    <div class="accordion p-5" id="accordionFAQ">
+    <div class="accordion p-5 blue-gradient" id="accordionFAQ">
 
+        <!-- accordion background image -->
         <div class="accordion-bg-decoration">
-            <img src="./media/img/info-accordion-background.webp" alt="" role="presentation">
+            <img
+
+                    alt="Barriera corallina rosea"
+                    role="presentation"
+                    loading="lazy"
+                    src="./media/img/info-accordion-background-big.webp"
+            />
+            <!-- toDo: check with design team if upscaled image is satisfactory -->
         </div>
 
         <!-- accordion item 1 -->
