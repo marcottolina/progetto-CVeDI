@@ -947,6 +947,29 @@ video {
     font-size: 1.1em;
 }
 
+/* style after "tooltip and circle hide when moving map" fix toDo: make proper comments */
+
+/* Quando la mappa è in fase di interazione (zoom/pan) */
+body.is-map-interacting {
+    /* Opzionale: cambia il cursore di sistema in "manina che afferra" */
+    cursor: grabbing !important;
+}
+
+/* 1. DISABILITA IL TOOLTIP */
+/* Usa !important per sovrascrivere lo stile inline messo da D3 */
+body.is-map-interacting #tooltip {
+    opacity: 0 !important;
+    pointer-events: none; /* Assicura che non riceva eventi mouse */
+}
+
+/* 2. DISABILITA IL CURSORE PERSONALIZZATO (PALLINA) */
+/* Sostituisci '.tua-classe-pallina' con il selettore reale del tuo cursore personalizzato */
+body.is-map-interacting .circle {
+    opacity: 0 !important;
+    /* Oppure display: none; se preferisci rimuoverlo dal layout */
+    transition: opacity 0.2s ease; /* Effetto sfumato quando scompare */
+}
+
 /* </editor-fold> */
 
 /* === ACCORDION (info.html) === */

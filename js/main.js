@@ -656,7 +656,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const height = window.innerHeight;
 
     const container = d3.select("#map-container"); // select the HTML container for the map
-    const svg = container.append("svg"); // append a SVG to this container
+    const svg = container.append("svg"); // append SVG to this container
 
     // code from now on is all about setting the SVG to be the interactive map
 
@@ -697,32 +697,51 @@ document.addEventListener("DOMContentLoaded", function () {
         {name: "Mare delle Filippine", coords: [130, 15]}
     ];
 
-    // Initial projection on Indonesia
+    // Project D3 Map (which is 3D) in a 2D plane
     const projection = d3.geoMercator();
-    projection.center([128, -5]);
+    projection.center([128, -5]); // set initial position on indonesia
     projection.scale(2000); // initial zoom level
-    projection.translate([width / 2, height / 2]);
+    projection.translate([width / 2, height / 2]); // align map within its container (put the center at the center coordinates)
 
-    const path = d3.geoPath().projection(projection);
+    const path = d3.geoPath().projection(projection); // toDo: add comment
 
-    // --- ZOOM SETUP (MODIFICATO: Solo con ALT) ---
+    // --- Zoom setup (holding ALT) ---
     const zoom = d3.zoom()
         .scaleExtent([1, 8])
         .filter((event) => {
-            // Filtro eventi:
-            // Se è un evento rotellina (wheel) E il tasto ALT NON è premuto...
+            // if it's a scroll (event === 'wheel') but ALT is not pressed ...
             if (event.type === 'wheel' && !event.altKey) {
-                return false; // ...ignora l'evento (niente zoom, niente lampeggiamento)
+                return false;
             }
-            // Altrimenti consenti (se è trascinamento o se ALT è premuto)
+            // otherwise, return TRUE
             return true;
         })
+        //.on("zoom", (event) => {
+          //  mapLayer.attr("transform", event.transform);
+       // });
+
+        /* toDo: cleanup code and make proper comments */
+
+        .on("start", () => {
+                // 1. Quando inizia lo zoom/pan, aggiungiamo una classe al body
+                document.body.classList.add("is-map-interacting");
+                // 2. Nascondiamo forzatamente il tooltip esistente
+                hideTooltip();
+            })
         .on("zoom", (event) => {
+            // Logica esistente di trasformazione
             mapLayer.attr("transform", event.transform);
-        });
+            // (Opzionale) Rinforziamo il nascondere il tooltip se necessario
+            hideTooltip();
+        })
+        .on("end", () => {
+            // 3. Quando l'interazione finisce, rimuoviamo la classe
+            document.body.classList.remove("is-map-interacting");
+        })
+    ;
 
     svg.call(zoom)
-        .on("dblclick.zoom", null); // Opzionale: disabilita zoom doppio click
+        .on("dblclick.zoom", null); // Opzionale: disabilita zoom doppio click toDo: check what this is
 
     // Atlas and Riff's position (object)
     const cityData = [
