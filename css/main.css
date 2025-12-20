@@ -993,6 +993,8 @@ body.is-map-interacting .circle {
 
     width: auto;
     max-height: 100%;
+
+    overflow: hidden;
 }
 
 /* style of the image in the accordion */
@@ -1026,12 +1028,14 @@ body.is-map-interacting .circle {
     align-items: stretch !important; /* to make items fit the entire width of the container */
     width: 100% !important;
     padding: 0 !important; /* padding handled by bootstrap */
+    gap: 0 !important;
 }
 
 /* heavy styling for the button (also making it liquid glass), as it replaces the accordion's containing box (which is transparent) */
 .accordion-glass-button {
 
-    background-color: transparent !important;
+    /*background-color: transparent !important;*/
+    background-color: var(--blue-5-30) !important;
     box-shadow: none !important; /* the default blue shadow of buttons is causing a weird issue when opening the accordion (it creates a blue bar) - I needed to remove it */
     color: var(--blue-95) !important; /* --blue-dark is actually the white that goes over the blue-100 background */
 
@@ -1054,12 +1058,37 @@ body.is-map-interacting .circle {
     margin-left: auto;
 }
 
+.accordion-button:not(.collapsed) {
+    background-color: var(--blue-5-30); !important;
+    box-shadow: none !important; /* Fondamentale: rimuove l'ombra grigia di Bootstrap */
+    border-bottom: none !important; /* Sicurezza aggiuntiva */
+}
+
 /* Style of content within the accordion (once opened) */
 .accordion-glass-body {
+    background-color: var(--blue-5-30);
     color: var(--blue-95);
     padding: 1.5rem 2rem 1.5rem 2rem; /* padding for elements within the accordion (toDo: recheck sizing, something feels weird about it) */
     text-align: left;
-    border-top: 1px solid rgba(234, 255, 251, 0.1); /* line between title (button) and text (accordion content), rgb code is = #EAE9FB = (blue-dark), made semi-transparent */
+    border-top: 1px solid rgba(192, 190, 244, 0.1); /* line between title (button) and text (accordion content), rgb code is = #EAE9FB = (blue-dark), made semi-transparent */
+}
+
+.accordion-bg-decoration::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Qui metti il tuo gradiente.
+       Z-index 1 assicura che stia sopra l'immagine (che è z-index auto/0),
+       ma starà comunque sotto al testo dell'accordion perché tutto il contenitore padre è z-index: -1 */
+    z-index: 1;
+
+    background: linear-gradient(180deg, var(--blue-5, #070713) 0%, rgba(21, 20, 57, 0.00) 50%, var(--blue-5, #070713) 100%);
+
+    pointer-events: none; /* Fondamentale: lascia passare i click se mai servisse */
 }
 
 /* </editor-fold> */
