@@ -424,7 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Audio: PAUSE & RESET
                 if (currentAudio) {
                     currentAudio.pause();
-                    currentAudio.currentTime = 0;
+                    //currentAudio.currentTime = 0;
                 }
 
                 // Video: FADE OUT
@@ -439,9 +439,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Safety check: if rate becomes too low or negative
                         if (rate <= 0.1) {
                             videoToFade.pause();
-                            videoToFade.currentTime = 0; // Reset the video to the beginning
+                            //videoToFade.currentTime = 0;
                             videoToFade.playbackRate = 1; // Reset speed for the future
-                            clearInterval(currentInterval);
+                            //clearInterval(currentInterval);
                         } else {
                             videoToFade.playbackRate = rate;
                         }
@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // FIX: Added currentTime = 0 to completely reset the previous video
             if (currentVideo && currentVideo !== video) {
                 currentVideo.pause();
-                currentVideo.currentTime = 0; // Important: rewind the previous video
+                //currentVideo.currentTime = 0; // Important: rewind the previous video
                 currentVideo.playbackRate = 1; // Reset speed
             }
 
@@ -485,7 +485,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // === CASE 4: START NEW VIDEO (FADE IN) ===
             if (video) {
-                video.currentTime = 0; // Ensure it starts from the beginning
+                //video.currentTime = 0;
                 video.playbackRate = 0.1;
                 video.play();
 
@@ -494,7 +494,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     rate += 0.1;
                     if (rate >= 1) {
                         video.playbackRate = 1;
-                        clearInterval(currentInterval);
+                        //clearInterval(currentInterval);
                     } else {
                         video.playbackRate = rate;
                     }
@@ -521,7 +521,7 @@ document.addEventListener("DOMContentLoaded", () => {
             /* toDo: edit this part so that the video stops rather than resetting */
             if (currentVideo) {
                 currentVideo.pause();
-                currentVideo.currentTime = 0;
+                //currentVideo.currentTime = 0;
                 currentVideo = null;
             }
             if (currentButton) {
@@ -530,7 +530,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if (currentAudio) { // Stop the audio of the timeline
                 currentAudio.pause();
-                currentAudio.currentTime = 0;
+                //currentAudio.currentTime = 0;
                 currentAudio = null;
             }
 
@@ -941,4 +941,48 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+});
+
+/* === FILTER IN MENU.HTML === */
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* === ALLERGEN CHIPS (& their logic) === */
+
+    const chipsButtons = document.querySelectorAll('.chips'); // select all plates from the menu that have an allergen (allergens are contained in these 'chips')
+
+    // Toggles 'chips-active' class upon clicking an allergen's chip
+    chipsButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            this.classList.toggle('chips-active'); // toDo: complete logic of what needs to happen when this is toggled
+        });
+    });
+
+    //put active the corrispective allergen in the menu
+    const buttons = document.querySelectorAll('.btn-filter');
+    const allAllergens = document.querySelectorAll('[class*="allergen-"]');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+
+            const targetAllergen = button.getAttribute('data-target');
+
+            allAllergens.forEach(item => {
+
+                if (item.classList.contains(`allergen-${targetAllergen}`)) {
+                    item.classList.toggle('allergen-active');
+                }
+            });
+        });
+    });
+
+    //reset all filters in menu and filter section
+    const resetBtn = document.querySelector('.btn-reset');
+    resetBtn.addEventListener('click', () => {
+        allAllergens.forEach(item => {
+            item.classList.remove('allergen-active');
+        });
+        buttons.forEach(button => {
+            button.classList.remove('chips-active');
+        })
+    });
 });

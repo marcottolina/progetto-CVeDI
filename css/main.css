@@ -120,7 +120,7 @@ h6 {
     font-weight: 400;
 }
 
-.caption, .chips {
+.caption, .chips, [class^="allergen"] {
     font-size: 0.875rem;
     line-height: 1.05rem;
     font-weight: 400;
@@ -228,6 +228,10 @@ h6 {
     text-decoration: underline;
 }
 
+.btn-filter{
+    margin-right: 0.5rem;
+}
+
 .btn-circular {
     aspect-ratio: 1 / 1;
 }
@@ -238,7 +242,7 @@ h6 {
     outline-offset: 3px;
 }
 
-.btn:hover{
+.btn:hover, .btn-nav:hover{
     background-image: radial-gradient(var(--pink), transparent);
 }
 
@@ -250,7 +254,8 @@ h6 {
 }
 
 .btn-sound {
-    border-radius: 50% !important;
+    border-radius: 50%;
+    padding: 1rem;
     background-image: radial-gradient(circle, var(--pink), var(--orange)) !important;
     aspect-ratio: 1 / 1 !important;
 }
@@ -481,6 +486,19 @@ h6 {
     object-fit: cover;
 }
 
+[class^="allergen"] {
+    color: white;
+    margin-right: 0.5rem;
+}
+
+.allergen-active{
+    color: var(--orange);
+    img{
+        /* tranform the color var orange into filter with website: https://angel-rs.github.io/css-color-filter-generator/*/
+        filter: brightness(0) saturate(100%) invert(51%) sepia(53%) saturate(1040%) hue-rotate(325deg) brightness(103%) contrast(93%);
+    }
+}
+
 .top-overlay {
     z-index: 10;
     background-color: var(--blue-5);
@@ -636,6 +654,12 @@ h6 {
     transform: translateY(-50%);
     left: 0;
     width: 50%;
+}
+
+/* === MUSIC BUTTONS === */
+.music-button{
+    aspect-ratio: 1;
+    height: 1.2rem;
 }
 
 /* </editor-fold> */
