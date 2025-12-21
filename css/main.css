@@ -667,6 +667,60 @@ h6 {
 /* === INPUTS === */
 /* <editor-fold> */
 
+input, select {
+    /* 1. Resetta lo stile di default del browser */
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+
+    /* border is transparent for the linear gradient effect */
+    border: 1px solid transparent !important;
+    border-radius: 1000px !important;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    color: white !important;
+    font-family: inherit;
+    font-size: 1rem;
+
+    /* linear gradient */
+    background:
+        /* dark background */
+            linear-gradient(var(--blue-5), var(--blue-5)) padding-box,
+                /* gradient cut border */
+            linear-gradient(to right, var(--blue-70-30), var(--blue-5)) border-box !important;
+
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: var(--blue-95) !important;
+    opacity: 1;
+}
+
+input:focus, select:focus {
+    background:
+            linear-gradient(var(--blue-5), var(--blue-5)) padding-box,
+            linear-gradient(to right,var(--blue-70-70), var(--blue-5)) border-box !important;
+    box-shadow: none !important;
+}
+
+/*STYLE FOR ERROR INPUT*/
+.input-error{
+    background:
+            linear-gradient(var(--blue-5), var(--blue-5)) padding-box,
+            linear-gradient(to right,var(--orange), var(--orange)) border-box !important;
+    box-shadow: none !important;
+}
+
+.form-select {
+    /* 1. remove native aspect of select */
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    padding-right: 2.25rem !important;
+}
+
 /* toDo: entire element's style */
 
 /* </editor-fold> */
