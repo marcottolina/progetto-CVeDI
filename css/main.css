@@ -7,16 +7,16 @@
     font-style: normal;
 }
 
-/* typography for desktop */
-
+/* typography for mobile & small-tablet */
 :root {
-    --Typhography-link: 16px;
+    --Typography-link: 16px;
 }
 
+/* typography for large-tablet & desktop */
 @media (min-width: 992px) {
 
     :root {
-        --Typhography-link: 18px;
+        --Typography-link: 18px;
     }
 
 }
@@ -56,7 +56,7 @@
 
     /* --- Pinks (highlights) --- */
     --pink: #FF3276;
-    /*--pink-30: rgba(255, 50, 122, 0.3);*/ /* toDo: check if it's needed or to remove it (I'm using it in the map but it's not from the palette */
+    /*--pink-30: rgba(255, 50, 122, 0.3);*/ /* toDo: check if it's needed or to remove it (I was using it in the map but it's not from the palette) */
 
     /* --- Oranges (highlights) --- */
     --orange: #F67055;
@@ -944,7 +944,7 @@ video {
     stroke: none;
 }
 
-/* Pulsing animation for Atlas (upon hovering over it) */
+/* Pulsing animation for Atlas (when hovering over it) */
 .location-group:hover .atlas-marker {
     animation: pulse 1.5s infinite; /* Pulse animation is defined later, infinite = repeats endlessly */
     fill: rgba(255, 50, 118, 0.5); /* Slightly more intense fill on hover */
@@ -966,85 +966,95 @@ video {
 @keyframes pulse {
     0% {
         stroke-width: 2px;
-        r: 8px; /* Added 'px' */
+        r: 8px;
         opacity: 1;
     }
     50% {
         stroke-width: 4px;
-        r: 10px; /* Added 'px' */
+        r: 10px;
         opacity: 0.6;
     }
     100% {
         stroke-width: 2px;
-        r: 8px; /* Added 'px' */
+        r: 8px;
         opacity: 1;
     }
 }
 
 /* = Instructions Panel Style = */
 
+/* controls hint-panel main style */
 .controls-hint {
+
     position: absolute;
     bottom: 30px;
     left: 30px;
-    background: var(--blue-5-70); /* Background consistent with the tooltip */
-    border: 1px solid var(--blue-70); /* Neon border */
-    color: var(--blue-70);
+
     padding: 10px 15px;
     border-radius: 4px;
+
+    background: var(--blue-5-70);
+    border: 1px solid var(--blue-70); /* highlighted border */
+
+    color: var(--blue-70);
     font-family: 'Manrope', sans-serif;
     font-size: 0.85rem;
+
     pointer-events: none; /* Clicks pass through */
     user-select: none;
+
     backdrop-filter: blur(4px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
     display: flex;
     flex-direction: column;
     gap: 6px;
     z-index: 50;
 }
 
-.key-badge {
-    border: 1px solid var(--blue-70);
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-weight: bold;
-    font-size: 0.75rem;
-    background: var(--blue-50-30); /* Lightly colored background for keys */
-    color: var(--blue-95);
-}
-
+/* rows within controls hint-panel */
 .key-row {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
+/* box around the 'ALT' text to make it look like a keyboard key */
+.key-badge {
+
+    background: var(--blue-50-30);
+    border: 1px solid var(--blue-70);
+    padding: 2px 6px;
+    border-radius: 3px;
+
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: var(--blue-95);
+}
+
+/* for "mouse" & "hand-dragging" emojis */
 .icon {
     font-size: 1.1em;
 }
 
 /* style after "tooltip and circle hide when moving map" fix toDo: make proper comments */
 
-/* Quando la mappa è in fase di interazione (zoom/pan) */
+/* change cursor to the "hand-grabbing" one when dragging the map */
 body.is-map-interacting {
-    /* Opzionale: cambia il cursore di sistema in "manina che afferra" */
-    cursor: grabbing !important;
+    cursor: grabbing;
+    /* Note: class 'is-map-interacting' is assigned to the body when user is dragging the map */
 }
 
-/* 1. DISABILITA IL TOOLTIP */
-/* Usa !important per sovrascrivere lo stile inline messo da D3 */
+/* disable tooltip when dragging the map */
 body.is-map-interacting #tooltip {
-    opacity: 0 !important;
-    pointer-events: none; /* Assicura che non riceva eventi mouse */
+    opacity: 0 !important; /* makes the tooltip transparent, must use important to override D3's inline-style */
+    transition: opacity 0.2s ease; /* transition animation to make the element disappear smoothly */
 }
 
-/* 2. DISABILITA IL CURSORE PERSONALIZZATO (PALLINA) */
-/* Sostituisci '.tua-classe-pallina' con il selettore reale del tuo cursore personalizzato */
+/* disable the circle following the mouse when dragging the map */
 body.is-map-interacting .circle {
     opacity: 0 !important;
-    /* Oppure display: none; se preferisci rimuoverlo dal layout */
-    transition: opacity 0.2s ease; /* Effetto sfumato quando scompare */
+    transition: opacity 0.2s ease;
 }
 
 /* </editor-fold> */
@@ -1139,7 +1149,7 @@ body.is-map-interacting .circle {
 
     /* text style (out of Figma) */
     font-family: 'Manrope', sans-serif;
-    font-size: var(--Typhography-link, 1rem);
+    font-size: var(--Typography-link, 1rem);
     font-style: normal;
     font-weight: 500; /* Figma said 700, but it was too much - it feels more like 500 */
     line-height: 1.5rem;
