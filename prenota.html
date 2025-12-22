@@ -25,28 +25,17 @@
 
     <!-- Local CSS (toDo: put it into the main.css) -->
     <style>
+        /* == BOOKING (YuYu) ==  */
+        .fade-section {
+            background:
+                    linear-gradient(
+                            to bottom,
+                            rgba(7, 7, 19, 1) 0%,
+                            rgba(7, 7, 19, 0) 80%,
+                            rgba(7, 7, 19, 0) 80%,
+                            rgba(7, 7, 19, 1) 100%
+                    );
 
-        /* == BOOKING (YuYu) == */
-
-        input, select {
-            background-color: transparent !important;
-            border: none !important;
-            border-radius: 0 !important;
-            border-bottom: 1px solid var(--blue70-100) !important;
-            color: white !important;
-        }
-
-        option {
-            color: black;
-        }
-
-        #InputDate, #InputDate1::placeholder {
-            color: white !important;
-        }
-
-        input, select:focus {
-            outline: none !important;
-            box-shadow: none !important;
         }
 
         .swiper-reviews .swiper-button-prev,
@@ -66,7 +55,15 @@
         }
 
         .booking-section {
-            background-image: url(./media/img/sfondoPrenota.png);
+            background:
+                    linear-gradient(
+                            to bottom,
+                            rgba(7, 7, 19, 1) 0%,
+                            rgba(7, 7, 19, 0) 20%,
+                            rgba(7, 7, 19, 0) 80%,
+                            rgba(7, 7, 19, 1) 100%
+                    ),
+                    url(./media/img/sfondoPrenota.png);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -76,7 +73,15 @@
         }
 
         .booking-section1 {
-            background-image: url(./media/img/sfondoPrenota1.png);
+            background:
+                    linear-gradient(
+                            to bottom,
+                            rgba(7, 7, 19, 1) 0%,
+                            rgba(7, 7, 19, 0) 20%,
+                            rgba(7, 7, 19, 0) 80%,
+                            rgba(7, 7, 19, 1) 100%
+                    ),
+                    url("./media/img/sfondoPrenota1.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -86,118 +91,49 @@
         }
 
         .box-prenota {
-            background: var(--blue-50);
+            border-radius: 16px;
             margin-left: 230px;
             margin-right: 230px;
-            /* Aggiungi border-radius per darle la forma arrotondata se non è già presente in liquidGlass-wrapper */
-            border-radius: 20px; /* Ad esempio, 20px o quanto preferisci */
-            overflow: hidden;
+            position: relative;
+        }
+
+        .box-prenota .liquidGlass-shine{
+            background: var(--blue-5-70);
         }
 
         .box-prenota .liquidGlass-effect,
-        .box-prenota .liquidGlass-shine {
+        .box-prenota .liquidGlass-shine,
+        .box-prenota .liquidGlass-tint{
             border-radius: 20px;
         }
 
-        /* --- Flatpickr Dark Mode e Leggibilità --- */
-
-        /* 1. Sfondo del Calendario e Testo di Base */
-        .flatpickr-calendar {
-            /* Sfondo scuro per il contrasto */
-            background: #222222 !important;
-            border: 1px solid var(--blue70-100) !important;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7) !important;
-            /* Colore del testo predefinito (giorni, ecc.) */
-            color: #DDDDDD !important;
+        .box-prenota .liquidGlass-text {
+            position: relative;
+            z-index: 2;
         }
 
-        /* 2. Intestazione (Mese, Anno e Frecce di Navigazione) */
-        .flatpickr-calendar .flatpickr-months {
-            background: #333333 !important; /* Colore più scuro per l'intestazione */
+        .liquidGlass-wrapper {
+            position: relative;
         }
 
-        /* Testo Mese e Anno */
-        .flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months,
-        .flatpickr-calendar .flatpickr-current-month .flatpickr-year {
-            color: #FFFFFF !important; /* Testo bianco brillante */
+        .was-validated input:invalid,
+        .was-validated select:invalid {
+            border: 1px solid var(--orange, #F67055) !important;
+            background: var(--blue-5, #070713) !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
-        /* Frecce (SVG) */
-        .flatpickr-calendar .flatpickr-current-month .flatpickr-prev-month svg,
-        .flatpickr-calendar .flatpickr-current-month .flatpickr-next-month svg {
-            fill: #FFFFFF !important; /* Freccia bianca */
-        }
-
-        /* 3. Giorni della Settimana (Lun, Mar, Mer...) */
-        .flatpickr-calendar .flatpickr-weekdays {
-            background: #333333 !important;
-        }
-
-        .flatpickr-calendar .flatpickr-weekday {
-            color: #AAAAAA !important; /* Grigio chiaro */
-        }
-
-        /* 4. Numeri dei Giorni */
-        .flatpickr-calendar .dayContainer .flatpickr-day {
-            color: #DDDDDD !important; /* Testo dei giorni chiaro */
-        }
-
-        /* Giorni Disabilitati (Lunedì) */
-        .flatpickr-calendar .flatpickr-day.flatpickr-disabled {
-            color: #666666 !important; /* Grigio scuro per Lunedì */
-        }
-
-        /* Colore al passaggio del mouse e focus */
-        .flatpickr-calendar .flatpickr-day:hover:not(.flatpickr-disabled):not(.selected) {
-            background: #555555 !important;
-            border-color: #555555 !important;
-        }
-
-        /* Giorno Selezionato */
-        .flatpickr-calendar .flatpickr-day.selected {
-            background: var(--blue70-100) !important; /* Usa il tuo colore primario */
-            color: #FFFFFF !important;
-            border-color: var(--blue70-100) !important;
-        }
-
-        /* --- Personalizzazione dei Menu a Tendina SELECT --- */
-
-        /* Applica questo selettore specifico per sovrascrivere la freccia di Bootstrap */
-        .form-select {
-            /* 1. Rimuove l'aspetto nativo del browser (necessario per personalizzare la freccia) */
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
-            appearance: none !important;
-
-            /* 2. Sostituisce la freccia con un'icona SVG bianca (codificata in esadecimale #FFFFFF) */
-            /* L'SVG qui sotto disegna una freccia verso il basso (v). */
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
-
-            /* 3. Assicura che l'immagine di sfondo sia posizionata correttamente */
-            background-position: right 0.75rem center !important;
-            background-size: 16px 12px !important;
-            padding-right: 2.25rem !important; /* Spazio sufficiente per la freccia a destra */
-        }
-
-        /* --- Gestione delle Opzioni Aperte (LIMITAZIONE) --- */
-
-        /* Le singole opzioni del menu a tendina aperto sono gestite dal sistema operativo. */
-        /* Questo selettore agisce solo sull'opzione nel campo SELECT chiuso. */
-        option {
-            color: black; /* Rende il testo delle opzioni nero nel menu aperto, se il browser lo permette. */
-            background-color: #333333; /* Spesso ignorato. */
-        }
-
-        option.selected {
-            background: var(--blue70-100) !important; /* Usa il tuo colore primario */
-            color: #FFFFFF !important;
-            border-color: var(--blue70-100) !important;
-        }
-
-        option.selected:hover {
-            background: var(--blue70-100) !important; /* Usa il tuo colore primario */
-            color: #FFFFFF !important;
-            border-color: var(--blue70-100) !important;
+        /* Messaggio di errore */
+        .was-validated .form-control:invalid ~ .invalid-feedback,
+        .was-validated .form-select:invalid ~ .invalid-feedback {
+            display: block;
+            color: var(--orange, #F67055);
+            margin-top: 0.35rem;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 12px; /* 100% */
         }
 
     </style>
@@ -300,13 +236,12 @@
     </div>
 </div>
 
-<!-- toDo: hero + content -->
 <!-- hero (updated) -->
 <section class="full-y py-5">
     <div class="header-wrapper">
         <div class="header-overlay"></div>
         <video autoplay class="bg-video" loop muted playsinline>
-            <source src="/media/video/info-coral.webm" type="video/webm">
+            <source src="/media/video/book-coral.webm" type="video/webm">
         </video>
     </div>
     <div class="container-fluid mb-5 mx-4 d-flex flex-column justify-content-end align-items-start h-100">
@@ -314,39 +249,53 @@
     </div>
 </section>
 
-<section>
+<div class="top-overlay">
     <div class="booking-section">
         <div class="box-prenota p-5 liquidGlass-wrapper d-flex justify-content-center">
             <div class="liquidGlass-effect"></div>
             <div class="liquidGlass-shine"></div>
+            <div class="liquidGlass-tint"></div>
 
             <div class="liquidGlass-text d-flex flex-column align-items-center w-100">
+                <form class="row g-4 justify-content-center needs-validation" novalidate>
                 <h2 class="d-flex justify-content-center">Prenotazione tavoli</h2>
                 <div class="p-5 d-flex flex-direction-row justify-content-center gap-2">
-                    <div class="col-6 px-5">
-                        <label class="form-label" for="exampleInputEmail1">Nome</label>
-                        <input class="form-control" id="InputName" type="email">
+                    <div class="col-md-5 px-5">
+                        <input type="text" class="form-control" placeholder="Nome*" required>
+                        <div class="invalid-feedback">
+                            Inserire un nome
+                        </div>
                     </div>
-                    <div class="col-6 px-5">
-                        <label class="form-label" for="exampleInputEmail1">Cognome</label>
-                        <input class="form-control" id="InputLastName" type="email">
+                    <div class="col-md-5 px-5">
+                        <select class="form-select" required>
+                            <option selected disabled value="">Persone*</option>
+                            <option>2 persone</option>
+                            <option>3 persone</option>
+                            <option>4 persone</option>
+                            <option>5 persone</option>
+                            <option>6 persone</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Selezionare il numero di persone
+                        </div>
                     </div>
                 </div>
 
                 <div class="p-5 d-flex flex-direction-row justify-content-center">
 
                     <!-- DATA -->
-                    <div class="col-5 px-5">
-                        <label class="form-label" for="InputDate">Data</label>
-                        <input class="form-control" id="InputDate" placeholder="gg/mm/aaaa" required type="date">
-                        <div class="invalid-feedback" id="dateFeedback"></div>
+                    <div class="col-md-5 px-5">
+                        <input type="date" class="form-control" placeholder="Data*" required>
+                        <div class="invalid-feedback">
+                            Selezionare una data
+                        </div>
                     </div>
 
                     <!-- ORARIO -->
-                    <div class="col-5 px-5">
-                        <label class="form-label" for="InputTime">Orario</label>
-                        <select class="form-select" id="InputTime" required type="time">
-                            <option selected>19:00</option>
+                    <div class="col-md-5 px-5">
+                        <select class="form-select" required>
+                            <option selected disabled value="">Orario*</option>
+                            <option>19:00</option>
                             <option>19:30</option>
                             <option>20:00</option>
                             <option>20:30</option>
@@ -356,46 +305,36 @@
                             <option>22:30</option>
                             <option>23:00</option>
                         </select>
-                    </div>
-
-                    <!-- PERSONE -->
-                    <div class="col-5 px-5">
-                        <label class="form-label" for="InputPeople">Persone</label>
-                        <select class="form-select" id="InputPeople" required>
-                            <option selected>1 persona</option>
-                            <option>2 persone</option>
-                            <option>3 persone</option>
-                            <option>4 persone</option>
-                            <option>5 persone</option>
-                            <option>6 persone</option>
-                        </select>
+                        <div class="invalid-feedback">
+                            Selezionare un orario
+                        </div>
                     </div>
                 </div>
 
                 <div class="py-5 d-flex justify-content-center">
-                    <div class="">
-                        <label class="form-label" for="exampleInputEmail1">Note</label>
-                        <input class="form-control" id="InputNote" type="email">
+                    <div class="col-md-6">
+                        <input class="form-control" placeholder="Note" type="text">
                     </div>
                 </div>
 
-                <button class="btn liquidGlass-wrapper" type="submit">
-                    <span aria-hidden="true" class="liquidGlass-effect"></span>
-                    <span aria-hidden="true" class="liquidGlass-tint"></span>
-                    <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
-                </button>
+                    <button class="btn liquidGlass-wrapper" type="submit">
+                        <span aria-hidden="true" class="liquidGlass-effect"></span>
+                        <span aria-hidden="true" class="liquidGlass-tint"></span>
+                        <span aria-hidden="true" class="liquidGlass-shine"></span>
+                        <span class="liquidGlass-text">Prenota</span>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
-
+</div>
     <!-- third section: menu-description + quick-send to menu -->
-    <section class="my-5 section-bg-light" id="home-serate-speciali">
-        <div class="container-fluid p-5 h-100">
+    <section class="py-5 fade-section">
+        <div class="container-fluid py-5 h-100">
             <div class="row justify-content-center">
-                <div class="my-5 col-10 col-md-8 col-lg-7 text-center">
+                <div class="col-10 col-md-8 col-lg-7 text-center">
                     <h2>Vuoi prenotare per evento privato?</h2>
-                    <p>
+                    <p class="body-lead">
                         L’esperienza può diventare ancora più intima: è possibile riservare l’intera sala per eventi
                         privati o celebrazioni speciali, immergendosi completamente nell’atmosfera del nostro mondo
                         sommerso.
@@ -405,34 +344,39 @@
         </div>
     </section>
 
+<div class="top-overlay">
     <div class="booking-section1">
         <div class="box-prenota p-5 liquidGlass-wrapper d-flex justify-content-center">
             <div class="liquidGlass-effect"></div>
             <div class="liquidGlass-shine"></div>
+            <div class="liquidGlass-tint"></div>
 
             <div class="liquidGlass-text d-flex flex-column align-items-center w-100">
-                <h2 class="d-flex justify-content-center">Prenotazione tavoli</h2>
+                <form class="row g-4 justify-content-center needs-validation" novalidate>
+                    <h2 class="d-flex justify-content-center">Prenotazione tavoli</h2>
                 <div class="p-5 d-flex flex-direction-row justify-content-center">
-                    <div class="px-5">
-                        <label class="form-label" for="exampleInputEmail1">Cognome</label>
-                        <input class="form-control input-gradient-border" id="InputLastName1" type="email">
+                    <div class="col-md-5 px-5">
+                        <input type="text" class="form-control" placeholder="Nome*" required>
+                        <div class="invalid-feedback">
+                            Inserire un nome
+                        </div>
                     </div>
                 </div>
 
                 <div class="p-5 d-flex flex-direction-row justify-content-center">
-
                     <!-- DATA -->
-                    <div class="col-10 px-5">
-                        <label class="form-label" for="InputDate">Data</label>
-                        <input class="form-control" id="InputDate1" placeholder="gg/mm/aaaa" required type="date">
-                        <div class="invalid-feedback" id="dateFeedback1"></div>
+                    <div class="col-md-5 px-5">
+                        <input type="date" class="form-control" placeholder="Data*" required>
+                        <div class="invalid-feedback">
+                            Selezionare una data
+                        </div>
                     </div>
 
                     <!-- ORARIO -->
-                    <div class="col-10 px-5">
-                        <label class="form-label" for="InputTime">Orario</label>
-                        <select class="form-select" id="InputTime1" required type="time">
-                            <option selected>19:00</option>
+                    <div class="col-md-5 px-5">
+                        <select class="form-select" required>
+                            <option selected disabled value="">Orario*</option>
+                            <option>19:00</option>
                             <option>19:30</option>
                             <option>20:00</option>
                             <option>20:30</option>
@@ -442,31 +386,34 @@
                             <option>22:30</option>
                             <option>23:00</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Selezionare un orario
+                        </div>
                     </div>
                 </div>
 
                 <div class="py-5 d-flex justify-content-center">
-                    <div class="">
-                        <label class="form-label" for="exampleInputEmail1">Note</label>
-                        <input class="form-control" id="InputNote1" type="email">
+                    <div class="col-md-6">
+                        <input class="form-control" placeholder="Note" type="text">
                     </div>
                 </div>
 
-                <button class="btn liquidGlass-wrapper" type="submit">
+                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='prenota.html'">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
+                    <span class="liquidGlass-text">Prenota</span>
                 </button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-
-    <section class="my-5">
-        <div class="container-fluid p-5 h-100">
+    <section class="py-5 fade-section">
+        <div class="container-fluid py-5 h-100">
             <div class="row justify-content-center">
-                <div class="mt-5 col-10 col-md-8 col-lg-7 text-center">
+                <div class="col-10 col-md-8 col-lg-7 text-center">
                     <h2>Nel cuore dell’oceano</h2>
                     <p>
                         Nel fondale marino di Atlas, accanto alla piazza Corolleo, si apre il nostro spazio: un rifugio
@@ -476,7 +423,6 @@
             </div>
         </div>
     </section>
-</section>
 
 <!-- trying a map with D3 -->
 <div id="map-container">
@@ -492,59 +438,8 @@
     </div>
 </div>
 
-<style>
-
-    .prova {
-        position: relative;
-        z-index: 1;
-        /* Rimuoviamo il background qui. Lasciamo che sia il ::before a fare tutto il lavoro
-           per evitare l'effetto "scatola" attorno al testo. */
-        /* background: ... (RIMOSSO) */
-
-        /* Manteniamo il text-shadow per la leggibilità */
-        text-shadow: 0 0 10px rgba(255, 100, 50, 1);
-    }
-
-    .prova::before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-
-        /* --- MODIFICA 1: Aumenta lo spazio verticale --- */
-        /* Valori più alti (es. -50px) fanno allungare la luce molto in alto e in basso */
-        top: -5px;
-        bottom: -5px;
-
-        /* Manteniamo i lati più stretti per non coprire troppo le parole vicine */
-        left: -10px;
-        right: -10px;
-
-        /* --- MODIFICA 2: Usa 'ellipse' invece di 'circle' --- */
-        /* 'ellipse' permette alla luce di adattarsi al rettangolo verticale che abbiamo creato sopra */
-        background: radial-gradient(
-                ellipse at center,
-                rgba(255, 100, 50, 0.8) 0%,   /* Centro più intenso */
-                rgba(255, 100, 50, 0.4) 40%,  /* Sfumatura media */
-                transparent 70%               /* Fine sfumatura */
-        );
-
-        /* --- MODIFICA 3: Blur --- */
-        /* Aumenta il blur per nascondere i bordi netti dell'ellisse verticale */
-        filter: blur(15px);
-
-        /* Questo aiuta il browser a renderizzare meglio la sfumatura */
-        border-radius: 50%;
-    }
-
-</style>
-
-<!-- Random tries -->
-<section class="container py-5">
-    <p> Io sono una frase e questa <span class="prova">parola</span> dovrebbe essere evidenziata </p>
-</section>
-
 <!-- footer (updated) -->
-<footer class="p-4 mt-5 section-bg-light">
+<footer class="p-4 section-bg-light">
     <div class="container-fluid">
         <div class="row">
             <div class="col-6 col-md-3">
@@ -637,6 +532,25 @@
         />
 
     </filter>
+</svg>
 
+<script>
+    (() => {
+        'use strict'
+
+        const forms = document.querySelectorAll('.needs-validation')
+
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
 </body>
 </html>
