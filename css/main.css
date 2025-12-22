@@ -54,40 +54,37 @@
 :root {
 
     /* headings */
-    --Typography-h1: 40px;
-    --Typography-h2: 32px;
-    --Typography-h3: 28px;
-    --Typography-h4: 24px;
-    --Typography-h5: 1.125rem;
-    --Typography-h6: 1.125rem; /* toDo: figure out if they should be the same */
+    --Typography-h1: 2.5rem;    /* 40px */
+    --Typography-h2: 2rem;      /* 32px */
+    --Typography-h3: 1.75rem;   /* 28px */
+    --Typography-h4: 1.5rem;    /* 24px */
+    --Typography-h5: 1.125rem;  /* 18px */
+    --Typography-h6: 0.75rem;   /* 12px */
     --Heading-color: var(--blue-95);
 
     /* text content */
-    --Typography-body-l: 18px;
+    --Typography-body-lead: 1.125rem; /* 18px */
     --Text-color: var(--blue-95);
 
-    /* links and navigation */
-    --Typography-link: 16px;
-
+    /* links & buttons */
+    --Typography-link: 1rem;    /* 16px */
 }
 /* toDo: actually use the typography within the rest of the style */
 
 /* typography for large-tablet & desktop */
-@media (min-width: 992px) {
+@media only screen and (min-width: 992px) {
 
-    /* colors don't change so no need to override them */
     :root {
 
         /* headings */
-        --Typography-h1: 48px;
-        --Typography-h2: 40px;
-        --Typography-h3: 32px;
-        /* h4, h5 and h6 are unchanged on moble */
+        --Typography-h1: 3rem;      /* 48px */
+        --Typography-h2: 2.5rem;    /* 40px */
+        --Typography-h3: 2rem;      /* 32px */
+        /* h4, h5, h6 remain unchanged */
 
-        --Typography-link: 18px;
-
+        /* links & buttons */
+        --Typography-link: 1.125rem; /* 18px */
     }
-
 }
 
 /* </editor-fold */
@@ -121,45 +118,52 @@ body.no-scroll {
 h1, h2, h3 {
     font-family: 'Kaftan', sans-serif;
     font-weight: 400;
-    color: #fff;
+    color: var(--Heading-color);
 }
 
 h4, h5, h6 {
     font-weight: 700;
-    color: #fff; /* toDo: check if this is the right color (doubt it) */
+    color: var(--Heading-color);
 }
 
 h1 {
-    font-size: 3rem;
+    /*font-size: 3rem;*/
+    font-size: var(--Typography-h1);
 }
 
 h2 {
-    font-size: 2.5rem;
+    /*font-size: 2.5rem;*/
+    font-size: var(--Typography-h2);
 }
 
 h3 {
-    font-size: 2rem;
+    /*font-size: 2rem;*/
+    font-size: var(--Typography-h3);
 }
 
 h4 {
-    font-size: 1.5rem;
+    /*font-size: 1.5rem;*/
+    font-size: var(--Typography-h4);
     line-height: 2rem;
 }
 
 h5 {
-    font-size: 1.125rem;
+    /*font-size: 1.125rem;*/
+    font-size: var(--Typography-h5);
     line-height: 1.5rem;
 }
 
 h6 {
-    font-size: 0.75rem;
+    /*font-size: 0.75rem;*/
+    font-size: var(--Typography-h6);
     line-height: 1rem;
 }
 
 /* = content = */
 
 .body-lead {
-    font-size: 1.5rem;
+    /*font-size: 1.5rem;*/
+    font-size: var(--Typography-body-lead);
     line-height: 1.8rem;
     font-weight: 400;
 }
