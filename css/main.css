@@ -40,7 +40,7 @@
     --orange: #F67055;
 }
 
-/* === FONTS === */
+/* === FONTS & TYPOGRAPHY VARIABLES === */
 /* <editor-fold> */
 
 @font-face {
@@ -64,6 +64,7 @@
 
     /* text content */
     --Typography-body-lead: 1.125rem; /* 18px */
+    --Typography-captions: 0.875rem; /* captions, chips and allergens */
     --Text-color: var(--blue-95);
 
     /* links & buttons */
@@ -92,13 +93,14 @@
 /* === BASE STYLES === */
 /* <editor-fold> */
 
-/* == body == */
 body {
     background-color: var(--blue-5);
+
     font-family: 'Manrope', sans-serif;
-    color: #fff;
+    color: var(--Text-color); /* Original designed had 2 different whites for Headings & Text, this changed - the 2 variables remained */
     font-size: 1.125rem;
     line-height: 1.35rem;
+
     overflow-x: hidden;
 }
 
@@ -118,43 +120,35 @@ body.no-scroll {
 h1, h2, h3 {
     font-family: 'Kaftan', sans-serif;
     font-weight: 400;
-    color: var(--Heading-color);
 }
 
 h4, h5, h6 {
     font-weight: 700;
-    color: var(--Heading-color);
 }
 
 h1 {
-    /*font-size: 3rem;*/
     font-size: var(--Typography-h1);
 }
 
 h2 {
-    /*font-size: 2.5rem;*/
     font-size: var(--Typography-h2);
 }
 
 h3 {
-    /*font-size: 2rem;*/
     font-size: var(--Typography-h3);
 }
 
 h4 {
-    /*font-size: 1.5rem;*/
     font-size: var(--Typography-h4);
     line-height: 2rem;
 }
 
 h5 {
-    /*font-size: 1.125rem;*/
     font-size: var(--Typography-h5);
     line-height: 1.5rem;
 }
 
 h6 {
-    /*font-size: 0.75rem;*/
     font-size: var(--Typography-h6);
     line-height: 1rem;
 }
@@ -162,20 +156,19 @@ h6 {
 /* = content = */
 
 .body-lead {
-    /*font-size: 1.5rem;*/
     font-size: var(--Typography-body-lead);
     line-height: 1.8rem;
     font-weight: 400;
 }
 
 .caption, .chips, [class^="allergen"] {
-    font-size: 0.875rem;
+    font-size: var(--Typography-captions);
     line-height: 1.05rem;
     font-weight: 400;
 }
 
 .link{
-    font-size: 1.125rem;
+    font-size: var(--Typography-link);
     line-height: 1.5rem;
 }
 
@@ -1187,6 +1180,7 @@ body.is-map-interacting .circle {
     font-style: normal;
     font-weight: 500; /* Figma said 700, but it was too much - it feels more like 500 */
     line-height: 1.5rem;
+    /* toDo: see if .link class puts this style as intended */
 
     text-align: left;
 
