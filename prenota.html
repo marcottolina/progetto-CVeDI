@@ -15,8 +15,12 @@
     <!-- script imports -->
     <script src="./vendor/bootstrap/bootstrap-js/bootstrap.bundle.js"></script>
     <script src="./js/main.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker.min.js"></script>
+
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
@@ -135,6 +139,115 @@
             font-weight: 400;
             line-height: 12px; /* 100% */
         }
+
+        /* ===== Datepicker Custom Palette ===== */
+
+        /* Sovrascrive lo sfondo del contenitore principale */
+        .datepicker-dropdown.datepicker {
+            border: 1px solid var(--blue-50) !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px var(--blue-5-70);
+        }
+
+        .datepicker-picker {
+            background-color: var(--blue-15) !important;
+            padding: 0;
+        }
+
+        /* Regola specifica per l'header del calendario (dove ci sono le frecce) */
+        .datepicker-header {
+            background-color: var(--blue-15) !important;
+            border-bottom: 1px solid var(--blue-50-70) !important;
+        }
+
+        /* Regola per l'area principale (giorni) */
+        .datepicker-main {
+            background-color: var(--blue-15) !important;
+        }
+
+        /* Colore del testo nel calendario */
+        .datepicker table tr td,
+        .datepicker table tr th {
+            color: var(--blue-95);
+            font-weight: 500;
+        }
+
+        /* Stile per l'header del mese/anno e i giorni della settimana*/
+        .datepicker table tr th {
+            color: var(--blue-70);
+            font-weight: 700;
+        }
+
+        /* Pulsanti di navigazione (frecce e mese/anno) */
+        .datepicker table tr th.datepicker-title,
+        .datepicker table tr th.prev,
+        .datepicker table tr th.next,
+        .datepicker table tr th.picker-switch {
+            color: var(--blue-70);
+            transition: background-color 0.2s ease;
+        }
+
+        /* Hover sui pulsanti di navigazione */
+        .datepicker table tr th.prev:hover,
+        .datepicker table tr th.next:hover,
+        .datepicker table tr th.picker-switch:hover {
+            background-color: var(--blue-50-30);
+            border-radius: 4px;
+        }
+
+        /* Stile per le celle della data (giorni) */
+        .datepicker table tr td.day {
+            padding: 8px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Hover sui giorni disponibili */
+        .datepicker table tr td.day:hover {
+            background-color: var(--blue-50-30);
+            color: var(--blue-95);
+            cursor: pointer;
+        }
+
+        /* --- STILI PER I GIORNI --- */
+
+        /* Giorno selezionato (la data di oggi) */
+        .datepicker table tr td.day.today,
+        .datepicker-cell.day.today {
+            /* Il tuo colore arancione dalla palette */
+            background-color: var(--orange) !important;
+            color: var(--blue-5) !important;
+        }
+
+        /* Gestione dell'hover sul giorno di oggi */
+        .datepicker table tr td.day.today:hover,
+        .datepicker-cell.day.today:hover {
+            background-color: var(--orange) !important;
+            opacity: 0.9;
+        }
+
+        /* Giorno selezionato dall'utente (il 26/12 nell'immagine) */
+        .datepicker table tr td.selected,
+        .datepicker table tr td.selected:hover {
+            background-color: var(--pink);
+            color: var(--blue-5);
+            font-weight: bold;
+        }
+
+        /* Giorni inattivi o fuori dal mese corrente (opacità ridotta) */
+        .datepicker table tr td.old,
+        .datepicker table tr td.new {
+            color: var(--blue-85-70);
+        }
+
+        /* Giorni disabilitati (come il lunedì nel tuo JS) */
+        .datepicker table tr td.disabled,
+        .datepicker table tr td.disabled:hover {
+            color: var(--blue-50);
+            background-color: transparent;
+            cursor: not-allowed;
+        }
+
 
     </style>
 
@@ -285,11 +398,22 @@
 
                     <!-- DATA -->
                     <div class="col-md-5 px-5">
-                        <input type="date" class="form-control" placeholder="Data*" required>
-                        <div class="invalid-feedback">
-                            Selezionare una data
+                        <div class="input-group has-validation">
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Data*"
+                                    id="bookingDate"
+                                    required
+                                    autocomplete="off"
+                                    readonly
+                            >
+                            <div class="invalid-feedback">
+                                Selezionare una data
+                            </div>
                         </div>
                     </div>
+
 
                     <!-- ORARIO -->
                     <div class="col-md-5 px-5">
@@ -366,9 +490,19 @@
                 <div class="p-5 d-flex flex-direction-row justify-content-center">
                     <!-- DATA -->
                     <div class="col-md-5 px-5">
-                        <input type="date" class="form-control" placeholder="Data*" required>
-                        <div class="invalid-feedback">
-                            Selezionare una data
+                        <div class="input-group has-validation">
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Data*"
+                                    id="bookingDate1"
+                                    required
+                                    autocomplete="off"
+                                    readonly
+                            >
+                            <div class="invalid-feedback">
+                                Selezionare una data
+                            </div>
                         </div>
                     </div>
 
@@ -551,6 +685,58 @@
             }, false)
         })
     })()
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // 1. Definisci il locale Italiano (Questo è un workaround nel caso it.js non si carichi correttamente)
+        // L'oggetto viene preso direttamente dalla documentazione della libreria Datepicker.
+        if (typeof Datepicker !== 'undefined' && typeof Datepicker.locales !== 'undefined' && typeof Datepicker.locales.it === 'undefined') {
+            Datepicker.locales.it = {
+                days: ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"],
+                daysShort: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],
+                daysMin: ["Do", "Lu", "Ma", "Me", "Gi", "Ve", "Sa"],
+                months: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+                monthsShort: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
+                today: "Oggi",
+                clear: "Cancella",
+                dateFormat: "dd/mm/yyyy",
+                titleFormat: "MM yyyy",
+                weekStart: 1
+            };
+        }
+
+        // --- 1. CONFIGURAZIONE PER ENTRAMBI I CALENDARI ---
+        const datepickerOptions = {
+            autohide: true,
+            todayHighlight: true,
+            startDate: new Date(), // parte da oggi
+            format: 'dd/mm/yyyy',
+            weekStart: 1, // lunedì
+            buttonClass: 'btn btn-sm btn-outline-light',
+            language: 'it',
+            beforeShowDay: function (date) {
+                const day = date.getDay();
+
+                // Disabilita LUNEDÌ
+                if (day === 1) {
+                    return false;
+                }
+
+                return true;
+            }
+        };
+
+        // --- INIZIALIZZAZIONE DEI 2 CALENDARI ---
+        const dateInput1 = document.getElementById('bookingDate');
+        if (dateInput1) {
+            const datepicker1 = new Datepicker(dateInput1, datepickerOptions);
+        }
+
+        const dateInput2 = document.getElementById('bookingDate1');
+        if (dateInput2) {
+            const datepicker2 = new Datepicker(dateInput2, datepickerOptions);
+        }
+    });
 </script>
 </body>
 </html>
