@@ -210,12 +210,26 @@ h6 {
 /* === OFFCANVAS FULLPAGE (= opened hamburger menu) === */
 #offCanvasFull {
     width: 100vw !important;
-    height: 100vh !important;
-    overflow: hidden !important;
-    background-color: var(--blue-5-70); /* toDo: delete upon having the Designer's greenlight */
-    background-color: rgba(7, 7, 19, 0.9); /* toDo: notify the designers that 70% opacity isn't readable enough, we did with 90% opacity */
-    color: white !important;
+    /* 100dvh occupa esattamente il 100% dello spazio visibile dinamico */
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+    position: fixed;
+    overflow: hidden !important; /* Blocca ogni tentativo di scroll esterno */
+
+    background-color: rgba(7, 7, 19, 0.9);
+    color: var(--blue-95) !important;
+    border: none !important; /* Rimuove eventuali bordi di default */
 }
+
+#offCanvasFull .offcanvas-body {
+    overflow: hidden !important; /* Impedisce lo scroll interno */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Opzionale: rimuove padding che potrebbero spingere il contenuto fuori */
+}
+
 
 /* === BUTTONS === */
 /* <editor-fold> */
@@ -276,7 +290,6 @@ h6 {
 .btn-circular {
     aspect-ratio: 1 / 1;
 }
-
 /* focus for accessibility */
 .btn:focus-visible {
     outline: 3px solid rgba(255,255,255,0.12);
@@ -385,7 +398,7 @@ h6 {
 
 .btn-close-custom:hover {
     opacity: 0.8;
-    transform: translateX(-2px);
+    /*transform: rotate(359deg);*/
     transition: 0.2s ease;
 }
 
@@ -572,7 +585,7 @@ h6 {
     background: linear-gradient(
             180deg,
             var(--blue-5, #070713) 0%,
-            rgba(21, 20, 57, 0.00) 50%,
+            var(--blue-5-70) 50%,
             var(--blue-5, #070713) 100%
     );
 }
@@ -728,6 +741,7 @@ input, select {
     border-radius: 1000px !important;
     padding: 0.5rem 1rem;
     width: 100%;
+    max-width: 30ch;
     box-sizing: border-box;
     color: white !important;
     font-family: inherit;
@@ -783,6 +797,15 @@ input:focus, select:focus {
 .swiper-reviews .swiper-button-next {
     z-index: 9999 !important;
     pointer-events: auto !important;
+}
+
+.swiper-home .swiper-button-prev,
+.swiper-home .swiper-button-next,
+.swiper-images .swiper-button-prev,
+.swiper-images .swiper-button-next {
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    transform: translateY(-50%);
 }
 
 .swiper-reviews * {

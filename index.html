@@ -11,6 +11,8 @@
     <!-- BOOTSTRAP JS BUNDLE -->
     <script src="./vendor/bootstrap/bootstrap-js/bootstrap.js"></script>
     <script defer src="js/main.js"></script>
+    <script src="./vendor/swiper/swiper-bundle.js"></script>
+    <link href="./vendor/swiper/swiper.css" rel="stylesheet"/>
     <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
@@ -33,6 +35,11 @@
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota</span>
                 </button>
+                <div class="d-flex d-none d-md-block">
+                    <button class="btn-secondary btn-lan-ita">ITA</button>
+                    <span>/</span>
+                    <button class="btn-secondary btn-lan-med">MED</button>
+                </div>
                 <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull" data-bs-toggle="offcanvas"
                         type="button">
                     <img src="/media/icon/hamburger-menu.svg" alt="hamburger-menu"/>
@@ -43,10 +50,10 @@
 </header>
 
 <!-- Off-canvas full-page (= opened hamburger menu) [updated] -->
-<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" id="offCanvasFull" tabindex="-1">
-    <div class="offcanvas-body">
+<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" data-bs-scroll="false" data-bs-backdrop="true" id="offCanvasFull" tabindex="-1">
+    <div class="offcanvas-body p-3">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row g-0">
 
                 <!-- LOGO -->
                 <div class="col-6 col-md-2 order-1">
@@ -54,35 +61,79 @@
                 </div>
 
                 <!-- IMAGE (when big enough) -->
-                <div class="col-md-4 d-none d-md-block order-2">
-                    <img alt="" class="img-fluid full-y" src="media/img/sfondo-prova-vetro.jpg">
+                <div class="col-md-5 d-none d-md-block order-2">
+                    <img
+                            alt="Immagine raffigurante l'esterno del ristorante"
+                            class="img-fluid w-100"
+                            loading="lazy"
+                            sizes="
+                                (min-width: 1200px) 600px,
+                                (min-width: 992px) 500px,
+                                (min-width: 768px) 400px,
+                                (min-width: 576px) 500px,
+                                100vw
+                                "
+                            src="/media/img/offcanvas-1200w.webp"
+                            srcset="
+                                /media/img/offcanvas-800w.webp 800w,
+                                /media/img/offcanvas-1200w.webp 1200w,
+                                /media/img/offcanvas-2000w.webp 2000w
+                                "
+                    >
                 </div>
 
-                <!-- MENU -->
-                <div class="col-md-3 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center">
-                    <div class="d-flex flex-column align-items-start">
-                        <button class="btn liquidGlass-wrapper mb-5">
+                <!-- MENU ITA-->
+                <div class="col-md-4 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center lan-ita">
+                    <div class="d-flex flex-column align-items-start justify-content-around h-100 ">
+                        <button class="btn-nav liquidGlass-wrapper my-4">
                             <span aria-hidden="true" class="liquidGlass-effect"></span>
                             <span aria-hidden="true" class="liquidGlass-tint"></span>
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
-                            <span class="liquidGlass-text" onclick="'window.location.href: prenota.html'">Prenota</span>
+                            <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota</span>
                         </button>
-                        <button class="btn-empty" onclick="window.location.href='index.html'" type="button">Home</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='ristorante.html'" type="button">
-                            Ristorante</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">Informazioni</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'" type="button">
-                            Serate Speciali
+                        <button class="btn-empty my-4" onclick="window.location.href='index.html'" type="button">Home</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='ristorante.html'" type="button">
+                            Il ristorante</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='info.html'" type="button">Informazioni</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='pagina-libera.html'" type="button">
+                            Serate speciali
                         </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='menu.html'" type="button">Il menù</button>
+                    </div>
+                </div>
+
+                <!-- MENU MED-->
+                <div class="col-md-4 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center lan-med">
+                    <div class="d-flex flex-column align-items-start justify-content-around h-100">
+                        <button class="btn-nav liquidGlass-wrapper my-4">
+                            <span aria-hidden="true" class="liquidGlass-effect"></span>
+                            <span aria-hidden="true" class="liquidGlass-tint"></span>
+                            <span aria-hidden="true" class="liquidGlass-shine"></span>
+                            <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Pewuofh</span>
+                        </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='index.html'" type="button">wefrw</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='ristorante.html'" type="button">
+                            HJDUYEW</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='info.html'" type="button">fwfrw</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='pagina-libera.html'" type="button">
+                            oeuwhuiew
+                        </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='menu.html'" type="button">dafregre</button>
                     </div>
                 </div>
 
                 <!-- BUTTON TO CLOSE -->
-                <div class="col-6 col-md-3 d-flex justify-content-end align-items-start order-2 order-md-last">
+                <div class="col-6 col-md-1 d-flex justify-content-end align-items-start order-2 order-md-last">
                     <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
-                        <img src="media/icon/arrow-left.svg" alt="arrow-left"/>
+                        <img src="media/icon/x-icon.svg" alt="close"/>
                     </button>
+                </div>
+
+                <!-- BUTTON LANGUAGE MOBILE  -->
+                <div class="d-flex justify-content-end align-content-end d-md-none position-absolute bottom-0 p-5" id="btns-lan-mobile">
+                    <button class="btn-secondary btn-lan-ita">ITA</button>
+                    <span>/</span>
+                    <button class="btn-secondary btn-lan-med">MED</button>
                 </div>
 
             </div>
@@ -199,83 +250,265 @@
         </div>
     </div>
 </section>
-
-<!-- CHIUSURA TOP OVERLAY -->
-</div>
+    </div>
 
 <!-- third section: menu-description + quick-send to menu -->
-<section class="py-5 section-bg-transparent liquidGlass-wrapper" style="border-radius: 0 !important;" id="home-serate-speciali">
-    <div class="liquidGlass-tint"></div>
-    <div class="liquidGlass-effect-bg"></div>
+<section class="py-5 section-bg-blue-gradient text-center">
     <div class="container liquidGlass-text  my-5">
-    <div class="container h-100 text-center d-flex flex-column justify-content-center align-items-center my-5">
-                <h2>Qualità ed esperienze uniche</h2>
-                <p class="text-start">
-                    Il nostro menu è stato creato per offrire qualità ed emozioni uniche. Usiamo ingredienti
-                    selezionati, frutto di un’attenta ricerca, da parte dei migliori esperti e vengono preparati dagli
-                    chef per trasmettere la nostra passione e dedizione. Ogni piatto è pensato per dare ai nostri ospiti
-                    un’esperienza che unisce sensi, emozioni e creatività.
-                </p>
-                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='menu.html'">
-                    <span aria-hidden="true" class="liquidGlass-effect"></span>
-                    <span aria-hidden="true" class="liquidGlass-tint"></span>
-                    <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text">Il nostro menu</span>
-                </button>
+        <div class="container text-center h-100 text-center d-flex flex-column justify-content-center align-items-center my-5">
+            <h2>Qualità ed esperienze uniche</h2>
+            <p>
+                Il nostro menu è stato creato per offrire qualità ed emozioni uniche. Usiamo ingredienti
+                selezionati, frutto di un’attenta ricerca, da parte dei migliori esperti e vengono preparati dagli
+                chef per trasmettere la nostra passione e dedizione. Ogni piatto è pensato per dare ai nostri ospiti
+                un’esperienza che unisce sensi, emozioni e creatività.
+            </p>
+            <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='menu.html'">
+                <span aria-hidden="true" class="liquidGlass-effect"></span>
+                <span aria-hidden="true" class="liquidGlass-tint"></span>
+                <span aria-hidden="true" class="liquidGlass-shine"></span>
+                <span class="liquidGlass-text">Scopri di più</span>
+            </button>
         </div>
     </div>
+
 </section>
 
 <div class="top-overlay">
 
-<!-- forth section: special-events-description + quick-send to special events -->
-<section class="py-5">
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-md-6">
-                <img
-                            alt="Composizione"
-                            class="img-fluid w-100"
-                            loading="lazy"
-                            sizes="
-                                (min-width: 1200px) 600px,
-                                (min-width: 992px) 500px,
-                                (min-width: 768px) 400px,
-                                (min-width: 576px) 500px,
+
+<!-- carousel -->
+<section>
+    <div class="container-fluid">
+
+        <!-- actual images carousel -->
+        <div class="swiper swiper-home">
+
+            <!-- additional wrapper is required -->
+            <div class="swiper-wrapper z-n1">
+
+                <!-- slide 1 -->
+                <div class="swiper-slide px-2">
+                    <div class="ratio ratio-1x1">
+                        <img
+                                alt="Ristorante sottomarino futuristico circondato da coralli colorati"
+                                class="img-fluid w-100 object-fit-cover"
+                                loading="lazy"
+                                sizes="
+                                    (min-width: 1200px) 600px,
+                                    (min-width: 992px) 500px,
+                                    (min-width: 768px) 400px,
+                                    (min-width: 576px) 500px,
+                                    100vw
+                                "
+                                src="/media/img/auralia-1200w.webp"
+                                srcset="
+                                    /media/img/auralia-800w.webp 800w,
+                                    /media/img/auralia-1200w.webp 1200w,
+                                    /media/img/auralia-2000w.webp 2000w
+                                "
+                        >
+                    </div>
+                </div>
+
+                <!-- slide 2 -->
+                <div class="swiper-slide px-2">
+                    <div class="ratio ratio-1x1">
+                        <img
+                                alt="Interno elegante di ristorante sottomarino con soffitto ondulato e vista su coralli rosa"
+                                class="img-fluid w-100 object-fit-cover"
+                                loading="lazy"
+                                sizes="
+                                    (min-width: 1200px) 600px,
+                                    (min-width: 992px) 500px,
+                                    (min-width: 768px) 400px,
+                                    (min-width: 576px) 500px,
                                 100vw
                                 "
-                            src="../media/img/home-4-1200.webp"
-                            srcset="
-                                ../media/img/home-4-800.webp 800w,
-                                ../media/img/home-4-1200.webp 1200w,
-                                ../media/img/home-4-2000.webp 2000w
+                                src="/media/img/sublimea-1200w.webp"
+                                srcset="
+                                    /media/img/sublimea-800w.webp 800w,
+                                    /media/img/sublimea-1200w.webp 1200w,
+                                    /media/img/sublimea-2000w.webp 2000w
                                 "
-                    >
+                        >
+                    </div>
+                </div>
+
+                <!-- slide 3 -->
+                <div class="swiper-slide px-2">
+                    <div class="ratio ratio-1x1">
+                        <img
+                                alt="Tavolo romantico a lume di candela con vista ravvicinata su coralli rosa in un ambiente sottomarino"
+                                class="img-fluid w-100 object-fit-cover"
+                                loading="lazy"
+                                sizes="
+                                    (min-width: 1200px) 600px,
+                                    (min-width: 992px) 500px,
+                                    (min-width: 768px) 400px,
+                                    (min-width: 576px) 500px,
+                                    100vw
+                                "
+                                src="/media/img/helyx-1200w.webp"
+                                srcset="
+                                    /media/img/helyx-800w.webp,
+                                    /media/img/helyx-1200w.webp,
+                                    /media/img/helyx-2000w.webp
+                                "
+                        >
+                    </div>
+                </div>
+
+                <!-- slide 4 toDo: put right image -->
+                <div class="swiper-slide px-2">
+                    <div class="ratio ratio-1x1">
+                        <img
+                                alt="Interno elegante di ristorante sottomarino con soffitto ondulato e vista su coralli rosa"
+                                class="img-fluid w-100 object-fit-cover"
+                                loading="lazy"
+                                sizes="
+                                    (min-width: 1200px) 600px,
+                                    (min-width: 992px) 500px,
+                                    (min-width: 768px) 400px,
+                                    (min-width: 576px) 500px,
+                                    100vw
+                                "
+                                src="/media/img/ristorante-3-1200w.webp"
+                                srcset="
+                                    /media/img/ristorante-3-800w.webp,
+                                    /media/img/ristorante-3-1200w.webp,
+                                    /media/img/ristorante-3-2000w.webp
+                                "
+                        >
+                    </div>
+                </div>
+
+                <!-- slide 5 toDo: put right image -->
+                <div class="swiper-slide px-2">
+                    <div class="ratio ratio-1x1">
+                        <img
+                                alt="Interno elegante di ristorante sottomarino con soffitto ondulato e vista su coralli rosa"
+                                class="img-fluid w-100 object-fit-cover"
+                                loading="lazy"
+                                sizes="
+                                    (min-width: 1200px) 600px,
+                                    (min-width: 992px) 500px,
+                                    (min-width: 768px) 400px,
+                                    (min-width: 576px) 500px,
+                                    100vw
+                                "
+                                src="/media/img/ristorante-3-1200w.webp"
+                                srcset="
+                                    /media/img/ristorante-3-800w.webp,
+                                    /media/img/ristorante-3-1200w.webp,
+                                    /media/img/ristorante-3-2000w.webp
+                                "
+                        >
+                    </div>
+                </div>
+
+                <!-- slide 6 toDo: put right image -->
+                <div class="swiper-slide px-2">
+                    <div class="ratio ratio-1x1">
+                        <img
+                                alt="Interno elegante di ristorante sottomarino con soffitto ondulato e vista su coralli rosa"
+                                class="img-fluid w-100 object-fit-cover"
+                                loading="lazy"
+                                sizes="
+                                    (min-width: 1200px) 600px,
+                                    (min-width: 992px) 500px,
+                                    (min-width: 768px) 400px,
+                                    (min-width: 576px) 500px,
+                                    100vw
+                                "
+                                src="/media/img/ristorante-3-1200w.webp"
+                                srcset="
+                                    /media/img/ristorante-3-800w.webp,
+                                    /media/img/ristorante-3-1200w.webp,
+                                    /media/img/ristorante-3-2000w.webp
+                                "
+                        >
+                    </div>
+                </div>
+
+                <!-- end slides -->
             </div>
-            <div class="col-md-6 mt-3 mt-md-0">
-                <h2>Serate speciali</h2>
-                <p>
-                    Riff propone eventi speciali per trascorrere cene uniche e indimenticabili:
-                    cantanti e gruppi musicali accompagnano ogni portata con brani dal vivo per esperienze condivise.
-                    <br>
-                    Scopri le serate programmate e prenota un posto per non perderti l’esperienza.
-                </p>
-                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='pagina-libera.html'">
+
+            <!-- navigation buttons (inside slides because they are on top of them) -->
+            <div class="d-flex flex-row justify-content-between">
+
+                <!-- "previous" button -->
+                <button class="btn liquidGlass-wrapper swiper-button-prev position-absolute top-50 start-0 btn-circular ms-5">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text">Serate speciali</span>
+                    <span class="liquidGlass-text"><img alt="arrow-left" src="media/icon/arrow-left.svg"/></span>
                 </button>
+
+                <!-- "next" button -->
+                <button class="btn liquidGlass-wrapper swiper-button-next position-absolute top-50 end-0 btn-circular me-5">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text"><img alt="arrow-right" src="media/icon/arrow-right.svg"/></span>
+                </button>
+
             </div>
+
         </div>
     </div>
 </section>
+<!-- CLOSE TOP-OVERLAY-->
+    </div>
+
+    <!-- third section: menu-description + quick-send to menu -->
+    <section class="py-5 section-bg-blue-gradient d-flex justify-content-center">
+        <div class="container liquidGlass-text my-5 row">
+            <div class="row">
+                <div class="col-md-6">
+                    <video autoplay class="img-fluid" loop muted playsinline>
+                        <source src="/media/video/bolla2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-md-6">
+                    <h3>Serate speciali</h3>
+                    <p>Riff propone eventi speciali per trascorrere cene uniche e indimenticabili:
+                        cantanti e gruppi musicali accompagnano ogni portata con brani dal vivo per esperienze condivise.
+                        <br><br>
+                        Scopri le serate programmate e prenota un posto per non perderti l’esperienza.
+                    </p>
+                    <div class="d-flex">
+                        <button class="btn liquidGlass-wrapper btn-sound me-4" id="music-start1">
+                            <span aria-hidden="true" class="liquidGlass-effect"></span>
+                            <span aria-hidden="true" class="liquidGlass-tint"></span>
+                            <span aria-hidden="true" class="liquidGlass-shine"></span>
+                            <span class="liquidGlass-text">
+                                    <img src="/media/icon/music-play-icon.gif" alt="icona musica" class="img-fluid music-button">
+                                </span>
+                        </button>
+                        <button class="btn mt-2 liquidGlass-wrapper"
+                                onclick="window.location.href='#percorso'">
+                            <span aria-hidden="true" class="liquidGlass-effect"></span>
+                            <span aria-hidden="true" class="liquidGlass-tint"></span>
+                            <span aria-hidden="true" class="liquidGlass-shine"></span>
+                            <span class="liquidGlass-text">Il nostro menu
+                    </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+<div class="top-overlay">
 
 <!-- footer (updated) -->
-<footer class="p-4 section-bg-light">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-6 col-md-3">
+<footer class="p-4section-bg-light">
+    <div class="container-fluid p-5">
+        <div class="row g-5">
+            <div class="col-7 col-md-4">
                 <h5>Orari di apertura</h5>
                 <p>Martedì - Domenica <br> 19:00 - 01:00</p>
                 <h5>Contatti</h5>
@@ -283,7 +516,7 @@
                     Settore abissale Ovest
                 </p>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-7 col-md-4">
                 <h5>Prenotazioni</h5>
                 <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
                     Atlas, è necessaria la prenotazione
@@ -295,17 +528,17 @@
                     <span class="liquidGlass-text">Prenota</span>
                 </button>
             </div>
-            <div class="col-md-6">
+            <div class="col-7 col-md-4">
                 <div class="row justify-content-md-end mt-3">
-                    <div class="col-md-6 col-8 d-flex flex-column">
+                    <div class="d-flex flex-column">
                         <h5>Linea abissale</h5>
                         <p>
                             Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
                         </p>
                         <form>
                             <div class="mb-3">
-                                <label class="form-label" for="exampleInputEmail1">E-mail</label>
-                                <input class="form-control" id="exampleInputEmail1" type="email">
+<!--                                <label class="form-label" for="exampleInputEmail1">E-mail</label>-->
+                                <input class="form-control" id="exampleInputEmail1" type="email" placeholder="Email">
                             </div>
                             <button class="btn liquidGlass-wrapper" type="submit">
                                 <span aria-hidden="true" class="liquidGlass-effect"></span>
