@@ -21,7 +21,6 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker.min.js"></script>
 
-
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <!-- page title -->
@@ -120,17 +119,17 @@
             position: relative;
         }
 
+
+        /* MESSAGGIO DI ERRORE */
         .was-validated input:invalid,
-        .was-validated select:invalid {
+        .was-validated .select-selected.is-invalid,
+        input.form-control.is-invalid  {
             border: 1px solid var(--orange, #F67055) !important;
-            background: var(--blue-5, #070713) !important;
-            outline: none !important;
-            box-shadow: none !important;
         }
 
-        /* Messaggio di errore */
         .was-validated .form-control:invalid ~ .invalid-feedback,
-        .was-validated .form-select:invalid ~ .invalid-feedback {
+        .was-validated .form-select:invalid ~ .invalid-feedback,
+        .was-validated .select-selected.is-invalid ~ .invalid-feedback{
             display: block;
             color: var(--orange, #F67055);
             margin-top: 0.35rem;
@@ -140,7 +139,15 @@
             line-height: 12px; /* 100% */
         }
 
-        /* ===== Datepicker Custom Palette ===== */
+        .custom-error {
+            margin-top: 6px;
+            color: var(--orange);
+            font-size: 12px;
+            line-height: 12px;
+        }
+
+
+        /* ===== DAREPICKER Custom Palette ===== */
 
         /* Sovrascrive lo sfondo del contenitore principale */
         .datepicker-dropdown.datepicker {
@@ -226,7 +233,7 @@
             opacity: 0.9;
         }
 
-        /* Giorno selezionato dall'utente (il 26/12 nell'immagine) */
+        /* Giorno selezionato dall'utente */
         .datepicker table tr td.selected,
         .datepicker table tr td.selected:hover {
             background-color: var(--pink);
@@ -240,15 +247,117 @@
             color: var(--blue-85-70);
         }
 
-        /* Giorni disabilitati (come il lunedì nel tuo JS) */
-        .datepicker table tr td.disabled,
-        .datepicker table tr td.disabled:hover {
-            color: var(--blue-50);
+        /* Giorni disabilitati (il lunedì e i giorni precedenti al giorno attuale) */
+        .datepicker-cell.day.disabled, /* NUOVO SELETTORE PER LE CELLE SPAN */
+        .datepicker-cell.day.disabled:hover{
+            color: var(--blue-85-70) !important;
             background-color: transparent;
             cursor: not-allowed;
         }
 
 
+        /*  SELECT   */
+        /* --- REGOLA CRUCIALE SUGGERITA DAL PROFESSORE: NASCONDERE IL VERO SELECT --- */
+        .custom-hidden-select {
+            opacity: 0;
+            z-index: -1; /* Mettiamo la select nativa SOTTO TUTTO (z-index negativo) */
+            pointer-events: none; /* Impedisce che la select nativa risponda a qualsiasi click/mouse */
+            /* Tentativo suggerito dal prof: appearance: none */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        /* --- SELECT CUSTOM (DIV SIMULATO) --- */
+        /* --- 2. WRAPPER VISIBILE E CAMPO SELEZIONATO --- */
+        .custom-select-wrapper {
+            position: relative;
+            width: 100%;
+            z-index: 1;
+        }
+
+        /* Applica uno z-index molto alto al wrapper della select APERTA */
+        /* quando il campo selezionato ha la classe 'select-arrow-active' */
+        .select-selected.select-arrow-active:hover {
+            border-color: var(--blue-70);
+        }
+
+        .custom-select-wrapper .select-selected.select-arrow-active {
+            z-index: 1000; /* Valore alto per andare sopra a tutto */
+            position: relative; /* Assicura che z-index funzioni */
+        }
+
+        /* Corregge lo stacking context per le select aperte */
+        .custom-select-wrapper.select-is-open {
+            z-index: 100; /* Deve essere maggiore di qualsiasi altro z-index nel contesto */
+        }
+
+        /* Stile del campo di visualizzazione (sostituisce l'input/select non aperto) */
+        .select-selected {
+            /* 1. Resetta lo stile di default del browser */
+            appearance: none;
+            -webkit-appearance: none;
+            outline: none;
+            border: 1px solid transparent !important;
+            border-radius: 1000px !important;
+            padding: 0.5rem 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            color: white !important;
+            font-family: inherit;
+            font-size: 1rem;
+            /* linear gradient */
+            background:
+                /* dark background */
+                    linear-gradient(var(--blue-5), var(--blue-5)) padding-box,
+                        /* gradient cut border */
+                    linear-gradient(to right, var(--blue-70-30), var(--blue-5)) border-box !important;
+
+            transition: all 0.3s ease;
+        }
+
+        /* Stile Hover/Focus sul campo selezionato */
+        .select-selected:hover,
+        .select-selected.select-arrow-active {
+            border-color: var(--blue-70);
+        }
+
+
+        /* --- 3. CONTENITORE E OPZIONI APERTE (IL DROPDOWN) --- */
+        /* Contenitore delle opzioni (il dropdown aperto) */
+        .select-items {
+            position: absolute;
+            background-color: var(--blue-5); /* Sfondo molto scuro per le opzioni */
+            margin-top: 1px;
+            width: 100%;
+            border: 1px solid var(--blue-50);
+            border-top: none;
+            border-radius: 0 0 0.375rem 0.375rem;
+            box-shadow: 0 4px 8px var(--blue-5-70);
+            z-index: 99;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        /* Stile di ogni singola opzione */
+        .select-items div {
+            padding: 0.375rem 0.75rem;
+            cursor: pointer;
+            color: var(--blue-95); /* Testo chiaro */
+            transition: background-color 0.15s ease;
+        }
+
+        /* Stile delle opzioni all'hover o quando selezionata */
+        .select-items div:hover,
+        .same-as-selected {
+            background-color: var(--blue-15); /* Sfondo leggermente più chiaro per l'hover */
+            color: var(--pink); /* Highlight rosa sull'hover/selezionato */
+        }
+
+        /* Classe per nascondere il dropdown */
+        .select-hide {
+            display: none;
+        }
     </style>
 
     <!--
@@ -371,8 +480,8 @@
 
             <div class="liquidGlass-text d-flex flex-column align-items-center w-100">
                 <form class="row g-4 justify-content-center needs-validation" novalidate>
-                <h2 class="d-flex justify-content-center">Prenotazione tavoli</h2>
-                <div class="p-5 d-flex flex-direction-row justify-content-center gap-2">
+                <h2 class="d-flex justify-content-center pb-5 pt-2">Prenotazione tavoli</h2>
+                <div class="px-5 py-3 d-flex flex-direction-row justify-content-center gap-2">
                     <div class="col-md-5 px-5">
                         <input type="text" class="form-control" placeholder="Nome*" required>
                         <div class="invalid-feedback">
@@ -380,25 +489,35 @@
                         </div>
                     </div>
                     <div class="col-md-5 px-5">
-                        <select class="form-select" required>
-                            <option selected disabled value="">Persone*</option>
-                            <option>2 persone</option>
-                            <option>3 persone</option>
-                            <option>4 persone</option>
-                            <option>5 persone</option>
-                            <option>6 persone</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Selezionare il numero di persone
+                        <div class="input-group">
+                            <div class="custom-select-wrapper" data-target="selectPersone">
+                                <div class="select-selected">Persone*</div>
+                                <div class="select-items select-hide">
+                                </div>
+                            </div>
+                            <select
+                                    class="form-select custom-hidden-select"
+                                    id="selectPersone"
+                                    name="persone"
+                                    tabindex="-1"
+                                    aria-hidden="true"
+                                    required>
+                                <option value="" disabled selected>Persone*</option>
+                                <option value="1">1 persona</option>
+                                <option value="2">2 persone</option>
+                                <option value="3">3 persone</option>
+                                <option value="4">4 persone</option>
+                                <option value="5">5 persone</option>
+                                <option value="6">6 persone</option>
+                            </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="p-5 d-flex flex-direction-row justify-content-center">
-
+                <div class="px-5 py-3 d-flex flex-direction-row justify-content-center">
                     <!-- DATA -->
                     <div class="col-md-5 px-5">
-                        <div class="input-group has-validation">
+                        <div class="input-group">
                             <input
                                     type="text"
                                     class="form-control"
@@ -408,65 +527,73 @@
                                     autocomplete="off"
                                     readonly
                             >
-                            <div class="invalid-feedback">
-                                Selezionare una data
-                            </div>
                         </div>
                     </div>
 
-
                     <!-- ORARIO -->
                     <div class="col-md-5 px-5">
-                        <select class="form-select" required>
-                            <option selected disabled value="">Orario*</option>
-                            <option>19:00</option>
-                            <option>19:30</option>
-                            <option>20:00</option>
-                            <option>20:30</option>
-                            <option>21:00</option>
-                            <option>21:30</option>
-                            <option>22:00</option>
-                            <option>22:30</option>
-                            <option>23:00</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Selezionare un orario
+                        <div class="input-group">
+                            <div class="custom-select-wrapper" data-target="selectOrario">
+                                <div class="select-selected">Orario*</div>
+                                <div class="select-items select-hide">
+                                </div>
+                            </div>
+                            <select
+                                    class="form-select custom-hidden-select"
+                                    id="selectOrario"
+                                    name="orario"
+                                    tabindex="-1"
+                                    aria-hidden="true"
+                                    required>
+                                <option value="" disabled selected>Orario*</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                                <option value="21:00">21:00</option>
+                                <option value="21:30">21:30</option>
+                                <option value="22:00">22:00</option>
+                                <option value="22:30">22:30</option>
+                                <option value="23:00">23:00</option>
+                            </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="py-5 d-flex justify-content-center">
+                <div class="px-5 py-3 pb-5 d-flex justify-content-center">
                     <div class="col-md-6">
                         <input class="form-control" placeholder="Note" type="text">
                     </div>
                 </div>
-
+                    <div class="pt-4 d-flex justify-content-center">
                     <button class="btn liquidGlass-wrapper" type="submit">
                         <span aria-hidden="true" class="liquidGlass-effect"></span>
                         <span aria-hidden="true" class="liquidGlass-tint"></span>
                         <span aria-hidden="true" class="liquidGlass-shine"></span>
                         <span class="liquidGlass-text">Prenota</span>
                     </button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-    <!-- third section: menu-description + quick-send to menu -->
-    <section class="py-5 fade-section">
-        <div class="container-fluid py-5 h-100">
-            <div class="row justify-content-center">
-                <div class="col-10 col-md-8 col-lg-7 text-center">
-                    <h2>Vuoi prenotare per evento privato?</h2>
-                    <p class="body-lead">
-                        L’esperienza può diventare ancora più intima: è possibile riservare l’intera sala per eventi
-                        privati o celebrazioni speciali, immergendosi completamente nell’atmosfera del nostro mondo
-                        sommerso.
-                    </p>
-                </div>
+
+<!-- third section: menu-description + quick-send to menu -->
+<section class="py-5 fade-section">
+    <div class="container-fluid py-5 h-100">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-8 col-lg-7 text-center">
+                <h2>Vuoi prenotare per evento privato?</h2>
+                <p class="body-lead">
+                    L’esperienza può diventare ancora più intima: è possibile riservare l’intera sala per eventi
+                    privati o celebrazioni speciali, immergendosi completamente nell’atmosfera del nostro mondo
+                    sommerso.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <div class="top-overlay">
     <div class="booking-section1">
@@ -477,9 +604,9 @@
 
             <div class="liquidGlass-text d-flex flex-column align-items-center w-100">
                 <form class="row g-4 justify-content-center needs-validation" novalidate>
-                    <h2 class="d-flex justify-content-center">Prenotazione tavoli</h2>
-                <div class="p-5 d-flex flex-direction-row justify-content-center">
-                    <div class="col-md-5 px-5">
+                    <h2 class="d-flex justify-content-center pb-5 pt-2">Prenotazione sala</h2>
+                <div class="px-5 py-3 d-flex flex-direction-row justify-content-center gap-2">
+                    <div class="col-md-5 px-5 pb-4">
                         <input type="text" class="form-control" placeholder="Nome*" required>
                         <div class="invalid-feedback">
                             Inserire un nome
@@ -487,10 +614,10 @@
                     </div>
                 </div>
 
-                <div class="p-5 d-flex flex-direction-row justify-content-center">
+                <div class="px-5 py-3 d-flex flex-direction-row justify-content-center">
                     <!-- DATA -->
                     <div class="col-md-5 px-5">
-                        <div class="input-group has-validation">
+                        <div class="input-group">
                             <input
                                     type="text"
                                     class="form-control"
@@ -500,63 +627,72 @@
                                     autocomplete="off"
                                     readonly
                             >
-                            <div class="invalid-feedback">
-                                Selezionare una data
-                            </div>
                         </div>
                     </div>
 
                     <!-- ORARIO -->
                     <div class="col-md-5 px-5">
-                        <select class="form-select" required>
-                            <option selected disabled value="">Orario*</option>
-                            <option>19:00</option>
-                            <option>19:30</option>
-                            <option>20:00</option>
-                            <option>20:30</option>
-                            <option>21:00</option>
-                            <option>21:30</option>
-                            <option>22:00</option>
-                            <option>22:30</option>
-                            <option>23:00</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Selezionare un orario
+                        <div class="input-group">
+                            <div class="custom-select-wrapper" data-target="selectOrario1">
+                                <div class="select-selected">Orario*</div>
+                                <div class="select-items select-hide">
+                                </div>
+                            </div>
+                            <select
+                                    class="form-select custom-hidden-select"
+                                    id="selectOrario1"
+                                    name="orario"
+                                    tabindex="-1"
+                                    aria-hidden="true"
+                                    required>
+                                <option value="" disabled selected>Orario*</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                                <option value="21:00">21:00</option>
+                                <option value="21:30">21:30</option>
+                                <option value="22:00">22:00</option>
+                                <option value="22:30">22:30</option>
+                                <option value="23:00">23:00</option>
+                            </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="py-5 d-flex justify-content-center">
+                <div class="px-5 py-3 pb-5 d-flex justify-content-center">
                     <div class="col-md-6">
                         <input class="form-control" placeholder="Note" type="text">
                     </div>
                 </div>
 
-                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='prenota.html'">
-                    <span aria-hidden="true" class="liquidGlass-effect"></span>
-                    <span aria-hidden="true" class="liquidGlass-tint"></span>
-                    <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text">Prenota</span>
-                </button>
+                    <div class="pt-4 d-flex justify-content-center">
+                        <button class="btn liquidGlass-wrapper" type="submit">
+                            <span aria-hidden="true" class="liquidGlass-effect"></span>
+                            <span aria-hidden="true" class="liquidGlass-tint"></span>
+                            <span aria-hidden="true" class="liquidGlass-shine"></span>
+                            <span class="liquidGlass-text">Prenota</span>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-    <section class="py-5 fade-section">
-        <div class="container-fluid py-5 h-100">
-            <div class="row justify-content-center">
-                <div class="col-10 col-md-8 col-lg-7 text-center">
-                    <h2>Nel cuore dell’oceano</h2>
-                    <p>
-                        Nel fondale marino di Atlas, accanto alla piazza Corolleo, si apre il nostro spazio: un rifugio
-                        per i sensi nel cuore della barriera di corallo.
-                    </p>
-                </div>
+<section class="py-5 fade-section">
+    <div class="container-fluid py-5 h-100">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-8 col-lg-7 text-center">
+                <h2>Nel cuore dell’oceano</h2>
+                <p>
+                    Nel fondale marino di Atlas, accanto alla piazza Corolleo, si apre il nostro spazio: un rifugio
+                    per i sensi nel cuore della barriera di corallo.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <!-- trying a map with D3 -->
 <div id="map-container">
@@ -669,6 +805,7 @@
 </svg>
 
 <script>
+    //SNIPPED DI BOOTSTRAP PER VALIDARE IL FORM
     (() => {
         'use strict'
 
@@ -686,7 +823,254 @@
         })
     })()
 
-    document.addEventListener('DOMContentLoaded', function () {
+    //SELECT
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const customSelectWrappers = document.querySelectorAll('.custom-select-wrapper');
+
+        /* --- Funzioni di gestione --- */
+
+        function openDropdown(wrapper, selectedDiv, itemsDiv) {
+            // Applica le classi di apertura
+            wrapper.classList.add('select-is-open'); // Attiva Z-Index
+            selectedDiv.classList.add('select-arrow-active');
+            itemsDiv.classList.remove('select-hide');
+        }
+
+        function closeDropdown(wrapper, selectedDiv, itemsDiv) {
+            // Rimuove le classi di chiusura
+            wrapper.classList.remove('select-is-open'); // Disattiva Z-Index
+            selectedDiv.classList.remove('select-arrow-active');
+            itemsDiv.classList.add('select-hide');
+        }
+
+        function closeAllSelects(exceptionWrapper) {
+            const wrappers = document.querySelectorAll(".custom-select-wrapper");
+
+            wrappers.forEach(wrapper => {
+                // Se il wrapper attuale NON è l'eccezione (la select su cui stiamo cliccando)
+                if (wrapper !== exceptionWrapper) {
+                    const selectedDiv = wrapper.querySelector('.select-selected');
+                    const itemsDiv = wrapper.querySelector('.select-items');
+
+                    // Chiude esplicitamente se è aperto
+                    if (itemsDiv && !itemsDiv.classList.contains('select-hide')) {
+                        closeDropdown(wrapper, selectedDiv, itemsDiv);
+                    }
+                }
+            });
+        }
+
+        customSelectWrappers.forEach(wrapper => {
+            const targetSelectId = wrapper.getAttribute('data-target');
+            const originalSelect = document.getElementById(targetSelectId);
+
+            if (!originalSelect) return; // Se la select nativa non esiste, esci
+
+            const selectedDiv = wrapper.querySelector('.select-selected');
+            const itemsDiv = wrapper.querySelector('.select-items');
+
+            // Sincronizza il div visibile con il valore iniziale della select nativa
+            selectedDiv.innerHTML = originalSelect.options[originalSelect.selectedIndex].text;
+
+            // Genera le opzioni visibili in base alla select nativa
+            itemsDiv.innerHTML = ''; // Pulisci il contenuto iniziale
+            Array.from(originalSelect.options).forEach(option => {
+                if (option.disabled && option.selected) return; // Salta il placeholder
+
+                const item = document.createElement('div');
+                item.innerHTML = option.text;
+                item.setAttribute('data-value', option.value);
+
+                // Applica la classe 'same-as-selected' se è l'opzione attualmente scelta
+                if (option.selected && !option.disabled) {
+                    item.classList.add('same-as-selected');
+                }
+
+                item.addEventListener('click', function(e) {
+                    // Click su un'opzione simulata: aggiorna il valore e chiudi
+                    const value = this.getAttribute('data-value');
+                    selectedDiv.innerHTML = this.innerHTML;
+
+                    // Aggiorna la select nativa
+                    originalSelect.value = value;
+
+                    // Rimuovi la classe 'same-as-selected' da tutti e aggiungila al nuovo elemento
+                    Array.from(itemsDiv.children).forEach(child => child.classList.remove('same-as-selected'));
+                    this.classList.add('same-as-selected');
+
+                    // Simula l'evento change sulla select nativa (utile per le validazioni)
+                    originalSelect.dispatchEvent(new Event('change'));
+
+                    // Chiudi il dropdown (incluse le classi di attivazione e z-index)
+                    closeDropdown(wrapper, selectedDiv, itemsDiv);
+                    e.stopPropagation();
+                });
+                itemsDiv.appendChild(item);
+            });
+
+            // Click sull'elemento selezionato: apri/chiudi il dropdown
+            selectedDiv.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // Verifica se è già aperto
+                const isCurrentlyOpen = itemsDiv.classList.contains('select-hide') === false;
+                closeAllSelects(wrapper);
+
+                if (!isCurrentlyOpen) {
+                    // Se non era aperto, aprilo
+                    openDropdown(wrapper, selectedDiv, itemsDiv);
+                } else {
+                    // Se era aperto, chiudilo (la chiamata a closeAllSelects non lo chiude se passato come argomento)
+                    closeDropdown(wrapper, selectedDiv, itemsDiv);
+                }
+            });
+
+        });
+
+        // Click ovunque sul documento: chiudi tutti i dropdown aperti
+        document.addEventListener('click', () => closeAllSelects(null));
+
+
+        // --- FUNZIONE DI VALIDAZIONE CUSTOM UNICA PER TUTTI I CAMPI ---
+
+        function validateCustomField(elementId) {
+            const element = document.getElementById(elementId);
+            if (!element) return true;
+
+            const inputGroup = element.closest('.input-group');
+            let visibleElement = null;
+            let errorText = '';
+
+            // Rimuovi errore precedente (se esiste)
+            // Nota: per i campi data, l'errore è sul parent (gestito nel blocco DATA), ma questa pulizia generica aiuta.
+            const oldError = element.closest('.col-md-5')?.querySelector('.custom-error') || inputGroup?.querySelector('.custom-error');
+            if (oldError) oldError.remove();
+
+            // ---- SELECT CUSTOM ----
+            if (element.tagName === 'SELECT') {
+                const wrapper = inputGroup.querySelector('.custom-select-wrapper');
+                visibleElement = wrapper.querySelector('.select-selected');
+
+                errorText =
+                    elementId === 'selectPersone'
+                        ? 'Selezionare il numero di persone'
+                        : 'Selezionare un orario';
+
+                const isInvalid = element.value === '' || element.selectedIndex === 0;
+
+                if (isInvalid) {
+                    visibleElement.classList.add('is-invalid');
+
+                    const error = document.createElement('div');
+                    error.className = 'custom-error';
+                    error.textContent = errorText;
+                    visibleElement.after(error);
+
+                    return false;
+                } else {
+                    visibleElement.classList.remove('is-invalid');
+                    return true;
+                }
+            }
+
+            // ---- INPUT DATA ----
+            // Riconosce entrambi gli ID
+            if (elementId === 'bookingDate' || elementId === 'bookingDate1') {
+                const inputGroup = element.closest('.input-group');
+                const parent = inputGroup.parentElement;
+
+                // Rimuovi errore precedente dal contenitore principale (col-md-5)
+                const errorContainer = parent.closest('.col-md-5');
+                const oldErrorData = errorContainer.querySelector('.custom-error');
+                if (oldErrorData) oldErrorData.remove();
+
+
+                const isInvalid = element.value === '';
+
+                if (isInvalid) {
+                    element.classList.add('is-invalid');
+
+                    const error = document.createElement('div');
+                    error.className = 'custom-error';
+                    error.textContent = 'Selezionare una data';
+
+                    // Inserisci l'errore dopo l'inputGroup
+                    inputGroup.after(error);
+
+                    return false;
+                } else {
+                    // Rimuove la classe 'is-invalid' in caso di successo (risoluzione del problema)
+                    element.classList.remove('is-invalid');
+                    return true;
+                }
+            }
+        }
+
+        // --- GESTIONE INVIO E VALIDAZIONE PER TUTTI I FORM ---
+        const allForms = document.querySelectorAll('.needs-validation');
+
+        allForms.forEach(form => {
+            form.addEventListener('submit', function(event) {
+                let isFormValid = true;
+
+                // 1. Validazione 'selectPersone' (solo se presente nel form)
+                if (form.querySelector('#selectPersone')) {
+                    if (!validateCustomField('selectPersone')) {
+                        isFormValid = false;
+                    }
+                }
+
+                // 2. Validazione Date (controlla quale ID di data è presente in questo form)
+                const bookingDateId = form.querySelector('#bookingDate') ? 'bookingDate' :
+                    form.querySelector('#bookingDate1') ? 'bookingDate1' : null;
+
+                if (bookingDateId && !validateCustomField(bookingDateId)) {
+                    isFormValid = false;
+                }
+
+
+                const selectOrarioId = form.querySelector('#selectOrario') ? 'selectOrario' :
+                    form.querySelector('#selectOrario1') ? 'selectOrario1' : null;
+
+                if (selectOrarioId && !validateCustomField(selectOrarioId)) {
+                    isFormValid = false;
+                }
+
+                // Se la validazione nativa o la validazione custom falliscono
+                if (form.checkValidity() === false || !isFormValid) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                // Applica la classe was-validated (attivata anche nello snippet iniziale di Bootstrap)
+                form.classList.add('was-validated');
+            }, false);
+        });
+
+
+        // --- GESTIONE RIMOZIONE ERRORE AL CAMBIO DI VALORE (Change Listeners) ---
+
+        // Listener per la Data
+        document.querySelectorAll('#bookingDate, #bookingDate1').forEach(input => {
+            input.addEventListener('change', function() {
+                validateCustomField(this.id);
+            });
+        });
+
+        // Listener per 'selectPersone'
+        document.getElementById('selectPersone')?.addEventListener('change', function() {
+            validateCustomField('selectPersone');
+        });
+
+        // Listener per 'selectOrario'
+        document.querySelectorAll('#selectOrario, #selectOrario1').forEach(input => {
+            input.addEventListener('change', function() {
+                validateCustomField(this.id);
+            });
+        });
+
+
+        // GESTIONE CALENDARIO
 
         // 1. Definisci il locale Italiano (Questo è un workaround nel caso it.js non si carichi correttamente)
         // L'oggetto viene preso direttamente dalla documentazione della libreria Datepicker.
@@ -715,10 +1099,17 @@
             buttonClass: 'btn btn-sm btn-outline-light',
             language: 'it',
             beforeShowDay: function (date) {
+                const today = new Date();
                 const day = date.getDay();
 
                 // Disabilita LUNEDÌ
                 if (day === 1) {
+                    return false;
+                }
+
+                // 2. Disabilita tutte le date PRIMA della data attuale (OGGI)
+                // Se la data del calendario è strettamente minore di oggi
+                if (date < today) {
                     return false;
                 }
 
@@ -730,12 +1121,22 @@
         const dateInput1 = document.getElementById('bookingDate');
         if (dateInput1) {
             const datepicker1 = new Datepicker(dateInput1, datepickerOptions);
+
+            //Ascolta l'evento specifico del Datepicker
+            dateInput1.addEventListener('changeDate', function() {
+                validateCustomField('bookingDate');
+            });
         }
 
         const dateInput2 = document.getElementById('bookingDate1');
         if (dateInput2) {
             const datepicker2 = new Datepicker(dateInput2, datepickerOptions);
+            
+            dateInput2.addEventListener('changeDate', function() {
+                validateCustomField('bookingDate1');
+            });
         }
+
     });
 </script>
 </body>
