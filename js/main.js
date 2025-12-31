@@ -627,6 +627,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
+    /* Carousel 1: the one with only multiple-images (uses .swiper-images class) */
+    const swiperHome = new Swiper('.swiper-home', {
+
+        direction: 'horizontal',
+        loop: true,
+        centeredSlides: true,
+        spaceBetween: 5,
+
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 3,
+            }
+        },
+
+        pagination: {
+            el: '.swiper-home .swiper-pagination', // specific scoping
+            type: 'progressbar',
+        },
+
+        // specific scoping for buttons
+        navigation: {
+            nextEl: '.swiper-home .swiper-button-next',
+            prevEl: '.swiper-home .swiper-button-prev',
+        },
+
+        scrollbar: {
+            el: '.swiper-home .swiper-scrollbar',
+        },
+    });
+
 });
 
 /* === ALLERGEN CHIPS (& their logic) === */
@@ -1004,4 +1037,52 @@ document.addEventListener("DOMContentLoaded", function () {
             button.classList.remove('chips-active');
         })
     });
+});
+
+/* === CHANGE LANGUAGE === */
+document.addEventListener("DOMContentLoaded", function () {
+    // Select all language toggle buttons by class
+    const itaBtns = document.querySelectorAll('.btn-lan-ita');
+    const medBtns = document.querySelectorAll('.btn-lan-med');
+
+    // Select all content elements for both languages
+    const itaContent = document.querySelectorAll('.lan-ita');
+    const medContent = document.querySelectorAll('.lan-med');
+
+    function switchLanguage(lang) {
+        if (lang === 'ita') {
+            // Show all Italian elements and hide Medusiano elements
+            itaContent.forEach(item => item.classList.remove('d-none'));
+            medContent.forEach(item => item.classList.add('d-none'));
+
+            // Update styles for all buttons (underline the active one)
+            itaBtns.forEach(btn => btn.style.textDecoration = 'underline');
+            medBtns.forEach(btn => btn.style.textDecoration = 'none');
+        } else {
+            // Show all Medusiano elements and hide Italian elements
+            medContent.forEach(item => item.classList.remove('d-none'));
+            itaContent.forEach(item => item.classList.add('d-none'));
+
+            // Update styles for all buttons
+            medBtns.forEach(btn => btn.style.textDecoration = 'underline');
+            itaBtns.forEach(btn => btn.style.textDecoration = 'none');
+        }
+    }
+
+    // Attach click event listeners to every Italian language button found
+    itaBtns.forEach(btn => {
+        btn.addEventListener("click", function() {
+            switchLanguage('ita');
+        });
+    });
+
+    // Attach click event listeners to every Medusiano language button found
+    medBtns.forEach(btn => {
+        btn.addEventListener("click", function() {
+            switchLanguage('med');
+        });
+    });
+
+    // Set the initial state to Italian on page load
+    switchLanguage('ita');
 });
