@@ -1103,11 +1103,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const itaContent = document.querySelectorAll('.lan-ita');
     const medContent = document.querySelectorAll('.lan-med');
 
+    // Select the "prenota" buttons in nav
+    const itaNavPrenota = document.querySelectorAll('.nav-lan-ita');
+    const medNavPrenota = document.querySelectorAll('.nav-lan-med');
+
     function switchLanguage(lang) {
         if (lang === 'ita') {
             // Show all Italian elements and hide Medusiano elements
             itaContent.forEach(item => item.classList.remove('d-none'));
             medContent.forEach(item => item.classList.add('d-none'));
+
+            itaNavPrenota.forEach(el => {
+                el.classList.add('d-none', 'd-md-inline-block');
+            });
+            medNavPrenota.forEach(el => {
+                el.classList.add('d-none');
+                el.classList.remove('d-md-inline-block');
+            });
 
             // Update styles for all buttons (underline the active one)
             itaBtns.forEach(btn => btn.style.textDecoration = 'underline');
@@ -1116,6 +1128,14 @@ document.addEventListener("DOMContentLoaded", function () {
             // Show all Medusiano elements and hide Italian elements
             medContent.forEach(item => item.classList.remove('d-none'));
             itaContent.forEach(item => item.classList.add('d-none'));
+
+            medNavPrenota.forEach(el => {
+                el.classList.add('d-none', 'd-md-inline-block');
+            });
+            itaNavPrenota.forEach(el => {
+                el.classList.add('d-none');
+                el.classList.remove('d-md-inline-block');
+            });
 
             // Update styles for all buttons
             medBtns.forEach(btn => btn.style.textDecoration = 'underline');

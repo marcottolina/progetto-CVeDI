@@ -51,17 +51,28 @@
         <div class="liquidGlass-shine"></div>
 
         <div class="container-fluid px-4 py-2">
-            <a class="navbar-brand liquidGlass-text" href="../index.html">
+            <a class="navbar-brand liquidGlass-text" href="index.html">
                 <img alt="Logo" height="50" src="../media/img/Logo.svg" width="50">
             </a>
 
             <div class="liquidGlass-text">
-                <button class="d-none d-md-block btn-nav liquidGlass-wrapper">
+                <button class="btn-nav liquidGlass-wrapper nav-lan-ita d-none" onclick="window.location.href='../prenota.html'">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota</span>
+                    <span class="liquidGlass-text">Prenota</span>
                 </button>
+                <button class="btn-nav liquidGlass-wrapper nav-lan-med d-none" onclick="window.location.href='../prenota.html'">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">Pewuofh</span>
+                </button>
+                <div class="d-flex d-none d-md-block">
+                    <button class="btn-secondary btn-lan-ita">ITA</button>
+                    <span>/</span>
+                    <button class="btn-secondary btn-lan-med">MED</button>
+                </div>
                 <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull" data-bs-toggle="offcanvas"
                         type="button">
                     <img src="/media/icon/hamburger-menu.svg" alt="hamburger-menu"/>
@@ -72,10 +83,10 @@
 </header>
 
 <!-- Off-canvas full-page (= opened hamburger menu) [updated] -->
-<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" id="offCanvasFull" tabindex="-1">
-    <div class="offcanvas-body">
+<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" data-bs-scroll="false" data-bs-backdrop="true" id="offCanvasFull" tabindex="-1">
+    <div class="offcanvas-body p-3">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row g-0">
 
                 <!-- LOGO -->
                 <div class="col-6 col-md-2 order-1">
@@ -83,35 +94,79 @@
                 </div>
 
                 <!-- IMAGE (when big enough) -->
-                <div class="col-md-4 d-none d-md-block order-2">
-                    <img alt="" class="img-fluid full-y" src="../media/img/sfondo-prova-vetro.jpg">
+                <div class="col-md-5 d-none d-md-block order-2">
+                    <img
+                            alt="Immagine raffigurante l'esterno del ristorante"
+                            class="img-fluid"
+                            loading="lazy"
+                            sizes="
+                                (min-width: 1200px) 600px,
+                                (min-width: 992px) 500px,
+                                (min-width: 768px) 400px,
+                                (min-width: 576px) 500px,
+                                100vw
+                                "
+                            src="/media/img/offcanvas-1200w.webp"
+                            srcset="
+                                /media/img/offcanvas-800w.webp 800w,
+                                /media/img/offcanvas-1200w.webp 1200w,
+                                /media/img/offcanvas-2000w.webp 2000w
+                                "
+                    >
                 </div>
 
-                <!-- MENU -->
-                <div class="col-md-3 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center">
-                    <div class="d-flex flex-column align-items-start">
-                        <button class="btn liquidGlass-wrapper mb-5">
+                <!-- MENU ITA-->
+                <div class="col-md-4 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center lan-ita">
+                    <div class="d-flex flex-column align-items-start justify-content-around">
+                        <button class="btn-nav liquidGlass-wrapper my-4" onclick="window.location.href='../prenota.html'">
                             <span aria-hidden="true" class="liquidGlass-effect"></span>
                             <span aria-hidden="true" class="liquidGlass-tint"></span>
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
-                            <span class="liquidGlass-text" onclick="'window.location.href: prenota.html'">Prenota</span>
+                            <span class="liquidGlass-text">Prenota</span>
                         </button>
-                        <button class="btn-empty" onclick="window.location.href='index.html'" type="button">Home</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='ristorante.html'" type="button">
-                            Ristorante</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">Informazioni</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'" type="button">
-                            Serate Speciali
+                        <button class="btn-empty my-4" onclick="window.location.href='../index.html'" type="button">Home</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../ristorante.html'" type="button">
+                            Il ristorante</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../info.html'" type="button">Informazioni</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../pagina-libera.html'" type="button">
+                            Serate speciali
                         </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../menu.html'" type="button">Il menù</button>
+                    </div>
+                </div>
+
+                <!-- MENU MED-->
+                <div class="col-md-4 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center lan-med">
+                    <div class="d-flex flex-column align-items-start justify-content-around">
+                        <button class="btn-nav liquidGlass-wrapper my-4" onclick="window.location.href='../prenota.html'">
+                            <span aria-hidden="true" class="liquidGlass-effect"></span>
+                            <span aria-hidden="true" class="liquidGlass-tint"></span>
+                            <span aria-hidden="true" class="liquidGlass-shine"></span>
+                            <span class="liquidGlass-text">Pewuofh</span>
+                        </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../index.html'" type="button">wefrw</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../ristorante.html'" type="button">
+                            HJDUYEW</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../info.html'" type="button">fwfrw</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../pagina-libera.html'" type="button">
+                            oeuwhuiew
+                        </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../menu.html'" type="button">dafregre</button>
                     </div>
                 </div>
 
                 <!-- BUTTON TO CLOSE -->
-                <div class="col-6 col-md-3 d-flex justify-content-end align-items-start order-2 order-md-last">
+                <div class="col-6 col-md-1 d-flex justify-content-end align-items-start order-2 order-md-last">
                     <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
-                        <img src="../media/icon/arrow-left.svg" alt="arrow-left"/>
+                        <img src="../media/icon/x-icon.svg" alt="close"/>
                     </button>
+                </div>
+
+                <!-- BUTTON LANGUAGE MOBILE  -->
+                <div class="d-flex justify-content-end align-content-end d-md-none position-absolute bottom-0 p-5" id="btns-lan-mobile">
+                    <button class="btn-secondary btn-lan-ita">ITA</button>
+                    <span>/</span>
+                    <button class="btn-secondary btn-lan-med">MED</button>
                 </div>
 
             </div>
@@ -124,7 +179,7 @@
     <div class="header-wrapper">
         <div class="header-overlay"></div>
         <video autoplay class="bg-video" loop muted playsinline>
-            <source src="/media/video/thalassa-coral.webm" type="video/webm">
+            <source src="../media/video/thalassa-coral.webm" type="video/webm">
         </video>
     </div>
     <div class="container-fluid mb-5 mx-4 d-flex flex-column justify-content-end align-items-start h-100">
@@ -152,9 +207,9 @@
         <div class="row mb-5 align-items-center g-4 px-5">
             <div class="col-xl-5 col-12 order-2 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
                 <h3>La composizione</h3>
-                <p>Thalassa è un intreccio di corallo rigenerato adagiato su una mousse di plankton fermentato con perle
-                    di salinità cangiante. Il piatto evolve termicamente, variando consistenza e colore in base al
-                    calore della pelle.Servito a 12°C per mantenere attiva la microflora fermentata.</p>
+                <p>Thalassa è un intreccio di corallo rigenerato adagiato su una mousse di plancton fermentato con perle
+                    di salinità cangiante. Il piatto evolve variando consistenza e sapore man mano che lo si assapora.
+                    Servito a 12°C per mantenere attiva  la microflora fermentata.</p>
                 <div class="d-flex justify-content-start flex-wrap">
                     <button class="chips me-2">
                         <img alt="Allergene 2" src="/media/icon/PollineMarino.svg">
@@ -212,10 +267,10 @@
             </div>
             <div class="col-xl-6 col-12 order-2 order-xl-2">
                 <h3>Il corallo rigenerato</h3>
-                <p>Il corallo rigenerato è una coltura biotecnologica derivata da antiche barriere, rianimate attraverso
-                    simbiosi microbiche. Oltre a essere completamente commestibile, conserva la struttura porosa naturale
-                    che trattiene umidità e sapidità come una spugna vivente. <br> <br>Al gusto unisce la mineralità
-                    dell’acqua salata a note delicate di spugna marina e alga dolce: un equilibrio di sapori unici.</p>
+                <p>Il corallo rigenerato è una coltura biotecnologica derivata da antiche barriere, rianimate attraverso simbiosi microbiche.
+                    Oltre a essere completamente commestibile,
+                    conserva la struttura porosa naturale, che trattiene umidità e sapidità come una spugna vivente.
+                    <br> <br>Al gusto unisce la mineralità dell’acqua salata e note delicate di spugna marina e alga dolce: un equilibrio di sapori unici.</p>
             </div>
         </div>
     </section>
@@ -276,7 +331,7 @@
                 <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
                     Atlas, è necessaria la prenotazione
                 </p>
-                <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
+                <button class="btn liquidGlass-wrapper" onclick="window.location.href='../prenota.html'" type="submit">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>

@@ -23,17 +23,28 @@
         <div class="liquidGlass-shine"></div>
 
         <div class="container-fluid px-4 py-2">
-            <a class="navbar-brand liquidGlass-text" href="../index.html">
+            <a class="navbar-brand liquidGlass-text" href="index.html">
                 <img alt="Logo" height="50" src="../media/img/Logo.svg" width="50">
             </a>
 
             <div class="liquidGlass-text">
-                <button class="d-none d-md-block btn-nav liquidGlass-wrapper">
+                <button class="btn-nav liquidGlass-wrapper nav-lan-ita d-none" onclick="window.location.href='../prenota.html'">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text" onclick="window.location.href='prenota.html'">Prenota</span>
+                    <span class="liquidGlass-text">Prenota</span>
                 </button>
+                <button class="btn-nav liquidGlass-wrapper nav-lan-med d-none" onclick="window.location.href='../prenota.html'">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">Pewuofh</span>
+                </button>
+                <div class="d-flex d-none d-md-block">
+                    <button class="btn-secondary btn-lan-ita">ITA</button>
+                    <span>/</span>
+                    <button class="btn-secondary btn-lan-med">MED</button>
+                </div>
                 <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull" data-bs-toggle="offcanvas"
                         type="button">
                     <img src="/media/icon/hamburger-menu.svg" alt="hamburger-menu"/>
@@ -44,10 +55,10 @@
 </header>
 
 <!-- Off-canvas full-page (= opened hamburger menu) [updated] -->
-<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" id="offCanvasFull" tabindex="-1">
-    <div class="offcanvas-body">
+<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" data-bs-scroll="false" data-bs-backdrop="true" id="offCanvasFull" tabindex="-1">
+    <div class="offcanvas-body p-3">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row g-0">
 
                 <!-- LOGO -->
                 <div class="col-6 col-md-2 order-1">
@@ -55,35 +66,79 @@
                 </div>
 
                 <!-- IMAGE (when big enough) -->
-                <div class="col-md-4 d-none d-md-block order-2">
-                    <img alt="" class="img-fluid full-y" src="../media/img/sfondo-prova-vetro.jpg">
+                <div class="col-md-5 d-none d-md-block order-2">
+                    <img
+                            alt="Immagine raffigurante l'esterno del ristorante"
+                            class="img-fluid"
+                            loading="lazy"
+                            sizes="
+                                (min-width: 1200px) 600px,
+                                (min-width: 992px) 500px,
+                                (min-width: 768px) 400px,
+                                (min-width: 576px) 500px,
+                                100vw
+                                "
+                            src="/media/img/offcanvas-1200w.webp"
+                            srcset="
+                                /media/img/offcanvas-800w.webp 800w,
+                                /media/img/offcanvas-1200w.webp 1200w,
+                                /media/img/offcanvas-2000w.webp 2000w
+                                "
+                    >
                 </div>
 
-                <!-- MENU -->
-                <div class="col-md-3 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center">
-                    <div class="d-flex flex-column align-items-start">
-                        <button class="btn liquidGlass-wrapper mb-5">
+                <!-- MENU ITA-->
+                <div class="col-md-4 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center lan-ita">
+                    <div class="d-flex flex-column align-items-start justify-content-around">
+                        <button class="btn-nav liquidGlass-wrapper my-4" onclick="window.location.href='../prenota.html'">
                             <span aria-hidden="true" class="liquidGlass-effect"></span>
                             <span aria-hidden="true" class="liquidGlass-tint"></span>
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
-                            <span class="liquidGlass-text" onclick="'window.location.href: prenota.html'">Prenota</span>
+                            <span class="liquidGlass-text">Prenota</span>
                         </button>
-                        <button class="btn-empty" onclick="window.location.href='index.html'" type="button">Home</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='ristorante.html'" type="button">
-                            Ristorante</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='menu.html'" type="button">Menu</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='info.html'" type="button">Informazioni</button>
-                        <button class="btn-empty mt-3" onclick="window.location.href='pagina-libera.html'" type="button">
-                            Serate Speciali
+                        <button class="btn-empty my-4" onclick="window.location.href='../index.html'" type="button">Home</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../ristorante.html'" type="button">
+                            Il ristorante</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../info.html'" type="button">Informazioni</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../pagina-libera.html'" type="button">
+                            Serate speciali
                         </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../menu.html'" type="button">Il menù</button>
+                    </div>
+                </div>
+
+                <!-- MENU MED-->
+                <div class="col-md-4 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center lan-med">
+                    <div class="d-flex flex-column align-items-start justify-content-around">
+                        <button class="btn-nav liquidGlass-wrapper my-4" onclick="window.location.href='../prenota.html'">
+                            <span aria-hidden="true" class="liquidGlass-effect"></span>
+                            <span aria-hidden="true" class="liquidGlass-tint"></span>
+                            <span aria-hidden="true" class="liquidGlass-shine"></span>
+                            <span class="liquidGlass-text">Pewuofh</span>
+                        </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../index.html'" type="button">wefrw</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../ristorante.html'" type="button">
+                            HJDUYEW</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../info.html'" type="button">fwfrw</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../pagina-libera.html'" type="button">
+                            oeuwhuiew
+                        </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='../menu.html'" type="button">dafregre</button>
                     </div>
                 </div>
 
                 <!-- BUTTON TO CLOSE -->
-                <div class="col-6 col-md-3 d-flex justify-content-end align-items-start order-2 order-md-last">
+                <div class="col-6 col-md-1 d-flex justify-content-end align-items-start order-2 order-md-last">
                     <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
-                        <img src="../media/icon/arrow-left.svg" alt="arrow-left"/>
+                        <img src="../media/icon/x-icon.svg" alt="close"/>
                     </button>
+                </div>
+
+                <!-- BUTTON LANGUAGE MOBILE  -->
+                <div class="d-flex justify-content-end align-content-end d-md-none position-absolute bottom-0 p-5" id="btns-lan-mobile">
+                    <button class="btn-secondary btn-lan-ita">ITA</button>
+                    <span>/</span>
+                    <button class="btn-secondary btn-lan-med">MED</button>
                 </div>
 
             </div>
@@ -102,11 +157,14 @@
     </div>
 </section>
 
-<section class="my-5 p-2 p-lg-5">
-    <div class="container text-center mt-5">
-        <h2>Origine</h2>
-        <p class="fs-4 lh-sm px-5">Madreperla nasce dal desiderio di tradurre la sensibilità del mare in forma gastronomica. Gli organismi termoriflettenti hanno portato alla creazione di una conchiglia che rivela il suo cuore solo a chi la tocca. Un gesto che risveglia la memoria di un'antica connessione tra corpo e oceano.</p>
-    </div>
+<!-- introduction -->
+<section class="container mt-5 text-center">
+    <h2 class="mt-5 mb-3">Origine</h2>
+    <p class="body-lead px-5">
+        <b>Madreperla nasce dal desiderio di tradurre la sensibilità del mare in forma gastronomica.</b><br><br>
+        Gli organismi termoriflettenti hanno portato alla creazione di una conchiglia che rivela il suo cuore solo a
+        chi la tocca. Un gesto che risveglia la memoria di un’antica connessione tra corpo e oceano.
+    </p>
 </section>
 
 <main class="pb-5">
@@ -115,7 +173,16 @@
             <div class="row mb-5 align-items-center g-4">
                 <div class="col-xl-5 col-12 order-2 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
                     <h3>La composizione</h3>
-                    <p>Una conchiglia che si apre delicatamente al contatto, rivelando una crema di alghe sinaptiche e petali di medusa disidratata. L'incontro tra la morbidezza delle alghe e la croccantezza della medusa crea un equilibrio di consistenze. Viene servita a 20°C per attivare la reazione della conchiglia e favorire gli aromi.<br><strong>Allergeni:</strong> derivati di medusa, proteine algali.</p>
+                    <p>Una conchiglia che si apre delicatamente al contatto, rivelando il suo segreto a base
+                        di crema di alghe sinaptiche e petali di medusa disidratata che creano un equilibrio di consistenze.<br><br>
+                        Viene servita a 20°C per attivare la reazione della conchiglia e favorire gli aromi.
+                    </p>
+                    <div class="d-flex justify-content-start flex-wrap">
+                        <button class="chips me-2">
+                            <img alt="Allergene 2" src="/media/icon/DerivatiMedusa.svg">
+                            <span>Derivati di medusa</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
 
@@ -163,7 +230,8 @@
                 </div>
                 <div class="col-xl-6 col-12 order-2 order-xl-2">
                     <h3>Le alghe sinaptiche</h3>
-                    <p>Le alghe sinaptiche sono coltivate in vasche bio-reattive in cui si sviluppano microfili sensoriali in grado di reagire a stimoli tattili e termici. Al gusto, donano un profilo complesso: vellutato e dolce al primo impatto, con un retrogusto quasi elettrico, come una corrente marina.</p>
+                    <p>Le alghe sinaptiche sono coltivate in vasche bio-reattive in cui si sviluppano microfili sensoriali in grado di reagire a stimoli tattili e termici. <br><br>
+                        Al gusto, donano un profilo complesso: vellutato e dolce al primo impatto, con un retrogusto quasi elettrico, come una corrente marina.</p>
                 </div>
             </div>
         </div>
