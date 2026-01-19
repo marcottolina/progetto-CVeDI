@@ -613,6 +613,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         ;
                 }
 
+                moveTooltip(event); // Posiziona il tooltip immediatamente al tocco/entrata
+
             })
             .on("mousemove", moveTooltip)
             .on("mouseout", hideTooltip)
@@ -643,7 +645,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // mouseover for seas
         seas.on("mouseover", function (event, d) {
             tooltip.style("opacity", 1)
-                .html(`<b>${d.name}</b><br> <b>Settore:</b> Oceano Australe<br> <b>Viabilità: </b>aperta al traffico`);
+                .html(`<b>${d.name}</b><br> <b>Settore:</b> Oceano Australe<br> <b>Viabilità: </b>aperta al traffico`)
+            ;
+            moveTooltip(event); // Posiziona il tooltip immediatamente al tocco/entrata
         })
             .on("mousemove", moveTooltip)
             .on("mouseout", hideTooltip);
@@ -693,6 +697,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .style("color", "#FF327A")
                 .html(`<b>Riff</b><br/>Atlas, P.zza Corolleo 1 24°N - 46°O, -230 m<br/>Settore abissale Ovest`)
             ;
+            moveTooltip(event);
         });
 
         // if mouse is moved within Atlas radius, the label moves as well

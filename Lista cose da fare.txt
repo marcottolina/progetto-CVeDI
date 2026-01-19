@@ -4,8 +4,9 @@ Ale
 - Revisione generale dei commenti contenuti nel sito (che non ne siano rimasti in italiano)
 - Correggere e completare carosello homepage (index.html) [FATTO]
 - Correggere "finestre in cui si vede background" in prenota.html [FATTO]
-- Mettere gradiente blu sulla mappa di prenota.html che parte dalla "finestra in cui si vede background" sopra che sparisca in mouseover + capire come fare su mobile.
-- Aggiustare le descrizioni ALT dei piatti (carosello 2) in index.html
+- Mettere gradiente blu sulla mappa di prenota.html che parte dalla "finestra in cui si vede background" sopra che sparisca in mouseover + capire come fare su mobile. [FATTO]
+- Risolvere bug tooltip mappa assenti su mobile [FATTO]
+- Aggiustare le descrizioni ALT dei piatti (carosello 2) in index.html [FATTO]
 
 YuYu
 - Finire pagine per i piatti specifici (1, 2 e 3)
