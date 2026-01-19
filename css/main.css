@@ -34,7 +34,6 @@
 
     /* --- Pinks (highlights) --- */
     --pink: #FF3276;
-    /*--pink-30: rgba(255, 50, 122, 0.3);*/ /* toDo: check if it's needed or to remove it (I was using it in the map but it's not from the palette) */
 
     /* --- Oranges (highlights) --- */
     --orange: #F67055;
@@ -70,7 +69,6 @@
     /* links & buttons */
     --Typography-link: 1rem;    /* 16px */
 }
-/* toDo: actually use the typography within the rest of the style */
 
 /* typography for large-tablet & desktop */
 @media only screen and (min-width: 992px) {
@@ -207,7 +205,8 @@ h6 {
 
 /* </editor-fold> */
 
-/* === OFFCANVAS FULLPAGE (= opened hamburger menu) === */
+/* === OFFCANVAS FULLPAGE (aka the opened hamburger menu) === */
+/* <editor-fold> */
 #offCanvasFull {
     width: 100vw !important;
     /* 100dvh occupa esattamente il 100% dello spazio visibile dinamico */
@@ -229,6 +228,7 @@ h6 {
     flex-direction: column;
     padding: 0; /* Opzionale: rimuove padding che potrebbero spingere il contenuto fuori */
 }
+/* </editor-fold> */
 
 
 /* === BUTTONS === */
@@ -612,6 +612,22 @@ h6 {
     background: linear-gradient(180deg, #070713, transparent, #070713);
     z-index: 10;
 
+}
+
+/* Restaurant's a-la-carte menu section (menu.html) */
+#a-la-carte-menu {
+    background: linear-gradient(
+            180deg,
+            var(--blue-5, #070713) 0%,
+            rgba(7, 7, 19, 0.85) 50%, /* 0.85 opaqueness to make it look (much) darker even in the most visible spot */
+            var(--blue-5, #070713) 100%
+    );
+}
+
+/* Restaurant's a-la-carte menu last <HR> element (menu.html) */
+#last-hr {
+    margin-top: 1em;
+    margin-bottom: 0;
 }
 
 /* </editor-fold> */
@@ -1087,7 +1103,7 @@ video {
     font-size: 1.1em;
 }
 
-/* style after "tooltip and circle hide when moving map" fix toDo: make proper comments */
+/* style after "tooltip and circle hide when moving map" fix */
 
 /* change cursor to the "hand-grabbing" one when dragging the map */
 body.is-map-interacting {
@@ -1203,7 +1219,6 @@ body.is-map-interacting .circle {
     font-style: normal;
     font-weight: 500; /* Figma said 700, but it was too much - it feels more like 500 */
     line-height: 1.5rem;
-    /* toDo: see if .link class puts this style as intended */
 
     text-align: left;
 
@@ -1238,7 +1253,3 @@ body.is-map-interacting .circle {
 
 /* </editor-fold> */
 
-/*
-CSS trick -> gradient border CSS, cercare su quel sito e dovremmo riuscire a farlo.
-E' macchinoso, bisogna sfruttare after e before, ma si fa.
- */
