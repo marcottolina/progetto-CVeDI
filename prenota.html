@@ -29,27 +29,6 @@
     <!-- Local CSS (toDo: put it into the main.css) -->
     <style>
         /* == BOOKING (YuYu) ==  */
-        .fade-section {
-            background: linear-gradient(
-                    to bottom,
-                    rgba(7, 7, 19, 1) 0%,
-                    rgba(7, 7, 19, 0) 80%,
-                    rgba(7, 7, 19, 0) 80%,
-                    rgba(7, 7, 19, 1) 100%
-            );
-
-        }
-
-        .swiper-reviews .swiper-button-prev,
-        .swiper-reviews .swiper-button-next {
-            z-index: 9999 !important;
-            pointer-events: auto !important;
-        }
-
-        .swiper-reviews * {
-            pointer-events: auto !important;
-        }
-
         .liquidGlass-effect,
         .liquidGlass-tint,
         .liquidGlass-shine {
@@ -58,11 +37,10 @@
 
         .booking-section {
             background: linear-gradient(
-                    to bottom,
-                    rgba(7, 7, 19, 1) 0%,
-                    rgba(7, 7, 19, 0) 20%,
-                    rgba(7, 7, 19, 0) 80%,
-                    rgba(7, 7, 19, 1) 100%
+                    180deg,
+                    var(--blue-5, #070713) 0%,
+                    rgba(21, 20, 57, 0.00) 50%,
+                    var(--blue-5, #070713) 100%
             ),
             url(./media/img/sfondoPrenota.png);
             background-size: cover;
@@ -75,11 +53,10 @@
 
         .booking-section1 {
             background: linear-gradient(
-                    to bottom,
-                    rgba(7, 7, 19, 1) 0%,
-                    rgba(7, 7, 19, 0) 20%,
-                    rgba(7, 7, 19, 0) 80%,
-                    rgba(7, 7, 19, 1) 100%
+                    180deg,
+                    var(--blue-5, #070713) 0%,
+                    rgba(21, 20, 57, 0.00) 50%,
+                    var(--blue-5, #070713) 100%
             ),
             url("./media/img/sfondoPrenota1.png");
             background-size: cover;
@@ -659,7 +636,7 @@
                         </div>
                     </div>
 
-                    <div class="px-5 py-3 pb-5 d-flex justify-content-center">
+                    <div class="px-5 py-3 pb-5 d-flex flex-row justify-content-center">
                         <div class="col-md-6">
                             <input class="form-control" placeholder="Note" type="text">
                         </div>

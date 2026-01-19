@@ -318,6 +318,14 @@ h6 {
     animation: pressSound 1s forwards;
 }
 
+.btn-plate {
+    border-radius: 28px;
+    padding-left: 10px;
+    background:
+            linear-gradient(0deg, var(--blue-50-30), var(--blue-50-30)),
+            radial-gradient(62.44% 72.74% at 50% 50%, var(--orange) 30%, rgba(246, 112, 85, 0) 100%);
+}
+
 .attivo {
     animation: attivo 1.8s infinite;
 }
@@ -757,7 +765,6 @@ input, select {
     border-radius: 1000px !important;
     padding: 0.5rem 1rem;
     width: 100%;
-    max-width: 30ch;
     box-sizing: border-box;
     color: white !important;
     font-family: inherit;

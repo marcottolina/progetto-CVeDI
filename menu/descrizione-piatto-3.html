@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bioluma</title>
-    <!-- <link rel="icon" type="image/jpeg" href="/assets/images/others/logo.jpg"> -->
+
+    <!-- style imports -->
     <link rel="stylesheet" href="../css/main.css">
-    <!-- BOOTSTRAP CSS -->
     <link href="../vendor/bootstrap/bootstrap-css/bootstrap.css" rel="stylesheet">
-    <!-- BOOTSTRAP JS BUNDLE -->
-    <script src="../vendor/bootstrap/bootstrap-js/bootstrap.js"></script>
+
+    <!-- script imports -->
+    <script src="../vendor/bootstrap/bootstrap-js/bootstrap.js"></script> <!-- bootstrap JS bundle -->
     <script src="../js/main.js" defer></script>
     <link rel="stylesheet" href="../css/main.css">
+
+    <!-- title -->
+    <title>Bioluma</title>
+
 </head>
 <body>
 <div class="circle"></div>
@@ -146,137 +152,154 @@
     </div>
 </div>
 
-
-<section class="full-y py-5" id="header-menu">
-    <div class="header-wrapper">
+<!-- hero (updated) -->
+<section class="full-y py-5">
+    <div class="header-wrapper d-flex justify-content-end">
         <div class="header-overlay"></div>
-        <img src="../media/img/Menu-header.webp" alt="Sfondo Menu" class="img-fluid">
+        <video autoplay class="bg-video w-75">
+            <source src="../media/video/bioluma-coral.webm" type="video/webm">
+        </video>
     </div>
-    <div class="container mb-5 d-flex flex-column justify-content-end align-items-start h-100">
+    <div class="container-fluid mb-5 mx-4 d-flex flex-column justify-content-end align-items-start h-100">
         <h1>Bioluma</h1>
     </div>
 </section>
 
-<!-- introduction -->
-<section class="container mt-5 text-center">
-    <h2 class="mt-5 mb-3">Origine</h2>
-    <p class="body-lead px-5">
-        <b>Bioluma nasce dalla volontà di ricreare il bagliore delle creature abissali che comunicano attraverso le bioluminescenze. </b><br><br>
-        Un dolce che si illumina al contatto con il respiro: un soffio che risveglia la materia e la fa brillare, il mare che ci ricorda che è vivo.
-    </p>
-</section>
 
-<main class="pb-5">
-    <section>
-        <div class="container-fluid px-1 px-lg-5 w-75 my-3">
-            <div class="row mb-5 align-items-center g-4">
-                <div class="col-xl-5 col-12 order-2 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
-                    <h3>La composizione</h3>
-                    <p>Una composizione armoniosa con sfere di polline marino e zucchero di kelp che si illuminano
-                        quando entrano in contatto con il respiro umano. All'interno, un cuore di lichene cristallizzato e
-                        idromiele d'acqua profonda a temperatura controllata per mantenere attiva la luminescenza naturale.
-                        La consistenza varia da croccante a liquida, fondendo dolcezza e note aromatiche.</p>
-                    <div class="d-flex justify-content-start flex-wrap">
-                        <button class="chips me-2">
-                            <img alt="Allergene 2" src="/media/icon/DerivatiAlgali.svg">
-                            <span>Derivati algali</span>
-                        </button>
-                        <button class="chips me-2">
-                            <img alt="Allergene 2" src="/media/icon/PollineMarino.svg">
-                            <span>Polline marino</span>
-                        </button>
-                        <button class="chips me-2">
-                            <img alt="Allergene 2" src="/media/icon/Idromiele.svg">
-                            <span>Idromiele</span>
-                        </button>
-                    </div>
+<div class="top-overlay"> <!-- begin "do not show background video" -->
+
+    <!-- introduction -->
+    <section class="container mt-5 text-center">
+        <h2 class="mt-5 mb-3">Origine</h2>
+        <p class="body-lead px-5">
+            <b>Bioluma nasce dalla volontà di ricreare il bagliore delle creature abissali che comunicano attraverso le bioluminescenze. </b><br><br>
+            Un dolce che si illumina al contatto con il respiro: un soffio che risveglia la materia e la fa brillare, il mare che ci ricorda che è vivo.
+        </p>
+    </section>
+
+    <!-- after-intro -->
+    <section class="py-5">
+
+        <!-- first collaboration -->
+        <div class="row mb-5 align-items-center g-4 px-5">
+            <div class="col-xl-5 col-12 order-2 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
+                <h3>La composizione</h3>
+                <p>Una composizione armoniosa con sfere di polline marino e zucchero di kelp che si illuminano
+                    quando entrano in contatto con il respiro umano. All'interno, un cuore di lichene cristallizzato e
+                    idromiele d'acqua profonda a temperatura controllata per mantenere attiva la luminescenza naturale.
+                    La consistenza varia da croccante a liquida, fondendo dolcezza e note aromatiche.</p>
+                <div class="d-flex justify-content-start flex-wrap">
+                    <button class="chips me-2">
+                        <img alt="Allergene 2" src="/media/icon/DerivatiAlgali.svg">
+                        <span>Derivati algali</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 2" src="/media/icon/PollineMarino.svg">
+                        <span>Polline marino</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 2" src="/media/icon/Idromiele.svg">
+                        <span>Idromiele</span>
+                    </button>
                 </div>
-                <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
-
-                    <img
-                            alt="Composizione"
-                            class="img-fluid w-100"
-                            loading="lazy"
-                            sizes="
+            </div>
+            <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
+                <img
+                        alt="Composizione"
+                        class="img-fluid w-100"
+                        loading="lazy"
+                        sizes="
                                 (min-width: 1200px) 600px,
                                 (min-width: 992px) 500px,
                                 (min-width: 768px) 400px,
                                 (min-width: 576px) 500px,
                                 100vw
                                 "
-                            src="../media/img/descpiatto3-1-1200.webp"
-                            srcset="
+                        src="../media/img/descpiatto3-1-1200.webp"
+                        srcset="
                                 ../media/img/descpiatto3-1-800.webp 800w,
                                 ../media/img/descpiatto3-1-1200.webp 1200w,
                                 ../media/img/descpiatto3-1-2000.webp 2000w
                                 "
-                    >
-                </div>
+                >
             </div>
+        </div>
 
-            <div class="row mb-5 align-items-center g-4">
-                <div class="col-xl-5 col-12 order-1 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
-                    <img
-                            alt="Zucchero di kelp"
-                            class="img-fluid w-100"
-                            loading="lazy"
-                            sizes="
+        <!-- second collaboration -->
+        <div class="row align-items-center g-4 px-5">
+            <div class="col-xl-5 col-12 order-1 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
+                <img
+                        alt="Zucchero di kelp"
+                        class="img-fluid w-100"
+                        loading="lazy"
+                        sizes="
                                 (min-width: 1200px) 600px,
                                 (min-width: 992px) 500px,
                                 (min-width: 768px) 400px,
                                 (min-width: 576px) 500px,
                                 100vw
                                 "
-                            src="../media/img/descpiatto3-2-1200.webp"
-                            srcset="
+                        src="../media/img/descpiatto3-2-1200.webp"
+                        srcset="
                                 ../media/img/descpiatto3-2-800.webp 800w,
                                 ../media/img/descpiatto3-2-1200.webp 1200w,
                                 ../media/img/descpiatto3-2-2000.webp 2000w
                                 "
-                    >
-                </div>
-                <div class="col-xl-6 col-12 order-2 order-xl-2">
-                    <h3>Lo zucchero di kelp</h3>
-                    <p>Lo zucchero di kelp deriva da alghe brune trattate con enzimi fotofili,
-                        che generano micro-scariche luminose al contatto con l'ossigeno.
-                        La sua struttura permette di immagazzinare luce come energia sensoriale,
-                        rilasciandola gradualmente al respiro dei commensali. <br><br>
-                        Offre un sapore dolce e speziato, che cambia come le luci delle aurore boreali.</p>
-                </div>
+                >
+            </div>
+            <div class="col-xl-6 col-12 order-2 order-xl-2">
+                <h3>Lo zucchero di kelp</h3>
+                <p>Lo zucchero di kelp deriva da alghe brune trattate con enzimi fotofili,
+                    che generano micro-scariche luminose al contatto con l'ossigeno.
+                    La sua struttura permette di immagazzinare luce come energia sensoriale,
+                    rilasciandola gradualmente al respiro dei commensali. <br><br>
+                    Offre un sapore dolce e speziato, che cambia come le luci delle aurore boreali.</p>
             </div>
         </div>
     </section>
-
-    <section class="p-5 p-lg-5 p-xl-2 section-bg-light">
-        <div class="container-fluid px-4 h-100">
-            <div class="row align-items-center h-100">
-                <!-- Colonna testo + pulsante -->
-                <div class="col-lg-8 col-12 d-flex flex-column">
-                    <h2>Nome musica</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur. Nam nisi vestibulum at tincidunt risus est proin facilisis. Viverra neque id convallis morbi a adipiscing. Mi amet orci fermentum congue volutpat ut turpis mollis odio. Eleifend facilisi quam condimentum massa ipsum. Sed pulvinar viverra tincidunt vehicula. Nisi etiam magna vulputate proin ipsum amet vestibulum.</p>
-
-                    <div class="d-flex justify-content-start mt-3 mt-lg-2">
-                        <button class="btn" id="music-startdesc3">
-                            Riproduci  <i class="bi bi-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Colonna immagine a destra su desktop -->
-                <div class="col-lg-4 col-12 d-flex justify-content-center justify-content-lg-end align-items-start mt-3 mt-lg-0">
-                    <img src="../media/img/musica.webp" alt="Nome musica - GIF" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </section>
-
-</main>
+</div>
 
 
-<footer class="py-4 mt-5 section-bg-light">
-    <div class="container">
+<section class="py-5 section-bg-blue-gradient d-flex justify-content-center p-5 px-5 py-5 p-lg-5 p-xl-2" id="music-section">
+    <div class="container liquidGlass-text my-5 row">
         <div class="row">
-            <div class="col-6 col-xl-3">
+            <!-- Colonna testo + pulsante -->
+            <div class="col-lg-8 col-12 d-flex flex-column">
+                <h2>Breathe</h2>
+                <p>Un brano dei The Chainsmokers che, come un respiro, accende una luce vibrante. La musica crea un'atmosfera sospesa, dove onde di suoni morbidi e battiti profondi si espandono come bagliori luminosi.
+                    <br><br>La voce e gli accordi elettronici richiamano il ritmo del respiro, dando vita a una sinestesia perfetta in cui suono, luce e dolcezza si fondono e pulsano  in armonia.</p>
+
+                <div class="d-flex justify-content-start mt-3 mt-lg-2">
+                    <button class="btn btn-plate mt-2 liquidGlass-wrapper" id="music-startdesc3">>
+                        <span aria-hidden="true" class="liquidGlass-effect"></span>
+                        <span aria-hidden="true" class="liquidGlass-tint"></span>
+                        <span aria-hidden="true" class="liquidGlass-shine"></span>
+                        <span class="liquidGlass-text">Ascolta
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M2 10V13M6 6V17M10 3V21M14 8V15M18 5V18M22 10V13" stroke="#EAE9FB" stroke-width="2.18" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Colonna immagine a destra su desktop -->
+            <div class="col-lg-4 col-12 d-flex justify-content-center justify-content-lg-end align-items-start mt-3 mt-lg-0">
+                <img src="../media/img/musica.webp" alt="Nome musica - GIF" class="img-fluid">
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- footer (updated) -->
+<footer class="p-4 section-bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 col-md-3">
                 <h5>Orari di apertura</h5>
                 <p>Martedì - Domenica <br> 19:00 - 01:00</p>
                 <h5>Contatti</h5>
@@ -284,27 +307,36 @@
                     Settore abissale Ovest
                 </p>
             </div>
-            <div class="col-6 col-lg-3">
+            <div class="col-6 col-md-3">
                 <h5>Prenotazioni</h5>
-                <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di Atlas, è necessaria la prenotazione
+                <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
+                    Atlas, è necessaria la prenotazione
                 </p>
-                <button class="btn mt-2">
-                    Prenota <i class="bi bi-arrow-right"></i>
+                <button class="btn liquidGlass-wrapper" onclick="window.location.href='../prenota.html'" type="submit">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
                 </button>
             </div>
-            <div class="col-lg-6">
-                <div class="row justify-content-lg-end mt-3">
-                    <div class="col-lg-6 col-8 d-flex flex-column">
+            <div class="col-md-6">
+                <div class="row justify-content-md-end mt-3">
+                    <div class="col-md-6 col-8 d-flex flex-column">
                         <h5>Linea abissale</h5>
                         <p>
                             Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
                         </p>
                         <form>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">E-mail</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                <label class="form-label" for="exampleInputEmail1">E-mail</label>
+                                <input class="form-control" id="exampleInputEmail1" type="email">
                             </div>
-                            <button type="submit" class="btn btn-primary">Iscriviti <i class="bi bi-arrow-right"></i></button>
+                            <button class="btn liquidGlass-wrapper" type="submit">
+                                <span aria-hidden="true" class="liquidGlass-effect"></span>
+                                <span aria-hidden="true" class="liquidGlass-tint"></span>
+                                <span aria-hidden="true" class="liquidGlass-shine"></span>
+                                <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
+                            </button>
                         </form>
 
                     </div>
@@ -315,17 +347,18 @@
         <div class="col-12 mt-5">
             <div class="d-flex justify-content-between align-items-end">
                 <div>
-                    <img src="../media/img/Logo.svg" alt="" class="img-fluid">
+                    <img alt="" class="img-fluid" src="./img/Logo.svg">
                 </div>
                 <div>
-                    <button class="btn btn-empty">A</button>
-                    <button class="btn btn-empty">B</button>
-                    <button class="btn btn-empty">C</button>
+                    <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
+                    <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
+                    <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+
 
 <!-- Liquid glass pattern (done through SVG) toDo: this is a fixed version with the lighting removed (as it wasn't working) -->
 <svg style="display: none">

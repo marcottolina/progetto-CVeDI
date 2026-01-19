@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madreperla</title>
-    <!-- <link rel="icon" type="image/jpeg" href="/assets/images/others/logo.jpg"> -->
+
+    <!-- style imports -->
     <link rel="stylesheet" href="../css/main.css">
-    <!-- BOOTSTRAP CSS -->
     <link href="../vendor/bootstrap/bootstrap-css/bootstrap.css" rel="stylesheet">
-    <!-- BOOTSTRAP JS BUNDLE -->
-    <script src="../vendor/bootstrap/bootstrap-js/bootstrap.js"></script>
+
+    <!-- script imports -->
+    <script src="../vendor/bootstrap/bootstrap-js/bootstrap.js"></script> <!-- bootstrap JS bundle -->
     <script src="../js/main.js" defer></script>
     <link rel="stylesheet" href="../css/main.css">
+
+    <!-- title -->
+    <title>Madreperla</title>
+
 </head>
 <body>
 <div class="circle"></div>
@@ -146,127 +152,146 @@
     </div>
 </div>
 
-
-<section class="full-y py-5" id="header-menu">
+<!-- hero (updated) -->
+<section class="full-y py-5">
     <div class="header-wrapper">
         <div class="header-overlay"></div>
-        <img src="../media/img/Menu-header.webp" alt="Sfondo Menu" class="img-fluid">
+        <video autoplay class="bg-video" loop muted playsinline>
+            <source src="../media/video/madreperla-coral.webm" type="video/webm">
+        </video>
     </div>
-    <div class="container mb-5 d-flex flex-column justify-content-end align-items-start h-100">
-        <h1>Madreperla</h1>
+    <div class="container-fluid mb-5 mx-4 d-flex flex-column justify-content-end align-items-start h-100">
+        <h1>Thalassa</h1>
     </div>
 </section>
 
-<!-- introduction -->
-<section class="container mt-5 text-center">
-    <h2 class="mt-5 mb-3">Origine</h2>
-    <p class="body-lead px-5">
-        <b>Madreperla nasce dal desiderio di tradurre la sensibilità del mare in forma gastronomica.</b><br><br>
-        Gli organismi termoriflettenti hanno portato alla creazione di una conchiglia che rivela il suo cuore solo a
-        chi la tocca. Un gesto che risveglia la memoria di un’antica connessione tra corpo e oceano.
-    </p>
-</section>
 
-<main class="pb-5">
-    <section>
-        <div class="container-fluid px-1 px-lg-5 w-75 my-3">
-            <div class="row mb-5 align-items-center g-4">
-                <div class="col-xl-5 col-12 order-2 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
-                    <h3>La composizione</h3>
-                    <p>Una conchiglia che si apre delicatamente al contatto, rivelando il suo segreto a base
-                        di crema di alghe sinaptiche e petali di medusa disidratata che creano un equilibrio di consistenze.<br><br>
-                        Viene servita a 20°C per attivare la reazione della conchiglia e favorire gli aromi.
-                    </p>
-                    <div class="d-flex justify-content-start flex-wrap">
-                        <button class="chips me-2">
-                            <img alt="Allergene 2" src="/media/icon/DerivatiMedusa.svg">
-                            <span>Derivati di medusa</span>
-                        </button>
-                    </div>
+<div class="top-overlay"> <!-- begin "do not show background video" -->
+
+    <!-- introduction -->
+    <section class="container mt-5 text-center">
+        <h2 class="mt-5 mb-3">Origine</h2>
+        <p class="body-lead px-5">
+            <b>Madreperla nasce dal desiderio di tradurre la sensibilità del mare in forma gastronomica.</b><br><br>Gli organismi termoriflettenti hanno portato alla creazione di una conchiglia che rivela il suo cuore solo a
+            chi la tocca. Un gesto che risveglia la memoria di un’antica connessione tra corpo e oceano.
+        </p>
+    </section>
+
+    <!-- after-intro -->
+    <section class="py-5">
+
+        <!-- first collaboration -->
+        <div class="row mb-5 align-items-center g-4 px-5">
+            <div class="col-xl-5 col-12 order-2 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
+                <h3>La composizione</h3>
+                <p>Una conchiglia che si apre delicatamente al contatto, rivelando il suo segreto a base
+                    di crema di alghe sinaptiche e petali di medusa disidratata che creano un equilibrio di consistenze.<br><br>
+                    Viene servita a 20°C per attivare la reazione della conchiglia e favorire gli aromi.</p>
+                <div class="d-flex justify-content-start flex-wrap">
+                    <button class="chips me-2">
+                        <img alt="Allergene 2" src="/media/icon/PollineMarino.svg">
+                        <span>Polline marino</span>
+                    </button>
+                    <button class="chips me-2">
+                        <img alt="Allergene 2" src="/media/icon/DerivatiMedusa.svg">
+                        <span>Derivati di medusa</span>
+                    </button>
                 </div>
-                <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
-
-                    <img
-                            alt="Composizione"
-                            class="img-fluid w-100"
-                            loading="lazy"
-                            sizes="
+            </div>
+            <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
+                <img
+                        alt="Composizione"
+                        class="img-fluid w-100"
+                        loading="lazy"
+                        sizes="
                                 (min-width: 1200px) 600px,
                                 (min-width: 992px) 500px,
                                 (min-width: 768px) 400px,
                                 (min-width: 576px) 500px,
                                 100vw
                                 "
-                            src="../media/img/descpiatto2-1-1200.webp"
-                            srcset="
+                        src="../media/img/descpiatto2-1-1200.webp"
+                        srcset="
                                 ../media/img/descpiatto2-1-800.webp 800w,
                                 ../media/img/descpiatto2-1-1200.webp 1200w,
                                 ../media/img/descpiatto2-1-2000.webp 2000w
                                 "
-                    >
-                </div>
+                >
             </div>
+        </div>
 
-            <div class="row mb-5 align-items-center g-4">
-                <div class="col-xl-5 col-12 order-1 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
-                    <img
-                            alt="Alghe sinaptiche"
-                            class="img-fluid w-100"
-                            loading="lazy"
-                            sizes="
+        <!-- second collaboration -->
+        <div class="row align-items-center g-4 px-5">
+            <div class="col-xl-5 col-12 order-1 order-xl-1 mb-4 mb-xl-0 col-md-12 col-lg-12 col-xxl-6">
+                <img
+                        alt="Alghe sinaptiche"
+                        class="img-fluid w-100"
+                        loading="lazy"
+                        sizes="
                                 (min-width: 1200px) 600px,
                                 (min-width: 992px) 500px,
                                 (min-width: 768px) 400px,
                                 (min-width: 576px) 500px,
                                 100vw
                                 "
-                            src="../media/img/descpiatto2-2-1200.webp"
-                            srcset="
+                        src="../media/img/descpiatto2-2-1200.webp"
+                        srcset="
                                 ../media/img/descpiatto2-2-800.webp 800w,
                                 ../media/img/descpiatto2-2-1200.webp 1200w,
                                 ../media/img/descpiatto2-2-2000.webp 2000w
                                 "
-                    >
-                </div>
-                <div class="col-xl-6 col-12 order-2 order-xl-2">
-                    <h3>Le alghe sinaptiche</h3>
-                    <p>Le alghe sinaptiche sono coltivate in vasche bio-reattive in cui si sviluppano microfili sensoriali in grado di reagire a stimoli tattili e termici. <br><br>
-                        Al gusto, donano un profilo complesso: vellutato e dolce al primo impatto, con un retrogusto quasi elettrico, come una corrente marina.</p>
-                </div>
+                >
+            </div>
+            <div class="col-xl-6 col-12 order-2 order-xl-2">
+                <h3>Le alghe sinaptiche</h3>
+                <p>Le alghe sinaptiche sono coltivate in vasche bio-reattive in cui si sviluppano microfili sensoriali in grado di reagire a stimoli tattili e termici. <br><br>
+                    Al gusto, donano un profilo complesso: vellutato e dolce al primo impatto, con un retrogusto quasi elettrico, come una corrente marina.</p>
             </div>
         </div>
     </section>
-
-    <section class="p-5 p-lg-5 p-xl-2 section-bg-light">
-        <div class="container-fluid px-4 h-100">
-            <div class="row align-items-center h-100">
-                <!-- Colonna testo + pulsante -->
-                <div class="col-lg-8 col-12 d-flex flex-column">
-                    <h2>Nome musica</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur. Nam nisi vestibulum at tincidunt risus est proin facilisis. Viverra neque id convallis morbi a adipiscing. Mi amet orci fermentum congue volutpat ut turpis mollis odio. Eleifend facilisi quam condimentum massa ipsum. Sed pulvinar viverra tincidunt vehicula. Nisi etiam magna vulputate proin ipsum amet vestibulum.</p>
-
-                    <div class="d-flex justify-content-start mt-3 mt-lg-2">
-                        <button class="btn" id="music-startdesc2">
-                            Riproduci  <i class="bi bi-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Colonna immagine a destra su desktop -->
-                <div class="col-lg-4 col-12 d-flex justify-content-center justify-content-lg-end align-items-start mt-3 mt-lg-0">
-                    <img src="../media/img/musica.webp" alt="Nome musica - GIF" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </section>
-
-</main>
+</div>
 
 
-<footer class="py-4 mt-5 section-bg-light">
-    <div class="container">
+<section class="py-5 section-bg-blue-gradient d-flex justify-content-center p-5 px-5 py-5 p-lg-5 p-xl-2" id="music-section">
+    <div class="container liquidGlass-text my-5 row">
         <div class="row">
-            <div class="col-6 col-xl-3">
+            <!-- Colonna testo + pulsante -->
+            <div class="col-lg-8 col-12 d-flex flex-column">
+                <h2>After Dark</h2>
+                <p>Un brano di Feline che, come il bagliore di una perla nella notte, avvolge l’ascoltatore in una luce sbiadita e misteriosa. La musica si muove lenta e ipnotica, tra suoni distorti e battiti che pulsano nel buio, come un respiro che si fa spazio nell’oscurità.
+                    <br><br>Ogni nota sembra fondersi con l’ambiente, adattandosi al ritmo dettato dal calore della madreperla, come se l'aria stessa pulsasse.</p>
+
+                <div class="d-flex justify-content-start mt-3 mt-lg-2">
+                    <button class="btn btn-plate mt-2 liquidGlass-wrapper" id="music-startdesc2">>
+                        <span aria-hidden="true" class="liquidGlass-effect"></span>
+                        <span aria-hidden="true" class="liquidGlass-tint"></span>
+                        <span aria-hidden="true" class="liquidGlass-shine"></span>
+                        <span class="liquidGlass-text">Ascolta
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M2 10V13M6 6V17M10 3V21M14 8V15M18 5V18M22 10V13" stroke="#EAE9FB" stroke-width="2.18" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Colonna immagine a destra su desktop -->
+            <div class="col-lg-4 col-12 d-flex justify-content-center justify-content-lg-end align-items-start mt-3 mt-lg-0">
+                <img src="../media/img/musica.webp" alt="Nome musica - GIF" class="img-fluid">
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- footer (updated) -->
+<footer class="p-4 section-bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 col-md-3">
                 <h5>Orari di apertura</h5>
                 <p>Martedì - Domenica <br> 19:00 - 01:00</p>
                 <h5>Contatti</h5>
@@ -274,27 +299,36 @@
                     Settore abissale Ovest
                 </p>
             </div>
-            <div class="col-6 col-lg-3">
+            <div class="col-6 col-md-3">
                 <h5>Prenotazioni</h5>
-                <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di Atlas, è necessaria la prenotazione
+                <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
+                    Atlas, è necessaria la prenotazione
                 </p>
-                <button class="btn mt-2">
-                    Prenota <i class="bi bi-arrow-right"></i>
+                <button class="btn liquidGlass-wrapper" onclick="window.location.href='../prenota.html'" type="submit">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
                 </button>
             </div>
-            <div class="col-lg-6">
-                <div class="row justify-content-lg-end mt-3">
-                    <div class="col-lg-6 col-8 d-flex flex-column">
+            <div class="col-md-6">
+                <div class="row justify-content-md-end mt-3">
+                    <div class="col-md-6 col-8 d-flex flex-column">
                         <h5>Linea abissale</h5>
                         <p>
                             Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
                         </p>
                         <form>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">E-mail</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                <label class="form-label" for="exampleInputEmail1">E-mail</label>
+                                <input class="form-control" id="exampleInputEmail1" type="email">
                             </div>
-                            <button type="submit" class="btn btn-primary">Iscriviti <i class="bi bi-arrow-right"></i></button>
+                            <button class="btn liquidGlass-wrapper" type="submit">
+                                <span aria-hidden="true" class="liquidGlass-effect"></span>
+                                <span aria-hidden="true" class="liquidGlass-tint"></span>
+                                <span aria-hidden="true" class="liquidGlass-shine"></span>
+                                <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
+                            </button>
                         </form>
 
                     </div>
@@ -305,17 +339,18 @@
         <div class="col-12 mt-5">
             <div class="d-flex justify-content-between align-items-end">
                 <div>
-                    <img src="../media/img/Logo.svg" alt="" class="img-fluid">
+                    <img alt="" class="img-fluid" src="./img/Logo.svg">
                 </div>
                 <div>
-                    <button class="btn btn-empty">A</button>
-                    <button class="btn btn-empty">B</button>
-                    <button class="btn btn-empty">C</button>
+                    <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
+                    <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
+                    <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+
 
 <!-- Liquid glass pattern (done through SVG) toDo: this is a fixed version with the lighting removed (as it wasn't working) -->
 <svg style="display: none">
