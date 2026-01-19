@@ -360,6 +360,31 @@
         }
     </style>
 
+    <style>
+        #wrapperVideoDiPrenota {
+            display: flex;
+            justify-content: end;
+            overflow: visible;
+        }
+
+        #videoDiPrenota {
+            width: 75%;
+            mix-blend-mode: screen;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+            mask-image: linear-gradient(to right, transparent 0%, black 20%);
+        }
+    </style>
+
+    <!-- toDo: delete if it's still unused after the new video is made (it's disabled because there were not enough FPS in the video to slow it down without it stuttering) -->
+<!--    <script>-->
+
+<!--        document.addEventListener('DOMContentLoaded', function () {-->
+<!--            const playerVideo = document.querySelector('#videoDiPrenota');-->
+<!--            playerVideo.playbackRate = 1;-->
+<!--        });-->
+
+<!--    </script>-->
+
     <!--
     Per il calendario customizzabile: Vanilla JS Datepicker
     button-class: classi sul button
@@ -515,9 +540,9 @@
 
 <!-- hero (updated) -->
 <section class="full-y py-5">
-    <div class="header-wrapper">
+    <div class="header-wrapper" id="wrapperVideoDiPrenota">
         <div class="header-overlay"></div>
-        <video autoplay class="bg-video" loop muted playsinline>
+        <video autoplay class="bg-video" loop muted playsinline id="videoDiPrenota">
             <source src="/media/video/book-coral.webm" type="video/webm">
         </video>
     </div>

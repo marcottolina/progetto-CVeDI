@@ -735,6 +735,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* === BOOKING SECTION'S CALENDAR AND SELECT SCRIPT === */
+/* <editor-fold> */
 
 /* --- SELECT --- */
 document.addEventListener('DOMContentLoaded', function() {
@@ -1160,3 +1161,5 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set the initial state to Italian on page load
     switchLanguage('ita');
 });
+
+/* </editor-fold> */
