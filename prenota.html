@@ -16,8 +16,8 @@
     <script src="./vendor/bootstrap/bootstrap-js/bootstrap.bundle.js"></script>
     <script src="./js/main.js"></script>
     <link
-            rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker.min.css"
+            rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker.min.js"></script>
 
@@ -30,14 +30,13 @@
     <style>
         /* == BOOKING (YuYu) ==  */
         .fade-section {
-            background:
-                    linear-gradient(
-                            to bottom,
-                            rgba(7, 7, 19, 1) 0%,
-                            rgba(7, 7, 19, 0) 80%,
-                            rgba(7, 7, 19, 0) 80%,
-                            rgba(7, 7, 19, 1) 100%
-                    );
+            background: linear-gradient(
+                    to bottom,
+                    rgba(7, 7, 19, 1) 0%,
+                    rgba(7, 7, 19, 0) 80%,
+                    rgba(7, 7, 19, 0) 80%,
+                    rgba(7, 7, 19, 1) 100%
+            );
 
         }
 
@@ -58,15 +57,14 @@
         }
 
         .booking-section {
-            background:
-                    linear-gradient(
-                            to bottom,
-                            rgba(7, 7, 19, 1) 0%,
-                            rgba(7, 7, 19, 0) 20%,
-                            rgba(7, 7, 19, 0) 80%,
-                            rgba(7, 7, 19, 1) 100%
-                    ),
-                    url(./media/img/sfondoPrenota.png);
+            background: linear-gradient(
+                    to bottom,
+                    rgba(7, 7, 19, 1) 0%,
+                    rgba(7, 7, 19, 0) 20%,
+                    rgba(7, 7, 19, 0) 80%,
+                    rgba(7, 7, 19, 1) 100%
+            ),
+            url(./media/img/sfondoPrenota.png);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -76,15 +74,14 @@
         }
 
         .booking-section1 {
-            background:
-                    linear-gradient(
-                            to bottom,
-                            rgba(7, 7, 19, 1) 0%,
-                            rgba(7, 7, 19, 0) 20%,
-                            rgba(7, 7, 19, 0) 80%,
-                            rgba(7, 7, 19, 1) 100%
-                    ),
-                    url("./media/img/sfondoPrenota1.png");
+            background: linear-gradient(
+                    to bottom,
+                    rgba(7, 7, 19, 1) 0%,
+                    rgba(7, 7, 19, 0) 20%,
+                    rgba(7, 7, 19, 0) 80%,
+                    rgba(7, 7, 19, 1) 100%
+            ),
+            url("./media/img/sfondoPrenota1.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -100,13 +97,13 @@
             position: relative;
         }
 
-        .box-prenota .liquidGlass-shine{
+        .box-prenota .liquidGlass-shine {
             background: var(--blue-5-70);
         }
 
         .box-prenota .liquidGlass-effect,
         .box-prenota .liquidGlass-shine,
-        .box-prenota .liquidGlass-tint{
+        .box-prenota .liquidGlass-tint {
             border-radius: 20px;
         }
 
@@ -123,13 +120,13 @@
         /* MESSAGGIO DI ERRORE */
         .was-validated input:invalid,
         .was-validated .select-selected.is-invalid,
-        input.form-control.is-invalid  {
+        input.form-control.is-invalid {
             border: 1px solid var(--orange, #F67055) !important;
         }
 
         .was-validated .form-control:invalid ~ .invalid-feedback,
         .was-validated .form-select:invalid ~ .invalid-feedback,
-        .was-validated .select-selected.is-invalid ~ .invalid-feedback{
+        .was-validated .select-selected.is-invalid ~ .invalid-feedback {
             display: block;
             color: var(--orange, #F67055);
             margin-top: 0.35rem;
@@ -249,7 +246,7 @@
 
         /* Giorni disabilitati (il lunedì e i giorni precedenti al giorno attuale) */
         .datepicker-cell.day.disabled, /* NUOVO SELETTORE PER LE CELLE SPAN */
-        .datepicker-cell.day.disabled:hover{
+        .datepicker-cell.day.disabled:hover {
             color: var(--blue-85-70) !important;
             background-color: transparent;
             cursor: not-allowed;
@@ -307,11 +304,8 @@
             font-family: inherit;
             font-size: 1rem;
             /* linear gradient */
-            background:
-                /* dark background */
-                    linear-gradient(var(--blue-5), var(--blue-5)) padding-box,
-                        /* gradient cut border */
-                    linear-gradient(to right, var(--blue-70-30), var(--blue-5)) border-box !important;
+            background: /* dark background */ linear-gradient(var(--blue-5), var(--blue-5)) padding-box,
+                /* gradient cut border */ linear-gradient(to right, var(--blue-70-30), var(--blue-5)) border-box !important;
 
             transition: all 0.3s ease;
         }
@@ -376,14 +370,14 @@
     </style>
 
     <!-- toDo: delete if it's still unused after the new video is made (it's disabled because there were not enough FPS in the video to slow it down without it stuttering) -->
-<!--    <script>-->
+    <!--    <script>-->
 
-<!--        document.addEventListener('DOMContentLoaded', function () {-->
-<!--            const playerVideo = document.querySelector('#videoDiPrenota');-->
-<!--            playerVideo.playbackRate = 1;-->
-<!--        });-->
+    <!--        document.addEventListener('DOMContentLoaded', function () {-->
+    <!--            const playerVideo = document.querySelector('#videoDiPrenota');-->
+    <!--            playerVideo.playbackRate = 1;-->
+    <!--        });-->
 
-<!--    </script>-->
+    <!--    </script>-->
 
     <!--
     Per il calendario customizzabile: Vanilla JS Datepicker
@@ -420,13 +414,15 @@
             </a>
 
             <div class="liquidGlass-text">
-                <button class="btn-nav liquidGlass-wrapper nav-lan-ita d-none" onclick="window.location.href='prenota.html'">
+                <button class="btn-nav liquidGlass-wrapper nav-lan-ita d-none"
+                        onclick="window.location.href='prenota.html'">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
                 </button>
-                <button class="btn-nav liquidGlass-wrapper nav-lan-med d-none" onclick="window.location.href='prenota.html'">
+                <button class="btn-nav liquidGlass-wrapper nav-lan-med d-none"
+                        onclick="window.location.href='prenota.html'">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
@@ -437,9 +433,10 @@
                     <span>/</span>
                     <button class="btn-secondary btn-lan-med">MED</button>
                 </div>
-                <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull" data-bs-toggle="offcanvas"
+                <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull"
+                        data-bs-toggle="offcanvas"
                         type="button">
-                    <img src="/media/icon/hamburger-menu.svg" alt="hamburger-menu"/>
+                    <img alt="hamburger-menu" src="/media/icon/hamburger-menu.svg"/>
                 </button>
             </div>
         </div>
@@ -447,7 +444,8 @@
 </header>
 
 <!-- Off-canvas full-page (= opened hamburger menu) [updated] -->
-<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" data-bs-scroll="false" data-bs-backdrop="true" id="offCanvasFull" tabindex="-1">
+<div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" data-bs-backdrop="true" data-bs-scroll="false"
+     id="offCanvasFull" tabindex="-1">
     <div class="offcanvas-body p-3">
         <div class="container-fluid">
             <div class="row g-0">
@@ -488,14 +486,21 @@
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
                             <span class="liquidGlass-text">Prenota</span>
                         </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='index.html'" type="button">Home</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='index.html'" type="button">Home
+                        </button>
                         <button class="btn-empty my-4" onclick="window.location.href='ristorante.html'" type="button">
-                            Il ristorante</button>
-                        <button class="btn-empty my-4" onclick="window.location.href='info.html'" type="button">Informazioni</button>
-                        <button class="btn-empty my-4" onclick="window.location.href='pagina-libera.html'" type="button">
+                            Il ristorante
+                        </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='info.html'" type="button">
+                            Informazioni
+                        </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='pagina-libera.html'"
+                                type="button">
                             Serate speciali
                         </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='menu.html'" type="button">Il menù</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='menu.html'" type="button">Il
+                            menù
+                        </button>
                     </div>
                 </div>
 
@@ -508,26 +513,33 @@
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
                             <span class="liquidGlass-text">Pewuofh</span>
                         </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='index.html'" type="button">wefrw</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='index.html'" type="button">wefrw
+                        </button>
                         <button class="btn-empty my-4" onclick="window.location.href='ristorante.html'" type="button">
-                            HJDUYEW</button>
-                        <button class="btn-empty my-4" onclick="window.location.href='info.html'" type="button">fwfrw</button>
-                        <button class="btn-empty my-4" onclick="window.location.href='pagina-libera.html'" type="button">
+                            HJDUYEW
+                        </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='info.html'" type="button">fwfrw
+                        </button>
+                        <button class="btn-empty my-4" onclick="window.location.href='pagina-libera.html'"
+                                type="button">
                             oeuwhuiew
                         </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='menu.html'" type="button">dafregre</button>
+                        <button class="btn-empty my-4" onclick="window.location.href='menu.html'" type="button">
+                            dafregre
+                        </button>
                     </div>
                 </div>
 
                 <!-- BUTTON TO CLOSE -->
                 <div class="col-6 col-md-1 d-flex justify-content-end align-items-start order-2 order-md-last">
                     <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
-                        <img src="media/icon/x-icon.svg" alt="close"/>
+                        <img alt="close" src="media/icon/x-icon.svg"/>
                     </button>
                 </div>
 
                 <!-- BUTTON LANGUAGE MOBILE  -->
-                <div class="d-flex justify-content-end align-content-end d-md-none position-absolute bottom-0 p-5" id="btns-lan-mobile">
+                <div class="d-flex justify-content-end align-content-end d-md-none position-absolute bottom-0 p-5"
+                     id="btns-lan-mobile">
                     <button class="btn-secondary btn-lan-ita">ITA</button>
                     <span>/</span>
                     <button class="btn-secondary btn-lan-med">MED</button>
@@ -542,7 +554,7 @@
 <section class="full-y py-5">
     <div class="header-wrapper" id="wrapperVideoDiPrenota">
         <div class="header-overlay"></div>
-        <video autoplay class="bg-video" loop muted playsinline id="videoDiPrenota">
+        <video autoplay class="bg-video" id="videoDiPrenota" loop muted playsinline>
             <source src="/media/video/book-coral.webm" type="video/webm">
         </video>
     </div>
@@ -552,199 +564,211 @@
 </section>
 
 <div class="top-overlay">
-    <div class="booking-section">
+
+    <!-- first section: booking section 1 -->
+    <section class="booking-section">
+
         <div class="box-prenota p-5 liquidGlass-wrapper d-flex justify-content-center">
+
+            <!-- liquid glass filters -->
             <div class="liquidGlass-effect"></div>
             <div class="liquidGlass-shine"></div>
             <div class="liquidGlass-tint"></div>
 
+            <!-- regular booking section -->
             <div class="liquidGlass-text d-flex flex-column align-items-center w-100">
                 <form class="row g-4 justify-content-center needs-validation" novalidate>
-                <h2 class="d-flex justify-content-center pb-5 pt-2">Prenotazione tavoli</h2>
-                <div class="px-5 py-3 d-flex flex-direction-row justify-content-center gap-2">
-                    <div class="col-md-5 px-5">
-                        <input type="text" class="form-control" placeholder="Nome*" required>
-                        <div class="invalid-feedback">
-                            Inserire un nome
-                        </div>
-                    </div>
-                    <div class="col-md-5 px-5">
-                        <div class="input-group">
-                            <div class="custom-select-wrapper" data-target="selectPersone">
-                                <div class="select-selected">Persone*</div>
-                                <div class="select-items select-hide">
-                                </div>
+                    <h2 class="d-flex justify-content-center pb-5 pt-2">Prenotazione tavoli</h2>
+                    <div class="px-5 py-3 d-flex flex-direction-row justify-content-center gap-2">
+                        <div class="col-md-5 px-5">
+                            <input class="form-control" placeholder="Nome*" required type="text">
+                            <div class="invalid-feedback">
+                                Inserire un nome
                             </div>
-                            <select
-                                    class="form-select custom-hidden-select"
-                                    id="selectPersone"
-                                    name="persone"
-                                    tabindex="-1"
-                                    aria-hidden="true"
-                                    required>
-                                <option value="" disabled selected>Persone*</option>
-                                <option value="1">1 persona</option>
-                                <option value="2">2 persone</option>
-                                <option value="3">3 persone</option>
-                                <option value="4">4 persone</option>
-                                <option value="5">5 persone</option>
-                                <option value="6">6 persone</option>
-                            </select>
                         </div>
-                    </div>
-                </div>
-
-                <div class="px-5 py-3 d-flex flex-direction-row justify-content-center">
-                    <!-- DATA -->
-                    <div class="col-md-5 px-5">
-                        <div class="input-group">
-                            <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Data*"
-                                    id="bookingDate"
-                                    required
-                                    autocomplete="off"
-                                    readonly
-                            >
-                        </div>
-                    </div>
-
-                    <!-- ORARIO -->
-                    <div class="col-md-5 px-5">
-                        <div class="input-group">
-                            <div class="custom-select-wrapper" data-target="selectOrario">
-                                <div class="select-selected">Orario*</div>
-                                <div class="select-items select-hide">
+                        <div class="col-md-5 px-5">
+                            <div class="input-group">
+                                <div class="custom-select-wrapper" data-target="selectPersone">
+                                    <div class="select-selected">Persone*</div>
+                                    <div class="select-items select-hide">
+                                    </div>
                                 </div>
+                                <select
+                                        aria-hidden="true"
+                                        class="form-select custom-hidden-select"
+                                        id="selectPersone"
+                                        name="persone"
+                                        required
+                                        tabindex="-1">
+                                    <option disabled selected value="">Persone*</option>
+                                    <option value="1">1 persona</option>
+                                    <option value="2">2 persone</option>
+                                    <option value="3">3 persone</option>
+                                    <option value="4">4 persone</option>
+                                    <option value="5">5 persone</option>
+                                    <option value="6">6 persone</option>
+                                </select>
                             </div>
-                            <select
-                                    class="form-select custom-hidden-select"
-                                    id="selectOrario"
-                                    name="orario"
-                                    tabindex="-1"
-                                    aria-hidden="true"
-                                    required>
-                                <option value="" disabled selected>Orario*</option>
-                                <option value="19:00">19:00</option>
-                                <option value="19:30">19:30</option>
-                                <option value="20:00">20:00</option>
-                                <option value="20:30">20:30</option>
-                                <option value="21:00">21:00</option>
-                                <option value="21:30">21:30</option>
-                                <option value="22:00">22:00</option>
-                                <option value="22:30">22:30</option>
-                                <option value="23:00">23:00</option>
-                            </select>
                         </div>
                     </div>
-                </div>
 
-                <div class="px-5 py-3 pb-5 d-flex justify-content-center">
-                    <div class="col-md-6">
-                        <input class="form-control" placeholder="Note" type="text">
+                    <div class="px-5 py-3 d-flex flex-direction-row justify-content-center">
+
+                        <!-- Date -->
+                        <div class="col-md-5 px-5">
+                            <div class="input-group">
+                                <input
+                                        autocomplete="off"
+                                        class="form-control"
+                                        id="bookingDate"
+                                        placeholder="Data*"
+                                        readonly
+                                        required
+                                        type="text"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Time -->
+                        <div class="col-md-5 px-5">
+                            <div class="input-group">
+                                <div class="custom-select-wrapper" data-target="selectOrario">
+                                    <div class="select-selected">Orario*</div>
+                                    <div class="select-items select-hide">
+                                    </div>
+                                </div>
+                                <select
+                                        aria-hidden="true"
+                                        class="form-select custom-hidden-select"
+                                        id="selectOrario"
+                                        name="orario"
+                                        required
+                                        tabindex="-1">
+                                    <option disabled selected value="">Orario*</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="19:30">19:30</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="20:30">20:30</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="21:30">21:30</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="22:30">22:30</option>
+                                    <option value="23:00">23:00</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="px-5 py-3 pb-5 d-flex justify-content-center">
+                        <div class="col-md-6">
+                            <input class="form-control" placeholder="Note" type="text">
+                        </div>
+                    </div>
                     <div class="pt-4 d-flex justify-content-center">
-                    <button class="btn liquidGlass-wrapper" type="submit">
-                        <span aria-hidden="true" class="liquidGlass-effect"></span>
-                        <span aria-hidden="true" class="liquidGlass-tint"></span>
-                        <span aria-hidden="true" class="liquidGlass-shine"></span>
-                        <span class="liquidGlass-text">Prenota</span>
-                    </button>
+                        <button class="btn liquidGlass-wrapper" type="submit">
+                            <span aria-hidden="true" class="liquidGlass-effect"></span>
+                            <span aria-hidden="true" class="liquidGlass-tint"></span>
+                            <span aria-hidden="true" class="liquidGlass-shine"></span>
+                            <span class="liquidGlass-text">Prenota</span>
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </section>
 </div>
 
-<!-- third section: menu-description + quick-send to menu -->
-<section class="py-5 fade-section">
-    <div class="container-fluid py-5 h-100">
-        <div class="row justify-content-center">
-            <div class="col-10 col-md-8 col-lg-7 text-center">
-                <h2>Vuoi prenotare per evento privato?</h2>
-                <p class="body-lead">
-                    L’esperienza può diventare ancora più intima: è possibile riservare l’intera sala per eventi
-                    privati o celebrazioni speciali, immergendosi completamente nell’atmosfera del nostro mondo
-                    sommerso.
-                </p>
-            </div>
+<!-- second section: description of booking a whole room -->
+<section class="py-5 section-bg-blue-gradient text-center">
+    <div class="container liquidGlass-text  my-5">
+        <div class="container text-center h-100 text-center d-flex flex-column justify-content-center align-items-center my-5">
+            <h2>Vuoi prenotare per evento privato?</h2>
+            <p>
+                L’esperienza può diventare ancora più intima: è possibile riservare l’intera sala per eventi
+                privati o celebrazioni speciali, immergendosi completamente nell’atmosfera del nostro mondo
+                sommerso.
+            </p>
         </div>
     </div>
 </section>
 
+
 <div class="top-overlay">
-    <div class="booking-section1">
+
+    <!-- third section: booking section 2 -->
+    <section class="booking-section1">
         <div class="box-prenota p-5 liquidGlass-wrapper d-flex justify-content-center">
+
+            <!-- liquid glass filters -->
             <div class="liquidGlass-effect"></div>
             <div class="liquidGlass-shine"></div>
             <div class="liquidGlass-tint"></div>
 
+            <!-- whole-room booking section -->
             <div class="liquidGlass-text d-flex flex-column align-items-center w-100">
                 <form class="row g-4 justify-content-center needs-validation" novalidate>
                     <h2 class="d-flex justify-content-center pb-5 pt-2">Prenotazione sala</h2>
-                <div class="px-5 py-3 d-flex flex-direction-row justify-content-center gap-2">
-                    <div class="col-md-5 px-5 pb-4">
-                        <input type="text" class="form-control" placeholder="Nome*" required>
-                        <div class="invalid-feedback">
-                            Inserire un nome
-                        </div>
-                    </div>
-                </div>
-
-                <div class="px-5 py-3 d-flex flex-direction-row justify-content-center">
-                    <!-- DATA -->
-                    <div class="col-md-5 px-5">
-                        <div class="input-group">
-                            <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Data*"
-                                    id="bookingDate1"
-                                    required
-                                    autocomplete="off"
-                                    readonly
-                            >
-                        </div>
-                    </div>
-
-                    <!-- ORARIO -->
-                    <div class="col-md-5 px-5">
-                        <div class="input-group">
-                            <div class="custom-select-wrapper" data-target="selectOrario1">
-                                <div class="select-selected">Orario*</div>
-                                <div class="select-items select-hide">
-                                </div>
+                    <div class="px-5 py-3 d-flex flex-direction-row justify-content-center gap-2">
+                        <div class="col-md-5 px-5 pb-4">
+                            <input class="form-control" placeholder="Nome*" required type="text">
+                            <div class="invalid-feedback">
+                                Inserire un nome
                             </div>
-                            <select
-                                    class="form-select custom-hidden-select"
-                                    id="selectOrario1"
-                                    name="orario"
-                                    tabindex="-1"
-                                    aria-hidden="true"
-                                    required>
-                                <option value="" disabled selected>Orario*</option>
-                                <option value="19:00">19:00</option>
-                                <option value="19:30">19:30</option>
-                                <option value="20:00">20:00</option>
-                                <option value="20:30">20:30</option>
-                                <option value="21:00">21:00</option>
-                                <option value="21:30">21:30</option>
-                                <option value="22:00">22:00</option>
-                                <option value="22:30">22:30</option>
-                                <option value="23:00">23:00</option>
-                            </select>
                         </div>
                     </div>
-                </div>
 
-                <div class="px-5 py-3 pb-5 d-flex justify-content-center">
-                    <div class="col-md-6">
-                        <input class="form-control" placeholder="Note" type="text">
+                    <div class="px-5 py-3 d-flex flex-direction-row justify-content-center">
+
+                        <!-- Date -->
+                        <div class="col-md-5 px-5">
+                            <div class="input-group">
+                                <input
+                                        autocomplete="off"
+                                        class="form-control"
+                                        id="bookingDate1"
+                                        placeholder="Data*"
+                                        readonly
+                                        required
+                                        type="text"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Time -->
+                        <div class="col-md-5 px-5">
+                            <div class="input-group">
+                                <div class="custom-select-wrapper" data-target="selectOrario1">
+                                    <div class="select-selected">Orario*</div>
+                                    <div class="select-items select-hide">
+                                    </div>
+                                </div>
+                                <select
+                                        aria-hidden="true"
+                                        class="form-select custom-hidden-select"
+                                        id="selectOrario1"
+                                        name="orario"
+                                        required
+                                        tabindex="-1">
+                                    <option disabled selected value="">Orario*</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="19:30">19:30</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="20:30">20:30</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="21:30">21:30</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="22:30">22:30</option>
+                                    <option value="23:00">23:00</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="px-5 py-3 pb-5 d-flex justify-content-center">
+                        <div class="col-md-6">
+                            <input class="form-control" placeholder="Note" type="text">
+                        </div>
+                    </div>
 
                     <div class="pt-4 d-flex justify-content-center">
                         <button class="btn liquidGlass-wrapper" type="submit">
@@ -757,36 +781,37 @@
                 </form>
             </div>
         </div>
-    </div>
+    </section>
 </div>
 
-<section class="py-5 fade-section">
-    <div class="container-fluid py-5 h-100">
-        <div class="row justify-content-center">
-            <div class="col-10 col-md-8 col-lg-7 text-center">
-                <h2>Nel cuore dell’oceano</h2>
-                <p>
-                    Nel fondale marino di Atlas, accanto alla piazza Corolleo, si apre il nostro spazio: un rifugio
-                    per i sensi nel cuore della barriera di corallo.
-                </p>
-            </div>
+<!-- fourth section: restaurant's location -->
+<section class="py-5 section-bg-blue-gradient text-center">
+    <div class="container liquidGlass-text  my-5">
+        <div class="container text-center h-100 text-center d-flex flex-column justify-content-center align-items-center my-5">
+            <h2>Nel cuore dell’oceano</h2>
+            <p>
+                Nel fondale marino di Atlas, accanto alla piazza Corolleo, si apre il nostro spazio: un rifugio
+                per i sensi nel cuore della barriera di corallo.
+            </p>
         </div>
     </div>
 </section>
 
-<!-- trying a map with D3 -->
-<div id="map-container">
-    <div class="tooltip" id="tooltip"></div>
+<!-- fifth section: map with D3 -->
+<section id="map">
+    <div id="map-container">
+        <div class="tooltip" id="tooltip"></div>
 
-    <div class="controls-hint" id="map-controls-hint">
-        <div class="key-row">
-            <span class="key-badge">ALT</span> + <span class="icon">🖱️</span> <span>ZOOM</span>
-        </div>
-        <div class="key-row">
-            <span class="icon">👆</span> <span>TRASCINA</span>
+        <div class="controls-hint" id="map-controls-hint">
+            <div class="key-row">
+                <span class="key-badge">ALT</span> + <span class="icon">🖱️</span> <span>ZOOM</span>
+            </div>
+            <div class="key-row">
+                <span class="icon">👆</span> <span>TRASCINA</span>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- footer (updated) -->
 <footer class="p-4 section-bg-light">
@@ -857,20 +882,20 @@
 
 <!-- Liquid glass pattern (done through SVG) toDo: this is a fixed version with the lighting removed (as it wasn't working) -->
 <svg style="display: none">
-    <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+    <filter height="100%" id="glass-distortion" width="100%" x="0%" y="0%">
 
         <feTurbulence
-                type="fractalNoise"
                 baseFrequency="0.01 0.01"
                 numOctaves="30"
                 result="turbulence"
                 seed="31"
+                type="fractalNoise"
         />
 
         <feGaussianBlur
                 in="turbulence"
-                stdDeviation="3"
                 result="softMap"
+                stdDeviation="3"
         />
 
         <feDisplacementMap
