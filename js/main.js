@@ -148,166 +148,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })
 
-
-/* toDo: delete once new logic is working */
-/* === VIDEO, AUDIO (music) & RELATED BUTTONS === */
-/*document.addEventListener("DOMContentLoaded", () => {
-
-    let currentAudio = null;
-    let currentVideo = null;
-    let currentButton = null;
-    let currentInterval = null; // Manages the fade-in/out timer
-
-    function addMediaControl(btnId, audioUrl) {
-
-        const btn = document.getElementById(btnId);
-        const audio = new Audio(audioUrl); // Audio is created once per button and stays in memory
-
-        // button's event listener
-        btn.addEventListener("click", function () {
-
-            const item = this.closest(".timeline-item");
-            const video = item ? item.querySelector("video") : null;
-
-            // IMPORTANT: Stop any ongoing speed/volume transition immediately (to prevent conflicts between clicks)
-            if (currentInterval) clearInterval(currentInterval);
-
-            // = CASE 1: CLICK ON THE SAME BUTTON (STOP / PAUSE) =
-            if (currentButton === this) {
-
-                // Audio: PAUSE & RESET
-                if (currentAudio) {
-                    currentAudio.pause();
-                    currentAudio.currentTime = 0;
-                }
-
-                // Video: FADE OUT (Slow down until stop)
-                if (currentVideo) {
-                    let rate = currentVideo.playbackRate;
-
-                    currentInterval = setInterval(() => {
-
-                        rate -= 0.1; // Decrease speed
-
-                        if (rate <= 0.1) {
-                            // Time is not reset, the video saves its position
-                            currentVideo.pause();
-                            clearInterval(currentInterval);
-                        } else {
-                            currentVideo.playbackRate = rate; // video visibly slows down
-                        }
-                    }, 50); // every 50ms
-                }
-
-                // UI Update
-                this.classList.remove('attivo');
-
-                // Reset Global Variables
-                currentAudio = null;
-                currentVideo = null;
-                currentButton = null;
-                return;
-            }
-
-            // = CASE 2: CLICK ON A DIFFERENT BUTTON (SWITCH ITEM) =
-            // Handle Previous Audio
-            if (currentAudio && currentAudio !== audio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-            }
-
-            // Handle Previous Video
-            if (currentVideo && currentVideo !== video) {
-                currentVideo.pause();
-                // The previous's video currentTime is not reset, it's just frozen where it was
-                currentVideo.playbackRate = 1; // Reset speed for the next time it plays
-            }
-
-            // Handle Previous Button UI
-            if (currentButton && currentButton !== this) {
-                currentButton.classList.remove('attivo');
-            }
-
-            // = CASE 3: START NEW AUDIO =
-            audio.currentTime = 0;
-            audio.play();
-
-            // CASE 4: START NEW VIDEO (FADE IN / SOFT START)
-            if (video) {
-                // Start at slow speed
-                video.playbackRate = 0.1;
-                video.play();
-
-                let rate = 0.1;
-                currentInterval = setInterval(() => {
-                    rate += 0.1; // Increase speed
-
-                    if (rate >= 1) {
-                        video.playbackRate = 1; // Normal speed reached
-                        clearInterval(currentInterval);
-                    } else {
-                        video.playbackRate = rate;
-                    }
-                }, 50);
-            }
-
-            // Update global state with the new active button
-            currentAudio = audio;
-            currentVideo = video;
-            currentButton = this;
-            this.classList.add('attivo');
-        });
-    }
-
-    // Initialization
-    addMediaControl("music-start1", "../media/audio/thalassa.mp3");
-    addMediaControl("music-start2", "../media/audio/rihanna.mp3");
-    addMediaControl("music-start3", "../media/audio/thalassa.mp3");
-
-});*/
-
-/* toDo: delete once new logic is working */
-/* === BUTTON FUNCTIONALITY FOR PLATE DESCRPTION === */
-/*document.addEventListener('DOMContentLoaded', () => {
-
-    function addMediaControl2(btnId, audioUrl) { // Note: "addMediaControl2" to not cause a conflict with previous VIDEO / AUDIO handles
-
-        const playBtn = document.getElementById(btnId);
-        const audio = new Audio(audioUrl);
-
-        playBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                playBtn.innerHTML = '<i class="bi bi-soundwave"></i>';
-                playBtn.classList.add('btn-sound', 'attivo');
-            } else {
-                audio.pause();
-                audio.currentTime = 0; // restarts (from start)
-                playBtn.innerHTML = 'Riproduci <i class="bi bi-arrow-right"></i>';
-                playBtn.classList.remove('btn-sound', 'attivo');
-            }
-        });
-    }
-
-    addMediaControl2("music-startdesc1", "../media/audio/thalassa.mp3");
-    addMediaControl2("music-startdesc2", "../media/audio/thalassa.mp3");
-    addMediaControl2("music-startdesc3", "../media/audio/thalassa.mp3");
-
-}); */
-
-/* toDo: delete once new logic is working */
-/* === ADDING THE 'ACTIVE' / 'INACTIVE' STATE TO AUDIO BUTTONS === */
-/*document.addEventListener('DOMContentLoaded', function() {
-
-    let buttonSound = document.getElementsByClassName("btn-sound");
-    for (let i = 0; i < buttonSound.length; i++) {
-        buttonSound[i].addEventListener("click", function () {
-            this.classList.toggle("attivo");
-        });
-    }
-
-});*/
-
 /* === HIDING THE MOUSE CURSOS OVER HOVERABLE ITEMS === */
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -346,53 +186,6 @@ document.addEventListener('show.bs.offcanvas', () => {
 document.addEventListener('hide.bs.offcanvas', () => {
     document.body.classList.remove('no-scroll');
 });
-
-/* toDo: delete once new logic is working */
-/*document.addEventListener('DOMContentLoaded', function() {
-
-    document.querySelectorAll(".btn-sound").forEach(btn => {
-
-        btn.addEventListener("click", function () {
-
-            const item = this.closest(".timeline-item");
-            const video = item.querySelector("video");
-
-            if (!video) return;
-
-            // If video is currently being reproduced → soft-stop
-            if (!video.paused) {
-                let rate = video.playbackRate;
-                const interval = setInterval(() => {
-                    rate -= 0.1; // slow-down effect (analogous to previous code)
-                    video.playbackRate = Math.max(rate, 0.1);
-
-                    if (rate <= 0.1) {
-                        clearInterval(interval);
-                        video.pause();
-                        video.playbackRate = 1;      // reset per la prossima riproduzione
-                    }
-                }, 40);
-                return;
-            }
-
-            // Se il video è fermo → soft-start
-            video.play();
-            video.playbackRate = 0.1;
-
-            let rate = 0.1;
-            const interval = setInterval(() => {
-                rate += 0.1;                     // accelera
-                video.playbackRate = rate;
-
-                if (rate >= 1) {
-                    video.playbackRate = 1;
-                    clearInterval(interval);
-                }
-            }, 40);
-        });
-    });
-
-});*/
 
 /* === VIDEO, AUDIO (music) & RELATED BUTTONS === */
 document.addEventListener("DOMContentLoaded", () => {
@@ -941,57 +734,318 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-/* === BOOKING SECTION'S CALENDAR SCRIPT === */
-document.addEventListener("DOMContentLoaded", function () {
+/* === BOOKING SECTION'S CALENDAR AND SELECT SCRIPT === */
 
-    document.addEventListener('DOMContentLoaded', (event) => {
+/* --- SELECT --- */
+document.addEventListener('DOMContentLoaded', function() {
 
-        const dateInput1 = document.getElementById('InputDate');
-        const dateInput2 = document.getElementById('InputDate1');
+    const customSelectWrappers = document.querySelectorAll('.custom-select-wrapper');
 
-        // flatpickr (= calendar) library configurations
-        const flatpickrConfig = {
+    /* --- Management functions --- */
+    function openDropdown(wrapper, selectedDiv, itemsDiv) {
+        // Apply opening classes
+        wrapper.classList.add('select-is-open'); // Attiva Z-Index
+        selectedDiv.classList.add('select-arrow-active');
+        itemsDiv.classList.remove('select-hide');
+    }
 
-            placeholder: "gg/mm/aaaa",
-            dateFormat: "d/m/Y",
-            locale: {
-                weekdays: {
-                    shorthand: ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'],
-                    longhand: ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'],
-                },
-                months: {
-                    shorthand: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
-                    longhand: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
-                },
-                firstDayOfWeek: 1,
-                scrollTitle: "Scorri per cambiare",
-                toggleTitle: "Clicca per cambiare",
-                amPM: ["AM", "PM"],
-                rangeSeparator: " a ",
-                time_24hr: true,
-            },
+    function closeDropdown(wrapper, selectedDiv, itemsDiv) {
+        // Remove closing classes
+        wrapper.classList.remove('select-is-open'); // Disattiva Z-Index
+        selectedDiv.classList.remove('select-arrow-active');
+        itemsDiv.classList.add('select-hide');
+    }
 
-            // disables Mondays (Restaurant is closed)
-            disable: [
-                function (date) {
-                    return (date.getDay() === 1);
+    function closeAllSelects(exceptionWrapper) {
+        const wrappers = document.querySelectorAll(".custom-select-wrapper");
+
+        wrappers.forEach(wrapper => {
+            // If the current wrapper is NOT the exception (the select being clicked)
+            if (wrapper !== exceptionWrapper) {
+                const selectedDiv = wrapper.querySelector('.select-selected');
+                const itemsDiv = wrapper.querySelector('.select-items');
+
+                // Explicitly close if it is open
+                if (itemsDiv && !itemsDiv.classList.contains('select-hide')) {
+                    closeDropdown(wrapper, selectedDiv, itemsDiv);
                 }
-            ],
+            }
+        });
+    }
 
-            // Set minimum date
-            minDate: "today",
-        };
+    customSelectWrappers.forEach(wrapper => {
+        const targetSelectId = wrapper.getAttribute('data-target');
+        const originalSelect = document.getElementById(targetSelectId);
 
-        // Initialize flatpickr (= library to put the calendar) for first field
-        if (dateInput1 && typeof flatpickr !== 'undefined') {
-            flatpickr(dateInput1, flatpickrConfig);
-        }
+        if (!originalSelect) return; // Exit if the native select doesn't exist
 
-        // Initialize flatpickr (= library to put the calendar) for second field
-        if (dateInput2 && typeof flatpickr !== 'undefined') {
-            flatpickr(dateInput2, flatpickrConfig);
-        }
+        const selectedDiv = wrapper.querySelector('.select-selected');
+        const itemsDiv = wrapper.querySelector('.select-items');
+
+        // Sync the visible div with the initial value of the native select
+        selectedDiv.innerHTML = originalSelect.options[originalSelect.selectedIndex].text;
+
+        // Generate visible options based on the native select
+        itemsDiv.innerHTML = ''; // Clear initial content
+        Array.from(originalSelect.options).forEach(option => {
+            if (option.disabled && option.selected) return; // Skip placeholder
+
+            const item = document.createElement('div');
+            item.innerHTML = option.text;
+            item.setAttribute('data-value', option.value);
+
+            // Apply 'same-as-selected' class if it's the currently chosen option
+            if (option.selected && !option.disabled) {
+                item.classList.add('same-as-selected');
+            }
+
+            item.addEventListener('click', function(e) {
+                // Click on a simulated option: update value and close
+                const value = this.getAttribute('data-value');
+                selectedDiv.innerHTML = this.innerHTML;
+
+                // Update the native select
+                originalSelect.value = value;
+
+                // Remove 'same-as-selected' class from all and add it to the new element
+                Array.from(itemsDiv.children).forEach(child => child.classList.remove('same-as-selected'));
+                this.classList.add('same-as-selected');
+
+                // Simulate 'change' event on the native select (useful for validation)
+                originalSelect.dispatchEvent(new Event('change'));
+
+                // Close dropdown (including activation classes and z-index)
+                closeDropdown(wrapper, selectedDiv, itemsDiv);
+                e.stopPropagation();
+            });
+            itemsDiv.appendChild(item);
+        });
+
+        // Click on the selected element: toggle the dropdown
+        selectedDiv.addEventListener('click', function(e) {
+            e.stopPropagation();
+            // Check if it's already open
+            const isCurrentlyOpen = itemsDiv.classList.contains('select-hide') === false;
+            closeAllSelects(wrapper);
+
+            if (!isCurrentlyOpen) {
+                // If it wasn't open, open it
+                openDropdown(wrapper, selectedDiv, itemsDiv);
+            } else {
+                // If it was open, close it (closeAllSelects doesn't close it if passed as argument)
+                closeDropdown(wrapper, selectedDiv, itemsDiv);
+            }
+        });
+
     });
+
+    // Click anywhere on the document: close all open dropdowns
+    document.addEventListener('click', () => closeAllSelects(null));
+
+
+    // --- SINGLE CUSTOM VALIDATION FUNCTION FOR ALL FIELDS ---
+
+    function validateCustomField(elementId) {
+        const element = document.getElementById(elementId);
+        if (!element) return true;
+
+        const inputGroup = element.closest('.input-group');
+        let visibleElement = null;
+        let errorText = '';
+
+        // Remove previous error (if it exists)
+        // Note: for date fields, the error is on the parent (handled in the DATA block), but this generic cleanup helps.
+        const oldError = element.closest('.col-md-5')?.querySelector('.custom-error') || inputGroup?.querySelector('.custom-error');
+        if (oldError) oldError.remove();
+
+        // ---- SELECT CUSTOM ----
+        if (element.tagName === 'SELECT') {
+            const wrapper = inputGroup.querySelector('.custom-select-wrapper');
+            visibleElement = wrapper.querySelector('.select-selected');
+
+            errorText =
+                elementId === 'selectPersone'
+                    ? 'Selezionare il numero di persone'
+                    : 'Selezionare un orario';
+
+            const isInvalid = element.value === '' || element.selectedIndex === 0;
+
+            if (isInvalid) {
+                visibleElement.classList.add('is-invalid');
+
+                const error = document.createElement('div');
+                error.className = 'custom-error';
+                error.textContent = errorText;
+                visibleElement.after(error);
+
+                return false;
+            } else {
+                visibleElement.classList.remove('is-invalid');
+                return true;
+            }
+        }
+
+        // ---- INPUT DATA ----
+        // For both IDs
+        if (elementId === 'bookingDate' || elementId === 'bookingDate1') {
+            const inputGroup = element.closest('.input-group');
+            const parent = inputGroup.parentElement;
+
+            // Remove previous error from main container (col-md-5)
+            const errorContainer = parent.closest('.col-md-5');
+            const oldErrorData = errorContainer.querySelector('.custom-error');
+            if (oldErrorData) oldErrorData.remove();
+
+
+            const isInvalid = element.value === '';
+
+            if (isInvalid) {
+                element.classList.add('is-invalid');
+
+                const error = document.createElement('div');
+                error.className = 'custom-error';
+                error.textContent = 'Selezionare una data';
+
+                // Insert error after the inputGroup
+                inputGroup.after(error);
+
+                return false;
+            } else {
+                // Remove 'is-invalid' class on success
+                element.classList.remove('is-invalid');
+                return true;
+            }
+        }
+    }
+
+    // --- SUBMISSION AND VALIDATION MANAGEMENT FOR ALL FORMS ---
+    const allForms = document.querySelectorAll('.needs-validation');
+
+    allForms.forEach(form => {
+        form.addEventListener('submit', function(event) {
+            let isFormValid = true;
+
+            // 1. 'selectPersone' validation (only if present in the form)
+            if (form.querySelector('#selectPersone')) {
+                if (!validateCustomField('selectPersone')) {
+                    isFormValid = false;
+                }
+            }
+
+            // 2. Date validation (check which date ID is present in this form)
+            const bookingDateId = form.querySelector('#bookingDate') ? 'bookingDate' :
+                form.querySelector('#bookingDate1') ? 'bookingDate1' : null;
+
+            if (bookingDateId && !validateCustomField(bookingDateId)) {
+                isFormValid = false;
+            }
+
+
+            const selectOrarioId = form.querySelector('#selectOrario') ? 'selectOrario' :
+                form.querySelector('#selectOrario1') ? 'selectOrario1' : null;
+
+            if (selectOrarioId && !validateCustomField(selectOrarioId)) {
+                isFormValid = false;
+            }
+
+            // If native validation or custom validation fails
+            if (form.checkValidity() === false || !isFormValid) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            // Apply 'was-validated' class (also triggered in the initial Bootstrap snippet)
+            form.classList.add('was-validated');
+        }, false);
+    });
+
+    // --- REMOVE ERROR ON VALUE CHANGE (Change Listeners) ---
+
+    // Listener for the Date
+    document.querySelectorAll('#bookingDate, #bookingDate1').forEach(input => {
+        input.addEventListener('change', function() {
+            validateCustomField(this.id);
+        });
+    });
+
+    // Listener for 'selectPersone'
+    document.getElementById('selectPersone')?.addEventListener('change', function() {
+        validateCustomField('selectPersone');
+    });
+
+    // Listener for 'selectOrario'
+    document.querySelectorAll('#selectOrario, #selectOrario1').forEach(input => {
+        input.addEventListener('change', function() {
+            validateCustomField(this.id);
+        });
+    });
+
+    /* --- CALENDAR MANAGEMENT ---*/
+
+    // 1. Define Italian locale (Workaround in case it.js doesn't load correctly)
+    // Object taken directly from the Datepicker library documentation.
+    if (typeof Datepicker !== 'undefined' && typeof Datepicker.locales !== 'undefined' && typeof Datepicker.locales.it === 'undefined') {
+        Datepicker.locales.it = {
+            days: ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"],
+            daysShort: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],
+            daysMin: ["Do", "Lu", "Ma", "Me", "Gi", "Ve", "Sa"],
+            months: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+            monthsShort: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
+            today: "Oggi",
+            clear: "Cancella",
+            dateFormat: "dd/mm/yyyy",
+            titleFormat: "MM yyyy",
+            weekStart: 1
+        };
+    }
+
+    // --- 1. CONFIGURATION FOR BOTH CALENDARS ---
+    const datepickerOptions = {
+        autohide: true,
+        todayHighlight: true,
+        startDate: new Date(), // parte da oggi
+        format: 'dd/mm/yyyy',
+        weekStart: 1, // lunedì
+        buttonClass: 'btn btn-sm btn-outline-light',
+        language: 'it',
+        beforeShowDay: function (date) {
+            const today = new Date();
+            const day = date.getDay();
+
+            // Disable Monday
+            if (day === 1) {
+                return false;
+            }
+
+            // 2. Disable all dates BEFORE the current date (TODAY)
+            // If the calendar date is strictly less than today
+            if (date < today) {
+                return false;
+            }
+
+            return true;
+        }
+    };
+
+    // --- INITIALIZATION OF THE 2 CALENDARS ---
+    const dateInput1 = document.getElementById('bookingDate');
+    if (dateInput1) {
+        const datepicker1 = new Datepicker(dateInput1, datepickerOptions);
+
+        //Listen for specific Datepicker event
+        dateInput1.addEventListener('changeDate', function() {
+            validateCustomField('bookingDate');
+        });
+    }
+
+    const dateInput2 = document.getElementById('bookingDate1');
+    if (dateInput2) {
+        const datepicker2 = new Datepicker(dateInput2, datepickerOptions);
+
+        dateInput2.addEventListener('changeDate', function() {
+            validateCustomField('bookingDate1');
+        });
+    }
 
 });
 
