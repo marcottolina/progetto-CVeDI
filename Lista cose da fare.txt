@@ -6,6 +6,7 @@ Ale
 - Correggere "finestre in cui si vede background" in prenota.html [FATTO]
 - Mettere gradiente blu sulla mappa di prenota.html che parte dalla "finestra in cui si vede background" sopra che sparisca in mouseover + capire come fare su mobile. [FATTO]
 - Risolvere bug tooltip mappa assenti su mobile [FATTO]
+- Commenti mappa D3 nel main.JS [TO-DO] + Migrare lo stile della mappa D3 nel main.css [FATTO] + Commenti mappa D3 nel main.CSS [FATTO]
 - Aggiustare le descrizioni ALT dei piatti (carosello 2) in index.html [FATTO]
 
 YuYu

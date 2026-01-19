@@ -1123,6 +1123,39 @@ body.is-map-interacting .circle {
     transition: opacity 0.2s ease;
 }
 
+
+/* = implementing gradient for <hover available> only = */
+
+/* Set container container to relative (+ no spill) to make the gradient visibile */
+#map-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gradient must show on a device that supports hover, so it's a @media (hover:hover) */
+@media (hover: hover) {
+
+    /* To make the gradient appear when not hovered */
+    #map-container::after {
+        content: "";
+        position: absolute;
+        inset: 0; /* Scorciatoia per top:0, right:0, bottom:0, left:0 */
+        z-index: 10; /* Assicurati che sia sopra la mappa D3 (canvas o svg) */
+
+        background: linear-gradient(180deg, var(--blue-5, #070713) 0%, rgba(21, 20, 57, 0.00) 50%, var(--blue-5, #070713) 100%);
+
+        opacity: 1; /* visible by default */
+        transition: opacity 0.3s ease-in-out; /* transition animation between visible / not visible */
+
+        pointer-events: none; /* to make the mouse pass through the gradient - otherwise it captures the hovers */
+    }
+
+    /* To make the gradient disappear when hovered */
+    #map-container:hover::after {
+        opacity: 0;
+    }
+}
+
 /* </editor-fold> */
 
 /* === ACCORDION (info.html) === */

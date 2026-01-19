@@ -470,23 +470,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* === INTERACTIVE MAP WITH D3 === */
 /* toDo: finish converting comments to Italian */
-/*
-capire che sta catturando l'evento del d3-drag per il problema del simbolino del mouse.
-Il problema è che d3 sta andando ad impedire al browser / al layer più esterno di prendere l'evento - fa da captive portal per l'evento.
-Dunque dovremo aggiornare manualmente la posizione del puntatore da D3.
- */
 document.addEventListener("DOMContentLoaded", function () {
 
-    // = Size configuration =
+    // Size configuration
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    const container = d3.select("#map-container"); // select the HTML container for the map
-    const svg = container.append("svg"); // append SVG to this container
+    // Placing an SVG in the map container
+    const container = d3.select("#map-container");
+    const svg = container.append("svg");
 
-    // code from now on is all about setting the SVG to be the interactive map
+    // = SVG setup (to make it a map) =
 
-    // add sizes (D3 notation for adding an attribute to an SVG that will be a map
+    // define SVG sizes (must add an attribute for it)
     svg.attr("width", width);
     svg.attr("height", height);
 
@@ -496,21 +492,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Tooltip selection
     const tooltip = d3.select("#tooltip");
 
-    // Helper functions for tooltip interaction
+    // function for tooltip interaction that gets the pointer's coordinates (or clicked coordinates) and places the tooltip next to it
     const moveTooltip = (event) => {
-
-        // Get the pointer's coordinates relative to the map container
-        const [x, y] = d3.pointer(event, container.node());
-
-        // put the tooltip next to the pointer (on the interactive object)
-        tooltip.style("transform", `translate(${x + 15}px, ${y + 15}px) translate(-50%, -150%)`);
+        const [x, y] = d3.pointer(event, container.node()); // get pointer coordinates
+        tooltip.style("transform", `translate(${x + 15}px, ${y + 15}px) translate(-50%, -150%)`); // place tooltip next to pointer
     };
 
+    // function to hide tooltip
     const hideTooltip = () => {
         tooltip.style("opacity", 0);
     };
 
-    // Sea labels coordinates (only in the Restaurant's local area)
+    // sea labels coordinates (only in the restaurant's general area)
     const seaData = [
         {name: "Mare di Giava", coords: [112, -5]},
         {name: "Mare di Celebes", coords: [122, 3]},
@@ -523,51 +516,45 @@ document.addEventListener("DOMContentLoaded", function () {
         {name: "Mare delle Filippine", coords: [130, 15]}
     ];
 
-    // Project D3 Map (which is 3D) in a 2D plane
+    // = Setup & Protection of the 3D D3 map on a 2D plane =
+
+    // Setup projection
     const projection = d3.geoMercator();
-    projection.center([128, -5]); // set initial position on indonesia
-    projection.scale(2000); // initial zoom level
-    projection.translate([width / 2, height / 2]); // align map within its container (put the center at the center coordinates)
+    projection.center([128, -5]); // set initial position (on Indonesia)
+    projection.scale(2000); // set initial zoom level
+    projection.translate([width / 2, height / 2]); // align map at the center of the container
 
-    const path = d3.geoPath().projection(projection); // toDo: add comment
+    // Make projection
+    const path = d3.geoPath().projection(projection);
 
-    // --- Zoom setup (holding ALT) ---
+    // = Setup & Add Zoom / Pan handling for the map =
+
+    // Setup zoom (so it only works when holding ALT)
     const zoom = d3.zoom()
         .scaleExtent([1, 8])
         .filter((event) => {
-            // if it's a scroll (event === 'wheel') but ALT is not pressed ...
-            if (event.type === 'wheel' && !event.altKey) {
+            if (event.type === 'wheel' && !event.altKey) {  // if it's a scroll (event === 'wheel') but ALT is not pressed ...
                 return false;
             }
-            // otherwise, return TRUE
             return true;
         })
-        //.on("zoom", (event) => {
-          //  mapLayer.attr("transform", event.transform);
-       // });
 
         /* toDo: cleanup code and make proper comments */
 
         .on("start", () => {
-                // 1. Quando inizia lo zoom/pan, aggiungiamo una classe al body
-                document.body.classList.add("is-map-interacting");
-                // 2. Nascondiamo forzatamente il tooltip esistente
-                hideTooltip();
-            })
+            document.body.classList.add("is-map-interacting"); // add "being-interacted-with" class when interactions starts
+            hideTooltip(); // hide currently shown tooltip when moving the map around
+        })
         .on("zoom", (event) => {
-            // Logica esistente di trasformazione
-            mapLayer.attr("transform", event.transform);
-            // (Opzionale) Rinforziamo il nascondere il tooltip se necessario
-            hideTooltip();
+            mapLayer.attr("transform", event.transform); // transform map when it is being zoomed
+            hideTooltip(); // hide currently shown tooltip when map is being zoomed
         })
         .on("end", () => {
-            // 3. Quando l'interazione finisce, rimuoviamo la classe
-            document.body.classList.remove("is-map-interacting");
+            document.body.classList.remove("is-map-interacting"); // remove "being-interacted-with" class when interaction ends (will show the tooltip back)
         })
     ;
 
-    svg.call(zoom)
-        .on("dblclick.zoom", null); // Opzionale: disabilita zoom doppio click toDo: check what this is
+    svg.call(zoom); // attach the now set-up zoom component to the SVG
 
     // Atlas and Riff's position (object)
     const cityData = [
@@ -595,7 +582,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const countryName = d.properties.name;
                 const exName = "Ex-" + countryName;
 
-                // toDo: put relevant country information here (currents, access-status, transportation, ...)
+                // some flavor information to differentiate some countries from one another
                 switch (exName) {
                     case "Ex-Australia":
                         tooltip.style("opacity", 1)
@@ -604,7 +591,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         break;
                     case "Ex-East Timor":
                         tooltip.style("opacity", 1)
-                            .html(`<b>${exName}</b><br/><b>Stato:</b> sommersa <br><b>Navigabilità: </b>accesso proibito (attività vulcanica)`)
+                            .html(`<b>${exName}</b><br/><b>Stato:</b> sommerso <br><b>Navigabilità: </b>accesso proibito (attività vulcanica)`)
                         ;
                         break;
                     default:
@@ -613,7 +600,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         ;
                 }
 
-                moveTooltip(event); // Posiziona il tooltip immediatamente al tocco/entrata
+                moveTooltip(event); //  to put the tooltip in the right position when clicking on mobile
 
             })
             .on("mousemove", moveTooltip)
@@ -647,7 +634,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tooltip.style("opacity", 1)
                 .html(`<b>${d.name}</b><br> <b>Settore:</b> Oceano Australe<br> <b>Viabilità: </b>aperta al traffico`)
             ;
-            moveTooltip(event); // Posiziona il tooltip immediatamente al tocco/entrata
+            moveTooltip(event); //  to put the tooltip in the right position when clicking on mobile
         })
             .on("mousemove", moveTooltip)
             .on("mouseout", hideTooltip);
@@ -661,7 +648,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .attr("transform", d => `translate(${projection(d.coords)})`)
         ;
 
-        // --- FIX START ---
         // Add a transparent "Hitbox" circle larger than the max pulse radius (which is 10px)
         // to avoid "flickering" effect on certain mouseovers at the edges
         // Making it 20px also should make it easier to press on mobile
@@ -670,9 +656,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .attr("fill", "transparent") // make the circle transparent (otherwise it's visually displayed)
             .style("cursor", "pointer") // Ensures the hand cursor shows
         ;
-        // --- FIX END ---
 
-        // Draw atlas circle
+        // Draw Atlas circle
         locations.append("circle")
             .attr("r", 16)
             .attr("class", "atlas-marker")
@@ -690,14 +675,14 @@ document.addEventListener("DOMContentLoaded", function () {
             .text(d => d.regionName) // writes "Atlas"
         ;
 
-        // mouseover for Atlas & Riff
+        // Mouseover for Atlas & Riff
         locations.on("mouseover", function (event, d) {
             tooltip.style("opacity", 1)
-                .style("border-color", "#FF327A")
-                .style("color", "#FF327A")
+                .style("border-color", "#FF3276") // couldn't use var(--pink) here
+                .style("color", "#FF3276")
                 .html(`<b>Riff</b><br/>Atlas, P.zza Corolleo 1 24°N - 46°O, -230 m<br/>Settore abissale Ovest`)
             ;
-            moveTooltip(event);
+            moveTooltip(event); // to put the tooltip in the right position when clicking on mobile
         });
 
         // if mouse is moved within Atlas radius, the label moves as well
@@ -743,7 +728,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /* <editor-fold> */
 
 /* --- SELECT --- */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     const customSelectWrappers = document.querySelectorAll('.custom-select-wrapper');
 
@@ -805,7 +790,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.classList.add('same-as-selected');
             }
 
-            item.addEventListener('click', function(e) {
+            item.addEventListener('click', function (e) {
                 // Click on a simulated option: update value and close
                 const value = this.getAttribute('data-value');
                 selectedDiv.innerHTML = this.innerHTML;
@@ -828,7 +813,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Click on the selected element: toggle the dropdown
-        selectedDiv.addEventListener('click', function(e) {
+        selectedDiv.addEventListener('click', function (e) {
             e.stopPropagation();
             // Check if it's already open
             const isCurrentlyOpen = itemsDiv.classList.contains('select-hide') === false;
@@ -928,7 +913,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const allForms = document.querySelectorAll('.needs-validation');
 
     allForms.forEach(form => {
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function (event) {
             let isFormValid = true;
 
             // 1. 'selectPersone' validation (only if present in the form)
@@ -969,19 +954,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Listener for the Date
     document.querySelectorAll('#bookingDate, #bookingDate1').forEach(input => {
-        input.addEventListener('change', function() {
+        input.addEventListener('change', function () {
             validateCustomField(this.id);
         });
     });
 
     // Listener for 'selectPersone'
-    document.getElementById('selectPersone')?.addEventListener('change', function() {
+    document.getElementById('selectPersone')?.addEventListener('change', function () {
         validateCustomField('selectPersone');
     });
 
     // Listener for 'selectOrario'
     document.querySelectorAll('#selectOrario, #selectOrario1').forEach(input => {
-        input.addEventListener('change', function() {
+        input.addEventListener('change', function () {
             validateCustomField(this.id);
         });
     });
@@ -1039,7 +1024,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const datepicker1 = new Datepicker(dateInput1, datepickerOptions);
 
         //Listen for specific Datepicker event
-        dateInput1.addEventListener('changeDate', function() {
+        dateInput1.addEventListener('changeDate', function () {
             validateCustomField('bookingDate');
         });
     }
@@ -1048,7 +1033,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (dateInput2) {
         const datepicker2 = new Datepicker(dateInput2, datepickerOptions);
 
-        dateInput2.addEventListener('changeDate', function() {
+        dateInput2.addEventListener('changeDate', function () {
             validateCustomField('bookingDate1');
         });
     }
@@ -1151,14 +1136,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Attach click event listeners to every Italian language button found
     itaBtns.forEach(btn => {
-        btn.addEventListener("click", function() {
+        btn.addEventListener("click", function () {
             switchLanguage('ita');
         });
     });
 
     // Attach click event listeners to every Medusiano language button found
     medBtns.forEach(btn => {
-        btn.addEventListener("click", function() {
+        btn.addEventListener("click", function () {
             switchLanguage('med');
         });
     });

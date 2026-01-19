@@ -797,44 +797,6 @@
     </div>
 </section>
 
-<!-- toDo: witch this style's position once it's working -->
-<style>
-
-    /* 1. Assicurati che il contenitore abbia position relative per ancorare il gradiente */
-    #map-container {
-        position: relative;
-        overflow: hidden; /* Opzionale: mantiene il gradiente nei bordi arrotondati se presenti */
-    }
-
-    /* 2. Media Query: Applica queste regole SOLO se il dispositivo supporta l'hover (ha un mouse) */
-    @media (hover: hover) {
-
-        #map-container::after {
-            content: "";
-            position: absolute;
-            inset: 0; /* Scorciatoia per top:0, right:0, bottom:0, left:0 */
-            z-index: 10; /* Assicurati che sia sopra la mappa D3 (canvas o svg) */
-
-            /* Il tuo gradiente */
-            background: linear-gradient(180deg, var(--blue-5, #070713) 0%, rgba(21, 20, 57, 0.00) 50%, var(--blue-5, #070713) 100%);
-
-            /* Transizione fluida per l'effetto sparizione */
-            transition: opacity 0.3s ease-in-out;
-            opacity: 1; /* Visibile di default */
-
-            /* CRUCIALE: Permette al mouse di "passare attraverso" il gradiente
-               per interagire con la mappa e attivare l'hover sul genitore */
-            pointer-events: none;
-        }
-
-        /* 3. Quando il mouse è sopra il contenitore, il gradiente sparisce */
-        #map-container:hover::after {
-            opacity: 0;
-        }
-    }
-
-</style>
-
 <!-- fifth section: map with D3 -->
 <section id="map">
     <div id="map-container">
