@@ -319,7 +319,7 @@ h6 {
 
 .btn-plate {
     border-radius: 28px;
-    padding-left: 10px;
+    padding: 16px 24px;
     background:
             linear-gradient(0deg, var(--blue-50-30), var(--blue-50-30)),
             radial-gradient(62.44% 72.74% at 50% 50%, var(--orange) 30%, rgba(246, 112, 85, 0) 100%);

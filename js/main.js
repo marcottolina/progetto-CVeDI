@@ -329,25 +329,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (audio.paused) {
                 audio.play();
-                playBtn.innerHTML = 'Ascolta';
                 playBtn.classList.add('attivo');
             } else {
                 audio.pause();
                 audio.currentTime = 0;
-                playBtn.innerHTML = 'Ascolta';
                 playBtn.classList.remove('attivo');
             }
         });
     }
 
     // === INITIALIZATION ===
-    addMediaControl("music-start1", "../media/audio/AfterDark-Mr.Kitty.mp3");
-    addMediaControl("music-start2", "../media/audio/Breathe-TheChainsmokers.mp3");
-    addMediaControl("music-start3", "../media/audio/CornfieldChase–HansZimmer.mp3");
+    addMediaControl("music-start1", "../media/audio/thalassa-hans-zimmer-cornfields.aac");
+    addMediaControl("music-start2", "../media/audio/madreperla-mr-kitty-after-dark.aac");
+    addMediaControl("music-start3", "../media/audio/bioluma-the-chainsmokers-breathe.aac");
 
-    addSimpleAudioControl("music-startdesc1", "../media/audio/AfterDark-Mr.Kitty.mp3");
-    addSimpleAudioControl("music-startdesc2", "../media/audio/Breathe-TheChainsmokers.mp3");
-    addSimpleAudioControl("music-startdesc3", "../media/audio/CornfieldChase–HansZimmer.mp3");
+    addSimpleAudioControl("music-startdesc1", "../media/audio/thalassa-hans-zimmer-cornfields.aac");
+    addSimpleAudioControl("music-startdesc2", "../media/audio/madreperla-mr-kitty-after-dark.aac");
+    addSimpleAudioControl("music-startdesc3", "../media/audio/bioluma-the-chainsmokers-breathe.aac");
 
 });
 
