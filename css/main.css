@@ -230,7 +230,6 @@ h6 {
 }
 /* </editor-fold> */
 
-
 /* === BUTTONS === */
 /* <editor-fold> */
 
@@ -1289,6 +1288,41 @@ body.is-map-interacting .circle {
     padding: 1.5rem 2rem 1.5rem 2rem; /* padding for elements within the accordion */
     text-align: left;
     border-top: 1px solid rgba(192, 190, 244, 0.1); /* line between title (button) and text (accordion content), rgb code is = #EAE9FB = (blue-dark), made semi-transparent */
+}
+
+/* </editor-fold> */
+
+/* === POPUPS (NEWSLETTER & BOOKING FORMS) === */
+/* <editor-fold> */
+
+/* absolute position is on large devices only (otherwise it would make the element "jump" too much - it's needed in smaller devices */
+@media only screen and (min-width: 992px) {
+
+    .invalid-popup-container {
+        position: absolute;
+        top: 80%;
+        z-index: 10;
+    }
+
+    .valid-popup-container {
+        position: absolute;
+        top: 80%;
+        z-index: 10;
+    }
+}
+
+.valid-popup {
+    border: 1px solid var(--blue-70);
+    color: var(--blue-70);
+}
+
+.invalid-popup {
+    border: 1px solid var(--orange);
+    color: var(--orange);
+}
+
+.invalid-feedback {
+    /*color: var(--orange);*/
 }
 
 /* </editor-fold> */

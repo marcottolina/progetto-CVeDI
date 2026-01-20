@@ -1152,3 +1152,77 @@ document.addEventListener("DOMContentLoaded", function () {
 /* </editor-fold> */
 
 /* === NEWSLETTER === */
+document.addEventListener("DOMContentLoaded", function () {
+
+    // get references to buttons
+    const newsletterButton = document.querySelector('footer form button');
+    const newsletterInput = document.querySelector('footer input[type="text"]');
+
+    // get references to popup divs
+    const invalidPopup = document.querySelector('footer .invalid-popup-container');
+    const validPopup = document.querySelector('footer .valid-popup-container');
+
+    // hide popup by default
+    invalidPopup.classList.add('d-none');
+    validPopup.classList.add('d-none');
+
+    let userInput = "";
+
+    // function to validate the email (containing an unholy regex)
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+
+    // function to hide a confirmation message after 5 seconds
+    const fadeOutPopup = async (element) => {
+        await delay (5000);
+        element.classList.add('d-none');
+    }
+
+    // function to hide an input validity error message after 5 seconds
+    const removeInputError = async (element) => {
+        await delay(5000);
+        element.classList.remove('is-invalid');
+    }
+
+    newsletterButton.addEventListener('click', function (event) {
+
+        event.preventDefault(); // prevents page refresh
+
+        // hide previous confirmation messages
+        validPopup.classList.add('d-none');
+        invalidPopup.classList.add('d-none');
+
+        // hide previous input validity error messages
+        newsletterInput.classList.remove('is-invalid');
+        newsletterInput.classList.remove('is-valid');
+
+        // get value of the user input
+        userInput = newsletterInput.value;
+
+        if (validateEmail(userInput)) { // if inserted mail is valid
+
+            newsletterInput.classList.add('is-valid');
+
+            validPopup.classList.remove('d-none');
+            fadeOutPopup(validPopup); // delete popup in 5 seconds
+
+            newsletterInput.value = ''; // clear input
+
+        } else { // if inserted mail is not valid
+
+            newsletterInput.classList.add('is-invalid'); // show input error
+            invalidPopup.classList.remove('d-none'); // show error popup
+
+            removeInputError(newsletterInput); // delete input in 5 seconds
+            fadeOutPopup(invalidPopup); // delete popup in 5 seconds
+        }
+    });
+
+})
