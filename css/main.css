@@ -387,6 +387,24 @@ h6 {
     z-index: 999 !important;
 }
 
+.hero-to-right {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    overflow: visible;
+}
+
+.hero-width-75 {
+    width: 75%;
+    mix-blend-mode: screen;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+    mask-image: linear-gradient(to right, transparent 0%, black 20%);
+}
+
+.hero-width-75-10 {
+    margin-right: -20%;
+}
+
 /* Navbar glass morphism */
 .custom-navbar {
     position: relative;
