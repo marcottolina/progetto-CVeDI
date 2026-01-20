@@ -14,8 +14,10 @@ Ale:
 - Aggiustare le descrizioni ALT dei piatti (carosello 2) in index.html [FATTO]
 - Aggiustare video di sfondo di menu.html [FATTO]
 - Aggiustare bottoni delle recensioni della pagina ristorante.html (mettere frecce) [FATTO]
-- Aggiustare Footer [FATTI PRIMI AGGIUSTAMENTI] {IMPLEMENTARE NEWSLETTER PROBABILMENTE NE RICHIEDE ALTRI}
-- Newsletter
+
+- Aggiustare Footer [FATTO V2] {DA AGGIUSTARE POST-AGGIUSTAMENTI NEWSLETTER}
+- Newsletter [FATTA V1] {DA AGGIUSTARE POST-MOCKUP}
+
 - Immagini del ristorante in carousel di ristorante.html {aggiunta una, ma ne servono altre}
 
 
