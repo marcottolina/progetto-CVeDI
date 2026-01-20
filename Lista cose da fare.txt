@@ -1,11 +1,11 @@
 
-Ale
-- Revisione generale di tutti i link contenuti nel sito.
+Ale:
+- Revisione generale di tutti i link e i bottoni contenuti nel sito, quelli dei form a parte [FATTO]
     --> Rimando a pagina-libera.html in index.html [FATTO]
-    --> Bottone per l'iscrizione alla Newsletter ora come ora porta alla homepage (da implementare il comportamento)
-    --> Bottoni dei social nel footer
+    --> Bottoni dei social nel footer [FATTO]
 
 - Revisione generale dei commenti contenuti nel sito (che non ne siano rimasti in italiano)
+
 - Correggere e completare carosello homepage (index.html) [FATTO]
 - Correggere "finestre in cui si vede background" in prenota.html [FATTO]
 - Mettere gradiente blu sulla mappa di prenota.html che parte dalla "finestra in cui si vede background" sopra che sparisca in mouseover + capire come fare su mobile. [FATTO]
@@ -13,15 +13,18 @@ Ale
 - Commenti mappa D3 nel main.JS [FATTO] + Migrare lo stile della mappa D3 nel main.css [FATTO] + Commenti mappa D3 nel main.CSS [FATTO]
 - Aggiustare le descrizioni ALT dei piatti (carosello 2) in index.html [FATTO]
 - Aggiustare video di sfondo di menu.html [FATTO]
-- Aggiustare bottoni delle recensioni della pagina ristorante.html (mettere frecce [FATTO]
+- Aggiustare bottoni delle recensioni della pagina ristorante.html (mettere frecce) [FATTO]
+- Aggiustare Footer [FATTI PRIMI AGGIUSTAMENTI] {IMPLEMENTARE NEWSLETTER PROBABILMENTE NE RICHIEDE ALTRI}
 - Newsletter
-- Immagini del ristorante in carousel di ristorante.html
-- Aggiustare Footer
+- Immagini del ristorante in carousel di ristorante.html {aggiunta una, ma ne servono altre}
 
-YuYu
+
+Otto:
+- La grande revisione di stili e allineamenti.
+- ristorante.html -> recensioni dei critici (falle appena riceviamo i mockup), attenzione che le frecce non traballino "su e giù" tra una recensione e l'altra.
+- menu.html -> aggiustare filtri
+
+
+YuYu:
 - Finire pagine per i piatti specifici (1, 2 e 3)
 - Fare in particolare il bottone per la musica "Ascolta <icona>"
-
-Otto
-- La grande revisione di stili e allineamenti.
-- ristorante.html -> recensioni dei critici (falle appena riceviamo i mockup), attenzione che le frecce non traballino "su e giù" tra una recensione e l'altra
