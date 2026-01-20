@@ -636,83 +636,80 @@
         </div>
     </section>
 
-    <div id="map"></div>
+    <div id="map"></div> <!-- toDo: figure out what this is -->
 
-    <!-- footer (updated) -->
-    <footer class="p-4 pt-5 section-bg-light">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-7 col-md-4 col-lg-3 d-flex flex-column justify-content-between">
-                    <div>
-                        <h5>Prenotazioni</h5>
-                        <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del
-                            fondale di
-                            Atlas, è necessaria la prenotazione
-                        </p>
-                        <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'"
-                                type="submit">
-                            <span aria-hidden="true" class="liquidGlass-effect"></span>
-                            <span aria-hidden="true" class="liquidGlass-tint"></span>
-                            <span aria-hidden="true" class="liquidGlass-shine"></span>
-                            <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
-                        </button>
-                    </div>
-                    <div>
-                        <img alt="" class="img-fluid d-none d-lg-block" src="/media/img/Logo.svg">
-                    </div>
-                </div>
-                <div class="col-7 mt-4 mt-md-0 col-md-4 col-lg-3">
-                    <h5>Orari di apertura</h5>
-                    <p>Martedì - Domenica <br> 19:00 - 01:00</p>
-                    <h5>Contatti</h5>
-                    <p>Riff <br> Atlas, P.zza Corolleo 1 <br>24°N - 46°O, -230 m <br><br>
-                        Settore abissale Ovest
-                    </p>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row justify-content-lg-end mt-3">
-                        <div class="col-md-7 col-9 d-flex flex-column">
-                            <h5>Linea abissale</h5>
-                            <p>
-                                Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
-                            </p>
-                            <form>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputEmail1">E-mail</label>
-                                    <input class="form-control" id="exampleInputEmail1" type="email">
-                                </div>
-                                <button class="btn liquidGlass-wrapper" type="submit">
-                                    <span aria-hidden="true" class="liquidGlass-effect"></span>
-                                    <span aria-hidden="true" class="liquidGlass-tint"></span>
-                                    <span aria-hidden="true" class="liquidGlass-shine"></span>
-                                    <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
-                                </button>
-                            </form>
-                            <div class="d-none d-lg-block mt-5">
-                                <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
-                                <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
-                                <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
-                            </div>
-                        </div>
+</div>
 
-                    </div>
-                </div>
+<!-- Footer -->
+<footer class="p-4section-bg-light">
+    <div class="container-fluid p-5">
+        <div class="row g-5">
+            <div class="col-7 col-md-4">
+                <h5>Orari di apertura</h5>
+                <p>Martedì - Domenica <br> 19:00 - 01:00</p>
+                <h5>Contatti</h5>
+                <p>Riff <br> Atlas, P.zza Corolleo 1 <br>24°N - 46°O, -230 m <br><br>
+                    Settore abissale Ovest
+                </p>
             </div>
-            <div class="col-12 mt-5">
-                <div class="d-flex justify-content-between align-items-end">
-                    <div>
-                        <img alt="" class="img-fluid d-lg-none" src="/media/img/Logo.svg">
+            <div class="col-7 col-md-4">
+                <h5>Prenotazioni</h5>
+                <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
+                    Atlas, è necessaria la prenotazione
+                </p>
+                <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
+                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">Prenota</span>
+                </button>
+            </div>
+            <div class="col-7 col-md-4">
+                <div class="row justify-content-md-end mt-3">
+                    <div class="d-flex flex-column">
+                        <h5>Linea abissale</h5>
+                        <p>
+                            Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
+                        </p>
+                        <form>
+                            <div class="mb-3">
+                                <!-- <label class="form-label" for="exampleInputEmail1">E-mail</label>-->
+                                <input class="form-control" id="exampleInputEmail1" placeholder="Email"
+                                       type="email">
+                            </div>
+                            <button class="btn liquidGlass-wrapper" type="submit">
+                                <span aria-hidden="true" class="liquidGlass-effect"></span>
+                                <span aria-hidden="true" class="liquidGlass-tint"></span>
+                                <span aria-hidden="true" class="liquidGlass-shine"></span>
+                                <span class="liquidGlass-text">Iscriviti</span>
+                            </button>
+                        </form>
+
                     </div>
-                    <div class="d-lg-none">
-                        <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
-                        <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
-                        <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
-                    </div>
+
                 </div>
             </div>
         </div>
-    </footer>
-</div>
+        <div class="col-12 mt-5">
+            <div class="d-flex justify-content-between align-items-end">
+                <div>
+                    <img alt="" class="img-fluid" src="./media/icon/Logo.svg"> <!-- alt is empty because it's only a decorative image -->
+                </div>
+                <div>
+                    <button class="btn-empty" type="submit" onclick="window.location.href='https://open.spotify.com/'">
+                        <img alt="Apri la nostra pagina di SpottedRayFi" src="/media/icon/footer-1.svg"/>
+                    </button>
+                    <button class="btn-empty" type="submit" onclick="window.location.href='https://www.facebook.com/'">
+                        <img alt="Apri la nostra pagina di FishBook" src="/media/icon/footer-2.svg"/>
+                    </button>
+                    <button class="btn-empty" type="submit" onclick="window.location.href='https://www.instagram.com/'">
+                        <img alt="Apri la nostra pagina di InfondAlMar" src="/media/icon/footer-3.svg"/>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <!-- Liquid glass pattern (done through SVG) toDo: this is a fixed version with the lighting removed (as it wasn't working) -->
 <svg style="display: none">

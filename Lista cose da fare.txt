@@ -3,7 +3,8 @@ Ale
 - Revisione generale di tutti i link contenuti nel sito.
     --> Rimando a pagina-libera.html in index.html [FATTO]
     --> Bottone per l'iscrizione alla Newsletter ora come ora porta alla homepage (da implementare il comportamento)
-    -->
+    --> Bottoni dei social nel footer
+
 - Revisione generale dei commenti contenuti nel sito (che non ne siano rimasti in italiano)
 - Correggere e completare carosello homepage (index.html) [FATTO]
 - Correggere "finestre in cui si vede background" in prenota.html [FATTO]
@@ -12,7 +13,10 @@ Ale
 - Commenti mappa D3 nel main.JS [FATTO] + Migrare lo stile della mappa D3 nel main.css [FATTO] + Commenti mappa D3 nel main.CSS [FATTO]
 - Aggiustare le descrizioni ALT dei piatti (carosello 2) in index.html [FATTO]
 - Aggiustare video di sfondo di menu.html [FATTO]
-- Aggiustare bottoni delle recensioni della pagina ristorante.html (mettere frecce [FATTO] e aggiustare elemento che traballa su / giù [TO-DO])
+- Aggiustare bottoni delle recensioni della pagina ristorante.html (mettere frecce [FATTO]
+- Newsletter
+- Immagini del ristorante in carousel di ristorante.html
+- Aggiustare Footer
 
 YuYu
 - Finire pagine per i piatti specifici (1, 2 e 3)
@@ -20,3 +24,4 @@ YuYu
 
 Otto
 - La grande revisione di stili e allineamenti.
+- ristorante.html -> recensioni dei critici (falle appena riceviamo i mockup), attenzione che le frecce non traballino "su e giù" tra una recensione e l'altra

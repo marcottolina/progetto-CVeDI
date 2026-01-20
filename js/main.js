@@ -469,7 +469,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* === INTERACTIVE MAP WITH D3 === */
-/* toDo: finish converting comments to Italian */
 document.addEventListener("DOMContentLoaded", function () {
 
     // Size configuration
@@ -538,8 +537,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             return true;
         })
-
-        /* toDo: cleanup code and make proper comments */
 
         .on("start", () => {
             document.body.classList.add("is-map-interacting"); // add "being-interacted-with" class when interactions starts
@@ -1153,3 +1150,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* </editor-fold> */
+
+/* === NEWSLETTER === */

@@ -294,11 +294,11 @@
 </section>
 
 
-<!-- footer (updated) -->
-<footer class="p-4 section-bg-light">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-6 col-md-3">
+<!-- Footer -->
+<footer class="p-4section-bg-light">
+    <div class="container-fluid p-5">
+        <div class="row g-5">
+            <div class="col-7 col-md-4">
                 <h5>Orari di apertura</h5>
                 <p>Martedì - Domenica <br> 19:00 - 01:00</p>
                 <h5>Contatti</h5>
@@ -306,35 +306,36 @@
                     Settore abissale Ovest
                 </p>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-7 col-md-4">
                 <h5>Prenotazioni</h5>
                 <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
                     Atlas, è necessaria la prenotazione
                 </p>
-                <button class="btn liquidGlass-wrapper" onclick="window.location.href='../prenota.html'" type="submit">
+                <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text">Prenota <i class="bi bi-arrow-right"></i></span>
+                    <span class="liquidGlass-text">Prenota</span>
                 </button>
             </div>
-            <div class="col-md-6">
+            <div class="col-7 col-md-4">
                 <div class="row justify-content-md-end mt-3">
-                    <div class="col-md-6 col-8 d-flex flex-column">
+                    <div class="d-flex flex-column">
                         <h5>Linea abissale</h5>
                         <p>
                             Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
                         </p>
                         <form>
                             <div class="mb-3">
-                                <label class="form-label" for="exampleInputEmail1">E-mail</label>
-                                <input class="form-control" id="exampleInputEmail1" type="email">
+                                <!-- <label class="form-label" for="exampleInputEmail1">E-mail</label>-->
+                                <input class="form-control" id="exampleInputEmail1" placeholder="Email"
+                                       type="email">
                             </div>
                             <button class="btn liquidGlass-wrapper" type="submit">
                                 <span aria-hidden="true" class="liquidGlass-effect"></span>
                                 <span aria-hidden="true" class="liquidGlass-tint"></span>
                                 <span aria-hidden="true" class="liquidGlass-shine"></span>
-                                <span class="liquidGlass-text">Iscriviti <i class="bi bi-arrow-right"></i></span>
+                                <span class="liquidGlass-text">Iscriviti</span>
                             </button>
                         </form>
 
@@ -346,12 +347,18 @@
         <div class="col-12 mt-5">
             <div class="d-flex justify-content-between align-items-end">
                 <div>
-                    <img alt="" class="img-fluid" src="./img/Logo.svg">
+                    <img alt="" class="img-fluid" src="./media/icon/Logo.svg"> <!-- alt is empty because it's only a decorative image -->
                 </div>
                 <div>
-                    <button class="btn-empty"><img alt="Social 1" src="/media/icon/footer-1.svg"></button>
-                    <button class="btn-empty"><img alt="Social 2" src="/media/icon/footer-2.svg"></button>
-                    <button class="btn-empty"><img alt="Social 3" src="/media/icon/footer-3.svg"></button>
+                    <button class="btn-empty" type="submit" onclick="window.location.href='https://open.spotify.com/'">
+                        <img alt="Apri la nostra pagina di SpottedRayFi" src="/media/icon/footer-1.svg"/>
+                    </button>
+                    <button class="btn-empty" type="submit" onclick="window.location.href='https://www.facebook.com/'">
+                        <img alt="Apri la nostra pagina di FishBook" src="/media/icon/footer-2.svg"/>
+                    </button>
+                    <button class="btn-empty" type="submit" onclick="window.location.href='https://www.instagram.com/'">
+                        <img alt="Apri la nostra pagina di InfondAlMar" src="/media/icon/footer-3.svg"/>
+                    </button>
                 </div>
             </div>
         </div>
