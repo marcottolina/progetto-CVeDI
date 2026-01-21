@@ -42,110 +42,113 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* === TIMELINE === */
     const timeline = document.querySelector(".timeline-container");
-    const items = document.querySelectorAll(".timeline-item");
-    let dots = []; // Global array of dynamic dots
-    let isDesktop = false; // Flag to trace state
 
-    // Line that gradually fills (as page gets scrolled down) - Fixed, can be hidden via-CSS if needed
-    const fill = document.createElement("div");
-    fill.className = "timeline-fill";
-    timeline.appendChild(fill);
+        let dots = []; // Global array of dynamic dots
+        let isDesktop = false; // Flag to trace state
+    if (timeline) {
+        const items = document.querySelectorAll(".timeline-item");
+        // Line that gradually fills (as page gets scrolled down) - Fixed, can be hidden via-CSS if needed
+        const fill = document.createElement("div");
+        fill.className = "timeline-fill";
+        timeline.appendChild(fill);
 
-    // function that fills the dots within timeline (desktop only - smaller sizes are done manually) as the page is scrolled down
-    function createDots() {
 
-        if (dots.length > 0) return;
 
-        items.forEach(item => {
-            const dot = document.createElement("div");
-            dot.className = "timeline-dot"; // reminder: .timeline-dot must be absolute
+        // function that fills the dots within timeline (desktop only - smaller sizes are done manually) as the page is scrolled down
+        function createDots() {
 
-            const itemTop = item.offsetTop;
-            const itemHeight = item.offsetHeight;
-            dot.style.top = `${itemTop + itemHeight / 2}px`;
+            if (dots.length > 0) return;
 
-            timeline.appendChild(dot);
-            dots.push(dot);
-        });
-    }
+            items.forEach(item => {
+                const dot = document.createElement("div");
+                dot.className = "timeline-dot"; // reminder: .timeline-dot must be absolute
 
-    // function that unfills the dots as the page is scrolled up
-    function removeDots() {
-        dots.forEach(dot => dot.remove());
-        dots = [];
-    }
+                const itemTop = item.offsetTop;
+                const itemHeight = item.offsetHeight;
+                dot.style.top = `${itemTop + itemHeight / 2}px`;
 
-    // function to "sense" the dots needing to be filled / emptied
-    function updateTimeline() {
-
-        const scrollTop = window.scrollY;
-        const viewportHeight = window.innerHeight;
-        const timelineTop = timeline.offsetTop;
-        const timelineHeight = timeline.offsetHeight;
-
-        let fillHeight = scrollTop + viewportHeight / 1.5 - timelineTop;
-        fillHeight = Math.max(0, Math.min(fillHeight, timelineHeight));
-        fill.style.height = fillHeight + "px";
-
-        if (dots.length > 0) {
-            dots.forEach(dot => {
-                const dotTop = dot.offsetTop;
-                if (dotTop <= fillHeight) dot.classList.add("active");
-                else dot.classList.remove("active");
+                timeline.appendChild(dot);
+                dots.push(dot);
             });
         }
-    }
 
-    // function to see current scroll-status within page
-    function recalcPositions() {
-        if (dots.length === 0) return;
-        items.forEach((item, i) => {
-            const itemTop = item.offsetTop;
-            const itemHeight = item.offsetHeight;
-            if (dots[i]) dots[i].style.top = `${itemTop + itemHeight / 2}px`;
-        });
-    }
+        // function that unfills the dots as the page is scrolled up
+        function removeDots() {
+            dots.forEach(dot => dot.remove());
+            dots = [];
+        }
 
-    // function to only put the dots in desktop and remove them from mobile / tablet
-    function checkResolution() {
-        const width = window.innerWidth;
+        // function to "sense" the dots needing to be filled / emptied
+        function updateTimeline() {
 
-        if (width >= 992) { // Dots for desktop only
-            if (!isDesktop) {
-                createDots();
-                isDesktop = true;
-            }
-            recalcPositions();
-        } else { // Dots when we are not in desktop resolution are removed (as stated before: they are done manually)
-            if (isDesktop) {
-                removeDots();
-                isDesktop = false;
+            const scrollTop = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            const timelineTop = timeline.offsetTop;
+            const timelineHeight = timeline.offsetHeight;
+
+            let fillHeight = scrollTop + viewportHeight / 1.5 - timelineTop;
+            fillHeight = Math.max(0, Math.min(fillHeight, timelineHeight));
+            fill.style.height = fillHeight + "px";
+
+            if (dots.length > 0) {
+                dots.forEach(dot => {
+                    const dotTop = dot.offsetTop;
+                    if (dotTop <= fillHeight) dot.classList.add("active");
+                    else dot.classList.remove("active");
+                });
             }
         }
-        updateTimeline();
-    }
 
-    // Event listener to update the timeline based on scroll
-    window.addEventListener("scroll", updateTimeline);
+        // function to see current scroll-status within page
+        function recalcPositions() {
+            if (dots.length === 0) return;
+            items.forEach((item, i) => {
+                const itemTop = item.offsetTop;
+                const itemHeight = item.offsetHeight;
+                if (dots[i]) dots[i].style.top = `${itemTop + itemHeight / 2}px`;
+            });
+        }
 
-    // Event listener to update the timeline based on width (if the window is resized it gets dynamically changed)
-    window.addEventListener("resize", () => {
-        checkResolution();
-    });
+        // function to only put the dots in desktop and remove them from mobile / tablet
+        function checkResolution() {
+            const width = window.innerWidth;
 
-    // Adjust dots position based on image position (dot position is fixed to halfway (vertically) from the image next ot it)
-    document.querySelectorAll('.timeline-item img').forEach(img => {
-        img.addEventListener('load', () => {
-            if (isDesktop) {
+            if (width >= 992) { // Dots for desktop only
+                if (!isDesktop) {
+                    createDots();
+                    isDesktop = true;
+                }
                 recalcPositions();
-                updateTimeline();
+            } else { // Dots when we are not in desktop resolution are removed (as stated before: they are done manually)
+                if (isDesktop) {
+                    removeDots();
+                    isDesktop = false;
+                }
             }
+            updateTimeline();
+        }
+
+        // Event listener to update the timeline based on scroll
+        window.addEventListener("scroll", updateTimeline);
+
+        // Event listener to update the timeline based on width (if the window is resized it gets dynamically changed)
+        window.addEventListener("resize", () => {
+            checkResolution();
         });
-    });
 
-    // Start the timeline handling process
-    checkResolution();
+        // Adjust dots position based on image position (dot position is fixed to halfway (vertically) from the image next ot it)
+        document.querySelectorAll('.timeline-item img').forEach(img => {
+            img.addEventListener('load', () => {
+                if (isDesktop) {
+                    recalcPositions();
+                    updateTimeline();
+                }
+            });
+        });
 
+        // Start the timeline handling process
+        checkResolution();
+    }
 })
 
 /* === HIDING THE MOUSE CURSOS OVER HOVERABLE ITEMS === */
@@ -352,105 +355,106 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* === CAROUSELS LOGIC & SETTINGS (from SwiperJS) === */
 document.addEventListener('DOMContentLoaded', function () {
+    // Controlla se Swiper è definito E se esiste l'elemento nella pagina
+    if (typeof Swiper !== 'undefined') {
+        /* Carousel 1: the one with only multiple-images (uses .swiper-images class) */
+        const swiperImages = new Swiper('.swiper-images', {
 
-    /* Carousel 1: the one with only multiple-images (uses .swiper-images class) */
-    const swiperImages = new Swiper('.swiper-images', {
+            direction: 'horizontal',
+            loop: true,
+            centeredSlides: true,
+            spaceBetween: 5,
 
-        direction: 'horizontal',
-        loop: true,
-        centeredSlides: true,
-        spaceBetween: 5,
-
-        breakpoints: {
-            0: {
-                slidesPerView: 1,
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 3,
+                }
             },
-            768: {
-                slidesPerView: 3,
-            }
-        },
 
-        pagination: {
-            el: '.swiper-images .swiper-pagination', // specific scoping
-            type: 'progressbar',
-        },
-
-        // specific scoping for buttons
-        navigation: {
-            nextEl: '.swiper-images .swiper-button-next',
-            prevEl: '.swiper-images .swiper-button-prev',
-        },
-
-        scrollbar: {
-            el: '.swiper-images .swiper-scrollbar',
-        },
-    });
-
-    /* Carousel 2: reviews carousel (uses .swiper-reviews class) */
-    let swiperReviews = new Swiper('.swiper-reviews', {
-        direction: 'horizontal',
-        loop: true,
-        spaceBetween: 0,
-        centeredSlides: true,
-
-        breakpoints: {
-            0: {
-                slidesPerView: 1
+            pagination: {
+                el: '.swiper-images .swiper-pagination', // specific scoping
+                type: 'progressbar',
             },
-            768: {
-                slidesPerView: 1
-            }
-        },
 
-        navigation: {
-            nextEl: '.swiper-reviews .swiper-button-next',
-            prevEl: '.swiper-reviews .swiper-button-prev'
-        },
-
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'progressbar',
-        },
-
-        scrollbar: {
-            el: '.swiper-scrollbar'
-        }
-
-    });
-
-    /* Carousel 1: the one with only multiple-images (uses .swiper-images class) */
-    const swiperHome = new Swiper('.swiper-home', {
-
-        direction: 'horizontal',
-        loop: true,
-        centeredSlides: true,
-        spaceBetween: 5,
-
-        breakpoints: {
-            0: {
-                slidesPerView: 1,
+            // specific scoping for buttons
+            navigation: {
+                nextEl: '.swiper-images .swiper-button-next',
+                prevEl: '.swiper-images .swiper-button-prev',
             },
-            768: {
-                slidesPerView: 3,
+
+            scrollbar: {
+                el: '.swiper-images .swiper-scrollbar',
+            },
+        });
+
+        /* Carousel 2: reviews carousel (uses .swiper-reviews class) */
+        let swiperReviews = new Swiper('.swiper-reviews', {
+            direction: 'horizontal',
+            loop: true,
+            spaceBetween: 0,
+            centeredSlides: true,
+
+            breakpoints: {
+                0: {
+                    slidesPerView: 1
+                },
+                768: {
+                    slidesPerView: 1
+                }
+            },
+
+            navigation: {
+                nextEl: '.swiper-reviews .swiper-button-next',
+                prevEl: '.swiper-reviews .swiper-button-prev'
+            },
+
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'progressbar',
+            },
+
+            scrollbar: {
+                el: '.swiper-scrollbar'
             }
-        },
 
-        pagination: {
-            el: '.swiper-home .swiper-pagination', // specific scoping
-            type: 'progressbar',
-        },
+        });
 
-        // specific scoping for buttons
-        navigation: {
-            nextEl: '.swiper-home .swiper-button-next',
-            prevEl: '.swiper-home .swiper-button-prev',
-        },
+        /* Carousel 1: the one with only multiple-images (uses .swiper-images class) */
+        const swiperHome = new Swiper('.swiper-home', {
 
-        scrollbar: {
-            el: '.swiper-home .swiper-scrollbar',
-        },
-    });
+            direction: 'horizontal',
+            loop: true,
+            centeredSlides: true,
+            spaceBetween: 5,
 
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 3,
+                }
+            },
+
+            pagination: {
+                el: '.swiper-home .swiper-pagination', // specific scoping
+                type: 'progressbar',
+            },
+
+            // specific scoping for buttons
+            navigation: {
+                nextEl: '.swiper-home .swiper-button-next',
+                prevEl: '.swiper-home .swiper-button-prev',
+            },
+
+            scrollbar: {
+                el: '.swiper-home .swiper-scrollbar',
+            },
+        });
+    }
 });
 
 /* === ALLERGEN CHIPS (& their logic) === */
@@ -468,255 +472,255 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* === INTERACTIVE MAP WITH D3 === */
 document.addEventListener("DOMContentLoaded", function () {
-
+    if (typeof d3 !== 'undefined') {
     // Size configuration
     const width = window.innerWidth;
     const height = window.innerHeight;
 
     // Placing an SVG in the map container
     const container = d3.select("#map-container");
-    const svg = container.append("svg");
+        const svg = container.append("svg");
 
-    // = SVG setup (to make it a map) =
+        // = SVG setup (to make it a map) =
 
-    // define SVG sizes (must add an attribute for it)
-    svg.attr("width", width);
-    svg.attr("height", height);
+        // define SVG sizes (must add an attribute for it)
+        svg.attr("width", width);
+        svg.attr("height", height);
 
-    // sub-element "g" will contain the actual map (with seas and nations)
-    const mapLayer = svg.append("g");
+        // sub-element "g" will contain the actual map (with seas and nations)
+        const mapLayer = svg.append("g");
 
-    // Tooltip selection
-    const tooltip = d3.select("#tooltip");
+        // Tooltip selection
+        const tooltip = d3.select("#tooltip");
 
-    // function for tooltip interaction that gets the pointer's coordinates (or clicked coordinates) and places the tooltip next to it
-    const moveTooltip = (event) => {
-        const [x, y] = d3.pointer(event, container.node()); // get pointer coordinates
-        tooltip.style("transform", `translate(${x + 15}px, ${y + 15}px) translate(-50%, -150%)`); // place tooltip next to pointer
-    };
+        // function for tooltip interaction that gets the pointer's coordinates (or clicked coordinates) and places the tooltip next to it
+        const moveTooltip = (event) => {
+            const [x, y] = d3.pointer(event, container.node()); // get pointer coordinates
+            tooltip.style("transform", `translate(${x + 15}px, ${y + 15}px) translate(-50%, -150%)`); // place tooltip next to pointer
+        };
 
-    // function to hide tooltip
-    const hideTooltip = () => {
-        tooltip.style("opacity", 0);
-    };
+        // function to hide tooltip
+        const hideTooltip = () => {
+            tooltip.style("opacity", 0);
+        };
 
-    // sea labels coordinates (only in the restaurant's general area)
-    const seaData = [
-        {name: "Mare di Giava", coords: [112, -5]},
-        {name: "Mare di Celebes", coords: [122, 3]},
-        {name: "Mare di Banda", coords: [128, -5.5]},
-        {name: "Mare di Arafura", coords: [135, -9]},
-        {name: "Mare di Timor", coords: [126, -11]},
-        {name: "Mare di Bismarck", coords: [147, -3.5]},
-        {name: "Mare di Salomone", coords: [152, -8]},
-        {name: "Mare dei Coralli", coords: [152, -16]},
-        {name: "Mare delle Filippine", coords: [130, 15]}
-    ];
+        // sea labels coordinates (only in the restaurant's general area)
+        const seaData = [
+            {name: "Mare di Giava", coords: [112, -5]},
+            {name: "Mare di Celebes", coords: [122, 3]},
+            {name: "Mare di Banda", coords: [128, -5.5]},
+            {name: "Mare di Arafura", coords: [135, -9]},
+            {name: "Mare di Timor", coords: [126, -11]},
+            {name: "Mare di Bismarck", coords: [147, -3.5]},
+            {name: "Mare di Salomone", coords: [152, -8]},
+            {name: "Mare dei Coralli", coords: [152, -16]},
+            {name: "Mare delle Filippine", coords: [130, 15]}
+        ];
 
-    // = Setup & Protection of the 3D D3 map on a 2D plane =
+        // = Setup & Protection of the 3D D3 map on a 2D plane =
 
-    // Setup projection
-    const projection = d3.geoMercator();
-    projection.center([128, -5]); // set initial position (on Indonesia)
-    projection.scale(2000); // set initial zoom level
-    projection.translate([width / 2, height / 2]); // align map at the center of the container
+        // Setup projection
+        const projection = d3.geoMercator();
+        projection.center([128, -5]); // set initial position (on Indonesia)
+        projection.scale(2000); // set initial zoom level
+        projection.translate([width / 2, height / 2]); // align map at the center of the container
 
-    // Make projection
-    const path = d3.geoPath().projection(projection);
+        // Make projection
+        const path = d3.geoPath().projection(projection);
 
-    // = Setup & Add Zoom / Pan handling for the map =
+        // = Setup & Add Zoom / Pan handling for the map =
 
-    // Setup zoom (so it only works when holding ALT)
-    const zoom = d3.zoom()
-        .scaleExtent([1, 8])
-        .filter((event) => {
-            if (event.type === 'wheel' && !event.altKey) {  // if it's a scroll (event === 'wheel') but ALT is not pressed ...
-                return false;
-            }
-            return true;
-        })
-
-        .on("start", () => {
-            document.body.classList.add("is-map-interacting"); // add "being-interacted-with" class when interactions starts
-            hideTooltip(); // hide currently shown tooltip when moving the map around
-        })
-        .on("zoom", (event) => {
-            mapLayer.attr("transform", event.transform); // transform map when it is being zoomed
-            hideTooltip(); // hide currently shown tooltip when map is being zoomed
-        })
-        .on("end", () => {
-            document.body.classList.remove("is-map-interacting"); // remove "being-interacted-with" class when interaction ends (will show the tooltip back)
-        })
-    ;
-
-    svg.call(zoom); // attach the now set-up zoom component to the SVG
-
-    // Atlas and Riff's position (object)
-    const cityData = [
-        {
-            regionName: "Atlas",
-            pointName: "Riff",
-            coords: [127, -7], // Coordinate leggermente spostate nel Mare di Banda
-            desc: "Città Sommersa"
-        }
-    ];
-
-    // World-Map loading
-    d3.json("./media/map/worldGeoJSON.json").then(function (data) { // wordGeoJSON taken from "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson" (and downloaded locally)
-
-        // Draw STATES (Ex-Nations)
-        mapLayer.selectAll("path")
-            .data(data.features)
-            .join("path")
-            .attr("class", "country")
-            .attr("d", path)
-            .on("mouseover", function (event, d) { // ability to interact with countries (tooltip pops up on mouseover)
-                d3.select(this).raise(); // Bring country forward
-
-                // add "Ex-" in front of the CountryName (Ex-Malesia, Ex-Australia, ...)
-                const countryName = d.properties.name;
-                const exName = "Ex-" + countryName;
-
-                // some flavor information to differentiate some countries from one another
-                switch (exName) {
-                    case "Ex-Australia":
-                        tooltip.style("opacity", 1)
-                            .html(`<b>${exName}</b><br/><b>Stato:</b> semi-sommersa <br><b>Navigabilità: </b>accesso proibito`)
-                        ;
-                        break;
-                    case "Ex-East Timor":
-                        tooltip.style("opacity", 1)
-                            .html(`<b>${exName}</b><br/><b>Stato:</b> sommerso <br><b>Navigabilità: </b>accesso proibito (attività vulcanica)`)
-                        ;
-                        break;
-                    default:
-                        tooltip.style("opacity", 1)
-                            .html(`<b>${exName}</b><br/><b>Stato:</b> sommerso <br><b>Navigabilità: </b>accesso consentito`)
-                        ;
+        // Setup zoom (so it only works when holding ALT)
+        const zoom = d3.zoom()
+            .scaleExtent([1, 8])
+            .filter((event) => {
+                if (event.type === 'wheel' && !event.altKey) {  // if it's a scroll (event === 'wheel') but ALT is not pressed ...
+                    return false;
                 }
-
-                moveTooltip(event); //  to put the tooltip in the right position when clicking on mobile
-
+                return true;
             })
-            .on("mousemove", moveTooltip)
-            .on("mouseout", hideTooltip)
+
+            .on("start", () => {
+                document.body.classList.add("is-map-interacting"); // add "being-interacted-with" class when interactions starts
+                hideTooltip(); // hide currently shown tooltip when moving the map around
+            })
+            .on("zoom", (event) => {
+                mapLayer.attr("transform", event.transform); // transform map when it is being zoomed
+                hideTooltip(); // hide currently shown tooltip when map is being zoomed
+            })
+            .on("end", () => {
+                document.body.classList.remove("is-map-interacting"); // remove "being-interacted-with" class when interaction ends (will show the tooltip back)
+            })
         ;
 
-        // Draw seas
-        const seas = mapLayer.selectAll(".sea-group")
-            .data(seaData)
-            .enter()
-            .append("g")
-            .attr("class", "sea-group")
-            .attr("transform", d => `translate(${projection(d.coords)})`)
-        ;
+        svg.call(zoom); // attach the now set-up zoom component to the SVG
 
-        // "hitbox" circle (for the pop-up)
-        seas.append("circle")
-            .attr("r", 25)
-            .attr("fill", "transparent")
-        ;
+        // Atlas and Riff's position (object)
+        const cityData = [
+            {
+                regionName: "Atlas",
+                pointName: "Riff",
+                coords: [127, -7], // Coordinate leggermente spostate nel Mare di Banda
+                desc: "Città Sommersa"
+            }
+        ];
 
-        // Visible text
-        seas.append("text")
-            .attr("class", "sea-label-text")
-            .attr("y", 5)
-            .text((d) => d.name)
-        ;
+        // World-Map loading
+        d3.json("./media/map/worldGeoJSON.json").then(function (data) { // wordGeoJSON taken from "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson" (and downloaded locally)
 
-        // mouseover for seas
-        seas.on("mouseover", function (event, d) {
-            tooltip.style("opacity", 1)
-                .html(`<b>${d.name}</b><br> <b>Settore:</b> Oceano Australe<br> <b>Viabilità: </b>aperta al traffico`)
+            // Draw STATES (Ex-Nations)
+            mapLayer.selectAll("path")
+                .data(data.features)
+                .join("path")
+                .attr("class", "country")
+                .attr("d", path)
+                .on("mouseover", function (event, d) { // ability to interact with countries (tooltip pops up on mouseover)
+                    d3.select(this).raise(); // Bring country forward
+
+                    // add "Ex-" in front of the CountryName (Ex-Malesia, Ex-Australia, ...)
+                    const countryName = d.properties.name;
+                    const exName = "Ex-" + countryName;
+
+                    // some flavor information to differentiate some countries from one another
+                    switch (exName) {
+                        case "Ex-Australia":
+                            tooltip.style("opacity", 1)
+                                .html(`<b>${exName}</b><br/><b>Stato:</b> semi-sommersa <br><b>Navigabilità: </b>accesso proibito`)
+                            ;
+                            break;
+                        case "Ex-East Timor":
+                            tooltip.style("opacity", 1)
+                                .html(`<b>${exName}</b><br/><b>Stato:</b> sommerso <br><b>Navigabilità: </b>accesso proibito (attività vulcanica)`)
+                            ;
+                            break;
+                        default:
+                            tooltip.style("opacity", 1)
+                                .html(`<b>${exName}</b><br/><b>Stato:</b> sommerso <br><b>Navigabilità: </b>accesso consentito`)
+                            ;
+                    }
+
+                    moveTooltip(event); //  to put the tooltip in the right position when clicking on mobile
+
+                })
+                .on("mousemove", moveTooltip)
+                .on("mouseout", hideTooltip)
             ;
-            moveTooltip(event); //  to put the tooltip in the right position when clicking on mobile
-        })
-            .on("mousemove", moveTooltip)
-            .on("mouseout", hideTooltip);
 
-        // = Draw Atlas & Riff =
-        const locations = mapLayer.selectAll(".location-group")
-            .data(cityData)
-            .enter()
-            .append("g")
-            .attr("class", "location-group")
-            .attr("transform", d => `translate(${projection(d.coords)})`)
-        ;
-
-        // Add a transparent "Hitbox" circle larger than the max pulse radius (which is 10px)
-        // to avoid "flickering" effect on certain mouseovers at the edges
-        // Making it 20px also should make it easier to press on mobile
-        locations.append("circle")
-            .attr("r", 20)
-            .attr("fill", "transparent") // make the circle transparent (otherwise it's visually displayed)
-            .style("cursor", "pointer") // Ensures the hand cursor shows
-        ;
-
-        // Draw Atlas circle
-        locations.append("circle")
-            .attr("r", 16)
-            .attr("class", "atlas-marker")
-        ;
-
-        // Draw the internal point for the Riff
-        locations.append("circle")
-            .attr("r", 2.5)
-            .attr("class", "riff-point")
-        ;
-
-        // Text-label for locations (Riff)
-        locations.append("text")
-            .attr("class", "location-label")
-            .text(d => d.regionName) // writes "Atlas"
-        ;
-
-        // Mouseover for Atlas & Riff
-        locations.on("mouseover", function (event, d) {
-            tooltip.style("opacity", 1)
-                .style("border-color", "#FF3276") // couldn't use var(--pink) here
-                .style("color", "#FF3276")
-                .html(`<b>Riff</b><br/>Atlas, P.zza Corolleo 1 24°N - 46°O, -230 m<br/>Settore abissale Ovest`)
+            // Draw seas
+            const seas = mapLayer.selectAll(".sea-group")
+                .data(seaData)
+                .enter()
+                .append("g")
+                .attr("class", "sea-group")
+                .attr("transform", d => `translate(${projection(d.coords)})`)
             ;
-            moveTooltip(event); // to put the tooltip in the right position when clicking on mobile
+
+            // "hitbox" circle (for the pop-up)
+            seas.append("circle")
+                .attr("r", 25)
+                .attr("fill", "transparent")
+            ;
+
+            // Visible text
+            seas.append("text")
+                .attr("class", "sea-label-text")
+                .attr("y", 5)
+                .text((d) => d.name)
+            ;
+
+            // mouseover for seas
+            seas.on("mouseover", function (event, d) {
+                tooltip.style("opacity", 1)
+                    .html(`<b>${d.name}</b><br> <b>Settore:</b> Oceano Australe<br> <b>Viabilità: </b>aperta al traffico`)
+                ;
+                moveTooltip(event); //  to put the tooltip in the right position when clicking on mobile
+            })
+                .on("mousemove", moveTooltip)
+                .on("mouseout", hideTooltip);
+
+            // = Draw Atlas & Riff =
+            const locations = mapLayer.selectAll(".location-group")
+                .data(cityData)
+                .enter()
+                .append("g")
+                .attr("class", "location-group")
+                .attr("transform", d => `translate(${projection(d.coords)})`)
+            ;
+
+            // Add a transparent "Hitbox" circle larger than the max pulse radius (which is 10px)
+            // to avoid "flickering" effect on certain mouseovers at the edges
+            // Making it 20px also should make it easier to press on mobile
+            locations.append("circle")
+                .attr("r", 20)
+                .attr("fill", "transparent") // make the circle transparent (otherwise it's visually displayed)
+                .style("cursor", "pointer") // Ensures the hand cursor shows
+            ;
+
+            // Draw Atlas circle
+            locations.append("circle")
+                .attr("r", 16)
+                .attr("class", "atlas-marker")
+            ;
+
+            // Draw the internal point for the Riff
+            locations.append("circle")
+                .attr("r", 2.5)
+                .attr("class", "riff-point")
+            ;
+
+            // Text-label for locations (Riff)
+            locations.append("text")
+                .attr("class", "location-label")
+                .text(d => d.regionName) // writes "Atlas"
+            ;
+
+            // Mouseover for Atlas & Riff
+            locations.on("mouseover", function (event, d) {
+                tooltip.style("opacity", 1)
+                    .style("border-color", "#FF3276") // couldn't use var(--pink) here
+                    .style("color", "#FF3276")
+                    .html(`<b>Riff</b><br/>Atlas, P.zza Corolleo 1 24°N - 46°O, -230 m<br/>Settore abissale Ovest`)
+                ;
+                moveTooltip(event); // to put the tooltip in the right position when clicking on mobile
+            });
+
+            // if mouse is moved within Atlas radius, the label moves as well
+            locations.on("mousemove", moveTooltip);
+
+            // reset previous style upon mouseout (= mouseover end)
+            locations.on("mouseout", function () {
+                hideTooltip();
+                tooltip.style("border-color", "var(--blue70-100)")
+                    .style("color", "var(--blue70-100)");
+            });
+
+        }).catch(err => console.error("Errore dati:", err));
+        // d3 can throw an error, basic catch-and-display-problem-in-console
+
+        // Resize responsive
+        window.addEventListener('resize', () => {
+
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+
+            // Update map (note: elements on the map still have to be updated)
+            svg.attr("width", w).attr("height", h);
+            projection.translate([w / 2, h / 2]);
+
+            // Update countries
+            mapLayer.selectAll("path").attr("d", path);
+
+            // Update seas
+            mapLayer.selectAll(".sea-group")
+                .attr("transform", (d) => `translate(${projection(d.coords)})`)
+            ;
+
+            // Update Atlas & Riff
+            mapLayer.selectAll(".location-group")
+                .attr("transform", (d) => `translate(${projection(d.coords)})`)
+            ;
         });
-
-        // if mouse is moved within Atlas radius, the label moves as well
-        locations.on("mousemove", moveTooltip);
-
-        // reset previous style upon mouseout (= mouseover end)
-        locations.on("mouseout", function () {
-            hideTooltip();
-            tooltip.style("border-color", "var(--blue70-100)")
-                .style("color", "var(--blue70-100)");
-        });
-
-    }).catch(err => console.error("Errore dati:", err));
-    // d3 can throw an error, basic catch-and-display-problem-in-console
-
-    // Resize responsive
-    window.addEventListener('resize', () => {
-
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-
-        // Update map (note: elements on the map still have to be updated)
-        svg.attr("width", w).attr("height", h);
-        projection.translate([w / 2, h / 2]);
-
-        // Update countries
-        mapLayer.selectAll("path").attr("d", path);
-
-        // Update seas
-        mapLayer.selectAll(".sea-group")
-            .attr("transform", (d) => `translate(${projection(d.coords)})`)
-        ;
-
-        // Update Atlas & Riff
-        mapLayer.selectAll(".location-group")
-            .attr("transform", (d) => `translate(${projection(d.coords)})`)
-        ;
-    });
-
+    }
 });
 
 /* === BOOKING SECTION'S CALENDAR AND SELECT SCRIPT === */
@@ -1069,14 +1073,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //reset all filters in menu and filter section
     const resetBtn = document.querySelector('.btn-reset');
-    resetBtn.addEventListener('click', () => {
-        allAllergens.forEach(item => {
-            item.classList.remove('allergen-active');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            allAllergens.forEach(item => {
+                item.classList.remove('allergen-active');
+            });
+            buttons.forEach(button => {
+                button.classList.remove('chips-active');
+            })
         });
-        buttons.forEach(button => {
-            button.classList.remove('chips-active');
-        })
-    });
+    }
 });
 
 /* === CHANGE LANGUAGE === */
