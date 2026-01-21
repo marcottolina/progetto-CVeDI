@@ -43,15 +43,14 @@ document.addEventListener("DOMContentLoaded", function () {
     /* === TIMELINE === */
     const timeline = document.querySelector(".timeline-container");
 
-        let dots = []; // Global array of dynamic dots
-        let isDesktop = false; // Flag to trace state
+    let dots = []; // Global array of dynamic dots
+    let isDesktop = false; // Flag to trace state
     if (timeline) {
         const items = document.querySelectorAll(".timeline-item");
         // Line that gradually fills (as page gets scrolled down) - Fixed, can be hidden via-CSS if needed
         const fill = document.createElement("div");
         fill.className = "timeline-fill";
         timeline.appendChild(fill);
-
 
 
         // function that fills the dots within timeline (desktop only - smaller sizes are done manually) as the page is scrolled down
@@ -473,12 +472,12 @@ document.addEventListener('DOMContentLoaded', function () {
 /* === INTERACTIVE MAP WITH D3 === */
 document.addEventListener("DOMContentLoaded", function () {
     if (typeof d3 !== 'undefined') {
-    // Size configuration
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+        // Size configuration
+        const width = window.innerWidth;
+        const height = window.innerHeight;
 
-    // Placing an SVG in the map container
-    const container = d3.select("#map-container");
+        // Placing an SVG in the map container
+        const container = d3.select("#map-container");
         const svg = container.append("svg");
 
         // = SVG setup (to make it a map) =
@@ -1185,7 +1184,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // function to hide a confirmation message after 5 seconds
     const fadeOutPopup = async (element) => {
-        await delay (5000);
+        await delay(5000);
         element.classList.add('d-none');
     }
 

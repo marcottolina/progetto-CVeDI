@@ -30,3 +30,4 @@ Otto:
 YuYu:
 - Finire pagine per i piatti specifici (1, 2 e 3)
 - Fare in particolare il bottone per la musica "Ascolta <icona>"
+- Risolvere errore in console sulla timeline [FATTO]
