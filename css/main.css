@@ -1292,7 +1292,7 @@ body.is-map-interacting .circle {
 
 /* Fighting Bootstrap's default style for an accordion again */
 .accordion-button:not(.collapsed) {
-    background-color: var(--blue-5-30); !important; /* override default color */
+    background-color: var(--blue-5-30) !important; /* override default color */
 
     /* it was casting a gray shadow that I removed */
     box-shadow: none !important;

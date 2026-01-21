@@ -456,19 +456,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-/* === ALLERGEN CHIPS (& their logic) === */
-document.addEventListener('DOMContentLoaded', function () {
-
-    const chipsButtons = document.querySelectorAll('.chips'); // select all plates from the menu that have an allergen (allergens are contained in these 'chips')
-
-    // Toggles 'chips-active' class upon clicking an allergen's chip
-    chipsButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            this.classList.toggle('chips-active'); // toDo: complete logic of what needs to happen when this is toggled
-        });
-    });
-});
-
 /* === INTERACTIVE MAP WITH D3 === */
 document.addEventListener("DOMContentLoaded", function () {
     if (typeof d3 !== 'undefined') {
