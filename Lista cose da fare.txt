@@ -18,16 +18,16 @@ Ale:
 
 - Revisione generale dei commenti contenuti nel sito (che non ne siano rimasti in italiano)
 
-- Ottimizzazione SEO {TO-DO}
-    - index:
-    - info:
-    - menu:
-    - pagina-libera:
-    - prenota:
-    - ristorante:
-    - piatto-1:
-    - piatto-2:
-    - piatto-3:
+- Ottimizzazione SEO [FATTO]
+    - index: [FATTO]
+    - info: [FATTO]
+    - menu: [FATTO]
+    - pagina-libera: [FATTO]
+    - prenota: [FATTO]
+    - ristorante: [FATTO]
+    - piatto-1: [FATTO]
+    - piatto-2: [FATTO]
+    - piatto-3: [FATTO]
 
 - Aggiustamenti estetici mappa quando arrivano i mockup {TO-DO}
 - Aggiustamenti estetici newsletter quando arrivano i mockup {TO-DO} e conseguenti cambi dei footer {TO-DO}
