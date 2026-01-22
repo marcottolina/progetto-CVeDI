@@ -19,15 +19,60 @@ Ale:
 - Newsletter [FATTA V1] {DA AGGIUSTARE POST-MOCKUP}
 
 - Immagini del ristorante in carousel di ristorante.html {aggiunta una, ma ne servono altre}
+- Risolvere problema dell'hamburger menu che il menu non è cliccabile su mobile [FATTO]
+
+- Ottimizzazione SEO {TO-DO}
+    - index:
+    - info:
+    - menu:
+    - pagina-libera:
+    - prenota:
+    - ristorante:
+    - piatto-1:
+    - piatto-2:
+    - piatto-3:
+
+- Aggiustamenti estetici mappa quando arrivano i mockup {TO-DO}
+- Aggiustamenti estetici newsletter quando arrivano i mockup {TO-DO}
 
 
 Otto:
-- La grande revisione di stili e allineamenti.
-- ristorante.html -> recensioni dei critici (falle appena riceviamo i mockup), attenzione che le frecce non traballino "su e giù" tra una recensione e l'altra.
-- menu.html -> aggiustare filtri
 
+- menu.html -> aggiustare filtri [FATTO]
+- Risolto un problema in CSS [FATTO]
+
+- Deployment su Github Pages {TO-DO} (soluzione fallback per permettergli di visualizzarlo se altro va storto)
+
+- Revisione generale dell'estetica del sito
+    - Occhio a quanto scuri sono i bottoni mockup vs sito effettivo
+    - Allineamenti
+
+- Revisione generale responsiveness del sito
+    - index:
+    - info:
+    - menu:
+    - pagina-libera:
+    - prenota:
+    - ristorante:
+    - piatto-1:
+    - piatto-2:
+    - piatto-3:
+
+- ristorante.html -> recensioni dei critici (falle appena riceviamo i mockup), attenzione che le frecce non traballino "su e giù" tra una recensione e l'altra.
 
 YuYu:
-- Finire pagine per i piatti specifici (1, 2 e 3)
-- Fare in particolare il bottone per la musica "Ascolta <icona>"
+- Finire pagine per i piatti specifici (1, 2 e 3) {TO-FINISH}
+- Finire aspetti della prenotazione in prenota.html quando arrivano i mockup {TO-DO}
+- Fare in particolare il bottone per la musica "Ascolta <icona>" [FATTO]
 - Risolvere errore in console sulla timeline [FATTO]
+
+- Accorgimenti per accessibilità {TO-DO}
+    - index:
+    - info:
+    - menu:
+    - pagina-libera:
+    - prenota:
+    - ristorante:
+    - piatto-1:
+    - piatto-2:
+    - piatto-3:
