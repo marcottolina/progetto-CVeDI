@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
+
 <head>
 
-    <!-- meta tags -->
+    <!-- View meta tags -->
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- page title -->
+    <title>Riff | Ristorante Sottomarino e Lounge Musicale Atlas</title>
+
+    <!-- SEO meta tags -->
+    <meta name="description" content="Scopri Riff: un'esperienza culinaria unica nel settore abissale di Atlas. Piatti di alta cucina marina accompagnati da musica dal vivo e atmosfere sottomarine. Prenota ora.">
+    <meta name="keywords" content="ristorante sottomarino, cucina creativa, Atlas, cena con musica, Riff restaurant, esperienza abissale">
+    <meta name="author" content="Riff Team">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="restaurant.restaurant">
+    <meta property="og:url" content="https://marcottolina.github.io/progetto-CVeDI/">
+    <meta property="og:title" content="Riff - Cena nel cuore dell'oceano">
+    <meta property="og:description" content="Un percorso di suoni, luci e sapori custoditi nel cuore del fondale di Atlas.">
+    <meta property="og:image" content="https://marcottolina.github.io/progetto-CVeDI/media/img/home-1-1200w.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Riff | Ristorante Sottomarino">
+    <meta name="twitter:description" content="Cucina d'alta classe e musica dal vivo nel settore abissale.">
+    <meta name="twitter:image" content="https://marcottolina.github.io/progetto-CVeDI/media/img/home-1-1200w.webp">
+
+    <!-- canonical tag (SEO) -->
+    <link rel="canonical" href="https://marcottolina.github.io/progetto-CVeDI/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="media/icon/Logo.svg">
 
     <!-- style imports -->
     <link href="./vendor/bootstrap/bootstrap-css/bootstrap.css" rel="stylesheet"> <!-- Bootstrap CSS -->
@@ -16,10 +43,8 @@
     <script defer src="js/main.js"></script> <!-- Our JS -->
     <script src="./vendor/swiper/swiper-bundle.js"></script> <!-- Swiper's JS (for carousel) -->
 
-    <!-- page title -->
-    <title>Riff</title>
-
 </head>
+
 <body>
 
 <!-- navbar -->
@@ -183,6 +208,7 @@
 <!-- hero (part 2) -->
 <div class="container-fluid mx-4 d-flex flex-column justify-content-end align-items-start">
     <img alt="Logo" class="img-fluid" src="media/icon/Big-logo.svg">
+    <h1 class="visually-hidden">Riff: Ristorante Sottomarino e Lounge Musicale</h1> <!-- hidden <H1> for SEO purposes -->
     <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html#booking-1'" type="submit">
         <span aria-hidden="true" class="liquidGlass-effect"></span>
         <span aria-hidden="true" class="liquidGlass-tint"></span>
@@ -703,6 +729,53 @@
 
     </filter>
 </svg>
+
+<!-- SEO script -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Riff",
+        "image": [
+            "https://marcottolina.github.io/progetto-CVeDI/media/img/home-1-1200w.webp",
+            "https://marcottolina.github.io/progetto-CVeDI/media/img/auralia-1200w.webp"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "P.zza Corolleo 1",
+            "addressLocality": "Atlas",
+            "addressRegion": "Settore Abissale Ovest",
+            "postalCode": "00000",
+            "addressCountry": "IT"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 24.0000,
+            "longitude": -46.0000
+        },
+        "url": "https://marcottolina.github.io/progetto-CVeDI/",
+        "telephone": "+39000000000",
+        "servesCuisine": "Pesce, Fusion, Molecolare",
+        "priceRange": "$$$$",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ],
+                "opens": "19:00",
+                "closes": "01:00"
+            }
+        ],
+        "menu": "https://marcottolina.github.io/progetto-CVeDI/menu.html",
+        "acceptsReservations": "True"
+    }
+</script>
 
 </body>
 </html>

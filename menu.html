@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
 
-    <!-- meta tags -->
+    <!-- View meta tags -->
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- page title -->
+    <title>Menu e Percorsi Gastronomici | Riff - Ristorante</title>
+
+    <!-- SEO meta tags -->
+    <meta name="description" content="Scopri 'Synestesia': il menu degustazione di Riff dove ogni piatto abissale è abbinato a una melodia. Cucina molecolare, ingredienti marini e percorsi à la carte.">
+    <meta name="keywords" content="Riff menu, menu degustazione, synestesia, cucina molecolare, ristorante sottomarino prezzi, Thalassa, Madreperla">
+    <meta name="author" content="Riff Team">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="restaurant.menu">
+    <meta property="og:url" content="https://marcottolina.github.io/progetto-CVeDI/menu.html">
+    <meta property="og:title" content="Riff: Scopri il percorso Synestesia">
+    <meta property="og:description" content="Un racconto in ogni portata. Esplora il nostro menu degustazione e le proposte alla carta.">
+    <meta property="og:image" content="https://marcottolina.github.io/progetto-CVeDI/media/img/menu-1-1200.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Il Menu di Riff | Esperienza Sinestetica">
+    <meta name="twitter:description" content="Ingredienti abissali e melodie uniche. Guarda il nostro menu.">
+    <meta name="twitter:image" content="https://marcottolina.github.io/progetto-CVeDI/media/img/menu-1-1200.webp">
+
+    <!-- canonical tag (SEO) -->
+    <link rel="canonical" href="https://marcottolina.github.io/progetto-CVeDI/menu.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="media/icon/Logo.svg">
 
     <!-- style imports -->
     <link href="./vendor/bootstrap/bootstrap-css/bootstrap.css" rel="stylesheet"> <!-- Bootstrap CSS -->
@@ -14,9 +40,6 @@
     <!-- script imports -->
     <script src="./vendor/bootstrap/bootstrap-js/bootstrap.js"></script> <!-- Bootstrap JS -->
     <script defer src="js/main.js"></script> <!-- Our JS -->
-
-    <!-- page title -->
-    <title>Menu</title>
 
     <!-- local JS toDo: bring it to main.js -->
     <script>
@@ -246,7 +269,10 @@
                 <div class="row align-items-start">
 
                     <div class="col-lg-6 pe-lg-5">
-                        <img alt="Primo piatto" class="img-fluid timeline-img" loading="lazy" sizes="
+                        <img alt="Thalassa: piatto di corallo e mousse di plankton fermentato"
+                             class="img-fluid timeline-img"
+                             loading="lazy"
+                             sizes="
                             (min-width: 1200px) 600px,
                             (min-width: 992px) 500px,
                             (min-width: 768px) 400px,
@@ -301,7 +327,7 @@
 
                     <div class="col-lg-6 mt-5 mt-md-0 pe-lg-5">
                         <img
-                                alt="Secondo piatto"
+                                alt="Madreperla: conchiglia termica con crema di alghe sinaptiche e petali di medusa disidratata"
                                 class="img-fluid timeline-img"
                                 loading="lazy"
                                 sizes="
@@ -362,7 +388,7 @@
                 <div class="row align-items-start">
 
                     <div class="col-lg-6 mt-2 mt-lg-0 pe-lg-5">
-                        <img alt="Terzo piatto"
+                        <img alt="Bioluma: sfera luminescente di polline marino e zucchero di kelp"
                              class="img-fluid timeline-img"
                              loading="lazy"
                              sizes="
@@ -901,8 +927,62 @@
 
     </filter>
 </svg>
-
 <!-- scale è il valore che determina l'intensità della distorsione -->
+
+<!-- SEO script -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Riff",
+        "url": "https://marcottolina.github.io/progetto-CVeDI/menu.html",
+        "description": "Ristorante sottomarino con percorsi di degustazione sinestetici.",
+
+        "image": [
+            "https://marcottolina.github.io/progetto-CVeDI/media/img/menu-1-1200.webp",
+            "https://marcottolina.github.io/progetto-CVeDI/media/img/menu-2-1200.webp",
+            "https://marcottolina.github.io/progetto-CVeDI/media/img/menu-3-1200.webp"
+        ],
+
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "P.zza Corolleo 1",
+            "addressLocality": "Atlas",
+            "addressRegion": "Settore Abissale Ovest",
+            "postalCode": "00000",
+            "addressCountry": "IT"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 24.0000,
+            "longitude": -46.0000
+        },
+        "telephone": "+39000000000",
+
+        "servesCuisine": ["Pesce", "Molecolare", "Fusion Abissale"],
+        "priceRange": "60€ - 85€",
+
+        "hasMenu": "https://marcottolina.github.io/progetto-CVeDI/menu.html",
+
+        "potentialAction": {
+            "@type": "ReserveAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://marcottolina.github.io/progetto-CVeDI/prenota.html",
+                "inLanguage": "it-IT",
+                "actionPlatform": [
+                    "http://schema.org/DesktopWebPlatform",
+                    "http://schema.org/IOSPlatform",
+                    "http://schema.org/AndroidPlatform"
+                ]
+            },
+            "result": {
+                "@type": "FoodEstablishmentReservation",
+                "name": "Prenota un tavolo"
+            }
+        }
+    }
+</script>
 
 </body>
 

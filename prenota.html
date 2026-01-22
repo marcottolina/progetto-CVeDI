@@ -1,6 +1,5 @@
-<!doctype html>
-
-<html lang="ita">
+<!DOCTYPE html>
+<html lang="it">
 
 <head>
 
@@ -8,19 +7,41 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
+    <!-- page title -->
+    <title>Prenota un Tavolo o una Sala Privata | Riff - Atlas</title>
+
+    <!-- SEO meta tags -->
+    <meta name="description" content="Riserva il tuo tavolo da Riff nel cuore dell'oceano di Atlas. Prenotazioni aperte per cene intime o eventi privati in sala esclusiva.">
+    <meta name="keywords" content="prenotazione Riff, prenotare ristorante Atlas, cena sottomarina prenotazione, eventi privati Atlas, ristorante romantico sottomarino">
+    <meta name="author" content="Riff Team">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="restaurant.reservation">
+    <meta property="og:url" content="https://marcottolina.github.io/progetto-CVeDI/prenota.html">
+    <meta property="og:title" content="Prenota la tua esperienza da Riff">
+    <meta property="og:description" content="Assicurati un posto nel settore abissale. Prenota ora il tuo tavolo o una sala privata.">
+    <meta property="og:image" content="https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prenota un Tavolo | Riff Atlas">
+    <meta name="twitter:description" content="Vivi un'esperienza sensoriale unica. Prenota online.">
+    <meta name="twitter:image" content="https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp">
+
+    <!-- canonical tag (SEO) -->
+    <link rel="canonical" href="https://marcottolina.github.io/progetto-CVeDI/prenota.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="media/icon/Logo.svg">
+
     <!-- style imports -->
     <link href="./vendor/bootstrap/bootstrap-css/bootstrap.css" rel="stylesheet"/>
     <link href="./css/main.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker.min.css" rel="stylesheet"/>
 
     <!-- script imports -->
     <script src="./vendor/bootstrap/bootstrap-js/bootstrap.bundle.js"></script>
     <script src="./js/main.js"></script>
-    <link
-            href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker.min.css"
-            rel="stylesheet"
-    />
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker.min.js"></script>
-
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <!-- page title -->
@@ -940,5 +961,51 @@
     })()
 
 </script>
+
+<!-- SEO script -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Riff",
+        "image": "https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp",
+        "url": "https://marcottolina.github.io/progetto-CVeDI/prenota.html",
+        "telephone": "+39000000000",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "P.zza Corolleo 1",
+            "addressLocality": "Atlas",
+            "addressRegion": "Settore Abissale Ovest",
+            "postalCode": "00000",
+            "addressCountry": "IT"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 24.0000,
+            "longitude": -46.0000
+        },
+        "priceRange": "$$$$",
+        "acceptsReservations": "True",
+
+        "potentialAction": {
+            "@type": "ReserveAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://marcottolina.github.io/progetto-CVeDI/prenota.html",
+                "inLanguage": "it-IT",
+                "actionPlatform": [
+                    "http://schema.org/DesktopWebPlatform",
+                    "http://schema.org/IOSPlatform",
+                    "http://schema.org/AndroidPlatform"
+                ]
+            },
+            "result": {
+                "@type": "FoodEstablishmentReservation",
+                "name": "Prenotazione Tavolo"
+            }
+        }
+    }
+</script>
+
 </body>
 </html>

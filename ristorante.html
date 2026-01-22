@@ -1,25 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
+
 <head>
 
-    <!-- meta tags -->
+    <!-- View meta tags -->
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- JavaScript imports -->
-    <script src="./vendor/bootstrap/bootstrap-js/bootstrap.js"></script> <!-- boostrap JS bundle -->
-    <script defer src="js/main.js"></script>
-    <script src="./vendor/swiper/swiper-bundle.js"></script>
+    <!-- page title -->
+    <title>Il Ristorante e lo Staff | Riff - Atlas</title>
+
+    <!-- SEO meta tags -->
+    <meta name="description" content="Esplora gli interni sottomarini di Riff e conosci i nostri chef: i maestri sommersi che trasformano la memoria del mare in alta cucina.">
+    <meta name="keywords" content="Riff staff, chef Riff, interni ristorante sottomarino, filosofia culinaria, architettura abissale">
+    <meta name="author" content="Riff Team">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://marcottolina.github.io/progetto-CVeDI/ristorante.html">
+    <meta property="og:title" content="Riff: I Maestri Sommersi e l'Architettura">
+    <meta property="og:description" content="Un viaggio tra gli spazi che sussurrano e gli chef che compongono sinfonie di gusto.">
+    <meta property="og:image" content="https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Riff | Il Ristorante e lo Staff">
+    <meta name="twitter:description" content="Scopri la brigata di cucina e il design sottomarino di Riff.">
+    <meta name="twitter:image" content="https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp">
+
+    <!-- canonical tag (SEO) -->
+    <link rel="canonical" href="https://marcottolina.github.io/progetto-CVeDI/ristorante.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="media/icon/Logo.svg">
 
     <!-- style imports -->
     <link href="./vendor/bootstrap/bootstrap-css/bootstrap.css" rel="stylesheet"/> <!-- bootstrap CSS -->
     <link href="./css/main.css" rel="stylesheet"/>
     <link href="./vendor/swiper/swiper.css" rel="stylesheet"/>
 
-    <!-- page title -->
-    <title>Ristorante</title>
+    <!-- script imports -->
+    <script src="./vendor/bootstrap/bootstrap-js/bootstrap.js"></script> <!-- Bootstrap JS -->
+    <script defer src="js/main.js"></script> <!-- Our JS -->
+    <script src="./vendor/swiper/swiper-bundle.js"></script> <!-- Swiper's JS (for carousel) -->
 
 </head>
+
 <body>
 <div class="circle"></div>
 
@@ -226,7 +251,7 @@
                             <img
                                     alt="Ristorante sottomarino futuristico circondato da coralli colorati"
                                     class="img-fluid w-100 object-fit-cover"
-                                    loading="lazy"
+                                    loading="eager"
                                     sizes="
                                         (min-width: 1200px) 600px,
                                         (min-width: 992px) 500px,
@@ -250,7 +275,7 @@
                             <img
                                     alt="Interno elegante di ristorante sottomarino con soffitto ondulato e vista su coralli rosa"
                                     class="img-fluid w-100 object-fit-cover"
-                                    loading="lazy"
+                                    loading="eager"
                                     sizes="
                                         (min-width: 1200px) 600px,
                                         (min-width: 992px) 500px,
@@ -274,7 +299,7 @@
                             <img
                                     alt="Elegante ristorante sottomarino futuristico con luci al neon e grandi vetrate che si affacciano sulla barriera corallina."
                                     class="img-fluid w-100 object-fit-cover"
-                                    loading="lazy"
+                                    loading="eager"
                                     sizes="
                                         (min-width: 1200px) 600px,
                                         (min-width: 992px) 500px,
@@ -765,5 +790,81 @@
 
     </filter>
 </svg>
+
+<!-- SEO script -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Riff",
+        "url": "https://marcottolina.github.io/progetto-CVeDI/ristorante.html",
+        "description": "Riff è un luogo sospeso tra memoria e sensazioni. Scopri la nostra brigata di cucina e l'architettura sottomarina.",
+        "image": [
+            "https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp",
+            "https://marcottolina.github.io/progetto-CVeDI/media/img/ristorante-chef-1-1200w.webp",
+            "https://marcottolina.github.io/progetto-CVeDI/media/img/ristorante-chef-2-1200w.webp"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "P.zza Corolleo 1",
+            "addressLocality": "Atlas",
+            "addressRegion": "Settore Abissale Ovest",
+            "postalCode": "00000",
+            "addressCountry": "IT"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 24.0000,
+            "longitude": -46.0000
+        },
+        "telephone": "+39000000000",
+        "priceRange": "$$$$",
+
+        "employee": [
+            {
+                "@type": "Person",
+                "name": "Chef dei Coralli",
+                "jobTitle": "Executive Chef",
+                "description": "Seleziona ingredienti che nascono dall’intreccio con la barriera corallina.",
+                "image": "https://marcottolina.github.io/progetto-CVeDI/media/img/ristorante-chef-1-1200w.webp"
+            },
+            {
+                "@type": "Person",
+                "name": "Chef delle Armonie",
+                "jobTitle": "Sous Chef",
+                "description": "Custode delle memorie musicali sommerse."
+            },
+            {
+                "@type": "Person",
+                "name": "Alchimista delle Correnti",
+                "jobTitle": "Sommelier",
+                "description": "Maestro nell’arte dei sapori liquidi."
+            }
+        ],
+
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "9.6",
+            "reviewCount": "3",
+            "bestRating": "10",
+            "worstRating": "1"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Maris Smith" },
+                "reviewRating": { "@type": "Rating", "ratingValue": "9.2" },
+                "reviewBody": "Un viaggio sensoriale indimenticabile."
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Giulia Rossi" },
+                "reviewRating": { "@type": "Rating", "ratingValue": "10" },
+                "reviewBody": "Servizio impeccabile, personale attento ad ogni dettaglio."
+            }
+        ]
+    }
+</script>
+
 </body>
 </html>
