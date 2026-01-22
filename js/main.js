@@ -168,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* === OFFCANVAS FULLPAGE INTERACTIVITY === */
+/* <editor-fold> */
 
 /* = OPENING OFFCANVAS = */
 document.addEventListener('show.bs.offcanvas', () => {
@@ -188,6 +189,8 @@ document.addEventListener('show.bs.offcanvas', () => {
 document.addEventListener('hide.bs.offcanvas', () => {
     document.body.classList.remove('no-scroll');
 });
+
+/* </editor-fold> */
 
 /* === VIDEO, AUDIO (music) & RELATED BUTTONS === */
 document.addEventListener("DOMContentLoaded", () => {
@@ -350,7 +353,6 @@ document.addEventListener("DOMContentLoaded", () => {
     addSimpleAudioControl("music-startdesc3", "../media/audio/bioluma-the-chainsmokers-breathe.aac");
 
 });
-
 
 /* === CAROUSELS LOGIC & SETTINGS (from SwiperJS) === */
 document.addEventListener('DOMContentLoaded', function () {
