@@ -4,8 +4,6 @@ Ale:
     --> Rimando a pagina-libera.html in index.html [FATTO]
     --> Bottoni dei social nel footer [FATTO]
 
-- Revisione generale dei commenti contenuti nel sito (che non ne siano rimasti in italiano)
-
 - Correggere e completare carosello homepage (index.html) [FATTO]
 - Correggere "finestre in cui si vede background" in prenota.html [FATTO]
 - Mettere gradiente blu sulla mappa di prenota.html che parte dalla "finestra in cui si vede background" sopra che sparisca in mouseover + capire come fare su mobile. [FATTO]
@@ -14,12 +12,11 @@ Ale:
 - Aggiustare le descrizioni ALT dei piatti (carosello 2) in index.html [FATTO]
 - Aggiustare video di sfondo di menu.html [FATTO]
 - Aggiustare bottoni delle recensioni della pagina ristorante.html (mettere frecce) [FATTO]
-
-- Aggiustare Footer [FATTO V2] {DA AGGIUSTARE POST-AGGIUSTAMENTI NEWSLETTER}
-- Newsletter [FATTA V1] {DA AGGIUSTARE POST-MOCKUP}
+- Risolvere problema dell'hamburger menu che il menu non è cliccabile su mobile [FATTO]
 
 - Immagini del ristorante in carousel di ristorante.html {aggiunta una, ma ne servono altre}
-- Risolvere problema dell'hamburger menu che il menu non è cliccabile su mobile [FATTO]
+
+- Revisione generale dei commenti contenuti nel sito (che non ne siano rimasti in italiano)
 
 - Ottimizzazione SEO {TO-DO}
     - index:
@@ -33,7 +30,8 @@ Ale:
     - piatto-3:
 
 - Aggiustamenti estetici mappa quando arrivano i mockup {TO-DO}
-- Aggiustamenti estetici newsletter quando arrivano i mockup {TO-DO}
+- Aggiustamenti estetici newsletter quando arrivano i mockup {TO-DO} e conseguenti cambi dei footer {TO-DO}
+- Aggiustamenti bottoni serate speciali (musica e rimando alla pagina) nella homepage [FATTO]
 
 
 Otto:
