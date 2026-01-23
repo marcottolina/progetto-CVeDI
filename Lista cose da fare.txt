@@ -30,16 +30,18 @@ Ale:
     - piatto-3: [FATTO]
 
 - Aggiustamenti estetici mappa quando arrivano i mockup {TO-DO}
-- Aggiustamenti estetici newsletter quando arrivano i mockup {TO-DO} e conseguenti cambi dei footer {TO-DO}
+- Aggiustamenti estetici newsletter quando arrivano i mockup [FATTO] {DA VEDERE SE INSERIRE ANIMAZIONE}
 - Aggiustamenti bottoni serate speciali (musica e rimando alla pagina) nella homepage [FATTO]
+
+- Inserire nuove immagini del cibo nel carosello della homepage {TO-DO} e gestire relativi alt
+- Inserire nuove immagini del ristorante nel carosello di ristorante {TO-DO} e gestire relativi alt
 
 
 Otto:
 
 - menu.html -> aggiustare filtri [FATTO]
 - Risolto un problema in CSS [FATTO]
-
-- Deployment su Github Pages {TO-DO} (soluzione fallback per permettergli di visualizzarlo se altro va storto)
+- Deployment su Github Pages [FATTO]
 
 - Revisione generale dell'estetica del sito
     - Occhio a quanto scuri sono i bottoni mockup vs sito effettivo
@@ -56,13 +58,17 @@ Otto:
     - piatto-2:
     - piatto-3:
 
-- ristorante.html -> recensioni dei critici (falle appena riceviamo i mockup), attenzione che le frecce non traballino "su e giù" tra una recensione e l'altra.
+- ristorante.html -> recensioni dei critici {TO-DO}
+- pagina per gestire le prenotazioni {TO-DO}
+
 
 YuYu:
-- Finire pagine per i piatti specifici (1, 2 e 3) {TO-FINISH}
-- Finire aspetti della prenotazione in prenota.html quando arrivano i mockup {TO-DO}
+
 - Fare in particolare il bottone per la musica "Ascolta <icona>" [FATTO]
 - Risolvere errore in console sulla timeline [FATTO]
+
+- Finire pagine per i piatti specifici (1, 2 e 3) {TO-FINISH}
+- Finire aspetti della prenotazione in prenota.html {TO-DO}
 
 - Accorgimenti per accessibilità {TO-DO}
     - index:
