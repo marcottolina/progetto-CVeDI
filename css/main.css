@@ -1388,5 +1388,9 @@ body.is-map-interacting .circle {
     border-color: var(--orange) !important;
 }
 
+input::placeholder {
+    color: var(--blue-95-30) !important;
+}
+
 /* </editor-fold> */
 
