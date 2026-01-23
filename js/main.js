@@ -1044,16 +1044,24 @@ document.addEventListener("DOMContentLoaded", function () {
     //put active the corrispective allergen in the menu
     const buttons = document.querySelectorAll('.btn-filter');
     const allAllergens = document.querySelectorAll('[class*="allergen-"]');
+    const allPreference = document.querySelectorAll('[class*="preference-"]');
 
     buttons.forEach(button => {
         button.addEventListener('click', () => {
 
-            const targetAllergen = button.getAttribute('data-target');
+            const target = button.getAttribute('data-target');
 
             allAllergens.forEach(item => {
 
-                if (item.classList.contains(`allergen-${targetAllergen}`)) {
+                if (item.classList.contains(`allergen-${target}`)) {
                     item.classList.toggle('allergen-active');
+                }
+            });
+
+            allPreference.forEach(item => {
+
+                if (item.classList.contains(`preference-${target}`)) {
+                    item.classList.toggle('preference-active');
                 }
             });
         });
@@ -1065,6 +1073,9 @@ document.addEventListener("DOMContentLoaded", function () {
         resetBtn.addEventListener('click', () => {
             allAllergens.forEach(item => {
                 item.classList.remove('allergen-active');
+            });
+            allPreference.forEach(item => {
+                item.classList.remove('preference-active');
             });
             buttons.forEach(button => {
                 button.classList.remove('chips-active');
