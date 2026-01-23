@@ -1181,6 +1181,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const removeInputError = async (element) => {
         await delay(5000);
         element.classList.remove('is-invalid');
+        element.classList.remove('invalid-input');
     }
 
     newsletterButton.addEventListener('click', function (event) {
@@ -1209,6 +1210,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } else { // if inserted mail is not valid
 
+            newsletterInput.classList.add('invalid-input'); // edit look of the input itself (orange border)
             newsletterInput.classList.add('is-invalid'); // show input error
             invalidPopup.classList.remove('d-none'); // show error popup
 
