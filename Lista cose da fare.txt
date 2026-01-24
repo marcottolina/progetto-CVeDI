@@ -35,7 +35,7 @@ Ale:
 - Aggiustamenti bottoni serate speciali (musica e rimando alla pagina) nella homepage [FATTO]
 
 - Inserire nuove immagini del cibo nel carosello della homepage {TO-DO} e gestire relativi alt
-- Inserire nuove immagini del ristorante nel carosello di ristorante {TO-DO} e gestire relativi alt
+- Inserire nuove immagini del ristorante nel carosello di ristorante e gestire relativi alt [FATTO]
 - Tooltips novità del menu [FATTO]
 
 
