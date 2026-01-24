@@ -370,7 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
     addSimpleAudioControl("music-startdesc1", "../media/audio/thalassa-hans-zimmer-cornfields.aac");
     addSimpleAudioControl("music-startdesc2", "../media/audio/madreperla-mr-kitty-after-dark.aac");
     addSimpleAudioControl("music-startdesc3", "../media/audio/bioluma-the-chainsmokers-breathe.aac");
-    
+
 });
 
 /* === CAROUSELS LOGIC & SETTINGS (from SwiperJS) === */
