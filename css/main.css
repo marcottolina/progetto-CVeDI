@@ -238,6 +238,7 @@ h6 {
 .btn {
     color: white;
     width: fit-content;
+    z-index: 99;
     background-color: var(--blue-50-30);
     gap: 0.5rem;
     padding: 1rem 1.5rem;
@@ -839,6 +840,7 @@ input:focus, select:focus {
 .swiper-reviews .swiper-button-next {
     z-index: 9999 !important;
     pointer-events: auto !important;
+    transform: translateY(-50%);
 }
 
 .swiper-home .swiper-button-prev,
@@ -1201,7 +1203,7 @@ body.is-map-interacting .circle {
 /* <editor-fold> */
 
 /* section wrapper */
-#accordionFAQ {
+#accordionFAQ, .review-container {
     position: relative; /* container (#accordionFAQ) must be relative for the glass filter to work on the rest of the accordion */
     overflow: hidden; /* to not make the image spill outside the container */
     z-index: 1; /* to make the element stay under the glass filter */
@@ -1220,8 +1222,20 @@ body.is-map-interacting .circle {
     overflow: hidden; /* overflow hidden so it doesn't spill */
 }
 
+.background-review {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    z-index: -1; /* -1 to make the image stay behind the text */
+
+    width: auto;
+    max-height: 100%; /* image resizes automatically in width, but never exceeding height = 100% */
+    overflow: hidden; /* overflow hidden so it doesn't spill */
+}
+
 /* image wrapper's linear-gradient filter (to make it go over the image) */
-.accordion-bg-decoration::after {
+.accordion-bg-decoration::after, .background-review::after {
     content: "";
     position: absolute;
     top: 0;

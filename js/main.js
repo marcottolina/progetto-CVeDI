@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let dots = []; // Global array of dynamic dots
     let isDesktop = false; // Flag to trace state
     if (timeline) {
-        const items = document.querySelectorAll(".timeline-item");
+        const items = document.querySelectorAll(".timeline-container > .timeline-item");
         // Line that gradually fills (as page gets scrolled down) - Fixed, can be hidden via-CSS if needed
         const fill = document.createElement("div");
         fill.className = "timeline-fill";
