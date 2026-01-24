@@ -30,7 +30,8 @@ Ale:
     - piatto-3: [FATTO]
 
 - Aggiustamenti estetici mappa quando arrivano i mockup {TO-DO}
-- Aggiustamenti estetici newsletter quando arrivano i mockup [FATTO] {DA VEDERE SE INSERIRE ANIMAZIONE}
+- Aggiustamenti estetici newsletter [FATTO] {DA VEDERE SE INSERIRE ANIMAZIONE}
+- Aggiustamenti logo footer (non rendere dark in light mode) [FATTO]
 - Aggiustamenti bottoni serate speciali (musica e rimando alla pagina) nella homepage [FATTO]
 
 - Inserire nuove immagini del cibo nel carosello della homepage {TO-DO} e gestire relativi alt
