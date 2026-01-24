@@ -38,21 +38,8 @@
     <link href="css/main.css" rel="stylesheet"/> <!-- Our CSS -->
 
     <!-- script imports -->
-    <script src="./vendor/bootstrap/bootstrap-js/bootstrap.js"></script> <!-- Bootstrap JS -->
+    <script src="./vendor/bootstrap/bootstrap-js/bootstrap.bundle.js"></script> <!-- Bootstrap JS Bundle -->
     <script defer src="js/main.js"></script> <!-- Our JS -->
-
-    <!-- local JS toDo: bring it to main.js -->
-    <script>
-        // Correzione nel JS
-        document.addEventListener('DOMContentLoaded', () => {
-            let f = document.getElementById('filter'); // ID corretto
-            let a = document.getElementById('allergens');
-
-            f.addEventListener('click', () => {
-                a.classList.toggle('d-none');
-            });
-        });
-    </script>
 
 </head>
 
@@ -594,11 +581,16 @@
             <hr/>
         </div>
 
-        <!-- subsection item 2 of 4 -->
+        <!-- subsection item 2 of 4 (new) -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
                 <div class="d-flex align-items-start">
-                    <div class="news-menu me-1"></div>
+                    <div class="news-menu me-1 hoverable"
+                         data-bs-toggle="tooltip"
+                         data-bs-placement="top"
+                         data-bs-title="Novità"
+                         tabindex="0">
+                    </div>
                         <h4>
                             Algis
                         </h4>
@@ -700,11 +692,16 @@
             <hr/>
         </div>
 
-        <!-- subsection item 2 of 4 -->
+        <!-- subsection item 2 of 4 (new) -->
         <div class="px-5">
             <div class="d-flex flex-row justify-content-between">
                 <div class="d-flex align-items-start">
-                    <div class="news-menu me-1"></div>
+                    <div class="news-menu me-1 hoverable"
+                         data-bs-toggle="tooltip"
+                         data-bs-placement="top"
+                         data-bs-title="Novità"
+                         tabindex="0">
+                    </div>
                     <h4>
                         Helyx
                     </h4>
@@ -857,11 +854,16 @@
             <hr/>
         </div>
 
-        <!-- subsection item 4 of 4 -->
+        <!-- subsection item 4 of 4 (new) -->
         <div class="px-5 pb-5">
             <div class="d-flex flex-row justify-content-between">
                 <div class="d-flex align-items-start">
-                <div class="news-menu me-1"></div>
+                    <div class="news-menu me-1 hoverable"
+                         data-bs-toggle="tooltip"
+                         data-bs-placement="top"
+                         data-bs-title="Novità"
+                         tabindex="0">
+                    </div>
                 <h4>
                     Sublimea
                 </h4>

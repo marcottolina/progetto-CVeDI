@@ -479,7 +479,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const mapLayer = svg.append("g");
 
         // Tooltip selection
-        const tooltip = d3.select("#tooltip");
+        const tooltip = d3.select("#map-tooltip");
 
         // function for tooltip interaction that gets the pointer's coordinates (or clicked coordinates) and places the tooltip next to it
         const moveTooltip = (event) => {
@@ -1231,3 +1231,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 })
+
+/* === TOOLTIPI ENABLING === */
+document.addEventListener('DOMContentLoaded', () => {
+    // selects and enables all the tooltip elements
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+});
+
+/* === ALLERGENS HANDLING === */
+document.addEventListener('DOMContentLoaded', () => {
+    let f = document.getElementById('filter');
+    let a = document.getElementById('allergens');
+    f.addEventListener('click', () => {
+        a.classList.toggle('d-none');
+    });
+});

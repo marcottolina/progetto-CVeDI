@@ -648,6 +648,7 @@ h6 {
     height: 35px;
     border-radius: 50%;
     background-image: radial-gradient(circle, var(--orange), transparent, transparent);
+    cursor: help;
 }
 
 /* Restaurant's a-la-carte menu last <HR> element (menu.html) */
@@ -1005,7 +1006,7 @@ video {
 }
 
 /* Pop-up tooltip for various elements */
-.tooltip {
+.map-tooltip {
     position: absolute;
     z-index: 1000; /* To put tooltips in front of the map (rather than behind it) */
     background: var(--blue-5-70); /* Dark semi-transparent background from palette */
@@ -1150,7 +1151,7 @@ body.is-map-interacting {
 }
 
 /* disable tooltip when dragging the map */
-body.is-map-interacting #tooltip {
+body.is-map-interacting #map-tooltip {
     opacity: 0 !important; /* makes the tooltip transparent, must use important to override D3's inline-style */
     transition: opacity 0.2s ease; /* transition animation to make the element disappear smoothly */
 }
@@ -1404,6 +1405,32 @@ body.is-map-interacting .circle {
 
 input::placeholder {
     color: var(--blue-95-30) !important;
+}
+
+/* </editor-fold> */
+
+/* === CUSTOM BOOTSTRAP TOOLTIP STYLE === */
+/* <editor-fold> */
+
+/* Tooltip wrapper */
+.tooltip {
+    z-index: 1000000 !important;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 1 !important;
+}
+
+/* Tooltip content */
+.tooltip-inner {
+    background-color: var(--blue-5-70);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--blue-95);
+    border: 1px solid var(--orange);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    box-shadow: 0 0 15px rgba(246, 112, 85, 0.2);
 }
 
 /* </editor-fold> */

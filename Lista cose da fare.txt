@@ -36,6 +36,7 @@ Ale:
 
 - Inserire nuove immagini del cibo nel carosello della homepage {TO-DO} e gestire relativi alt
 - Inserire nuove immagini del ristorante nel carosello di ristorante {TO-DO} e gestire relativi alt
+- Tooltips novità del menu [FATTO]
 
 
 Otto:
