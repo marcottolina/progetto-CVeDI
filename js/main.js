@@ -212,6 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const item = this.closest(".timeline-item");
             const video = item ? item.querySelector("video") : null;
+            const bubbleImg = item ? item.querySelector(".bubble-box img") : null;
 
             // Immediate STOP of any previous transitions
             if (currentInterval) clearInterval(currentInterval);
@@ -222,7 +223,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Audio: PAUSE & RESET
                 if (currentAudio) {
                     currentAudio.pause();
-                    //currentAudio.currentTime = 0;
+                }
+
+                /* NEW: Reset bubble to static image */
+                if (bubbleImg) {
+                    bubbleImg.src = bubbleImg.getAttribute('data-static');
                 }
 
                 // Video: FADE OUT
@@ -237,9 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Safety check: if rate becomes too low or negative
                         if (rate <= 0.1) {
                             videoToFade.pause();
-                            //videoToFade.currentTime = 0;
                             videoToFade.playbackRate = 1; // Reset speed for the future
-                            //clearInterval(currentInterval);
                         } else {
                             videoToFade.playbackRate = rate;
                         }
@@ -264,11 +267,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentAudio.currentTime = 0;
             }
 
+            /* Reset previous bubble to static before switching */
+            if (currentButton) {
+                const prevItem = currentButton.closest(".timeline-item");
+                const prevBubble = prevItem ? prevItem.querySelector(".bubble-box img") : null;
+                if (prevBubble) {
+                    prevBubble.src = prevBubble.getAttribute('data-static');
+                }
+            }
+
             // Stop Previous Video
-            // FIX: Added currentTime = 0 to completely reset the previous video
             if (currentVideo && currentVideo !== video) {
                 currentVideo.pause();
-                //currentVideo.currentTime = 0; // Important: rewind the previous video
                 currentVideo.playbackRate = 1; // Reset speed
             }
 
@@ -281,9 +291,13 @@ document.addEventListener("DOMContentLoaded", () => {
             audio.currentTime = 0;
             audio.play();
 
+            /* Activate animated bubble (GIF) */
+            if (bubbleImg) {
+                bubbleImg.src = bubbleImg.getAttribute('data-gif');
+            }
+
             // === CASE 4: START NEW VIDEO (FADE IN) ===
             if (video) {
-                //video.currentTime = 0;
                 video.playbackRate = 0.1;
                 video.play();
 
@@ -292,7 +306,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     rate += 0.1;
                     if (rate >= 1) {
                         video.playbackRate = 1;
-                        //clearInterval(currentInterval);
                     } else {
                         video.playbackRate = rate;
                     }
@@ -307,7 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* * SECONDARY FUNCTION: Handles plate descriptions (Audio only) */
+    /* SECONDARY FUNCTION: Handles plate descriptions (Audio only) */
     function addSimpleAudioControl(btnId, audioUrl) {
         const playBtn = document.getElementById(btnId);
         if (!playBtn) return;
@@ -319,16 +332,22 @@ document.addEventListener("DOMContentLoaded", () => {
             /* toDo: edit this part so that the video stops rather than resetting */
             if (currentVideo) {
                 currentVideo.pause();
-                //currentVideo.currentTime = 0;
                 currentVideo = null;
             }
+
+            /* Reset any active bubble in the timeline when playing simple audio */
             if (currentButton) {
+                const activeItem = currentButton.closest(".timeline-item");
+                const activeBubble = activeItem ? activeItem.querySelector(".bubble-box img") : null;
+                if (activeBubble) {
+                    activeBubble.src = activeBubble.getAttribute('data-static');
+                }
                 currentButton.classList.remove('attivo');
                 currentButton = null;
             }
+
             if (currentAudio) { // Stop the audio of the timeline
                 currentAudio.pause();
-                //currentAudio.currentTime = 0;
                 currentAudio = null;
             }
 
@@ -351,7 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
     addSimpleAudioControl("music-startdesc1", "../media/audio/thalassa-hans-zimmer-cornfields.aac");
     addSimpleAudioControl("music-startdesc2", "../media/audio/madreperla-mr-kitty-after-dark.aac");
     addSimpleAudioControl("music-startdesc3", "../media/audio/bioluma-the-chainsmokers-breathe.aac");
-
+    
 });
 
 /* === CAROUSELS LOGIC & SETTINGS (from SwiperJS) === */
