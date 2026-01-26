@@ -412,7 +412,7 @@ a {
 }
 
 .hero-width-75-10 {
-    margin-right: -20%;
+    margin-right: -10%;
 }
 
 /* Navbar glass morphism */
@@ -1479,11 +1479,10 @@ input::placeholder {
     overflow: visible;
 }
 
-/* images within container (that become animated gifs) */
 #bollaPaginaPiatto1 img {
     max-width: unset !important;
     width: 100%;
-    transform: scale(2.5);
+    transform: scale(2);
     margin-left: 50px;
     transition: transform 0.3s ease;
 }
@@ -1491,7 +1490,30 @@ input::placeholder {
 #bollaPaginaPiatto2 img, #bollaPaginaPiatto3 img {
     max-width: unset !important;
     width: 100%;
-    transform: scale(2);
+    transform: scale(1.5);
     margin-left: 50px;
     transition: transform 0.3s ease;
+}
+
+
+
+@media (min-width: 992px) {
+
+    /* images within container (that become animated gifs) */
+    #bollaPaginaPiatto1 img {
+        max-width: unset !important;
+        width: 100%;
+        transform: scale(2.5);
+        margin-left: 50px;
+        transition: transform 0.3s ease;
+    }
+
+    #bollaPaginaPiatto2 img, #bollaPaginaPiatto3 img {
+        max-width: unset !important;
+        width: 100%;
+        transform: scale(2);
+        margin-left: 50px;
+        transition: transform 0.3s ease;
+    }
+
 }

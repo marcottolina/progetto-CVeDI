@@ -89,3 +89,5 @@ YuYu:
     - piatto-3: [FATTO]
     - Controllare di mettere un link invisibile diretto al contenuto main delle pagine all'inizio di ciascuna pagina
     (inteso come all'inizio del body).
+
+- Media queries bolle per pagine descrizioni dei piatti
