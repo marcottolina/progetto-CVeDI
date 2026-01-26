@@ -736,313 +736,221 @@ document.addEventListener("DOMContentLoaded", function () {
 /* --- SELECT --- */
 document.addEventListener('DOMContentLoaded', function () {
 
+    /* --- 1. CUSTOM SELECT DROPDOWN MANAGEMENT --- */
+    // Synchronizes simulated div-dropdowns with hidden native select elements
     const customSelectWrappers = document.querySelectorAll('.custom-select-wrapper');
-
-    /* --- Management functions --- */
-    function openDropdown(wrapper, selectedDiv, itemsDiv) {
-        // Apply opening classes
-        wrapper.classList.add('select-is-open'); // Attiva Z-Index
-        selectedDiv.classList.add('select-arrow-active');
-        itemsDiv.classList.remove('select-hide');
-    }
-
-    function closeDropdown(wrapper, selectedDiv, itemsDiv) {
-        // Remove closing classes
-        wrapper.classList.remove('select-is-open'); // Disattiva Z-Index
-        selectedDiv.classList.remove('select-arrow-active');
-        itemsDiv.classList.add('select-hide');
-    }
-
-    function closeAllSelects(exceptionWrapper) {
-        const wrappers = document.querySelectorAll(".custom-select-wrapper");
-
-        wrappers.forEach(wrapper => {
-            // If the current wrapper is NOT the exception (the select being clicked)
-            if (wrapper !== exceptionWrapper) {
-                const selectedDiv = wrapper.querySelector('.select-selected');
-                const itemsDiv = wrapper.querySelector('.select-items');
-
-                // Explicitly close if it is open
-                if (itemsDiv && !itemsDiv.classList.contains('select-hide')) {
-                    closeDropdown(wrapper, selectedDiv, itemsDiv);
-                }
-            }
-        });
-    }
 
     customSelectWrappers.forEach(wrapper => {
         const targetSelectId = wrapper.getAttribute('data-target');
         const originalSelect = document.getElementById(targetSelectId);
-
-        if (!originalSelect) return; // Exit if the native select doesn't exist
+        if (!originalSelect) return;
 
         const selectedDiv = wrapper.querySelector('.select-selected');
         const itemsDiv = wrapper.querySelector('.select-items');
 
-        // Sync the visible div with the initial value of the native select
-        selectedDiv.innerHTML = originalSelect.options[originalSelect.selectedIndex].text;
+        /**
+         * Safely updates text without deleting <img> icons
+         */
+        const updateTextSafely = (div, newText) => {
+            const textNode = Array.from(div.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+            if (textNode) {
+                textNode.textContent = newText;
+            } else if (div.firstChild) {
+                div.insertBefore(document.createTextNode(newText), div.firstChild);
+            } else {
+                div.prepend(document.createTextNode(newText));
+            }
+        };
 
-        // Generate visible options based on the native select
-        itemsDiv.innerHTML = ''; // Clear initial content
+        // Initial sync: text from native select
+        updateTextSafely(selectedDiv, originalSelect.options[originalSelect.selectedIndex].text);
+
+        // Build simulated options based on native <select>
+        itemsDiv.innerHTML = '';
         Array.from(originalSelect.options).forEach(option => {
-            if (option.disabled && option.selected) return; // Skip placeholder
+            if (option.disabled && option.selected) return; // Skip placeholders
 
             const item = document.createElement('div');
             item.innerHTML = option.text;
             item.setAttribute('data-value', option.value);
 
-            // Apply 'same-as-selected' class if it's the currently chosen option
             if (option.selected && !option.disabled) {
                 item.classList.add('same-as-selected');
             }
 
             item.addEventListener('click', function (e) {
-                // Click on a simulated option: update value and close
-                const value = this.getAttribute('data-value');
-                selectedDiv.innerHTML = this.innerHTML;
+                e.stopPropagation();
+                updateTextSafely(selectedDiv, this.innerHTML);
+                originalSelect.value = this.getAttribute('data-value');
 
-                // Update the native select
-                originalSelect.value = value;
-
-                // Remove 'same-as-selected' class from all and add it to the new element
+                // UI update for selection
                 Array.from(itemsDiv.children).forEach(child => child.classList.remove('same-as-selected'));
                 this.classList.add('same-as-selected');
 
-                // Simulate 'change' event on the native select (useful for validation)
-                originalSelect.dispatchEvent(new Event('change'));
-
-                // Close dropdown (including activation classes and z-index)
+                // Fire change event for validation engine
+                originalSelect.dispatchEvent(new Event('change', { bubbles: true }));
                 closeDropdown(wrapper, selectedDiv, itemsDiv);
-                e.stopPropagation();
             });
             itemsDiv.appendChild(item);
         });
 
-        // Click on the selected element: toggle the dropdown
+        // Toggle dropdown on click
         selectedDiv.addEventListener('click', function (e) {
             e.stopPropagation();
-            // Check if it's already open
-            const isCurrentlyOpen = itemsDiv.classList.contains('select-hide') === false;
+            const isOpen = !itemsDiv.classList.contains('select-hide');
             closeAllSelects(wrapper);
-
-            if (!isCurrentlyOpen) {
-                // If it wasn't open, open it
-                openDropdown(wrapper, selectedDiv, itemsDiv);
+            if (!isOpen) {
+                wrapper.classList.add('select-is-open');
+                selectedDiv.classList.add('select-arrow-active');
+                itemsDiv.classList.remove('select-hide');
             } else {
-                // If it was open, close it (closeAllSelects doesn't close it if passed as argument)
                 closeDropdown(wrapper, selectedDiv, itemsDiv);
             }
         });
-
     });
 
-    // Click anywhere on the document: close all open dropdowns
-    document.addEventListener('click', () => closeAllSelects(null));
+    /* --- 2. DROPDOWN UTILITY FUNCTIONS --- */
 
+    function closeDropdown(wrapper, selectedDiv, itemsDiv) {
+        wrapper.classList.remove('select-is-open');
+        selectedDiv.classList.remove('select-arrow-active');
+        itemsDiv.classList.add('select-hide');
+    }
 
-    // --- SINGLE CUSTOM VALIDATION FUNCTION FOR ALL FIELDS ---
+    function closeAllSelects(exceptionWrapper = null) {
+        document.querySelectorAll('.custom-select-wrapper').forEach(wrapper => {
+            if (wrapper !== exceptionWrapper) {
+                const selectedDiv = wrapper.querySelector('.select-selected');
+                const itemsDiv = wrapper.querySelector('.select-items');
+                closeDropdown(wrapper, selectedDiv, itemsDiv);
+            }
+        });
+    }
+
+    document.addEventListener('click', () => closeAllSelects());
+
+    /* --- 3. SURGICAL VALIDATION ENGINE --- */
 
     function validateCustomField(elementId) {
         const element = document.getElementById(elementId);
         if (!element) return true;
 
-        const inputGroup = element.closest('.input-group');
-        let visibleElement = null;
+        const columnContainer = element.closest('.col-md-6');
+        let visualTarget = null;
         let errorText = '';
 
-        // Remove previous error (if it exists)
-        // Note: for date fields, the error is on the parent (handled in the DATA block), but this generic cleanup helps.
-        const oldError = element.closest('.col-md-5')?.querySelector('.custom-error') || inputGroup?.querySelector('.custom-error');
+        // Clean up previous error states
+        const oldError = columnContainer.querySelector('.custom-error');
         if (oldError) oldError.remove();
 
-        // ---- SELECT CUSTOM ----
+        // ---- LOGIC FOR CUSTOM SELECTS ----
         if (element.tagName === 'SELECT') {
-            const wrapper = inputGroup.querySelector('.custom-select-wrapper');
-            visibleElement = wrapper.querySelector('.select-selected');
-
-            errorText =
-                elementId === 'selectPersone'
-                    ? 'Selezionare il numero di persone'
-                    : 'Selezionare un orario';
+            const wrapper = columnContainer.querySelector('.custom-select-wrapper');
+            visualTarget = wrapper.querySelector('.select-selected');
+            errorText = (elementId === 'selectPersone') ? 'Selezionare il numero di persone' : 'Selezionare un orario';
 
             const isInvalid = element.value === '' || element.selectedIndex === 0;
 
             if (isInvalid) {
-                visibleElement.classList.add('is-invalid');
-
+                visualTarget.classList.add('is-invalid');
                 const error = document.createElement('div');
                 error.className = 'custom-error';
                 error.textContent = errorText;
-                visibleElement.after(error);
-
+                wrapper.after(error); // Places error right below the select wrapper
                 return false;
             } else {
-                visibleElement.classList.remove('is-invalid');
+                visualTarget.classList.remove('is-invalid');
                 return true;
             }
         }
 
-        // ---- INPUT DATA ----
-        // For both IDs
-        if (elementId === 'bookingDate' || elementId === 'bookingDate1') {
+        // ---- LOGIC FOR DATE INPUTS ----
+        if (elementId.includes('bookingDate')) {
             const inputGroup = element.closest('.input-group');
-            const parent = inputGroup.parentElement;
+            visualTarget = element;
+            errorText = 'Selezionare una data';
 
-            // Remove previous error from main container (col-md-5)
-            const errorContainer = parent.closest('.col-md-5');
-            const oldErrorData = errorContainer.querySelector('.custom-error');
-            if (oldErrorData) oldErrorData.remove();
-
-
-            const isInvalid = element.value === '';
+            const isInvalid = element.value.trim() === '';
 
             if (isInvalid) {
-                element.classList.add('is-invalid');
-
+                visualTarget.classList.add('is-invalid');
                 const error = document.createElement('div');
                 error.className = 'custom-error';
-                error.textContent = 'Selezionare una data';
-
-                // Insert error after the inputGroup
-                inputGroup.after(error);
-
+                error.textContent = errorText;
+                inputGroup.after(error); // Places error right below the input group
                 return false;
             } else {
-                // Remove 'is-invalid' class on success
-                element.classList.remove('is-invalid');
+                visualTarget.classList.remove('is-invalid');
                 return true;
             }
         }
+        return true;
     }
 
-    // --- SUBMISSION AND VALIDATION MANAGEMENT FOR ALL FORMS ---
+    /* --- 4. FORM SUBMISSION MANAGEMENT --- */
     const allForms = document.querySelectorAll('.needs-validation');
 
     allForms.forEach(form => {
         form.addEventListener('submit', function (event) {
             let isFormValid = true;
 
-            // 1. 'selectPersone' validation (only if present in the form)
-            if (form.querySelector('#selectPersone')) {
-                if (!validateCustomField('selectPersone')) {
+            // Dynamically identify required custom fields in the current form
+            const customFields = form.querySelectorAll('select[required], input[id^="bookingDate"]');
+
+            customFields.forEach(field => {
+                if (!validateCustomField(field.id)) {
                     isFormValid = false;
                 }
-            }
+            });
 
-            // 2. Date validation (check which date ID is present in this form)
-            const bookingDateId = form.querySelector('#bookingDate') ? 'bookingDate' :
-                form.querySelector('#bookingDate1') ? 'bookingDate1' : null;
-
-            if (bookingDateId && !validateCustomField(bookingDateId)) {
-                isFormValid = false;
-            }
-
-
-            const selectOrarioId = form.querySelector('#selectOrario') ? 'selectOrario' :
-                form.querySelector('#selectOrario1') ? 'selectOrario1' : null;
-
-            if (selectOrarioId && !validateCustomField(selectOrarioId)) {
-                isFormValid = false;
-            }
-
-            // If native validation or custom validation fails
+            // Standard Bootstrap validation + Custom check
             if (form.checkValidity() === false || !isFormValid) {
                 event.preventDefault();
                 event.stopPropagation();
             }
 
-            // Apply 'was-validated' class (also triggered in the initial Bootstrap snippet)
             form.classList.add('was-validated');
         }, false);
     });
 
-    // --- REMOVE ERROR ON VALUE CHANGE (Change Listeners) ---
-
-    // Listener for the Date
-    document.querySelectorAll('#bookingDate, #bookingDate1').forEach(input => {
-        input.addEventListener('change', function () {
-            validateCustomField(this.id);
-        });
+    /* --- 5. REAL-TIME VALIDATION LISTENERS --- */
+    document.querySelectorAll('select[required], input[id^="bookingDate"]').forEach(input => {
+        input.addEventListener('change', () => validateCustomField(input.id));
     });
 
-    // Listener for 'selectPersone'
-    document.getElementById('selectPersone')?.addEventListener('change', function () {
-        validateCustomField('selectPersone');
-    });
-
-    // Listener for 'selectOrario'
-    document.querySelectorAll('#selectOrario, #selectOrario1').forEach(input => {
-        input.addEventListener('change', function () {
-            validateCustomField(this.id);
-        });
-    });
-
-    /* --- CALENDAR MANAGEMENT ---*/
-
-    // 1. Define Italian locale (Workaround in case it.js doesn't load correctly)
-    // Object taken directly from the Datepicker library documentation.
-    if (typeof Datepicker !== 'undefined' && typeof Datepicker.locales !== 'undefined' && typeof Datepicker.locales.it === 'undefined') {
+    /* --- 6. DATEPICKER SETUP --- */
+    // Italian locale definition
+    if (typeof Datepicker !== 'undefined' && Datepicker.locales && !Datepicker.locales.it) {
         Datepicker.locales.it = {
             days: ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"],
             daysShort: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],
             daysMin: ["Do", "Lu", "Ma", "Me", "Gi", "Ve", "Sa"],
             months: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
             monthsShort: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
-            today: "Oggi",
-            clear: "Cancella",
-            dateFormat: "dd/mm/yyyy",
-            titleFormat: "MM yyyy",
-            weekStart: 1
+            today: "Oggi", clear: "Cancella", dateFormat: "dd/mm/yyyy", titleFormat: "MM yyyy", weekStart: 1
         };
     }
 
-    // --- 1. CONFIGURATION FOR BOTH CALENDARS ---
     const datepickerOptions = {
         autohide: true,
         todayHighlight: true,
-        startDate: new Date(), // parte da oggi
+        startDate: new Date(),
         format: 'dd/mm/yyyy',
-        weekStart: 1, // lunedì
-        buttonClass: 'btn btn-sm btn-outline-light',
         language: 'it',
-        beforeShowDay: function (date) {
-            const today = new Date();
+        container: 'body', // Critical: prevents clipping in Liquid Glass boxes
+        beforeShowDay: (date) => {
             const day = date.getDay();
-
-            // Disable Monday
-            if (day === 1) {
-                return false;
-            }
-
-            // 2. Disable all dates BEFORE the current date (TODAY)
-            // If the calendar date is strictly less than today
-            if (date < today) {
-                return false;
-            }
-
-            return true;
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            return day !== 1 && date >= today; // Disable Mondays and past dates
         }
     };
 
-    // --- INITIALIZATION OF THE 2 CALENDARS ---
-    const dateInput1 = document.getElementById('bookingDate');
-    if (dateInput1) {
-        const datepicker1 = new Datepicker(dateInput1, datepickerOptions);
-
-        //Listen for specific Datepicker event
-        dateInput1.addEventListener('changeDate', function () {
-            validateCustomField('bookingDate');
-        });
-    }
-
-    const dateInput2 = document.getElementById('bookingDate1');
-    if (dateInput2) {
-        const datepicker2 = new Datepicker(dateInput2, datepickerOptions);
-
-        dateInput2.addEventListener('changeDate', function () {
-            validateCustomField('bookingDate1');
-        });
-    }
+    document.querySelectorAll('input[id^="bookingDate"]').forEach(input => {
+        new Datepicker(input, datepickerOptions);
+        // Validates immediately after a date is picked
+        input.addEventListener('changeDate', () => validateCustomField(input.id));
+    });
 
 });
 
@@ -1099,6 +1007,55 @@ document.addEventListener("DOMContentLoaded", function () {
             buttons.forEach(button => {
                 button.classList.remove('chips-active');
             })
+        });
+    }
+});
+
+// RESET BUTTON IN FORM
+document.addEventListener('DOMContentLoaded', function () {
+    const btnCancella = document.getElementById('btnCancella');
+
+    if (btnCancella) {
+        btnCancella.addEventListener('click', function () {
+            const form = this.closest('form');
+            if (!form) return;
+
+            // 1. Manual Clear: set all inputs to an empty string
+            form.querySelectorAll('input').forEach(input => {
+                input.value = "";
+            });
+
+            // 2. Reset Native Selects to the first (disabled) option
+            form.querySelectorAll('select').forEach(select => {
+                select.selectedIndex = 0;
+            });
+
+            // 3. Update Custom Select UI to show the placeholder text
+            const customSelects = form.querySelectorAll('.custom-select-wrapper');
+            customSelects.forEach(wrapper => {
+                const targetId = wrapper.getAttribute('data-target');
+                const nativeSelect = document.getElementById(targetId);
+                const selectedDiv = wrapper.querySelector('.select-selected');
+
+                if (nativeSelect && selectedDiv) {
+                    // Get the text of the first option (placeholder like "Persone*" or "Orario*")
+                    const placeholderText = nativeSelect.options[0].text;
+
+                    // Update only the text node to preserve your icons (calendar/clock)
+                    const textNode = Array.from(selectedDiv.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+                    if (textNode) {
+                        textNode.textContent = placeholderText;
+                    }
+                }
+            });
+
+            // 4. Clean up validation: remove error messages and orange borders
+            form.classList.remove('was-validated');
+            form.querySelectorAll('.custom-error').forEach(error => error.remove());
+            form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+            form.querySelectorAll('.same-as-selected').forEach(el => el.classList.remove('same-as-selected'));
+
+            console.log("Form emptied successfully!");
         });
     }
 });

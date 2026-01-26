@@ -64,6 +64,7 @@
 
     /* text content */
     --Typography-body-lead: 1.125rem; /* 18px */
+    --Typography-body-l: 1.5rem; /* 24px */
     --Typography-captions: 0.875rem; /* captions, chips and allergens */
     --Text-color: var(--blue-95);
 
@@ -167,8 +168,13 @@ h6 {
 }
 
 .link{
-    font-size: var(--Typography-link);
+    font-size: var(--Typography-link) !important;
     line-height: 1.5rem;
+    font-weight: bold;
+}
+
+.body-l{
+    font-size: var(--Typography-body-l);
 }
 
 a {
@@ -246,7 +252,7 @@ a {
 .btn {
     color: white;
     width: fit-content;
-    z-index: 99;
+    z-index: 10;
     background-color: var(--blue-50-30);
     gap: 0.5rem;
     padding: 1rem 1.5rem;
@@ -262,6 +268,7 @@ a {
     position: relative; /* required if .btn and .liquidGlass-wrapper are used together */
     overflow: visible;
     line-height: 1;
+    font-weight: bold;
 }
 
 /* toDo: edit button's style (REMEMBER TO EDIT THE BTN-NAV ASWELL) */
@@ -412,7 +419,7 @@ a {
 }
 
 .hero-width-75-10 {
-    margin-right: -10%;
+    margin-right: -20%;
 }
 
 /* Navbar glass morphism */
@@ -630,10 +637,6 @@ a {
 }
 
 /* Restaurant's values section (ristorante.html) */
-#values-section-wrapper {
-    border-radius: 0 !important;
-}
-
 #values-section {
     position: absolute;
     top: 0;
@@ -786,7 +789,8 @@ a {
 /* === INPUTS === */
 /* <editor-fold> */
 
-input, select {
+input, select, .was-validated .form-control.ignore-validation:valid,
+.was-validated .form-control.ignore-validation:invalid {
     /* 1. Resetta lo stile di default del browser */
     appearance: none;
     -webkit-appearance: none;
@@ -1237,17 +1241,13 @@ body.is-map-interacting .circle {
 .background-review {
     position: absolute;
     bottom: 0;
-    left: 5%;
+    left: 0;
 
     z-index: -1; /* -1 to make the image stay behind the text */
 
     width: auto;
     max-height: 100%; /* image resizes automatically in width, but never exceeding height = 100% */
     overflow: hidden; /* overflow hidden so it doesn't spill */
-}
-
-#review-button-1, #review-button-2 {
-    top: 50% !important;
 }
 
 /* image wrapper's linear-gradient filter (to make it go over the image) */
@@ -1434,7 +1434,7 @@ body.is-map-interacting .circle {
 }
 
 input::placeholder {
-    color: var(--blue-95-30) !important;
+    color: var(--blue-95) !important;
 }
 
 /* </editor-fold> */
@@ -1516,4 +1516,9 @@ input::placeholder {
         transition: transform 0.3s ease;
     }
 
+}
+
+#confermata{
+    background-image: radial-gradient(ellipse, var(--blue-50), var(--blue-50), transparent, transparent);
+    font-size: var(--Typography-body-lead);
 }
