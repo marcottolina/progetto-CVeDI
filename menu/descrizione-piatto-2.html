@@ -50,32 +50,32 @@
 <body>
 <div class="circle"></div>
 
-<!-- navbar -->
+<!-- navbar (adapted for plate pages) -->
 <header class="navbar-wrapper container-fluid">
     <nav class="navbar custom-navbar hoverable liquidGlass-wrapper mt-4 mx-2">
         <div class="liquidGlass-effect"></div>
         <div class="liquidGlass-shine"></div>
 
         <div class="container-fluid px-4 py-2">
-            <a class="navbar-brand liquidGlass-text" href="index.html">
-                <img alt="Logo" height="50" src="../media/img/Logo.svg" width="50">
+            <a class="navbar-brand liquidGlass-text" href="../index.html">
+                <img alt="Torna alla home del Riff" height="50" src="../media/img/Logo.svg" width="50">
             </a>
 
             <div class="liquidGlass-text">
-                <button class="btn-nav liquidGlass-wrapper nav-lan-ita d-none"
-                        onclick="window.location.href='../prenota.html'">
+                <a class="btn-nav liquidGlass-wrapper nav-lan-ita d-none"
+                   onclick="window.location.href='../prenota.html'">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
-                </button>
-                <button class="btn-nav liquidGlass-wrapper nav-lan-med d-none"
-                        onclick="window.location.href='../prenota.html'">
+                </a>
+                <a class="btn-nav liquidGlass-wrapper nav-lan-med d-none"
+                   onclick="window.location.href='../prenota.html'">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Pewuofh</span>
-                </button>
+                </a>
                 <div class="d-flex d-none d-md-block">
                     <button class="btn-secondary btn-lan-ita">ITA</button>
                     <span>/</span>
@@ -84,14 +84,14 @@
                 <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull"
                         data-bs-toggle="offcanvas"
                         type="button">
-                    <img alt="hamburger-menu" src="/media/icon/hamburger-menu.svg"/>
+                    <img alt="Apri menu di navigazione" src="../media/icon/hamburger-menu.svg"/>
                 </button>
             </div>
         </div>
     </nav>
 </header>
 
-<!-- Off-canvas full-page (= opened hamburger menu) [updated] -->
+<!-- Off-canvas full-page (adapted for plate pages) -->
 <div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" data-bs-backdrop="true" data-bs-scroll="false"
      id="offCanvasFull" tabindex="-1">
     <div class="offcanvas-body p-3">
@@ -100,7 +100,7 @@
 
                 <!-- LOGO -->
                 <div class="col-6 col-md-2 order-1">
-                    <img alt="" src="media/img/Logo.svg">
+                    <img alt="" src="../media/img/Logo.svg">
                 </div>
 
                 <!-- IMAGE (when big enough) -->
@@ -116,7 +116,7 @@
                                 (min-width: 576px) 500px,
                                 100vw
                                 "
-                            src="/media/img/offcanvas-1200w.webp"
+                            src="../media/img/offcanvas-1200w.webp"
                             srcset="
                                 /media/img/offcanvas-800w.webp 800w,
                                 /media/img/offcanvas-1200w.webp 1200w,
@@ -128,60 +128,60 @@
                 <!-- MENU ITA-->
                 <div class="col-md-4 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center lan-ita">
                     <div class="d-flex flex-column align-items-start justify-content-around">
-                        <button class="btn-nav liquidGlass-wrapper my-4" onclick="window.location.href='prenota.html'">
+                        <a class="btn-nav liquidGlass-wrapper my-4" onclick="window.location.href='../prenota.html'">
                             <span aria-hidden="true" class="liquidGlass-effect"></span>
                             <span aria-hidden="true" class="liquidGlass-tint"></span>
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
                             <span class="liquidGlass-text">Prenota</span>
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='index.html'" type="button">Home
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='ristorante.html'" type="button">
+                        </a>
+                        <a class="btn-empty my-4" onclick="window.location.href='../index.html'" type="button">Home
+                        </a>
+                        <a class="btn-empty my-4" onclick="window.location.href='../ristorante.html'" type="button">
                             Il ristorante
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='info.html'" type="button">
+                        </a>
+                        <a class="btn-empty my-4" onclick="window.location.href='../info.html'" type="button">
                             Informazioni
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='pagina-libera.html'"
-                                type="button">
+                        </a>
+                        <a class="btn-empty my-4" onclick="window.location.href='../pagina-libera.html'"
+                           type="button">
                             Serate speciali
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='menu.html'" type="button">Il
+                        </a>
+                        <a class="btn-empty my-4" onclick="window.location.href='../menu.html'" type="button">Il
                             menù
-                        </button>
+                        </a>
                     </div>
                 </div>
 
                 <!-- MENU MED-->
                 <div class="col-md-4 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center lan-med">
                     <div class="d-flex flex-column align-items-start justify-content-around">
-                        <button class="btn-nav liquidGlass-wrapper my-4" onclick="window.location.href='prenota.html'">
+                        <a class="btn-nav liquidGlass-wrapper my-4" onclick="window.location.href='../prenota.html'">
                             <span aria-hidden="true" class="liquidGlass-effect"></span>
                             <span aria-hidden="true" class="liquidGlass-tint"></span>
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
                             <span class="liquidGlass-text">Pewuofh</span>
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='index.html'" type="button">wefrw
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='ristorante.html'" type="button">
+                        </a>
+                        <a class="btn-empty my-4" onclick="window.location.href='../index.html'" type="button">wefrw
+                        </a>
+                        <a class="btn-empty my-4" onclick="window.location.href='../ristorante.html'" type="button">
                             HJDUYEW
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='info.html'" type="button">fwfrw
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='pagina-libera.html'"
-                                type="button">
+                        </a>
+                        <a class="btn-empty my-4" onclick="window.location.href='../info.html'" type="button">fwfrw
+                        </a>
+                        <a class="btn-empty my-4" onclick="window.location.href='../pagina-libera.html'"
+                           type="button">
                             oeuwhuiew
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='menu.html'" type="button">
+                        </a>
+                        <a class="btn-empty my-4" onclick="window.location.href='../menu.html'" type="button">
                             dafregre
-                        </button>
+                        </a>
                     </div>
                 </div>
 
                 <!-- BUTTON TO CLOSE -->
                 <div class="col-6 col-md-1 d-flex justify-content-end align-items-start order-2 order-md-last">
                     <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
-                        <img alt="close" src="media/icon/x-icon.svg"/>
+                        <img alt="close" src="../media/icon/x-icon.svg"/>
                     </button>
                 </div>
 
@@ -341,7 +341,7 @@
 
 </section>
 
-<!-- Footer -->
+<!-- Footer (adapted for plate pages) -->
 <footer class="p-4section-bg-light">
     <div class="container-fluid p-5">
         <div class="row g-5">
@@ -362,12 +362,12 @@
                 <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
                     Atlas, è necessaria la prenotazione
                 </p>
-                <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
+                <a class="btn liquidGlass-wrapper" onclick="window.location.href='../prenota.html'" type="submit">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
-                </button>
+                </a>
             </div>
 
             <!-- newsletter -->
@@ -389,8 +389,8 @@
 
                                     <input aria-describedby="inputGroupPrepend" class="form-control"
                                            id="validationCustomUsername"
-                                           placeholder="nome@esempio.com" required
-                                           type="text"
+                                           required type="text"
+                                           placeholder="nome@esempio.com"
                                     >
                                     <div class="invalid-feedback mt-1 ms-1">
                                         Devi inserire un'e-mail valida!
@@ -434,15 +434,15 @@
                     <!-- alt is empty because it's only a decorative image -->
                 </div>
                 <div>
-                    <button class="btn-empty" onclick="window.location.href='https://open.spotify.com/'" type="submit">
+                    <a class="btn-empty" onclick="window.location.href='https://open.spotify.com/'" type="submit">
                         <img alt="Apri la nostra pagina di SpottedRayFi" src="../media/icon/footer-1.svg"/>
-                    </button>
-                    <button class="btn-empty" onclick="window.location.href='https://www.facebook.com/'" type="submit">
+                    </a>
+                    <a class="btn-empty" onclick="window.location.href='https://www.facebook.com/'" type="submit">
                         <img alt="Apri la nostra pagina di FishBook" src="../media/icon/footer-2.svg"/>
-                    </button>
-                    <button class="btn-empty" onclick="window.location.href='https://www.instagram.com/'" type="submit">
+                    </a>
+                    <a class="btn-empty" onclick="window.location.href='https://www.instagram.com/'" type="submit">
                         <img alt="Apri la nostra pagina di InfondAlMar" src="../media/icon/footer-3.svg"/>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -171,6 +171,14 @@ h6 {
     line-height: 1.5rem;
 }
 
+a {
+    text-decoration: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
 /* </editor-fold> */
 
 /* === CURSOR EFFECTS === */
