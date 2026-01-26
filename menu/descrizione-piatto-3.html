@@ -44,7 +44,7 @@
 </head>
 
 <body>
-<div class="circle"></div>
+<div class="circle" aria-hidden="true"></div>
 
 <!-- navbar (adapted for plate pages) -->
 <header class="navbar-wrapper container-fluid">
@@ -222,20 +222,20 @@
                     quando entrano in contatto con il respiro umano. All'interno, un cuore di lichene cristallizzato e
                     idromiele d'acqua profonda a temperatura controllata per mantenere attiva la luminescenza naturale.
                     La consistenza varia da croccante a liquida, fondendo dolcezza e note aromatiche.</p>
-                <div class="d-flex justify-content-start flex-wrap">
-                    <button class="chips me-2">
-                        <img alt="Allergene 2" src="/media/icon/DerivatiAlgali.svg">
-                        <span>Derivati algali</span>
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 2" src="/media/icon/PollineMarino.svg">
-                        <span>Polline marino</span>
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 2" src="/media/icon/Idromiele.svg">
-                        <span>Idromiele</span>
-                    </button>
+
+                <!-- allergens -->
+                <div class="d-flex justify-content-start flex-wrap mt-3">
+                    <span class="chips me-2 d-inline-flex align-items-center">
+                        <img alt="" src="../media/icon/DerivatiAlgali.svg"> <span class="ps-2"> Derivati algali</span>
+                    </span>
+                    <span class="chips me-2 d-inline-flex align-items-center">
+                        <img alt="" src="../media/icon/PollineMarino.svg"> <span class="ps-2"> Polline marino</span>
+                    </span>
+                    <span class="chips me-2 d-inline-flex align-items-center">
+                        <img alt="" src="../media/icon/Idromiele.svg"> <span class="ps-2"> Idromiele</span>
+                    </span>
                 </div>
+
             </div>
             <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
                 <img
@@ -302,19 +302,23 @@
                 <p>Un brano dei The Chainsmokers che, come un respiro, accende una luce vibrante. La musica crea un'atmosfera sospesa, dove onde di suoni morbidi e battiti profondi si espandono come bagliori luminosi.
                     <br><br>La voce e gli accordi elettronici richiamano il ritmo del respiro, dando vita a una sinestesia perfetta in cui suono, luce e dolcezza si fondono e pulsano  in armonia.</p>
 
+                <!-- play music button -->
                 <div class="d-flex justify-content-start mt-3 mt-lg-2">
-                    <button class="btn btn-plate mt-2 liquidGlass-wrapper" id="music-startdesc3">
+                    <button class="btn btn-plate mt-2 liquidGlass-wrapper"
+                            id="music-startdesc3"
+                            aria-label="Ascolta il brano Breathe">
                         <span aria-hidden="true" class="liquidGlass-effect"></span>
                         <span aria-hidden="true" class="liquidGlass-tint"></span>
                         <span aria-hidden="true" class="liquidGlass-shine"></span>
                         <span class="liquidGlass-text">Ascolta
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M2 10V13M6 6V17M10 3V21M14 8V15M18 5V18M22 10V13" stroke="#EAE9FB" stroke-width="2.18" stroke-linecap="round"
                                   stroke-linejoin="round"/>
                         </svg>
                         </span>
                     </button>
                 </div>
+
             </div>
 
             <!-- Colonna immagine a destra su desktop -->
@@ -426,16 +430,19 @@
                 <div>
                     <!-- social 1 -->
                     <a class="btn-empty" href="https://open.spotify.com/" rel="noopener noreferrer" target="_blank">
+                        <span class="visually-hidden">(Apre in una nuova scheda)</span>
                         <img alt="Apri la nostra pagina di SpottedRayFi" src="../media/icon/footer-1.svg"/>
                     </a>
 
                     <!-- social 2 -->
                     <a class="btn-empty" href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank">
+                        <span class="visually-hidden">(Apre in una nuova scheda)</span>
                         <img alt="Apri la nostra pagina di FishBook" src="../media/icon/footer-2.svg"/>
                     </a>
 
                     <!-- social 3 -->
                     <a class="btn-empty" href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank">
+                        <span class="visually-hidden">(Apre in una nuova scheda)</span>
                         <img alt="Apri la nostra pagina di InfondAlMar" src="../media/icon/footer-3.svg"/>
                     </a>
 
@@ -447,21 +454,21 @@
 </footer>
 
 <!-- Liquid glass pattern (done through SVG) -->
-<svg style="display: none">
-    <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+<svg style="display: none" aria-hidden="true">
+    <filter height="100%" id="glass-distortion" width="100%" x="0%" y="0%">
 
         <feTurbulence
-                type="fractalNoise"
                 baseFrequency="0.01 0.01"
                 numOctaves="30"
                 result="turbulence"
                 seed="31"
+                type="fractalNoise"
         />
 
         <feGaussianBlur
                 in="turbulence"
-                stdDeviation="3"
                 result="softMap"
+                stdDeviation="3"
         />
 
         <feDisplacementMap

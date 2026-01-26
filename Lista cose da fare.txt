@@ -81,8 +81,10 @@ YuYu:
     - info: [FATTO]
     - menu: [FATTO]
     - pagina-libera: [FATTO]
-    - prenota:
+    - prenota: {TODO FORM}
     - ristorante: [FATTO]
-    - piatto-1:
-    - piatto-2:
-    - piatto-3:
+    - piatto-1: [FATTO]
+    - piatto-2: [FATTO]
+    - piatto-3: [FATTO]
+    - Controllare di mettere un link invisibile diretto al contenuto main delle pagine all'inizio di ciascuna pagina
+    (inteso come all'inizio del body).

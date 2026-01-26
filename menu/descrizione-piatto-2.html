@@ -48,7 +48,7 @@
 </head>
 
 <body>
-<div class="circle"></div>
+<div class="circle" aria-hidden="true"></div>
 
 <!-- navbar (adapted for plate pages) -->
 <header class="navbar-wrapper container-fluid">
@@ -226,16 +226,17 @@
                 <p>Una conchiglia che si apre delicatamente al contatto, rivelando il suo segreto a base
                     di crema di alghe sinaptiche e petali di medusa disidratata che creano un equilibrio di consistenze.<br><br>
                     Viene servita a 20°C per attivare la reazione della conchiglia e favorire gli aromi.</p>
-                <div class="d-flex justify-content-start flex-wrap">
-                    <button class="chips me-2">
-                        <img alt="Allergene 2" src="/media/icon/PollineMarino.svg">
-                        <span>Polline marino</span>
-                    </button>
-                    <button class="chips me-2">
-                        <img alt="Allergene 2" src="/media/icon/DerivatiMedusa.svg">
-                        <span>Derivati di medusa</span>
-                    </button>
+
+                <!-- allergens -->
+                <div class="d-flex justify-content-start flex-wrap mt-3">
+                    <span class="chips me-2 d-inline-flex align-items-center">
+                        <img alt="" src="../media/icon/PollineMarino.svg"> <span class="ps-2"> Polline marino</span>
+                    </span>
+                    <span class="chips me-2 d-inline-flex align-items-center">
+                        <img alt="" src="../media/icon/DerivatiMedusa.svg"> <span class="ps-2"> Derivati di medusa</span>
+                    </span>
                 </div>
+
             </div>
             <div class="col-xl-6 col-12 order-1 order-xl-2 mb-4 mb-xl-0">
                 <img
@@ -306,20 +307,24 @@
                     <br><br>Ogni nota sembra fondersi con l’ambiente, adattandosi al ritmo dettato dal calore della
                     madreperla, come se l'aria stessa pulsasse.</p>
 
+                <!-- listen to music button -->
                 <div class="d-flex justify-content-start mt-3 mt-lg-2">
-                    <button class="btn btn-plate mt-2 liquidGlass-wrapper" id="music-startdesc2">
+                    <button class="btn btn-plate mt-2 liquidGlass-wrapper"
+                            id="music-startdesc2"
+                            aria-label="Ascolta il brano After Dark">
                         <span aria-hidden="true" class="liquidGlass-effect"></span>
                         <span aria-hidden="true" class="liquidGlass-tint"></span>
                         <span aria-hidden="true" class="liquidGlass-shine"></span>
                         <span class="liquidGlass-text">Ascolta
-                        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 10V13M6 6V17M10 3V21M14 8V15M18 5V18M22 10V13" stroke="#EAE9FB"
-                                  stroke-linecap="round" stroke-linejoin="round"
-                                  stroke-width="2.18"/>
-                        </svg>
+                            <svg aria-hidden="true" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 10V13M6 6V17M10 3V21M14 8V15M18 5V18M22 10V13" stroke="#EAE9FB"
+                                      stroke-linecap="round" stroke-linejoin="round"
+                                      stroke-width="2.18"/>
+                            </svg>
                         </span>
                     </button>
                 </div>
+
             </div>
 
             <!-- Colonna immagine a destra su desktop -->
@@ -432,16 +437,19 @@
                 <div>
                     <!-- social 1 -->
                     <a class="btn-empty" href="https://open.spotify.com/" rel="noopener noreferrer" target="_blank">
+                        <span class="visually-hidden">(Apre in una nuova scheda)</span>
                         <img alt="Apri la nostra pagina di SpottedRayFi" src="../media/icon/footer-1.svg"/>
                     </a>
 
                     <!-- social 2 -->
                     <a class="btn-empty" href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank">
+                        <span class="visually-hidden">(Apre in una nuova scheda)</span>
                         <img alt="Apri la nostra pagina di FishBook" src="../media/icon/footer-2.svg"/>
                     </a>
 
                     <!-- social 3 -->
                     <a class="btn-empty" href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank">
+                        <span class="visually-hidden">(Apre in una nuova scheda)</span>
                         <img alt="Apri la nostra pagina di InfondAlMar" src="../media/icon/footer-3.svg"/>
                     </a>
 
@@ -453,7 +461,7 @@
 </footer>
 
 <!-- Liquid glass pattern (done through SVG) -->
-<svg style="display: none">
+<svg style="display: none" aria-hidden="true">
     <filter height="100%" id="glass-distortion" width="100%" x="0%" y="0%">
 
         <feTurbulence
