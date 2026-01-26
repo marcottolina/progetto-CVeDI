@@ -1465,3 +1465,33 @@ input::placeholder {
 
 /* </editor-fold> */
 
+/* == PLATE DESCRIPTION BUBBLES == */
+
+
+/* container */
+#bollaPaginaPiatto1, #bollaPaginaPiatto2, #bollaPaginaPiatto3 {
+    transform: none;
+    left: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+/* images within container (that become animated gifs) */
+#bollaPaginaPiatto1 img {
+    max-width: unset !important;
+    width: 100%;
+    transform: scale(2.5);
+    margin-left: 50px;
+    transition: transform 0.3s ease;
+}
+
+#bollaPaginaPiatto2 img, #bollaPaginaPiatto3 img {
+    max-width: unset !important;
+    width: 100%;
+    transform: scale(2);
+    margin-left: 50px;
+    transition: transform 0.3s ease;
+}

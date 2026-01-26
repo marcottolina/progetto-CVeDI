@@ -367,9 +367,9 @@ document.addEventListener("DOMContentLoaded", () => {
     addMediaControl("music-start2", "../media/audio/madreperla-mr-kitty-after-dark.aac");
     addMediaControl("music-start3", "../media/audio/bioluma-the-chainsmokers-breathe.aac");
 
-    addSimpleAudioControl("music-startdesc1", "../media/audio/thalassa-hans-zimmer-cornfields.aac");
-    addSimpleAudioControl("music-startdesc2", "../media/audio/madreperla-mr-kitty-after-dark.aac");
-    addSimpleAudioControl("music-startdesc3", "../media/audio/bioluma-the-chainsmokers-breathe.aac");
+    addMediaControl("music-startdesc1", "../media/audio/thalassa-hans-zimmer-cornfields.aac");
+    addMediaControl("music-startdesc2", "../media/audio/madreperla-mr-kitty-after-dark.aac");
+    addMediaControl("music-startdesc3", "../media/audio/bioluma-the-chainsmokers-breathe.aac");
 
 });
 

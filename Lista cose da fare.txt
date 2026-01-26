@@ -41,6 +41,7 @@ Ale:
 - Inserire nuove immagini "teaser" dei piatti [FATTO]
 
 - Aggiustare il titolo H1 della pagina menu.html [TODO]
+- Aggiustare bolle delle pagine dei piatti speciali [FATTO]
 
 
 Otto:
