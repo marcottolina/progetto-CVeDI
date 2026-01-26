@@ -991,16 +991,24 @@ video {
     stroke-width: 0.5px;
     transition: all 0.3s ease;
     cursor: crosshair; /* Change mouse icon to a cross upon hovering over a country */
+
+    /* smooth corner joints and blur edges to make it look more "round" */
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    filter: blur(0.25px);
 }
 
 /* hover effect on ex-nations */
 .country:hover {
     fill: var(--blue-50); /* Lights up with mid-blue */
-    stroke: var(--blue-95); /* White/Light border */
+    /*stroke: var(--blue-70);*/
+    stroke: #00D1FF; /* White/Light border */
+    stroke-width: 2px;
 }
 
 /* sea labels */
 .sea-label-text {
+    border-radius: 0.5rem;
     font-family: 'Manrope', sans-serif;
     fill: var(--blue-95); /* The white that goes over the dark blue */
     font-size: 1.125rem;
@@ -1025,15 +1033,15 @@ video {
 
 /* Pop-up tooltip for various elements */
 .map-tooltip {
+
     position: absolute;
     z-index: 1000; /* To put tooltips in front of the map (rather than behind it) */
     background: var(--blue-5-70); /* Dark semi-transparent background from palette */
-    border: 1px solid var(--blue-70); /* Light purple/blue neon border effect */
-    color: var(--blue-70); /* Light purple/blue neon text effect */
+    border: 1px solid var(--blue-95); /* Light purple/blue neon border effect */
+    color: var(--blue-95); /* Light purple/blue neon text effect */
     padding: 8px 12px;
-    border-radius: 2px;
+    border-radius: 0.5rem;
     pointer-events: none;
-    font-size: 14px;
 
     opacity: 0;
     transition: opacity 0.2s;
@@ -1041,10 +1049,27 @@ video {
     box-shadow: 0 0 15px var(--blue-50-30); /* Mid-blue/transparent shadow glow */
 
     transform: translate(-50%, -150%);
-    text-transform: uppercase; /* All caps */
+
+    /* text style */
+    /*text-transform: uppercase; !* All caps *!*/
+    font-family: 'Manrope', sans-serif;
+    font-size: var(--Typography-captions, 0.875rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+
+    backdrop-filter: blur(2px);
+
 }
 
-/* = Atlas & Riff (specific elements within map) Style = */
+/* Riff's tooltip variant (orange) */
+.map-tooltip.riff-variant {
+    border-color: var(--orange);
+    box-shadow: 0 0 15px rgba(246, 112, 85, 0.5);
+    color: var(--blue-95);
+}
+
+/* = Riff Marker Style (Orange Glowing Orb) = */
 
 /* container style */
 .location-group {
@@ -1052,56 +1077,72 @@ video {
     transition: all 0.3s ease;
 }
 
-/* Atlas circle */
-.atlas-marker {
-    fill: rgba(255, 50, 118, 0.3);
-    stroke: var(--pink);
-    stroke-width: 2px;
-    /* Drop shadow using pink with opacity */
-    filter: drop-shadow(0 0 5px rgba(255, 50, 118, 0.5));
-}
-
-/* Riff's dot */
-.riff-point {
-    fill: var(--blue-95); /* White */
+/* Riff Glowing Marker */
+.riff-marker {
+    fill: rgba(246, 112, 85, 0.9); /* var(--orange) with 0.9 opacity */
     stroke: none;
+
+    filter:
+            blur(4px)
+            drop-shadow(0 0 2px var(--orange))
+            drop-shadow(0 0 10px rgba(246, 112, 85, 0.6));
+
+    opacity: 0.9;
+    transition: all 0.4s ease-in-out;
+    mix-blend-mode: screen;
 }
 
-/* Pulsing animation for Atlas (when hovering over it) */
-.location-group:hover .atlas-marker {
-    animation: pulse 1.5s infinite; /* Pulse animation is defined later, infinite = repeats endlessly */
-    fill: rgba(255, 50, 118, 0.5); /* Slightly more intense fill on hover */
-}
-
-/* Atlas & Riff label */
+/* Riff Label */
 .location-label {
-    font-family: 'Manrope', sans-serif;
-    fill: var(--pink); /* Use the main pink for text */
-    font-size: 0.9rem;
+    font-family: 'Kaftan', sans-serif;
+    fill: var(--orange);
+    font-size: 1.2rem;
     text-anchor: middle;
-    font-weight: bold;
-    text-shadow: 0 0 5px var(--blue-5); /* Dark shadow for readability */
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
     pointer-events: none;
-    transform: translateY(-25px); /* Shifts text above (and not inside) the dot */
+    transform: translateY(-20px);
+    letter-spacing: 1px;
 }
 
-/* Pulse animation for "blinking" effect upon hovering over / selecting (on mobile) Atlas */
-@keyframes pulse {
+/* Hover effect container */
+.location-group:hover .riff-marker {
+    filter: drop-shadow(0 0 8px var(--orange)) drop-shadow(0 0 25px var(--orange));
+}
+
+.location-group:hover .location-label {
+    text-shadow: 0 0 10px var(--orange); /* Text glows when the label is shown too */
+}
+
+/* Pulse animation for "living" effect */
+.location-group .riff-marker {
+    animation: riffPulse 3s infinite ease-in-out;
+}
+
+@keyframes riffPulse {
     0% {
-        stroke-width: 2px;
-        r: 8px;
-        opacity: 1;
+        transform: scale(1);
+        opacity: 0.9;
     }
     50% {
-        stroke-width: 4px;
-        r: 10px;
-        opacity: 0.6;
-    }
-    100% {
-        stroke-width: 2px;
-        r: 8px;
+        transform: scale(1.1);
         opacity: 1;
     }
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+}
+
+/* Button "open map" over the D3 map */
+.map-action-btn {
+    position: absolute;
+    bottom: 5rem;
+    right: 5rem;
+    z-index: 50;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    justify-self: end;
 }
 
 /* = Instructions Panel Style = */

@@ -478,6 +478,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* === INTERACTIVE MAP WITH D3 === */
+/* === INTERACTIVE MAP WITH D3 === */
 document.addEventListener("DOMContentLoaded", function () {
     if (typeof d3 !== 'undefined') {
         // Size configuration
@@ -493,6 +494,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // define SVG sizes (must add an attribute for it)
         svg.attr("width", width);
         svg.attr("height", height);
+
+        // Close tooltip when clicking on the empty background (essential for mobile)
+        svg.on("click", () => {
+            hideTooltip();
+        });
 
         // sub-element "g" will contain the actual map (with seas and nations)
         const mapLayer = svg.append("g");
@@ -535,39 +541,48 @@ document.addEventListener("DOMContentLoaded", function () {
         // Make projection
         const path = d3.geoPath().projection(projection);
 
+
         // = Setup & Add Zoom / Pan handling for the map =
+
+        let isMapDragging = false;
 
         // Setup zoom (so it only works when holding ALT)
         const zoom = d3.zoom()
             .scaleExtent([1, 8])
             .filter((event) => {
-                if (event.type === 'wheel' && !event.altKey) {  // if it's a scroll (event === 'wheel') but ALT is not pressed ...
+                if (event.type === 'wheel' && !event.altKey) {
                     return false;
                 }
                 return true;
             })
-
             .on("start", () => {
-                document.body.classList.add("is-map-interacting"); // add "being-interacted-with" class when interactions starts
-                hideTooltip(); // hide currently shown tooltip when moving the map around
+
+                isMapDragging = false;
+                document.body.classList.add("is-map-interacting");
+                hideTooltip();
             })
             .on("zoom", (event) => {
-                mapLayer.attr("transform", event.transform); // transform map when it is being zoomed
-                hideTooltip(); // hide currently shown tooltip when map is being zoomed
+                isMapDragging = true;
+                mapLayer.attr("transform", event.transform);
+                hideTooltip();
             })
             .on("end", () => {
-                document.body.classList.remove("is-map-interacting"); // remove "being-interacted-with" class when interaction ends (will show the tooltip back)
+                document.body.classList.remove("is-map-interacting");
+                if (isMapDragging) {
+                    setTimeout(() => {
+                        isMapDragging = false;
+                    }, 100);
+                }
             })
         ;
 
-        svg.call(zoom); // attach the now set-up zoom component to the SVG
+        svg.call(zoom);
 
         // Atlas and Riff's position (object)
         const cityData = [
             {
-                regionName: "Atlas",
-                pointName: "Riff",
-                coords: [127, -7], // Coordinate leggermente spostate nel Mare di Banda
+                name: "Riff",
+                coords: [127, -7],
                 desc: "Città Sommersa"
             }
         ];
@@ -606,8 +621,32 @@ document.addEventListener("DOMContentLoaded", function () {
                             ;
                     }
 
-                    moveTooltip(event); //  to put the tooltip in the right position when clicking on mobile
+                    moveTooltip(event); // to put the tooltip in the right position when clicking on mobile
 
+                })
+                // Click event to handle mobile interaction (tap)
+                .on("click", function(event, d) {
+                    event.stopPropagation(); // Stop propagation to prevent SVG background click from firing
+
+                    // Re-run the same logic as mouseover
+                    d3.select(this).raise();
+                    const countryName = d.properties.name;
+                    const exName = "Ex-" + countryName;
+
+                    switch (exName) {
+                        case "Ex-Australia":
+                            tooltip.style("opacity", 1)
+                                .html(`<b>${exName}</b><br/><b>Stato:</b> semi-sommersa <br><b>Navigabilità: </b>accesso proibito`);
+                            break;
+                        case "Ex-East Timor":
+                            tooltip.style("opacity", 1)
+                                .html(`<b>${exName}</b><br/><b>Stato:</b> sommerso <br><b>Navigabilità: </b>accesso proibito (attività vulcanica)`);
+                            break;
+                        default:
+                            tooltip.style("opacity", 1)
+                                .html(`<b>${exName}</b><br/><b>Stato:</b> sommerso <br><b>Navigabilità: </b>accesso consentito`);
+                    }
+                    moveTooltip(event);
                 })
                 .on("mousemove", moveTooltip)
                 .on("mouseout", hideTooltip)
@@ -640,12 +679,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 tooltip.style("opacity", 1)
                     .html(`<b>${d.name}</b><br> <b>Settore:</b> Oceano Australe<br> <b>Viabilità: </b>aperta al traffico`)
                 ;
-                moveTooltip(event); //  to put the tooltip in the right position when clicking on mobile
+                moveTooltip(event); // to put the tooltip in the right position when clicking on mobile
             })
+                // Click event for mobile (seas)
+                .on("click", function(event, d) {
+                    event.stopPropagation(); // Stop propagation
+                    tooltip.style("opacity", 1)
+                        .html(`<b>${d.name}</b><br> <b>Settore:</b> Oceano Australe<br> <b>Viabilità: </b>aperta al traffico`);
+                    moveTooltip(event);
+                })
                 .on("mousemove", moveTooltip)
                 .on("mouseout", hideTooltip);
 
-            // = Draw Atlas & Riff =
+            // = Draw Riff Location =
             const locations = mapLayer.selectAll(".location-group")
                 .data(cityData)
                 .enter()
@@ -654,51 +700,72 @@ document.addEventListener("DOMContentLoaded", function () {
                 .attr("transform", d => `translate(${projection(d.coords)})`)
             ;
 
-            // Add a transparent "Hitbox" circle larger than the max pulse radius (which is 10px)
-            // to avoid "flickering" effect on certain mouseovers at the edges
-            // Making it 20px also should make it easier to press on mobile
+            // 1. Transparent "Hitbox" circle (keeps it easy to click on mobile)
             locations.append("circle")
-                .attr("r", 20)
-                .attr("fill", "transparent") // make the circle transparent (otherwise it's visually displayed)
-                .style("cursor", "pointer") // Ensures the hand cursor shows
+                .attr("r", 30) // Generous hitbox
+                .attr("fill", "transparent")
+                .style("cursor", "pointer")
             ;
 
-            // Draw Atlas circle
+            // 2. The Orange Glowing Marker (Single circle)
             locations.append("circle")
-                .attr("r", 16)
-                .attr("class", "atlas-marker")
+                .attr("r", 14)
+                .attr("class", "riff-marker")
             ;
 
-            // Draw the internal point for the Riff
-            locations.append("circle")
-                .attr("r", 2.5)
-                .attr("class", "riff-point")
-            ;
-
-            // Text-label for locations (Riff)
+            // 3. Text Label ("Riff")
             locations.append("text")
                 .attr("class", "location-label")
-                .text(d => d.regionName) // writes "Atlas"
+                .text(d => d.name)
             ;
 
-            // Mouseover for Atlas & Riff
+            // Interaction: Mouseover (Riff Location)
             locations.on("mouseover", function (event, d) {
+                // ADD the variant class to apply the orange style
+                tooltip.classed("riff-variant", true);
+
                 tooltip.style("opacity", 1)
-                    .style("border-color", "#FF3276") // couldn't use var(--pink) here
-                    .style("color", "#FF3276")
-                    .html(`<b>Riff</b><br/>Atlas, P.zza Corolleo 1 24°N - 46°O, -230 m<br/>Settore abissale Ovest`)
-                ;
-                moveTooltip(event); // to put the tooltip in the right position when clicking on mobile
+                    .html(`
+                        <b>Riff</b><br/>
+                        <span style="opacity: 0.8">Atlas, P.zza Corolleo 1<br/>
+                        24°N - 46°O, -230 m<br/>
+                        Settore abissale Ovest</span>
+                    `);
+
+                moveTooltip(event);
             });
 
-            // if mouse is moved within Atlas radius, the label moves as well
+            // Interaction: Click (Mobile/Touch)
+            locations.on("click", function (event, d) {
+                // If the map was moving, exit.
+                // Thanks to the correction above, if it's a simple tap, isMapDragging will be false.
+                if (isMapDragging) return;
+
+                event.stopPropagation(); // Stop the click before it reaches the background (which would close the tooltip)
+
+                // ADD the variant class
+                tooltip.classed("riff-variant", true);
+
+                tooltip.style("opacity", 1)
+                    .html(`
+                        <b>Riff</b><br/>
+                        <span style="opacity: 0.8">Atlas, P.zza Corolleo 1<br/>
+                        24°N - 46°O, -230 m<br/>
+                        Settore abissale Ovest</span>
+                    `);
+
+                moveTooltip(event);
+            });
+
+
+            // Move tooltip with mouse inside the location radius
             locations.on("mousemove", moveTooltip);
 
-            // reset previous style upon mouseout (= mouseover end)
+            // Interaction: Mouseout (Reset)
             locations.on("mouseout", function () {
                 hideTooltip();
-                tooltip.style("border-color", "var(--blue70-100)")
-                    .style("color", "var(--blue70-100)");
+                // REMOVE the variant class when exiting to reset style for other elements
+                tooltip.classed("riff-variant", false);
             });
 
         }).catch(err => console.error("Errore dati:", err));

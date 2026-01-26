@@ -74,7 +74,7 @@ YuYu:
 - Fare in particolare il bottone per la musica "Ascolta <icona>" [FATTO]
 - Risolvere errore in console sulla timeline [FATTO]
 
-- Finire pagine per i piatti specifici (1, 2 e 3) {TO-FINISH}
+- Finire pagine per i piatti specifici (1, 2 e 3) [FATTO]
 - Finire aspetti della prenotazione in prenota.html {TO-DO}
 
 - Accorgimenti per accessibilità
@@ -90,4 +90,4 @@ YuYu:
     - Controllare di mettere un link invisibile diretto al contenuto main delle pagine all'inizio di ciascuna pagina
     (inteso come all'inizio del body).
 
-- Media queries bolle per pagine descrizioni dei piatti
+- Media queries bolle per pagine descrizioni dei piatti [FATTO]
