@@ -80,7 +80,7 @@ YuYu:
     - index: [FATTO]
     - info: [FATTO]
     - menu: [FATTO]
-    - pagina-libera:
+    - pagina-libera: [FATTO]
     - prenota:
     - ristorante: [FATTO]
     - piatto-1:

@@ -229,11 +229,13 @@
     <!-- fluid container, padding in all directions = 5 -->
     <main class="container-fluid p-5" id="events-list">
 
+        <!-- toDo: @Otto controllare le dimensioni di questi cosi, sopratutto nel responsive -->
+
         <!-- element 1-->
         <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
             <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 spaceFromNavbar">
                 <!-- each element but the last has a bottom-padding of 1*$spacer (pb-3) -->
-                <h6 class="pb-3"><time datetime="2531-11-03">03/11/2531</time></h6>
+                <p class="pb-3 h6"><time datetime="2531-11-03">03/11/2531</time></p>
                 <h3 class="pb-3">Luce liquida</h3>
                 <p class="pb-3">
                     Una cena-performance in cui la luce si trasforma in ingrediente. Proiezioni, riflessi e ombre
@@ -242,12 +244,12 @@
                     consistenze inaspettate.
                 </p>
                 <!-- bottom button has a margin-bottom of 3*$spacer to not make it stick to the image on mobile -->
-                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='prenota.html#booking-1'">
+                <a class="btn liquidGlass-wrapper text-decoration-none" href="prenota.html#booking-1">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
-                </button>
+                </a>
             </div>
             <!-- display: flex, content is {align-items = perpendicular to main axis = horizontal in a column / vertical in a row} = aligned to the end (right/bottom), if content >= small (but < medium) align items at start (done to avoid wierd small-tabled behavior), if >= medium resume end-alignment, (by default) occupy 12 columns, (when >= medium = 768px) occupy 6 columns -->
             <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
@@ -275,7 +277,7 @@
         <!-- element 2-->
         <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
             <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 spaceFromNavbar">
-                <h6 class="pb-3"><time datetime="2531-11-21">21/11/2531</time></h6>
+                <p class="pb-3 h6"><time datetime="2531-11-21">21/11/2531</time></p>
                 <h3 class="pb-3">Metamorfosi</h3>
                 <p class="pb-3">
                     Nulla resta uguale, nemmeno per un istante. Durante la serata, la materia si trasforma davanti agli
@@ -284,16 +286,16 @@
                     come
                     organismo in continua evoluzione.
                 </p>
-                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='prenota.html#booking-1'">
+                <a class="btn liquidGlass-wrapper text-decoration-none" href="prenota.html#booking-1">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
-                </button>
+                </a>
             </div>
             <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
                 <!-- ratio of 1x1 to make the image the same size as the (square) images, z-index to -1 (z-n1) so that the element is further back than the nav-bar -->
-                <div class="ratio ratio-1x1 z-n1">
+                <div class="ratio ratio-1x1 z-n1" role="img" aria-label="Animazione astratta di coralli in trasformazione continua">
                     <!-- object fit to cover to make it fill the entire square (cutting top and both, as videos are more tall than they are large, but this is by design) -->
                     <video autoplay class="img-fluid w-100 object-fit-cover" loop muted playsinline>
                         <source src="media/video/serate-speciali-main-2.webm" type="video/webm">
@@ -305,7 +307,7 @@
         <!-- element 3 -->
         <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
             <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 spaceFromNavbar">
-                <h6 class="pb-3"><time datetime="2531-12-06">06/12/2531</time></h6>
+                <p class="pb-3 h6"><time datetime="2531-12-06">06/12/2531</time></p>
                 <h3 class="pb-3">Silenzio profondo</h3>
                 <p class="pb-3">
                     Per una notte, la musica tace e lascia spazio al suono naturale del respiro, del mare e dei gesti.
@@ -315,12 +317,12 @@
                     diventa
                     presenza.
                 </p>
-                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='prenota.html#booking-1'">
+                <a class="btn liquidGlass-wrapper text-decoration-none" href="prenota.html#booking-1">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
-                </button>
+                </a>
             </div>
             <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
                 <img
@@ -344,12 +346,10 @@
             </div>
         </div>
 
-        <!-- toDo: cambiare sizes in valori assoluti, in particolari px -->
-
         <!-- element 4 -->
         <div class="d-flex flex-column flex-md-row h-100 align-items-stretch my-5 py-3">
             <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 col-12 col-md-6 sticky-md-top h-50 pe-md-5 ps-lg-5 spaceFromNavbar">
-                <h6 class="pb-3"><time datetime="2532-03-08">08/03/2532</time></h6>
+                <p class="pb-3 h6"><time datetime="2532-03-08">08/03/2532</time></p>
                 <h3 class="pb-3">Festa del tritone</h3>
                 <p class="pb-3">
                     In occasione della festa del tritone, Riff dedica un percorso a quello che una volta era il genere
@@ -357,12 +357,12 @@
                     2000
                     che omaggiavano gli uomini tra cui Barbie Girl di Aqua.
                 </p>
-                <button class="btn liquidGlass-wrapper" type="submit" onclick="window.location.href='prenota.html#booking-1'">
+                <a class="btn liquidGlass-wrapper text-decoration-none" href="prenota.html#booking-1">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
-                </button>
+                </a>
             </div>
             <div class="d-flex align-items-end align-items-md-start align-items-lg-end col-12 col-md-6">
                 <div class="ratio ratio-1x1 z-n1">
