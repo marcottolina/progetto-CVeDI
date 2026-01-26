@@ -60,25 +60,29 @@
             </a>
 
             <div class="liquidGlass-text">
+
                 <a class="btn-nav liquidGlass-wrapper nav-lan-ita d-none"
-                   onclick="window.location.href='prenota.html'">
+                   href="prenota.html">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
                 </a>
+
                 <a class="btn-nav liquidGlass-wrapper nav-lan-med d-none"
-                   onclick="window.location.href='prenota.html'">
+                   href="prenota.html">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Pewuofh</span>
                 </a>
+
                 <div class="d-flex d-none d-md-block">
                     <button class="btn-secondary btn-lan-ita">ITA</button>
                     <span>/</span>
                     <button class="btn-secondary btn-lan-med">MED</button>
                 </div>
+
                 <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull"
                         data-bs-toggle="offcanvas"
                         type="button">
@@ -507,10 +511,9 @@
 
 </div>
 
-<!-- after content -->
-<!-- toDo: mettere immagini di sfondo e mettere MD + XXL -->
-<section class="p-5 p-lg-5 p-xl-2 section-bg-transparent liquidGlass-wrapper" style="border-radius: 0 !important;">
-    <!-- toDo: put this inline style in a class / id -->
+<!-- toDo: mettere MD + XXL -->
+<!-- Values section -->
+<section class="p-5 p-lg-5 p-xl-2 section-bg-transparent liquidGlass-wrapper" id="values-section-wrapper">
 
     <!-- liquid glass effects -->
     <div class="liquidGlass-tint"></div>
@@ -519,6 +522,7 @@
     <!-- local style (with ID) -->
     <div id="values-section"></div>
 
+    <!-- actual content -->
     <div class="container px-4 liquidGlass-text  my-5">
 
         <div class="row align-items-center">
@@ -561,24 +565,42 @@
             </div>
         </div>
     </div>
+
 </section>
 
+<!-- Reviews section -->
+<section class="top-overlay">
 
-<div class="top-overlay">
-
-    <!-- user reviews -->
+    <!-- noteworthy reviews -->
     <section>
         <div class="container-fluid text-center">
 
+            <!-- Begin reviews carousel -->
             <div class="carousel slide position-relative" data-bs-interval="false" id="reviewsCarousel">
-
                 <div class="carousel-inner">
 
+                    <!-- review 1 -->
                     <div class="carousel-item active">
                         <div class="container-fluid p-5 review-container">
 
                             <div class="background-review">
-                                <img src="media/img/Recensione-1.webp">
+                                <img
+                                    alt="Fotografia di Maris Smith - Critica gastronomica"
+                                    loading="lazy"
+                                    sizes="
+                                        (min-width: 1200px) 600px,
+                                        (min-width: 992px) 500px,
+                                        (min-width: 768px) 400px,
+                                        (min-width: 576px) 500px,
+                                        100vw
+                                    "
+                                    src="media/img/review-3-1200w.webp"
+                                    srcset="
+                                        /media/img/review-3-800w.webp 800w,
+                                        /media/img/review-3-1200w.webp 1200w,
+                                        /media/img/review-3-2000w.webp 2000w
+                                    "
+                                />
                             </div>
                                 <div class="row align-items-center justify-content-center text-center p-md-5">
 
@@ -595,11 +617,28 @@
                         </div>
                     </div>
 
+                    <!-- review 2 -->
                     <div class="carousel-item">
                         <div class="container-fluid p-5 review-container">
                             <div class="row align-items-center justify-content-center center p-md-5">
                                 <div class="background-review">
-                                    <img src="media/img/Recensione-2.webp">
+                                    <img
+                                            alt="Fotografia di Elio Marakai - Critico gastronomico"
+                                            loading="lazy"
+                                            sizes="
+                                        (min-width: 1200px) 600px,
+                                        (min-width: 992px) 500px,
+                                        (min-width: 768px) 400px,
+                                        (min-width: 576px) 500px,
+                                        100vw
+                                    "
+                                            src="media/img/review-1-1200w.webp"
+                                            srcset="
+                                        /media/img/review-1-800w.webp 800w,
+                                        /media/img/review-1-1200w.webp 1200w,
+                                        /media/img/review-1-2000w.webp 2000w
+                                    "
+                                    />
                                 </div>
                                 <div class="col-md-9">
                                     <p class="body-lead">
@@ -614,11 +653,28 @@
                         </div>
                     </div>
 
+                    <!-- review 3 -->
                     <div class="carousel-item">
                         <div class="container-fluid p-5 review-container">
                             <div class="row align-items-center justify-content-center text-center p-md-5">
                                 <div class="background-review">
-                                    <img src="media/img/Recensione-3.webp">
+                                    <img
+                                            alt="Fotografia di Egea Claris - Giornalista culinaria"
+                                            loading="lazy"
+                                            sizes="
+                                        (min-width: 1200px) 600px,
+                                        (min-width: 992px) 500px,
+                                        (min-width: 768px) 400px,
+                                        (min-width: 576px) 500px,
+                                        100vw
+                                    "
+                                            src="media/img/review-2-1200w.webp"
+                                            srcset="
+                                        /media/img/review-2-800w.webp 800w,
+                                        /media/img/review-2-1200w.webp 1200w,
+                                        /media/img/review-2-2000w.webp 2000w
+                                    "
+                                    />
                                 </div>
                                 <div class="col-md-9">
                                     <p class="body-lead">
@@ -635,27 +691,27 @@
 
                 </div>
 
-                <!-- "previous" button toDo: remove inline style and put it in a class -->
-                <button class="btn liquidGlass-wrapper swiper-button-prev position-absolute start-0 btn-circular ms-5 p-2" data-bs-slide="prev" data-bs-target="#reviewsCarousel" type="button" style="top: 35%;">
+                <!-- "previous" button -->
+                <button class="btn liquidGlass-wrapper swiper-button-prev position-absolute start-0 btn-circular ms-5 p-2 review-button" data-bs-slide="prev" data-bs-target="#reviewsCarousel" type="button" id="review-button-1">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text"><img alt="arrow-left" src="media/icon/arrow-left.svg"/></span>
+                    <span class="liquidGlass-text"><img alt="Recensione precedente" src="media/icon/arrow-left.svg" aria-label="Recensione precedente"/></span>
                 </button>
 
-                <!-- "next" button toDo: remove inline style and put it in a class -->
-                <button class="btn liquidGlass-wrapper swiper-button-next position-absolute end-0 btn-circular me-5 p-2" data-bs-slide="next" data-bs-target="#reviewsCarousel" type="button" style="top: 35%;">
+                <!-- "next" button -->
+                <button class="btn liquidGlass-wrapper swiper-button-next position-absolute end-0 btn-circular me-5 p-2 review-button" data-bs-slide="next" data-bs-target="#reviewsCarousel" type="button" id="review-button-2">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
-                    <span class="liquidGlass-text"><img alt="arrow-right" src="media/icon/arrow-right.svg"/></span>
+                    <span class="liquidGlass-text"><img alt="Recensione successiva" src="media/icon/arrow-right.svg" aria-label="Recensione successiva"/></span>
                 </button>
 
             </div>
         </div>
     </section>
 
-</div>
+</section>
 
 <!-- Footer -->
 <footer class="p-4section-bg-light">
@@ -708,7 +764,7 @@
                                            required type="text"
                                            placeholder="nome@esempio.com"
                                     >
-                                    <div class="invalid-feedback mt-1 ms-1">
+                                    <div class="invalid-feedback mt-1 ms-1" aria-live="polite">
                                         Devi inserire un'e-mail valida!
                                     </div>
                                 </div>

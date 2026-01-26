@@ -630,6 +630,10 @@ a {
 }
 
 /* Restaurant's values section (ristorante.html) */
+#values-section-wrapper {
+    border-radius: 0 !important;
+}
+
 #values-section {
     position: absolute;
     top: 0;
@@ -1233,13 +1237,17 @@ body.is-map-interacting .circle {
 .background-review {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 5%;
 
     z-index: -1; /* -1 to make the image stay behind the text */
 
     width: auto;
     max-height: 100%; /* image resizes automatically in width, but never exceeding height = 100% */
     overflow: hidden; /* overflow hidden so it doesn't spill */
+}
+
+#review-button-1, #review-button-2 {
+    top: 50% !important;
 }
 
 /* image wrapper's linear-gradient filter (to make it go over the image) */

@@ -82,7 +82,7 @@ YuYu:
     - menu:
     - pagina-libera:
     - prenota:
-    - ristorante:
+    - ristorante: [FATTO]
     - piatto-1:
     - piatto-2:
     - piatto-3:
