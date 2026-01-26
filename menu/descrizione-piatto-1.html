@@ -173,7 +173,7 @@
                 </div>
 
                 <div class="col-6 col-md-1 d-flex justify-content-end align-items-start order-2 order-md-last">
-                    <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
+                    <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas">
                         <img alt="close" src="../media/icon/x-icon.svg"/>
                     </button>
                 </div>
@@ -329,15 +329,15 @@
 
             <!-- Colonna immagine a destra su desktop -->
             <div class="col-lg-4 col-12 d-flex justify-content-center justify-content-lg-end align-items-start mt-3 mt-lg-0">
-<!--                <img alt="Onde sonore visuali della traccia Cornfields di Hans Zimmer" class="img-fluid"-->
-<!--                     src="../media/img/musica.webp">-->
+                <!--                <img alt="Onde sonore visuali della traccia Cornfields di Hans Zimmer" class="img-fluid"-->
+                <!--                     src="../media/img/musica.webp">-->
 
-                <img src="../media/img/Bolla1.png"
-                     id="bubble-desc-1"
-                     data-static="../media/img/Bolla1.png"
-                     data-gif="../media/video/Bolla1.gif"
-                     alt="Visualizzazione sonora del piatto"
+                <img alt="Visualizzazione sonora del piatto"
                      class="img-fluid"
+                     data-gif="../media/video/Bolla1.gif"
+                     data-static="../media/img/Bolla1.png"
+                     id="bubble-desc-1"
+                     src="../media/img/Bolla1.png"
                 />
 
             </div>
@@ -369,8 +369,8 @@
                 <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
                     Atlas, è necessaria la prenotazione
                 </p>
-                <a class="btn liquidGlass-wrapper" onclick="window.location.href='../prenota.html'" type="submit">
-                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                <a class="btn liquidGlass-wrapper" href="../prenota.html"> <span aria-hidden="true"
+                                                                                 class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
@@ -396,10 +396,10 @@
 
                                     <input aria-describedby="inputGroupPrepend" class="form-control"
                                            id="validationCustomUsername"
-                                           required type="text"
-                                           placeholder="nome@esempio.com"
+                                           placeholder="nome@esempio.com" required
+                                           type="text"
                                     >
-                                    <div class="invalid-feedback mt-1 ms-1" aria-live="polite">
+                                    <div aria-live="polite" class="invalid-feedback mt-1 ms-1">
                                         Devi inserire un'e-mail valida!
                                     </div>
                                 </div>
@@ -436,23 +436,34 @@
         <!-- socials icons -->
         <div class="col-12 mt-5">
             <div class="d-flex justify-content-between align-items-end">
+
+                <!-- website logo (left side) -->
                 <div>
                     <img alt="" class="img-fluid" src="../media/icon/LogoNoDark.svg">
                     <!-- alt is empty because it's only a decorative image -->
                 </div>
+
+                <!-- social icons (right side) -->
                 <div>
-                    <a class="btn-empty" onclick="window.location.href='https://open.spotify.com/'" type="submit">
+                    <!-- social 1 -->
+                    <a class="btn-empty" href="https://open.spotify.com/" rel="noopener noreferrer" target="_blank">
                         <img alt="Apri la nostra pagina di SpottedRayFi" src="../media/icon/footer-1.svg"/>
                     </a>
-                    <a class="btn-empty" onclick="window.location.href='https://www.facebook.com/'" type="submit">
+
+                    <!-- social 2 -->
+                    <a class="btn-empty" href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank">
                         <img alt="Apri la nostra pagina di FishBook" src="../media/icon/footer-2.svg"/>
                     </a>
-                    <a class="btn-empty" onclick="window.location.href='https://www.instagram.com/'" type="submit">
+
+                    <!-- social 3 -->
+                    <a class="btn-empty" href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank">
                         <img alt="Apri la nostra pagina di InfondAlMar" src="../media/icon/footer-3.svg"/>
                     </a>
+
                 </div>
             </div>
         </div>
+
     </div>
 </footer>
 

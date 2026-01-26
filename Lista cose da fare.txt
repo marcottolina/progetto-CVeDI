@@ -78,7 +78,7 @@ YuYu:
 
 - Accorgimenti per accessibilità
     - index: [FATTO]
-    - info:
+    - info: [FATTO]
     - menu: [FATTO]
     - pagina-libera:
     - prenota:

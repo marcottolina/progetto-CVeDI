@@ -175,7 +175,7 @@
                 </div>
 
                 <div class="col-6 col-md-1 d-flex justify-content-end align-items-start order-2 order-md-last">
-                    <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
+                    <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas">
                         <img alt="close" src="media/icon/x-icon.svg"/>
                     </button>
                 </div>
@@ -725,8 +725,7 @@
                 <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
                     Atlas, è necessaria la prenotazione
                 </p>
-                <a class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
-                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                <a class="btn liquidGlass-wrapper" href="prenota.html"> <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
@@ -792,23 +791,34 @@
         <!-- socials icons -->
         <div class="col-12 mt-5">
             <div class="d-flex justify-content-between align-items-end">
+
+                <!-- website logo (left side) -->
                 <div>
                     <img alt="" class="img-fluid" src="./media/icon/LogoNoDark.svg">
                     <!-- alt is empty because it's only a decorative image -->
                 </div>
+
+                <!-- social icons (right side) -->
                 <div>
-                    <a class="btn-empty" onclick="window.location.href='https://open.spotify.com/'" type="submit">
+                    <!-- social 1 -->
+                    <a class="btn-empty" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">
                         <img alt="Apri la nostra pagina di SpottedRayFi" src="media/icon/footer-1.svg"/>
                     </a>
-                    <a class="btn-empty" onclick="window.location.href='https://www.facebook.com/'" type="submit">
+
+                    <!-- social 2 -->
+                    <a class="btn-empty" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                         <img alt="Apri la nostra pagina di FishBook" src="media/icon/footer-2.svg"/>
                     </a>
-                    <a class="btn-empty" onclick="window.location.href='https://www.instagram.com/'" type="submit">
+
+                    <!-- social 3 -->
+                    <a class="btn-empty" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
                         <img alt="Apri la nostra pagina di InfondAlMar" src="media/icon/footer-3.svg"/>
                     </a>
+
                 </div>
             </div>
         </div>
+
     </div>
 </footer>
 
