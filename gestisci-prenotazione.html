@@ -3,49 +3,43 @@
 
 <head>
 
-    <!-- meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
-    <!-- page title -->
-    <title>Prenota un Tavolo o una Sala Privata | Riff - Atlas</title>
+    <title>Prenota un Tavolo o una Sala Privata | Riff - Ristorante Sottomarino Atlas</title>
 
-    <!-- SEO meta tags -->
-    <meta name="description" content="Riserva il tuo tavolo da Riff nel cuore dell'oceano di Atlas. Prenotazioni aperte per cene intime o eventi privati in sala esclusiva.">
-    <meta name="keywords" content="prenotazione Riff, prenotare ristorante Atlas, cena sottomarina prenotazione, eventi privati Atlas, ristorante romantico sottomarino">
-    <meta name="author" content="Riff Team">
-    <meta name="robots" content="index, follow">
+    <meta content="Prenota la tua esperienza sensoriale al Riff, nel cuore dell'oceano di Atlas. Disponibilità per cene intime, tavoli vista abisso ed eventi in sala privata."
+          name="description">
+    <meta content="prenotazione Riff, ristorante Atlas, cena sottomarina, eventi privati Atlas, cucina creativa abissale, prenotare tavolo ristorante"
+          name="keywords">
+    <meta content="Riff Team" name="author">
+    <meta content="index, follow" name="robots">
 
-    <meta property="og:type" content="restaurant.reservation">
-    <meta property="og:url" content="https://marcottolina.github.io/progetto-CVeDI/prenota.html">
-    <meta property="og:title" content="Prenota la tua esperienza da Riff">
-    <meta property="og:description" content="Assicurati un posto nel settore abissale. Prenota ora il tuo tavolo o una sala privata.">
-    <meta property="og:image" content="https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp">
+    <meta content="restaurant.reservation" property="og:type">
+    <meta content="https://marcottolina.github.io/progetto-CVeDI/prenota.html" property="og:url">
+    <meta content="Prenota la tua esperienza da Riff | Atlas" property="og:title">
+    <meta content="Un percorso di suoni, luci e sapori nel settore abissale. Assicurati il tuo tavolo ora."
+          property="og:description">
+    <meta content="https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp" property="og:image">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Prenota un Tavolo | Riff Atlas">
-    <meta name="twitter:description" content="Vivi un'esperienza sensoriale unica. Prenota online.">
-    <meta name="twitter:image" content="https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="Prenota un Tavolo | Riff Atlas" name="twitter:title">
+    <meta content="Vivi un'esperienza sensoriale unica a -230m. Prenota online il tuo tavolo."
+          name="twitter:description">
+    <meta content="https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp" name="twitter:image">
 
-    <!-- canonical tag (SEO) -->
-    <link rel="canonical" href="https://marcottolina.github.io/progetto-CVeDI/prenota.html">
+    <link href="https://marcottolina.github.io/progetto-CVeDI/prenota.html" rel="canonical">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="media/icon/Logo.svg">
+    <link href="media/icon/Logo.svg" rel="icon" type="image/svg+xml">
 
-    <!-- style imports -->
     <link href="./vendor/bootstrap/bootstrap-css/bootstrap.css" rel="stylesheet"/>
     <link href="./css/main.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker.min.css" rel="stylesheet"/>
 
-    <!-- script imports -->
     <script src="./vendor/bootstrap/bootstrap-js/bootstrap.bundle.js"></script>
     <script src="./js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-
-    <!-- page title -->
-    <title>Prenota</title>
 
     <!-- Local CSS (toDo: put it into the main.css) -->
     <style>
@@ -224,7 +218,7 @@
             border: 1px solid var(--blue-70);
         }
 
-        .datepicker-cell.month{
+        .datepicker-cell.month {
             height: auto !important;
             aspect-ratio: 1/1;
         }
@@ -286,7 +280,7 @@
             cursor: not-allowed;
         }
 
-        .datepicker-picker button{
+        .datepicker-picker button {
             background-color: var(--blue-70-30) !important;
             padding: 0 !important;
             margin: 8px !important;
@@ -324,7 +318,7 @@
             z-index: 1;
         }
 
-        .custom-select-wrapper img{
+        .custom-select-wrapper img {
             pointer-events: none;
             width: 20px;
             z-index: 5;
@@ -405,7 +399,7 @@
             background-image: radial-gradient(ellipse, var(--blue-50-30), var(--blue-50-30), transparent, transparent);
         }
 
-        .same-as-selected{
+        .same-as-selected {
             background-color: var(--blue-50-30) !important;
         }
 
@@ -519,55 +513,58 @@
 
         <div class="container-fluid px-4 py-2">
             <a class="navbar-brand liquidGlass-text" href="index.html">
-                <img alt="Logo" height="50" src="media/img/Logo.svg" width="50">
+                <img alt="Torna alla home del Riff" height="50" src="media/img/Logo.svg" width="50">
             </a>
 
             <div class="liquidGlass-text">
-                <button class="btn-nav liquidGlass-wrapper nav-lan-ita d-none"
-                        onclick="window.location.href='prenota.html'">
+
+                <a class="btn-nav liquidGlass-wrapper nav-lan-ita d-none"
+                   href="prenota.html">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Prenota</span>
-                </button>
-                <button class="btn-nav liquidGlass-wrapper nav-lan-med d-none"
-                        onclick="window.location.href='prenota.html'">
+                </a>
+
+                <a class="btn-nav liquidGlass-wrapper nav-lan-med d-none"
+                   href="prenota.html">
                     <span aria-hidden="true" class="liquidGlass-effect"></span>
                     <span aria-hidden="true" class="liquidGlass-tint"></span>
                     <span aria-hidden="true" class="liquidGlass-shine"></span>
                     <span class="liquidGlass-text">Pewuofh</span>
-                </button>
+                </a>
+
                 <div class="d-flex d-none d-md-block">
-                    <button class="btn-secondary btn-lan-ita">ITA</button>
-                    <span>/</span>
-                    <button class="btn-secondary btn-lan-med">MED</button>
+                    <button class="btn-secondary btn-lan-ita" aria-label="Passa alla lingua Italiana">ITA</button>
+                    <span aria-hidden="true">/</span>
+                    <button class="btn-secondary btn-lan-med" aria-label="Passa alla lingua Medusa">MED</button>
                 </div>
+
                 <button aria-controls="offCanvasFull" class="btn-empty" data-bs-target="#offCanvasFull"
                         data-bs-toggle="offcanvas"
-                        type="button">
-                    <img alt="hamburger-menu" src="media/icon/hamburger-menu.svg"/>
+                        type="button"
+                        aria-label="Apri menu di navigazione">
+                    <img alt="" src="media/icon/hamburger-menu.svg"/>
                 </button>
             </div>
         </div>
     </nav>
 </header>
 
-<!-- Off-canvas full-page (= opened hamburger menu) [updated] -->
+<!-- Off-canvas full-page (= opened hamburger menu) -->
 <div aria-labelledby="offcanvasFullLabel" class="offcanvas offcanvas-top" data-bs-backdrop="true" data-bs-scroll="false"
      id="offCanvasFull" tabindex="-1">
     <div class="offcanvas-body p-3">
         <div class="container-fluid">
             <div class="row g-0">
 
-                <!-- LOGO -->
                 <div class="col-6 col-md-2 order-1">
-                    <img alt="" src="media/img/Logo.svg">
+                    <img alt="Logo Riff" src="media/img/Logo.svg">
                 </div>
 
-                <!-- IMAGE (when big enough) -->
                 <div class="col-md-5 d-none d-md-block order-2">
                     <img
-                            alt="Immagine raffigurante l'esterno del ristorante"
+                            alt="Esterno del ristorante Riff immerso nell'oceano di Atlas"
                             class="img-fluid"
                             loading="lazy"
                             sizes="
@@ -586,72 +583,73 @@
                     >
                 </div>
 
-                <!-- MENU ITA-->
                 <div class="col-md-4 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center lan-ita">
                     <div class="d-flex flex-column align-items-start justify-content-around">
-                        <button class="btn-nav liquidGlass-wrapper my-4" onclick="window.location.href='prenota.html'">
+
+                        <a class="btn-nav liquidGlass-wrapper my-4" href="prenota.html">
                             <span aria-hidden="true" class="liquidGlass-effect"></span>
                             <span aria-hidden="true" class="liquidGlass-tint"></span>
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
                             <span class="liquidGlass-text">Prenota</span>
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='index.html'" type="button">Home
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='ristorante.html'" type="button">
+                        </a>
+
+                        <a class="btn-empty my-4" href="index.html">
+                            Home
+                        </a>
+                        <a class="btn-empty my-4" href="ristorante.html">
                             Il ristorante
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='info.html'" type="button">
+                        </a>
+                        <a class="btn-empty my-4" href="info.html">
                             Informazioni
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='pagina-libera.html'"
-                                type="button">
+                        </a>
+                        <a class="btn-empty my-4" href="pagina-libera.html">
                             Serate speciali
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='menu.html'" type="button">Il
-                            menù
-                        </button>
+                        </a>
+                        <a class="btn-empty my-4" href="menu.html">
+                            Il menù
+                        </a>
                     </div>
                 </div>
 
-                <!-- MENU MED-->
                 <div class="col-md-4 d-flex mt-5 mt-md-0 flex-column order-3 order-md-last align-items-center lan-med">
                     <div class="d-flex flex-column align-items-start justify-content-around">
-                        <button class="btn-nav liquidGlass-wrapper my-4" onclick="window.location.href='prenota.html'">
+
+                        <a class="btn-nav liquidGlass-wrapper my-4" href="prenota.html">
                             <span aria-hidden="true" class="liquidGlass-effect"></span>
                             <span aria-hidden="true" class="liquidGlass-tint"></span>
                             <span aria-hidden="true" class="liquidGlass-shine"></span>
                             <span class="liquidGlass-text">Pewuofh</span>
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='index.html'" type="button">wefrw
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='ristorante.html'" type="button">
+                        </a>
+
+                        <a class="btn-empty my-4" href="index.html">
+                            wefrw
+                        </a>
+                        <a class="btn-empty my-4" href="ristorante.html">
                             HJDUYEW
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='info.html'" type="button">fwfrw
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='pagina-libera.html'"
-                                type="button">
+                        </a>
+                        <a class="btn-empty my-4" href="info.html">
+                            fwfrw
+                        </a>
+                        <a class="btn-empty my-4" href="pagina-libera.html">
                             oeuwhuiew
-                        </button>
-                        <button class="btn-empty my-4" onclick="window.location.href='menu.html'" type="button">
+                        </a>
+                        <a class="btn-empty my-4" href="menu.html">
                             dafregre
-                        </button>
+                        </a>
                     </div>
                 </div>
 
-                <!-- BUTTON TO CLOSE -->
                 <div class="col-6 col-md-1 d-flex justify-content-end align-items-start order-2 order-md-last">
-                    <button aria-label="Chiudi" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
-                        <img alt="close" src="media/icon/x-icon.svg"/>
+                    <button aria-label="Chiudi menu" class="btn-close-custom" data-bs-dismiss="offcanvas" type="button">
+                        <img alt="" src="media/icon/x-icon.svg"/>
                     </button>
                 </div>
 
-                <!-- BUTTON LANGUAGE MOBILE  -->
                 <div class="d-flex justify-content-end align-content-end d-md-none position-absolute bottom-0 my-5 px-5"
                      id="btns-lan-mobile">
-                    <button class="btn-secondary btn-lan-ita">ITA</button>
-                    <span>/</span>
-                    <button class="btn-secondary btn-lan-med">MED</button>
+                    <button class="btn-secondary btn-lan-ita" aria-label="Passa alla lingua Italiana">ITA</button>
+                    <span aria-hidden="true">/</span>
+                    <button class="btn-secondary btn-lan-med" aria-label="Passa alla lingua Medusa">MED</button>
                 </div>
 
             </div>
@@ -677,8 +675,11 @@
 
 <div class="top-overlay">
 
-    <!-- first section: booking section 1 -->
-    <section class="pt-5 booking-section d-flex justify-content-center" id="booking-1">
+    <!-- Edit booked dinner reservation -->
+    <section class="pt-5 booking-section d-flex justify-content-center" id="booking-1" aria-label="Gestione Prenotazione">
+
+        <h2 class="visually-hidden">Dettagli Prenotazione</h2>
+
         <div class="container box-prenota p-5 m-3 liquidGlass-wrapper d-flex justify-content-center mx-md-5">
 
             <div class="liquidGlass-effect"></div>
@@ -687,15 +688,14 @@
 
             <div class="liquidGlass-text d-flex flex-column align-items-center">
                 <form class="row g-4 justify-content-center needs-validation" novalidate>
-                    <div class="col-12 d-flex justify-content-between container-fluid">
-                        <h5>ID: RFF-2531-001234</h5>
+                    <div class="col-12 d-flex justify-content-between container-fluid align-items-center">
+                        <p class="h5 fw-bold mb-0">ID: RFF-2531-001234</p>
                         <div>
-                            <span id="confermata">Confermata</span>
-                        </div>
+                            <span id="confermata" class="badge">Confermata</span> </div>
                     </div>
 
                     <div class="col-md-6 px-3">
-                        <input class="form-control" placeholder="Nome*" required type="text" value="Mario Rossi">
+                        <input class="form-control" placeholder="Nome*" required type="text" value="Mario Rossi" aria-label="Nome intestatario prenotazione">
                         <div class="invalid-feedback">Inserire un nome</div>
                     </div>
 
@@ -703,7 +703,7 @@
                         <div class="custom-select-wrapper m-0" data-target="selectPersone">
                             <div class="select-selected">4 persone</div> <div class="select-items select-hide"></div>
                         </div>
-                        <select aria-hidden="true" class="form-select custom-hidden-select" id="selectPersone" name="persone" required tabindex="-1">
+                        <select aria-label="Seleziona numero di persone" class="form-select custom-hidden-select" id="selectPersone" name="persone" required tabindex="-1">
                             <option disabled value="">Persone*</option>
                             <option value="1">1 persona</option>
                             <option value="2">2 persone</option>
@@ -715,17 +715,18 @@
 
                     <div class="col-md-6 px-3">
                         <div class="input-group">
-                            <input autocomplete="off" class="form-control" id="bookingDate" placeholder="Data*" readonly required type="text" value="23/03/2026">
-                            <img class="img-fluid position-absolute top-50 end-0 translate-middle-y me-3" alt="date icon" src="media/icon/calendar.svg">
+                            <input autocomplete="off" class="form-control" id="bookingDate" placeholder="Data*" readonly required type="text" value="23/03/2026" aria-label="Seleziona data prenotazione">
+                            <img class="img-fluid position-absolute top-50 end-0 translate-middle-y me-3" alt="Icona calendario" src="media/icon/calendar.svg">
                         </div>
                     </div>
 
                     <div class="col-md-6 px-3">
                         <div class="custom-select-wrapper m-0" data-target="selectOrario">
-                            <div class="select-selected">19:30</div> <img class="img-fluid position-absolute top-50 end-0 translate-middle-y me-3" alt="date icon" src="media/icon/clock.svg">
+                            <div class="select-selected">19:30</div>
+                            <img class="img-fluid position-absolute top-50 end-0 translate-middle-y me-3" alt="Icona orologio" src="media/icon/clock.svg">
                             <div class="select-items select-hide"></div>
                         </div>
-                        <select aria-hidden="true" class="form-select custom-hidden-select" id="selectOrario" name="orario" required tabindex="-1">
+                        <select aria-label="Seleziona orario cena" class="form-select custom-hidden-select" id="selectOrario" name="orario" required tabindex="-1">
                             <option disabled value="">Orario*</option>
                             <option value="19:00">19:00</option>
                             <option value="19:30" selected>19:30</option> <option value="20:00">20:00</option>
@@ -753,216 +754,249 @@
             </div>
         </div>
     </section>
+
 </div>
 
 
-<div class="top-overlay">
+<!-- Footer -->
+<footer class="p-4section-bg-light">
+    <div class="container-fluid p-5">
+        <div class="row g-5">
 
-    <!-- Footer -->
-    <footer class="p-4section-bg-light">
-        <div class="container-fluid p-5">
-            <div class="row g-5">
-
-                <!-- restaurant's information -->
-                <div class="col-7 col-md-4">
-                    <h5>Orari di apertura</h5>
-                    <p>Martedì - Domenica <br> 19:00 - 01:00</p>
-                    <h5>Contatti</h5>
-                    <p>Riff <br> Atlas, P.zza Corolleo 1 <br>24°N - 46°O, -230 m <br><br>
-                        Settore abissale Ovest
-                    </p>
-                </div>
-
-                <!-- booking -->
-                <div class="col-7 col-md-4">
-                    <h5>Prenotazioni</h5>
-                    <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
-                        Atlas, è necessaria la prenotazione
-                    </p>
-                    <button class="btn liquidGlass-wrapper" onclick="window.location.href='prenota.html'" type="submit">
-                        <span aria-hidden="true" class="liquidGlass-effect"></span>
-                        <span aria-hidden="true" class="liquidGlass-tint"></span>
-                        <span aria-hidden="true" class="liquidGlass-shine"></span>
-                        <span class="liquidGlass-text">Prenota</span>
-                    </button>
-                </div>
-
-                <!-- newsletter -->
-                <div class="col-7 col-md-4">
-                    <div class="row justify-content-md-end mt-3">
-                        <div class="d-flex flex-column position-relative">
-
-                            <!-- newsletter's heading and information -->
-                            <h5>Linea abissale</h5>
-                            <p>
-                                Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
-                            </p>
-
-                            <!-- newsletter's form -->
-                            <form class="needs-validation" novalidate>
-                                <div>
-                                    <label class="form-label" for="validationCustomUsername">Email</label>
-                                    <div class="input-group has-validation">
-
-                                        <input aria-describedby="inputGroupPrepend" class="form-control"
-                                               id="validationCustomUsername"
-                                               required type="text"
-                                               placeholder="nome@esempio.com"
-                                        >
-                                        <div class="invalid-feedback mt-1 ms-1">
-                                            Devi inserire un'e-mail valida!
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn liquidGlass-wrapper mt-3" type="submit">
-                                        <span aria-hidden="true" class="liquidGlass-effect"></span>
-                                        <span aria-hidden="true" class="liquidGlass-tint"></span>
-                                        <span aria-hidden="true" class="liquidGlass-shine"></span>
-                                        <span class="liquidGlass-text">Iscriviti</span>
-                                    </button>
-                                </div>
-                            </form>
-
-                            <!-- newsletter's registration error message -->
-                            <div class="mt-5 py-3 d-flex align-items-center invalid-popup-container">
-                                <p class="mb-0 p-2 invalid-popup">
-                                    Errore nella registrazione alla newsletter
-                                </p>
-                            </div>
-
-                            <!-- newsletter's registration success message -->
-                            <div class="mt-5 py-3 d-flex align-items-center valid-popup-container">
-                                <p class="mb-0 p-2 valid-popup">
-                                    Registrazione effettuata correttamente
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+            <!-- restaurant's information -->
+            <div class="col-7 col-md-4">
+                <h5>Orari di apertura</h5>
+                <p>Martedì - Domenica <br> 19:00 - 01:00</p>
+                <h5>Contatti</h5>
+                <p>Riff <br> Atlas, P.zza Corolleo 1 <br>24°N - 46°O, -230 m <br><br>
+                    Settore abissale Ovest
+                </p>
             </div>
 
-            <!-- socials icons -->
-            <div class="col-12 mt-5">
-                <div class="d-flex justify-content-between align-items-end">
-                    <div>
-                        <img alt="" class="img-fluid" src="./media/icon/LogoNoDark.svg">
-                        <!-- alt is empty because it's only a decorative image -->
-                    </div>
-                    <div>
-                        <button class="btn-empty" onclick="window.location.href='https://open.spotify.com/'" type="submit">
-                            <img alt="Apri la nostra pagina di SpottedRayFi" src="media/icon/footer-1.svg"/>
-                        </button>
-                        <button class="btn-empty" onclick="window.location.href='https://www.facebook.com/'" type="submit">
-                            <img alt="Apri la nostra pagina di FishBook" src="media/icon/footer-2.svg"/>
-                        </button>
-                        <button class="btn-empty" onclick="window.location.href='https://www.instagram.com/'" type="submit">
-                            <img alt="Apri la nostra pagina di InfondAlMar" src="media/icon/footer-3.svg"/>
-                        </button>
+            <!-- booking -->
+            <div class="col-7 col-md-4">
+                <h5>Prenotazioni</h5>
+                <p>Per vivere l’esperienza di un percorso di suoni, luci e sapori custoditi nel cuore del fondale di
+                    Atlas, è necessaria la prenotazione
+                </p>
+                <a class="btn liquidGlass-wrapper" href="prenota.html"> <span aria-hidden="true" class="liquidGlass-effect"></span>
+                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                    <span class="liquidGlass-text">Prenota</span>
+                </a>
+            </div>
+
+            <!-- newsletter -->
+            <div class="col-7 col-md-4">
+                <div class="row justify-content-md-end mt-3">
+                    <div class="d-flex flex-column position-relative">
+
+                        <!-- newsletter's heading and information -->
+                        <h5>Linea abissale</h5>
+                        <p>
+                            Resta aggiornato sulle serate: inserisci i tuoi dati per iscriverti alla linea abissale
+                        </p>
+
+                        <!-- newsletter's form -->
+                        <form class="needs-validation" novalidate>
+                            <div>
+                                <label class="form-label" for="validationCustomUsername">Email</label>
+                                <div class="input-group has-validation">
+
+                                    <input aria-describedby="inputGroupPrepend" class="form-control"
+                                           id="validationCustomUsername"
+                                           required type="text"
+                                           placeholder="nome@esempio.com"
+                                    >
+                                    <div class="invalid-feedback mt-1 ms-1" aria-live="polite">
+                                        Devi inserire un'e-mail valida!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn liquidGlass-wrapper mt-3" type="submit">
+                                    <span aria-hidden="true" class="liquidGlass-effect"></span>
+                                    <span aria-hidden="true" class="liquidGlass-tint"></span>
+                                    <span aria-hidden="true" class="liquidGlass-shine"></span>
+                                    <span class="liquidGlass-text">Iscriviti</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- newsletter's registration error message -->
+                        <div class="mt-5 py-3 d-flex align-items-center invalid-popup-container">
+                            <p class="mb-0 p-2 invalid-popup">
+                                Errore nella registrazione alla newsletter
+                            </p>
+                        </div>
+
+                        <!-- newsletter's registration success message -->
+                        <div class="mt-5 py-3 d-flex align-items-center valid-popup-container">
+                            <p class="mb-0 p-2 valid-popup">
+                                Registrazione effettuata correttamente
+                            </p>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <!-- Empty div to set the mouse effect only when content is shown (doesn't work directly put on body) -->
-    <div class="circle"></div>
+        <!-- socials icons -->
+        <div class="col-12 mt-5">
+            <div class="d-flex justify-content-between align-items-end">
 
-    <!-- Liquid glass pattern (done through SVG) -->
-    <svg style="display: none">
-        <filter height="100%" id="glass-distortion" width="100%" x="0%" y="0%">
+                <!-- website logo (left side) -->
+                <div>
+                    <img alt="" class="img-fluid" src="./media/icon/LogoNoDark.svg">
+                    <!-- alt is empty because it's only a decorative image -->
+                </div>
 
-            <feTurbulence
-                    baseFrequency="0.01 0.01"
-                    numOctaves="30"
-                    result="turbulence"
-                    seed="31"
-                    type="fractalNoise"
-            />
+                <!-- social icons (right side) -->
+                <div>
+                    <!-- social 1 -->
+                    <a class="btn-empty" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">
+                        <span class="visually-hidden">(Apre in una nuova scheda)</span>
+                        <img alt="Apri la nostra pagina di SpottedRayFi" src="media/icon/footer-1.svg"/>
+                    </a>
 
-            <feGaussianBlur
-                    in="turbulence"
-                    result="softMap"
-                    stdDeviation="3"
-            />
+                    <!-- social 2 -->
+                    <a class="btn-empty" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                        <span class="visually-hidden">(Apre in una nuova scheda)</span>
+                        <img alt="Apri la nostra pagina di FishBook" src="media/icon/footer-2.svg"/>
+                    </a>
 
-            <feDisplacementMap
-                    in="SourceGraphic"
-                    in2="softMap"
-                    scale="30"
-                    xChannelSelector="R"
-                    yChannelSelector="G"
-            />
+                    <!-- social 3 -->
+                    <a class="btn-empty" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                        <span class="visually-hidden">(Apre in una nuova scheda)</span>
+                        <img alt="Apri la nostra pagina di InfondAlMar" src="media/icon/footer-3.svg"/>
+                    </a>
 
-        </filter>
-    </svg>
+                </div>
+            </div>
+        </div>
 
-    <script>
-        //SNIPPED DI BOOTSTRAP PER VALIDARE IL FORM
-        (() => {
-            'use strict'
+    </div>
+</footer>
 
-            const forms = document.querySelectorAll('.needs-validation')
+<!-- Empty div to set the mouse effect only when content is shown (doesn't work directly put on body) -->
+<div class="circle"></div>
 
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
+<!-- Liquid glass pattern (done through SVG) -->
+<svg style="display: none">
+    <filter height="100%" id="glass-distortion" width="100%" x="0%" y="0%">
 
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
+        <feTurbulence
+                baseFrequency="0.01 0.01"
+                numOctaves="30"
+                result="turbulence"
+                seed="31"
+                type="fractalNoise"
+        />
 
-    </script>
+        <feGaussianBlur
+                in="turbulence"
+                result="softMap"
+                stdDeviation="3"
+        />
 
-    <!-- SEO script -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Restaurant",
-            "name": "Riff",
-            "image": "https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp",
-            "url": "https://marcottolina.github.io/progetto-CVeDI/prenota.html",
-            "telephone": "+39000000000",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "P.zza Corolleo 1",
-                "addressLocality": "Atlas",
-                "addressRegion": "Settore Abissale Ovest",
-                "postalCode": "00000",
-                "addressCountry": "IT"
-            },
-            "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 24.0000,
-                "longitude": -46.0000
-            },
-            "priceRange": "$$$$",
-            "acceptsReservations": "True",
+        <feDisplacementMap
+                in="SourceGraphic"
+                in2="softMap"
+                scale="30"
+                xChannelSelector="R"
+                yChannelSelector="G"
+        />
 
-            "potentialAction": {
-                "@type": "ReserveAction",
-                "target": {
-                    "@type": "EntryPoint",
-                    "urlTemplate": "https://marcottolina.github.io/progetto-CVeDI/prenota.html",
-                    "inLanguage": "it-IT",
-                    "actionPlatform": [
-                        "http://schema.org/DesktopWebPlatform",
-                        "http://schema.org/IOSPlatform",
-                        "http://schema.org/AndroidPlatform"
-                    ]
-                },
-                "result": {
-                    "@type": "FoodEstablishmentReservation",
-                    "name": "Prenotazione Tavolo"
+    </filter>
+</svg>
+
+<script>
+    //SNIPPED DI BOOTSTRAP PER VALIDARE IL FORM
+    (() => {
+        'use strict'
+
+        const forms = document.querySelectorAll('.needs-validation')
+
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
                 }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+
+</script>
+
+<!-- SEO script -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Riff",
+        "description": "Ristorante sottomarino nel settore abissale di Atlas. Esperienza culinaria e sensoriale.",
+        "image": "https://marcottolina.github.io/progetto-CVeDI/media/img/home-2-1200w.webp",
+        "url": "https://marcottolina.github.io/progetto-CVeDI/prenota.html",
+        "telephone": "+39000000000",
+        "servesCuisine": "Creativa Abissale",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "P.zza Corolleo 1",
+            "addressLocality": "Atlas",
+            "addressRegion": "Settore Abissale Ovest",
+            "postalCode": "00000",
+            "addressCountry": "IT"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 24.0000,
+            "longitude": -46.0000
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ],
+                "opens": "19:00",
+                "closes": "01:00"
+            }
+        ],
+        "priceRange": "$$$$",
+        "acceptsReservations": "True",
+        "sameAs": [
+            "https://www.facebook.com/",
+            "https://www.instagram.com/",
+            "https://open.spotify.com/"
+        ],
+        "potentialAction": {
+            "@type": "ReserveAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://marcottolina.github.io/progetto-CVeDI/prenota.html",
+                "inLanguage": "it-IT",
+                "actionPlatform": [
+                    "http://schema.org/DesktopWebPlatform",
+                    "http://schema.org/IOSPlatform",
+                    "http://schema.org/AndroidPlatform"
+                ]
+            },
+            "result": {
+                "@type": "FoodEstablishmentReservation",
+                "name": "Prenotazione Tavolo"
             }
         }
-    </script>
+    }
+</script>
 
 </body>
 </html>

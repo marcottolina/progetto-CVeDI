@@ -65,8 +65,9 @@ Otto:
     - piatto-2:
     - piatto-3:
 
-- ristorante.html -> recensioni dei critici {TO-DO}
-- pagina per gestire le prenotazioni {TO-DO}
+- ristorante.html -> recensioni dei critici [FATTO]
+- pagina per gestire le prenotazioni [FATTO]
+- Aggiustamenti estetici accordion e values subito prima di esso [FATTO]
 
 
 YuYu:
