@@ -1248,8 +1248,8 @@ body.is-map-interacting .circle {
         pointer-events: none; /* to make the mouse pass through the gradient - otherwise it captures the hovers */
     }
 
-    /* To make the gradient disappear when hovered */
-    #map-container:hover::after {
+    /* To make the gradient disappear when hovered anywhere in the section (map OR button) */
+    #map:hover #map-container::after {
         opacity: 0;
     }
 }
