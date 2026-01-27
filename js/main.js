@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         function checkResolution() {
             const width = window.innerWidth;
 
-            if (width >= 992) { // Dots for desktop only
+            if (width >= 768) { // Dots for desktop only
                 if (!isDesktop) {
                     createDots();
                     isDesktop = true;
