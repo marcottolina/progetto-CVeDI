@@ -143,7 +143,7 @@
                         <a class="btn-empty my-4" href="info.html">
                             Informazioni
                         </a>
-                        <a class="btn-empty my-4" href="pagina-libera.html">
+                        <a class="btn-empty my-4" href="serate-speciali.html">
                             Serate speciali
                         </a>
                         <a class="btn-empty my-4" href="menu.html">
@@ -171,7 +171,7 @@
                         <a class="btn-empty my-4" href="info.html">
                             fwfrw
                         </a>
-                        <a class="btn-empty my-4" href="pagina-libera.html">
+                        <a class="btn-empty my-4" href="serate-speciali.html">
                             oeuwhuiew
                         </a>
                         <a class="btn-empty my-4" href="menu.html">
@@ -223,15 +223,15 @@
 <div class="top-overlay">
 
     <!-- first section: restaurant's presentation -->
-    <section class="py-5">
-        <div class="container d-flex flex-column justify-content-center align-items-center text-center py-5">
+    <section class="py-5 px-3 px-md-0">
+        <div class="container d-flex flex-column justify-content-center align-items-center text-center py-5 col-md-8">
             <h2>Nato per sorprendere</h2>
             <p>
                 Riff è dedicato all’esplorazione del mondo marino, nato dal desiderio di valorizzare ingredienti di alta
                 qualità in armonia con musica ispirata alle civiltà antiche.
                 Il nostro team innovativo trasforma le risorse marine in un’esperienza unica.
             </p>
-            <a href="prenota.html" class="btn-nav liquidGlass-wrapper nav-lan-ita d-none text-decoration-none">
+            <a class="btn liquidGlass-wrapper my-4" href="#descrizione">
                 <span aria-hidden="true" class="liquidGlass-effect"></span>
                 <span aria-hidden="true" class="liquidGlass-tint"></span>
                 <span aria-hidden="true" class="liquidGlass-shine"></span>
@@ -311,7 +311,7 @@
 </div>
 
 <!-- third section: menu-description + quick-send to menu -->
-<section class="py-5 section-bg-blue-gradient text-center">
+<section class="py-5 section-bg-blue-gradient text-center px-3 px-md-0" id="descrizione">
     <div class="container liquidGlass-text  my-5">
         <div class="container text-center h-100 text-center d-flex flex-column justify-content-center align-items-center my-5">
             <h2>Qualità ed esperienze uniche</h2>
@@ -496,7 +496,7 @@
                 <div class="d-flex flex-row justify-content-between">
 
                     <!-- "previous" button -->
-                    <button class="btn liquidGlass-wrapper swiper-button-prev position-absolute top-50 start-0 btn-circular ms-5">
+                    <button class="btn liquidGlass-wrapper swiper-button-prev position-absolute p-3 top-50 start-0 btn-circular ms-5">
                         <span aria-hidden="true" class="liquidGlass-effect"></span>
                         <span aria-hidden="true" class="liquidGlass-tint"></span>
                         <span aria-hidden="true" class="liquidGlass-shine"></span>
@@ -504,7 +504,7 @@
                     </button>
 
                     <!-- "next" button -->
-                    <button class="btn liquidGlass-wrapper swiper-button-next position-absolute top-50 end-0 btn-circular me-5">
+                    <button class="btn liquidGlass-wrapper swiper-button-next position-absolute p-3 top-50 end-0 btn-circular me-5">
                         <span aria-hidden="true" class="liquidGlass-effect"></span>
                         <span aria-hidden="true" class="liquidGlass-tint"></span>
                         <span aria-hidden="true" class="liquidGlass-shine"></span>
@@ -519,16 +519,23 @@
     <!-- CLOSE TOP-OVERLAY-->
 </div>
 
-<!-- fifth section: special evenings description + quick-send to their page (pagina-libera.html) -->
-<section class="py-5 section-bg-blue-gradient d-flex justify-content-center">
-    <div class="container liquidGlass-text my-5 row">
+<!-- fifth section: special evenings description + quick-send to their page (serate-speciali.html) -->
+<section class="py-5 section-bg-blue-gradient d-flex justify-content-center px-3 px-md-0">
+    <div class="container liquidGlass-text my-5 row timeline-item col-md-8">
         <div class="row">
-            <div class="col-md-6">
-                <video autoplay class="img-fluid" loop muted playsinline>
-                    <source src="media/video/bolla2.mp4" type="video/mp4">
-                </video>
+            <div class="col-md-6 order-md-1 order-2 mt-5 mt-md-0 p-5">
+
+                    <div class="bubble-box" id="bollaPaginaPiatto1">
+
+                        <img src="./media/img/Bolla1.png"
+                             data-static="./media/img/Bolla1.png"
+                             data-gif="./media/video/Bolla1.gif"
+                             alt="Descrizione"
+                             class="img-fluid"
+                        >
+                    </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 order-md-2 order-1">
                 <h3>Serate speciali</h3>
                 <p>Riff propone eventi speciali per trascorrere cene uniche e indimenticabili:
                     cantanti e gruppi musicali accompagnano ogni portata con brani dal vivo per esperienze condivise.
@@ -553,7 +560,7 @@
 
                     <!-- send to <special evenings page> button -->
                     <a class="btn mt-2 liquidGlass-wrapper"
-                            onclick="window.location.href='./pagina-libera.html'">
+                            onclick="window.location.href='./serate-speciali.html'">
                         <span aria-hidden="true" class="liquidGlass-effect"></span>
                         <span aria-hidden="true" class="liquidGlass-tint"></span>
                         <span aria-hidden="true" class="liquidGlass-shine"></span>

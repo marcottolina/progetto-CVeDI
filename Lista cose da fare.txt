@@ -55,15 +55,15 @@ Otto:
     - Allineamenti
 
 - Revisione generale responsiveness del sito
-    - index:
-    - info:
-    - menu:
-    - pagina-libera:
-    - prenota:
-    - ristorante:
-    - piatto-1:
-    - piatto-2:
-    - piatto-3:
+    - index: fatto tutto tranne il gradient nell'hero
+    - info: tutto ok, non si vede molto lo sfondo nel telefono
+    - menu: la parte bassa va benissimo, la timeline è migliorabile un minimo ma non riesco a capire perchè c'è tutto quello spazio sotto la bolla della musica
+    - pagina-libera: ottima
+    - prenota: ottima (vedere mappa)
+    - ristorante: occhio a sfumatura nell'hero e le foto per le recensioni, il resto benissimo
+    - piatto-1: (Thalassa), occhio a sfumatura nell'hero, resto ok
+    - piatto-2: (Madreperla), sempre sfumatura nell'hero (è al contrario?)
+    - piatto-3: (Bioluma), sempre sfumatura nell'hero (è al contrario?)
 
 - ristorante.html -> recensioni dei critici [FATTO]
 - pagina per gestire le prenotazioni [FATTO]
@@ -83,7 +83,7 @@ YuYu:
     - info: [FATTO]
     - menu: [FATTO]
     - pagina-libera: [FATTO]
-    - prenota: {TODO FORM}
+    - prenota: [FATTO]
     - ristorante: [FATTO]
     - piatto-1: [FATTO]
     - piatto-2: [FATTO]

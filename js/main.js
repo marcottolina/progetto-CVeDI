@@ -79,23 +79,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // function to "sense" the dots needing to be filled / emptied
         function updateTimeline() {
-
             const scrollTop = window.scrollY;
             const viewportHeight = window.innerHeight;
             const timelineTop = timeline.offsetTop;
             const timelineHeight = timeline.offsetHeight;
 
-            let fillHeight = scrollTop + viewportHeight / 1.5 - timelineTop;
+            // 1. Calcolo del riempimento più preciso
+            // Usiamo il centro dello schermo (viewportHeight / 2) come "puntatore"
+            let fillHeight = scrollTop + (viewportHeight / 2) - timelineTop;
             fillHeight = Math.max(0, Math.min(fillHeight, timelineHeight));
             fill.style.height = fillHeight + "px";
 
-            if (dots.length > 0) {
-                dots.forEach(dot => {
-                    const dotTop = dot.offsetTop;
-                    if (dotTop <= fillHeight) dot.classList.add("active");
-                    else dot.classList.remove("active");
-                });
-            }
+            // 2. Attivazione dot (sia quelli dinamici desktop che quelli manuali mobile)
+            const allDots = document.querySelectorAll(".timeline-dot");
+            allDots.forEach(dot => {
+                // Calcoliamo la posizione del dot rispetto all'inizio della timeline
+                const dotOffsetTop = dot.getBoundingClientRect().top + window.scrollY - timelineTop;
+
+                if (dotOffsetTop <= fillHeight) {
+                    dot.classList.add("active");
+                } else {
+                    dot.classList.remove("active");
+                }
+            });
         }
 
         // function to see current scroll-status within page
@@ -108,11 +114,11 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        // function to only put the dots in desktop and remove them from mobile / tablet
+        // function to only put the dots in desktop / tablet and remove them from mobile
         function checkResolution() {
             const width = window.innerWidth;
 
-            if (width >= 768) { // Dots for desktop only
+            if (width >= 768) { // Dots for md > only
                 if (!isDesktop) {
                     createDots();
                     isDesktop = true;
