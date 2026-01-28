@@ -233,109 +233,117 @@
 
 <div class="top-overlay">
 
-    <!-- first section: booking section 1 -->
+    <!-- first section: booking section 1 --> <!-- toDo: fix calendar look when booking-section (and not booking-seciton-2) is assigned -->
     <section class="pt-5 booking-section d-flex justify-content-center" id="booking-1">
 
-        <div class="container box-prenota p-5 m-3 liquidGlass-wrapper d-flex justify-content-center  mx-md-5">
+        <div class="container box-prenota p-5 m-3 liquidGlass-wrapper d-flex justify-content-center mx-md-5">
 
-            <!-- liquid glass filters -->
             <div class="liquidGlass-effect"></div>
             <div class="liquidGlass-shine"></div>
             <div class="liquidGlass-tint"></div>
 
-            <!-- regular booking section -->
             <div class="liquidGlass-text d-flex flex-column align-items-center">
                 <form class="row g-4 justify-content-center needs-validation" novalidate>
                     <h2 class="col-12 d-flex justify-content-center pb-md-5 pt-2">Prenotazione tavoli</h2>
-                        <div class="col-md-6 px-3">
-                            <input class="form-control" placeholder="Nome*" required type="text">
-                            <div class="invalid-feedback">
-                                Inserire un nome
-                            </div>
+
+                    <div class="col-md-6 px-3">
+                        <label for="bookingName" class="visually-hidden">Nome</label>
+                        <input class="form-control" id="bookingName" placeholder="Nome*" required type="text">
+                        <div class="invalid-feedback">
+                            Inserire un nome
                         </div>
-                        <div class="col-md-6 px-3">
+                    </div>
 
-                                <div class="custom-select-wrapper m-0" data-target="selectPersone">
-                                    <div class="select-selected">Persone*</div>
-                                    <div class="select-items select-hide">
-                                    </div>
-                                </div>
-                                <select
-                                        aria-hidden="true"
-                                        class="form-select custom-hidden-select"
-                                        id="selectPersone"
-                                        name="persone"
-                                        required
-                                        tabindex="-1">
-                                    <option disabled selected value="">Persone*</option>
-                                    <option value="1">1 persona</option>
-                                    <option value="2">2 persone</option>
-                                    <option value="3">3 persone</option>
-                                    <option value="4">4 persone</option>
-                                    <option value="5">5 persone</option>
-                                    <option value="6">6 persone</option>
-                                </select>
-
+                    <div class="col-md-6 px-3">
+                        <div class="custom-select-wrapper m-0" data-target="selectPersone">
+                            <div class="select-selected">Persone*</div>
+                            <div class="select-items select-hide"></div>
                         </div>
 
-                        <!-- Date -->
-                        <div class="col-md-6 px-3">
-                            <div class="input-group">
-                                <input
-                                        autocomplete="off"
-                                        class="form-control"
-                                        id="bookingDate"
-                                        placeholder="Data*"
-                                        readonly
-                                        required
-                                        type="text"
-                                >
-                                <img class="img-fluid position-absolute top-50 end-0 translate-middle-y me-3"
-                                     alt="date icon"
-                                     src="media/icon/calendar.svg"
-                                >
-                            </div>
+                        <select
+                                class="form-select custom-hidden-select"
+                                id="selectPersone"
+                                name="persone"
+                                required
+                                tabindex="-1"
+                                aria-label="Numero di persone"
+                        >
+                            <option disabled selected value="">Persone*</option>
+                            <option value="1">1 persona</option>
+                            <option value="2">2 persone</option>
+                            <option value="3">3 persone</option>
+                            <option value="4">4 persone</option>
+                            <option value="5">5 persone</option>
+                            <option value="6">6 persone</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Selezionare il numero di persone
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 px-3">
+                        <label for="bookingDate" class="visually-hidden">Data</label>
+                        <div class="input-group">
+                            <input
+                                    autocomplete="off"
+                                    class="form-control"
+                                    id="bookingDate"
+                                    placeholder="Data*"
+                                    readonly
+                                    required
+                                    type="text"
+                            >
+                            <img class="img-fluid position-absolute top-50 end-0 translate-middle-y me-3"
+                                 alt=""
+                                 src="media/icon/calendar.svg"
+                            >
+                        </div>
+                        <div class="invalid-feedback">
+                            Selezionare una data
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 px-3">
+                        <div class="custom-select-wrapper m-0" data-target="selectOrario">
+                            <div class="select-selected">Orario*</div>
+                            <img class="img-fluid position-absolute top-50 end-0 translate-middle-y me-3"
+                                 alt=""
+                                 src="media/icon/clock.svg"
+                            >
+                            <div class="select-items select-hide"></div>
                         </div>
 
-                        <!-- Time -->
-                        <div class="col-md-6 px-3">
-
-                                <div class="custom-select-wrapper m-0" data-target="selectOrario">
-                                    <div class="select-selected">Orario*</div>
-                                    <img class="img-fluid position-absolute top-50 end-0 translate-middle-y me-3"
-                                         alt="date icon"
-                                         src="media/icon/clock.svg"
-                                    >
-                                    <div class="select-items select-hide">
-                                    </div>
-                                </div>
-                                <select
-                                        aria-hidden="true"
-                                        class="form-select custom-hidden-select"
-                                        id="selectOrario"
-                                        name="orario"
-                                        required
-                                        tabindex="-1">
-                                    <option disabled selected value="">Orario*</option>
-                                    <option value="19:00">19:00</option>
-                                    <option value="19:30">19:30</option>
-                                    <option value="20:00">20:00</option>
-                                    <option value="20:30">20:30</option>
-                                    <option value="21:00">21:00</option>
-                                    <option value="21:30">21:30</option>
-                                    <option value="22:00">22:00</option>
-                                    <option value="22:30">22:30</option>
-                                    <option value="23:00">23:00</option>
-                                </select>
-                            </div>
-
-
-                        <div class="col-md-6 px-3">
-                            <input class="form-control" placeholder="Email*" required type="email">
-                            <div class="invalid-feedback">
-                                Inserire una mail valida
-                            </div>
+                        <select
+                                class="form-select custom-hidden-select"
+                                id="selectOrario"
+                                name="orario"
+                                required
+                                tabindex="-1"
+                                aria-label="Orario prenotazione"
+                        >
+                            <option disabled selected value="">Orario*</option>
+                            <option value="19:00">19:00</option>
+                            <option value="19:30">19:30</option>
+                            <option value="20:00">20:00</option>
+                            <option value="20:30">20:30</option>
+                            <option value="21:00">21:00</option>
+                            <option value="21:30">21:30</option>
+                            <option value="22:00">22:00</option>
+                            <option value="22:30">22:30</option>
+                            <option value="23:00">23:00</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Selezionare un orario
                         </div>
+                    </div>
+
+                    <div class="col-md-6 px-3">
+                        <label for="bookingEmail" class="visually-hidden">Email</label>
+                        <input class="form-control" id="bookingEmail" placeholder="Email*" required type="email">
+                        <div class="invalid-feedback">
+                            Inserire una mail valida
+                        </div>
+                    </div>
 
                     <div class="pt-4 d-flex justify-content-center">
                         <button class="btn liquidGlass-wrapper" type="submit">
@@ -370,33 +378,34 @@
     <!-- third section: booking section 2 -->
     <section class="pt-5 booking-section-2 d-flex justify-content-center" id="booking-2">
 
-        <div class="container box-prenota p-5 m-3 liquidGlass-wrapper d-flex justify-content-center  mx-md-5">
+        <div class="container box-prenota p-5 m-3 liquidGlass-wrapper d-flex justify-content-center mx-md-5">
 
-            <!-- liquid glass filters -->
             <div class="liquidGlass-effect"></div>
             <div class="liquidGlass-shine"></div>
             <div class="liquidGlass-tint"></div>
 
-            <!-- whole room booking section -->
             <div class="liquidGlass-text d-flex flex-column align-items-center">
                 <form class="row g-4 justify-content-center needs-validation" novalidate>
                     <h2 class="col-12 d-flex justify-content-center pb-md-5 pt-2">Prenotazione sala</h2>
+
                     <div class="col-md-6 px-3">
-                        <input class="form-control" placeholder="Nome*" required type="text">
+                        <label for="bookingName2" class="visually-hidden">Nome</label>
+                        <input class="form-control" id="bookingName2" placeholder="Nome*" required type="text">
                         <div class="invalid-feedback">
                             Inserire un nome
                         </div>
                     </div>
 
                     <div class="col-md-6 px-3">
-                        <input class="form-control" placeholder="Email*" required type="email">
+                        <label for="bookingEmail2" class="visually-hidden">Email</label>
+                        <input class="form-control" id="bookingEmail2" placeholder="Email*" required type="email">
                         <div class="invalid-feedback">
                             Inserire una mail valida
                         </div>
                     </div>
 
-                    <!-- Date -->
                     <div class="col-md-6 px-3">
+                        <label for="bookingDate1" class="visually-hidden">Data</label>
                         <div class="input-group">
                             <input
                                     autocomplete="off"
@@ -408,30 +417,33 @@
                                     type="text"
                             >
                             <img class="img-fluid position-absolute top-50 end-0 translate-middle-y me-3"
-                                 alt="date icon"
+                                 alt=""
                                  src="media/icon/calendar.svg"
                             >
+                        </div>
+                        <div class="invalid-feedback">
+                            Selezionare una data
                         </div>
                     </div>
 
                     <div class="col-md-6 px-3">
-
                         <div class="custom-select-wrapper m-0" data-target="selectOrario1">
                             <div class="select-selected">Orario*</div>
                             <img class="img-fluid position-absolute top-50 end-0 translate-middle-y me-3"
-                                 alt="date icon"
+                                 alt=""
                                  src="media/icon/clock.svg"
                             >
-                            <div class="select-items select-hide">
-                            </div>
+                            <div class="select-items select-hide"></div>
                         </div>
+
                         <select
-                                aria-hidden="true"
                                 class="form-select custom-hidden-select"
                                 id="selectOrario1"
                                 name="orario"
                                 required
-                                tabindex="-1">
+                                tabindex="-1"
+                                aria-label="Orario prenotazione sala"
+                        >
                             <option disabled selected value="">Orario*</option>
                             <option value="19:00">19:00</option>
                             <option value="19:30">19:30</option>
@@ -443,11 +455,20 @@
                             <option value="22:30">22:30</option>
                             <option value="23:00">23:00</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Selezionare un orario
+                        </div>
                     </div>
 
-
                     <div class="col-md-6 px-3">
-                        <input placeholder="Note" required type="text" class="form-control ignore-validation">
+                        <label for="bookingNotes" class="visually-hidden">Note</label>
+                        <input
+                                id="bookingNotes"
+                                placeholder="Note"
+                                required
+                                type="text"
+                                class="form-control ignore-validation"
+                        >
                     </div>
 
                     <div class="pt-4 d-flex justify-content-center">
@@ -496,11 +517,16 @@
 
     <!-- Google maps button -->
     <a href="https://www.google.com/maps/place/7%C2%B000'00.0%22S+127%C2%B000'00.0%22E/@-5.7759948,126.8786245,6.88z/data=!4m4!3m3!8m2!3d-7!4d127?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D"
-       target="_blank" class="btn liquidGlass-wrapper map-action-btn">
+       target="_blank"
+       rel="noopener noreferrer"
+       class="btn liquidGlass-wrapper map-action-btn">
         <span aria-hidden="true" class="liquidGlass-effect"></span>
         <span aria-hidden="true" class="liquidGlass-tint"></span>
         <span aria-hidden="true" class="liquidGlass-shine"></span>
-        <span class="liquidGlass-text">Apri in mappe</span>
+        <span class="liquidGlass-text">
+        Apri in mappe
+        <span class="visually-hidden">(Apre in una nuova scheda)</span>
+    </span>
     </a>
 
     <p class="visually-hidden"> <!-- accessibility description of the map (which can't be used by a blind person) -->

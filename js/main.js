@@ -84,16 +84,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const timelineTop = timeline.offsetTop;
             const timelineHeight = timeline.offsetHeight;
 
-            // 1. Calcolo del riempimento più preciso
-            // Usiamo il centro dello schermo (viewportHeight / 2) come "puntatore"
+            // 1. More precise fill calculation
+            // We use the center of the screen (viewportHeight / 2) as a "pointer"
             let fillHeight = scrollTop + (viewportHeight / 2) - timelineTop;
             fillHeight = Math.max(0, Math.min(fillHeight, timelineHeight));
             fill.style.height = fillHeight + "px";
 
-            // 2. Attivazione dot (sia quelli dinamici desktop che quelli manuali mobile)
+            // 2. Dot activation (both dynamic desktop ones and manual mobile ones)
             const allDots = document.querySelectorAll(".timeline-dot");
             allDots.forEach(dot => {
-                // Calcoliamo la posizione del dot rispetto all'inizio della timeline
+                // Calculate the dot position relative to the start of the timeline
                 const dotOffsetTop = dot.getBoundingClientRect().top + window.scrollY - timelineTop;
 
                 if (dotOffsetTop <= fillHeight) {
@@ -381,7 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* === CAROUSELS LOGIC & SETTINGS (from SwiperJS) === */
 document.addEventListener('DOMContentLoaded', function () {
-    // Controlla se Swiper è definito E se esiste l'elemento nella pagina
+    // Check if Swiper is defined AND if the element exists on the page
     if (typeof Swiper !== 'undefined') {
         /* Carousel 1: the one with only multiple-images (uses .swiper-images class) */
         const swiperImages = new Swiper('.swiper-images', {
@@ -1041,7 +1041,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    //put active the corrispective allergen in the menu
+    //put active the corresponding allergen in the menu
     const buttons = document.querySelectorAll('.btn-filter');
     const allAllergens = document.querySelectorAll('[class*="allergen-"]');
     const allPreference = document.querySelectorAll('[class*="preference-"]');
@@ -1281,7 +1281,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })
 
-/* === TOOLTIPI ENABLING === */
+/* === TOOLTIPS ENABLING === */
 document.addEventListener('DOMContentLoaded', () => {
     // selects and enables all the tooltip elements
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
