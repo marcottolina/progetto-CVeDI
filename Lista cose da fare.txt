@@ -1,58 +1,25 @@
 
+ULTIME COSE DA FARE
+
 Ale:
-- Revisione generale di tutti i link e i bottoni contenuti nel sito, quelli dei form a parte [FATTO]
-    --> Rimando a pagina-libera.html in index.html [FATTO]
-    --> Bottoni dei social nel footer [FATTO]
 
-- Correggere e completare carosello homepage (index.html) [FATTO]
-- Correggere "finestre in cui si vede background" in prenota.html [FATTO]
-- Mettere gradiente blu sulla mappa di prenota.html che parte dalla "finestra in cui si vede background" sopra che sparisca in mouseover + capire come fare su mobile. [FATTO]
-- Risolvere bug tooltip mappa assenti su mobile [FATTO]
-- Commenti mappa D3 nel main.JS [FATTO] + Migrare lo stile della mappa D3 nel main.css [FATTO] + Commenti mappa D3 nel main.CSS [FATTO]
-- Aggiustare le descrizioni ALT dei piatti (carosello 2) in index.html [FATTO]
-- Aggiustare video di sfondo di menu.html [FATTO]
-- Aggiustare bottoni delle recensioni della pagina ristorante.html (mettere frecce) [FATTO]
-- Risolvere problema dell'hamburger menu che il menu non è cliccabile su mobile [FATTO]
-
-- Immagini del ristorante in carousel di ristorante.html {aggiunta una, ma ne servono altre}
-
-- Revisione generale dei commenti contenuti nel sito (che non ne siano rimasti in italiano)
-
-- Ottimizzazione SEO [FATTO]
-    - index: [FATTO]
-    - info: [FATTO]
-    - menu: [FATTO]
-    - pagina-libera: [FATTO]
-    - prenota: [FATTO]
-    - ristorante: [FATTO]
-    - piatto-1: [FATTO]
-    - piatto-2: [FATTO]
-    - piatto-3: [FATTO]
-
-- Aggiustamenti estetici mappa quando arrivano i mockup {TO-DO}
-- Aggiustamenti estetici newsletter [FATTO] {DA VEDERE SE INSERIRE ANIMAZIONE}
-- Aggiustamenti logo footer (non rendere dark in light mode) [FATTO]
-- Aggiustamenti bottoni serate speciali (musica e rimando alla pagina) nella homepage [FATTO]
-
-- Inserire nuove immagini del cibo nel carosello della homepage e gestire relativi alt [FATTO]
-- Inserire nuove immagini del ristorante nel carosello di ristorante e gestire relativi alt [FATTO]
-- Tooltips novità del menu [FATTO]
-
-- Inserire nuove immagini "teaser" dei piatti [FATTO]
-
-- Aggiustare il titolo H1 della pagina menu.html [FATTO]
-- Aggiustare bolle delle pagine dei piatti speciali [FATTO]
-
+- Ultimi aggiustamenti estetici mappa
+- Animazione di popup del messaggio inviato / di errore nella newsletter
 
 Otto:
 
-- menu.html -> aggiustare filtri [FATTO]
-- Risolto un problema in CSS [FATTO]
-- Deployment su Github Pages [FATTO]
+- Fix look delle date nel FORM-1 di prenota.html, FORM-2 ha già il look corretto.
 
-- Revisione generale dell'estetica del sito
-    - Occhio a quanto scuri sono i bottoni mockup vs sito effettivo
-    - Allineamenti
+- Revisione generale dell'estetica del sito (anche Ale sta contribuendo)
+    - index:
+    - info:
+    - menu:
+    - pagina-libera:
+    - prenota:
+    - ristorante:
+    - piatto-1:
+    - piatto-2:
+    - piatto-3:
 
 - Revisione generale responsiveness del sito
     - index: fatto tutto tranne il gradient nell'hero
@@ -65,30 +32,7 @@ Otto:
     - piatto-2: (Madreperla), sempre sfumatura nell'hero (è al contrario?)
     - piatto-3: (Bioluma), sempre sfumatura nell'hero (è al contrario?)
 
-- ristorante.html -> recensioni dei critici [FATTO]
-- pagina per gestire le prenotazioni [FATTO]
-- Aggiustamenti estetici accordion e values subito prima di esso [FATTO]
-
 
 YuYu:
 
-- Fare in particolare il bottone per la musica "Ascolta <icona>" [FATTO]
-- Risolvere errore in console sulla timeline [FATTO]
-
-- Finire pagine per i piatti specifici (1, 2 e 3) [FATTO]
-- Finire aspetti della prenotazione in prenota.html {TO-DO}
-
-- Accorgimenti per accessibilità
-    - index: [FATTO]
-    - info: [FATTO]
-    - menu: [FATTO]
-    - pagina-libera: [FATTO]
-    - prenota: [FATTO]
-    - ristorante: [FATTO]
-    - piatto-1: [FATTO]
-    - piatto-2: [FATTO]
-    - piatto-3: [FATTO]
-    - Controllare di mettere un link invisibile diretto al contenuto main delle pagine all'inizio di ciascuna pagina
-    (inteso come all'inizio del body).
-
-- Media queries bolle per pagine descrizioni dei piatti [FATTO]
+- Aspetto popup "mail inviata" sulle prenotazioni.
