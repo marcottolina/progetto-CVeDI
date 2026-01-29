@@ -1426,34 +1426,65 @@ body.is-map-interacting .circle {
 /* === POPUPS (NEWSLETTER & BOOKING FORMS) === */
 /* <editor-fold> */
 
-.valid-popup-container {
-    border-radius: 50px;
+/* --- Container Animation Logic --- */
+.valid-popup-container,
+.invalid-popup-container {
+
+    /* override Bootstrap utilities to allow collapsing to 0 */
+    display: flex !important; /* Override d-none */
+    overflow: hidden;
+
+    /* iInitial state is hidden and collapsed */
+    max-height: 0;
+    opacity: 0;
+    transform: translateX(50px); /* fade-in animations starts from the right (and goes to left) */
+
+    /* remove spacing so it doesn't take up space when hidden */
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    /* transition animation */
+    transition:
+            max-height 0.5s ease-out,
+            margin-top 0.5s ease-out,
+            padding 0.5s ease-out,
+            opacity 0.4s ease-in,
+            transform 0.5s ease-in-out;
+
+    /* layout alignment */
     justify-content: flex-end;
+    border-radius: 50px;
 }
 
-.valid-popup {
+/* active state of the popup (triggered by JS) */
+.popup-active {
 
+    /* Restore space */
+    max-height: 150px;
+    margin-top: 3rem !important; /* replaces mt-5 */
+    padding-top: 1rem !important; /* replaces py-3 */
+    padding-bottom: 1rem !important;
+
+    opacity: 1; /* becomes visible */
+    transform: translateX(0); /* slides in the right position (from right to left) */
+}
+
+/* valid popup visual style (blue) */
+.valid-popup {
     border-radius: 12px;
     padding: 15px 30px;
-
     background: radial-gradient(
             50% 85% at 50% 50%,
             rgba(60, 56, 189, 0.7) 0%,
             #070713 100%
     );
-
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3),
     inset 0 0 20px 5px rgba(7, 7, 19, 0.9);
-
     backdrop-filter: blur(10px);
-
 }
 
-.invalid-popup-container {
-    border-radius: 50px;
-    justify-content: flex-end;
-}
-
+/* invalid popup visual style (orange) */
 .invalid-popup {
     border-radius: 12px;
     padding: 15px 30px;
@@ -1462,23 +1493,19 @@ body.is-map-interacting .circle {
             rgba(246, 103, 85, 0.5) 0%,
             #070713 100%
     );
-
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3),
     inset 0 0 20px 5px rgba(7, 7, 19, 0.9);
-
     backdrop-filter: blur(10px);
 }
 
+/* input field text-error look */
 .invalid-feedback {
     color: var(--orange);
 }
 
+/* input field error orange highlighting */
 .invalid-input {
     border-color: var(--orange) !important;
-}
-
-input::placeholder {
-    color: var(--blue-95) !important;
 }
 
 /* </editor-fold> */

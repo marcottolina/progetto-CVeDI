@@ -1206,21 +1206,22 @@ document.addEventListener("DOMContentLoaded", function () {
 /* === NEWSLETTER === */
 document.addEventListener("DOMContentLoaded", function () {
 
-    // get references to buttons
     const newsletterButton = document.querySelector('footer form button');
     const newsletterInput = document.querySelector('footer input[type="text"]');
-
-    // get references to popup divs
     const invalidPopup = document.querySelector('footer .invalid-popup-container');
     const validPopup = document.querySelector('footer .valid-popup-container');
 
-    // hide popup by default
-    invalidPopup.classList.add('d-none');
-    validPopup.classList.add('d-none');
+    // = CLEANUP ON LOAD =
+    // Remove Bootstrap d-none so CSS can handle the hiding/showing
+    invalidPopup.classList.remove('d-none');
+    validPopup.classList.remove('d-none');
+
+    // Ensure active class is off
+    invalidPopup.classList.remove('popup-active');
+    validPopup.classList.remove('popup-active');
 
     let userInput = "";
 
-    // function to validate the email (containing an unholy regex)
     const validateEmail = (email) => {
         return String(email)
             .toLowerCase()
@@ -1231,13 +1232,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
-    // function to hide a confirmation message after 5 seconds
+    // function to start a timer before the fadeout, and then fadeout
     const fadeOutPopup = async (element) => {
         await delay(5000);
-        element.classList.add('d-none');
+        // Remove the active class to trigger the "slide out / collapse" animation
+        element.classList.remove('popup-active');
     }
 
-    // function to hide an input validity error message after 5 seconds
+    // function to start a timer before no longer displaying the input's error, and then hide it
     const removeInputError = async (element) => {
         await delay(5000);
         element.classList.remove('is-invalid');
@@ -1246,40 +1248,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     newsletterButton.addEventListener('click', function (event) {
 
-        event.preventDefault(); // prevents page refresh
+        event.preventDefault();
 
-        // hide previous confirmation messages
-        validPopup.classList.add('d-none');
-        invalidPopup.classList.add('d-none');
+        // close any currently open popups immediately
+        validPopup.classList.remove('popup-active');
+        invalidPopup.classList.remove('popup-active');
 
-        // hide previous input validity error messages
         newsletterInput.classList.remove('is-invalid');
         newsletterInput.classList.remove('is-valid');
 
-        // get value of the user input
         userInput = newsletterInput.value;
 
-        if (validateEmail(userInput)) { // if inserted mail is valid
+        // small timeout allows the "close" animation to reset if clicking rapidly
+        setTimeout(() => {
 
-            newsletterInput.classList.add('is-valid');
+            if (validateEmail(userInput)) {
 
-            validPopup.classList.remove('d-none');
-            fadeOutPopup(validPopup); // delete popup in 5 seconds
+                newsletterInput.classList.add('is-valid'); // to not display the error
+                validPopup.classList.add('popup-active'); // trigger notification slide-in (animation done via CSS)
+                fadeOutPopup(validPopup); // begin countdown towards success-notification deletion
+                newsletterInput.value = '';
 
-            newsletterInput.value = ''; // clear input
+            } else {
 
-        } else { // if inserted mail is not valid
-
-            newsletterInput.classList.add('invalid-input'); // edit look of the input itself (orange border)
-            newsletterInput.classList.add('is-invalid'); // show input error
-            invalidPopup.classList.remove('d-none'); // show error popup
-
-            removeInputError(newsletterInput); // delete input in 5 seconds
-            fadeOutPopup(invalidPopup); // delete popup in 5 seconds
-        }
+                newsletterInput.classList.add('invalid-input'); // to display the error on the input-field
+                newsletterInput.classList.add('is-invalid'); // to display the error text
+                invalidPopup.classList.add('popup-active'); // trigger notification slide-in (animation done via CSS)
+                removeInputError(newsletterInput); // begin countdown towards input-error deletion
+                fadeOutPopup(invalidPopup); // begin countdown towards error-notification deletion
+            }
+        }, 50);
     });
-
-})
+});
 
 /* === TOOLTIPS ENABLING === */
 document.addEventListener('DOMContentLoaded', () => {
