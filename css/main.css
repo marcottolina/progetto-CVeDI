@@ -1028,9 +1028,7 @@ video {
 
 /* hover effect on ex-nations */
 .country:hover {
-    fill: var(--blue-50);
-    stroke: #00D1FF; /* White/Light border (previously was var(--blue-70)) */
-    stroke-width: 2px; /* larger stroke when hovered */
+    fill: var(--blue-50-30);
 }
 
 /* sea labels */
@@ -1132,7 +1130,9 @@ video {
 
 /* Hover effect container */
 .location-group:hover .riff-marker {
-    filter: drop-shadow(0 0 8px var(--orange)) drop-shadow(0 0 25px var(--orange));
+    filter: blur(4px) drop-shadow(0 0 2px var(--orange)) drop-shadow(0 0 10px rgba(246, 112, 85, 0.6));
+    scale: 1.2;
+    animation: riffHoverColorPulse 0.8s infinite alternate ease-in-out;
 }
 
 .location-group:hover .location-label {
@@ -1159,6 +1159,19 @@ video {
     }
 }
 
+@keyframes riffHoverColorPulse {
+    0% {
+        fill: var(--orange);
+        /* Orange Glow */
+        filter: blur(4px) drop-shadow(0 0 2px var(--orange)) drop-shadow(0 0 10px rgba(246, 112, 85, 0.6));
+    }
+    100% {
+        fill: var(--pink);
+        /* Pink Glow (slightly stronger for emphasis) */
+        filter: blur(4px) drop-shadow(0 0 5px var(--pink)) drop-shadow(0 0 15px rgba(255, 50, 118, 0.8));
+    }
+}
+
 /* = Gmaps button style = */
 
 /* Style of the "open google maps" button, the one bottom-right over the D3 map */
@@ -1181,7 +1194,7 @@ video {
     bottom: 30px;
     left: 30px;
 
-    padding: 10px 15px;
+    padding: 0.75rem 1.5rem;
     border-radius: 4px;
 
     background: transparent;
@@ -1195,7 +1208,6 @@ video {
     user-select: none;
 
     backdrop-filter: blur(4px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
     display: flex;
     flex-direction: column;
@@ -1209,6 +1221,14 @@ video {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.key-row span {
+    color: var(--blue-95);
+    font-size: var(--Typography-link);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5rem;
 }
 
 /* box around the 'ALT' text to make it look like a keyboard key */
