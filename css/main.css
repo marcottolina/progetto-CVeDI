@@ -1707,7 +1707,6 @@ input.form-control.is-invalid {
 
 /* Overwrites the background of the main container */
 .datepicker-dropdown.datepicker {
-    padding: 16px;
     border-radius: 8px !important;
     box-shadow: 0 4px 12px var(--blue-5-70);
 }
@@ -1802,8 +1801,8 @@ input.form-control.is-invalid {
 
 /* Hover on available days */
 .datepicker-cell:not(.disabled):hover {
-    background-image: radial-gradient(circle, var(--blue-50-70), var(--blue-50-70), transparent, transparent) !important;
-    background: transparent;
+    background: radial-gradient(circle, var(--blue-50-70), var(--blue-50-70), transparent, transparent) !important;
+    /*background: transparent;*/
     color: var(--blue-95) !important;
     cursor: pointer;
 }
@@ -1817,8 +1816,8 @@ input.form-control.is-invalid {
 
 /* normal selected day and hover */
 .datepicker-cell.selected, .datepicker-cell.selected:hover {
-    background-image: radial-gradient(circle, var(--orange), var(--orange), transparent, transparent) !important;
-    background: transparent;
+    background: radial-gradient(circle, var(--orange), var(--orange), transparent, transparent) !important;
+    /*background: transparent;*/
     color: #fff;
     font-weight: 600;
 }

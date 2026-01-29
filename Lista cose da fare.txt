@@ -5,13 +5,14 @@ Ale:
 
 - Ultimi aggiustamenti estetici mappa
 - Animazione di popup del messaggio inviato / di errore nella newsletter [FATTO]
+
 - Rendere interattivo anche il bottone del calendario nei FORM
 
 - Aspetto popup "mail inviata" sulle prenotazioni.
 
 Otto:
 
-- Fix look delle date nel FORM-1 di prenota.html, FORM-2 ha già il look corretto.
+- Fix look delle date nel FORM-1 di prenota.html, FORM-2 ha già il look corretto. [FATTO]
 
 - Revisione generale dell'estetica del sito (anche Ale sta contribuendo)
     - index:
