@@ -4,7 +4,10 @@ ULTIME COSE DA FARE
 Ale:
 
 - Ultimi aggiustamenti estetici mappa
-- Animazione di popup del messaggio inviato / di errore nella newsletter
+- Animazione di popup del messaggio inviato / di errore nella newsletter [FATTO]
+- Rendere interattivo anche il bottone del calendario nei FORM
+
+- Aspetto popup "mail inviata" sulle prenotazioni.
 
 Otto:
 
@@ -35,4 +38,13 @@ Otto:
 
 YuYu:
 
-- Aspetto popup "mail inviata" sulle prenotazioni.
+- Revisione generale dell'estetica del sito {Otto e Ale stanno contribuendo}
+    - index:
+    - info:
+    - menu:
+    - pagina-libera:
+    - prenota:
+    - ristorante:
+    - piatto-1:
+    - piatto-2:
+    - piatto-3:

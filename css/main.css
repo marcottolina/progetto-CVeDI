@@ -1489,6 +1489,7 @@ body.is-map-interacting .circle {
 
 /* valid popup visual style (blue) */
 .valid-popup {
+    text-align: center;
     border-radius: 12px;
     padding: 15px 30px;
     background: radial-gradient(ellipse, var(--blue-50), var(--blue-50-30), transparent, transparent);
@@ -1499,6 +1500,7 @@ body.is-map-interacting .circle {
 
 /* invalid popup visual style (orange) */
 .invalid-popup {
+    text-align: center;
     border-radius: 12px;
     padding: 15px 30px;
     background: radial-gradient(ellipse, var(--orange), var(--orange-30), transparent, transparent);
