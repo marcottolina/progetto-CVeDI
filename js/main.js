@@ -484,7 +484,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* === INTERACTIVE MAP WITH D3 === */
-/* === INTERACTIVE MAP WITH D3 === */
 document.addEventListener("DOMContentLoaded", function () {
     if (typeof d3 !== 'undefined') {
         // Size configuration
@@ -905,14 +904,14 @@ document.addEventListener('DOMContentLoaded', function () {
     /* --- 3. SURGICAL VALIDATION ENGINE --- */
 
     function validateCustomField(elementId) {
+
         const element = document.getElementById(elementId);
         if (!element) return true;
 
         const columnContainer = element.closest('.col-md-6');
         let visualTarget = null;
-        let errorText = '';
 
-        // Clean up previous error states
+        // Clean up previous error states (Simulated errors)
         const oldError = columnContainer.querySelector('.custom-error');
         if (oldError) oldError.remove();
 
@@ -920,16 +919,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (element.tagName === 'SELECT') {
             const wrapper = columnContainer.querySelector('.custom-select-wrapper');
             visualTarget = wrapper.querySelector('.select-selected');
-            errorText = (elementId === 'selectPersone') ? 'Selezionare il numero di persone' : 'Selezionare un orario';
 
+            // Check if value is empty
             const isInvalid = element.value === '' || element.selectedIndex === 0;
 
             if (isInvalid) {
                 visualTarget.classList.add('is-invalid');
-                const error = document.createElement('div');
-                error.className = 'custom-error';
-                error.textContent = errorText;
-                wrapper.after(error); // Places error right below the select wrapper
                 return false;
             } else {
                 visualTarget.classList.remove('is-invalid');
@@ -939,18 +934,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // ---- LOGIC FOR DATE INPUTS ----
         if (elementId.includes('bookingDate')) {
-            const inputGroup = element.closest('.input-group');
             visualTarget = element;
-            errorText = 'Selezionare una data';
-
             const isInvalid = element.value.trim() === '';
 
             if (isInvalid) {
                 visualTarget.classList.add('is-invalid');
-                const error = document.createElement('div');
-                error.className = 'custom-error';
-                error.textContent = errorText;
-                inputGroup.after(error); // Places error right below the input group
                 return false;
             } else {
                 visualTarget.classList.remove('is-invalid');
@@ -965,6 +953,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     allForms.forEach(form => {
         form.addEventListener('submit', function (event) {
+
+            // 1. Prevent default reload (Simulate submission)
+            event.preventDefault();
+            event.stopPropagation();
+
             let isFormValid = true;
 
             // Dynamically identify required custom fields in the current form
@@ -976,15 +969,49 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // Standard Bootstrap validation + Custom check
-            if (form.checkValidity() === false || !isFormValid) {
-                event.preventDefault();
-                event.stopPropagation();
+            // 2. Check Validation
+            if (form.checkValidity() === true && isFormValid) {
+
+                // --- SUCCESS LOGIC ---
+
+                // Table Reservation Form
+                if (form.id === 'formPrenotazioneTavolo') {
+                    const modal1 = new bootstrap.Modal(document.getElementById('modalSuccesso'));
+                    modal1.show();
+                    resetFormVisuals(form);
+                }
+
+                // Private Room Form
+                else if (form.id === 'formPrenotazioneSala') {
+                    const modal2 = new bootstrap.Modal(document.getElementById('modalSuccesso2'));
+                    modal2.show();
+                    resetFormVisuals(form);
+                }
+
+            } else {
+                // --- ERROR LOGIC ---
+                form.classList.add('was-validated');
             }
 
-            form.classList.add('was-validated');
         }, false);
     });
+
+// Helper function to reset form and custom visuals after success
+    function resetFormVisuals(form) {
+        form.reset();
+        form.classList.remove('was-validated');
+
+        // Reset Custom Selects text to their placeholder
+        form.querySelectorAll('.select-selected').forEach(el => {
+            const wrapper = el.closest('.custom-select-wrapper');
+            const selectId = wrapper.getAttribute('data-target');
+            const nativeSelect = document.getElementById(selectId);
+            if(nativeSelect) {
+                const textNode = Array.from(el.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+                if (textNode) textNode.textContent = nativeSelect.options[0].text;
+            }
+        });
+    }
 
     /* --- 5. REAL-TIME VALIDATION LISTENERS --- */
     document.querySelectorAll('select[required], input[id^="bookingDate"]').forEach(input => {
@@ -1114,7 +1141,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Get the text of the first option (placeholder like "Persone*" or "Orario*")
                     const placeholderText = nativeSelect.options[0].text;
 
-                    // Update only the text node to preserve your icons (calendar/clock)
+                    // Update only the text node to preserve icons (calendar/clock)
                     const textNode = Array.from(selectedDiv.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
                     if (textNode) {
                         textNode.textContent = placeholderText;
@@ -1292,7 +1319,11 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     let f = document.getElementById('filter');
     let a = document.getElementById('allergens');
-    f.addEventListener('click', () => {
-        a.classList.toggle('d-none');
-    });
+
+    if(f){
+        f.addEventListener('click', () => {
+            a.classList.toggle('d-none');
+        });
+    }
+
 });

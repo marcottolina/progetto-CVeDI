@@ -416,7 +416,7 @@ a {
 }
 
 .hero-width-75-10 {
-    margin-right: -20%;
+    padding-right: -20%;
 }
 
 /* Navbar glass morphism */
@@ -1802,7 +1802,6 @@ input.form-control.is-invalid {
 /* Hover on available days */
 .datepicker-cell:not(.disabled):hover {
     background: radial-gradient(circle, var(--blue-50-70), var(--blue-50-70), transparent, transparent) !important;
-    /*background: transparent;*/
     color: var(--blue-95) !important;
     cursor: pointer;
 }
@@ -1817,7 +1816,6 @@ input.form-control.is-invalid {
 /* normal selected day and hover */
 .datepicker-cell.selected, .datepicker-cell.selected:hover {
     background: radial-gradient(circle, var(--orange), var(--orange), transparent, transparent) !important;
-    /*background: transparent;*/
     color: #fff;
     font-weight: 600;
 }
@@ -2038,6 +2036,30 @@ input[type="submit"] {
     mix-blend-mode: screen;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
     mask-image: linear-gradient(to right, transparent 0%, black 20%);
+}
+
+/* </editor-fold> */
+
+/* === BUTTONS FOR MODALS === */
+/* <editor-fold> */
+
+.modal-container {
+    backdrop-filter: blur(10px);
+}
+
+.modal-style {
+    background-color: var(--blue-95);
+    color: var(--blue-5);
+}
+
+.btn-modal {
+    background-color: var(--blue-5);
+    box-shadow: none;
+}
+
+.btn-modal:hover {
+    background-color: var(--blue-5-30);
+    background-image: none;
 }
 
 /* </editor-fold> */

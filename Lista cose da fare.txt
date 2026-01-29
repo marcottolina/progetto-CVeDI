@@ -3,27 +3,13 @@ ULTIME COSE DA FARE
 
 Ale:
 
-- Ultimi aggiustamenti estetici mappa
-- Animazione di popup del messaggio inviato / di errore nella newsletter [FATTO]
+- Rendere interattivo anche il bottone del calendario nei FORM [FATTO]
 
-- Rendere interattivo anche il bottone del calendario nei FORM
+- Ultimi aggiustamenti estetici mappa
 
 - Aspetto popup "mail inviata" sulle prenotazioni.
 
 Otto:
-
-- Fix look delle date nel FORM-1 di prenota.html, FORM-2 ha già il look corretto. [FATTO]
-
-- Revisione generale dell'estetica del sito (anche Ale sta contribuendo)
-    - index:
-    - info:
-    - menu:
-    - pagina-libera:
-    - prenota:
-    - ristorante:
-    - piatto-1:
-    - piatto-2:
-    - piatto-3:
 
 - Revisione generale responsiveness del sito
     - index: fatto tutto tranne il gradient nell'hero

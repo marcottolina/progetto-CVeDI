@@ -233,7 +233,7 @@
 
 <div class="top-overlay">
 
-    <!-- first section: booking section 1 --> <!-- toDo: fix calendar look when booking-section (and not booking-seciton-2) is assigned -->
+    <!-- first section: booking section 1 -->
     <section class="pt-5 booking-section d-flex justify-content-center" id="booking-1">
 
         <div class="container box-prenota p-5 m-3 liquidGlass-wrapper d-flex justify-content-center mx-md-5">
@@ -243,7 +243,8 @@
             <div class="liquidGlass-tint"></div>
 
             <div class="liquidGlass-text d-flex flex-column align-items-center">
-                <form class="row g-4 justify-content-center needs-validation" novalidate>
+
+                <form class="row g-4 justify-content-center needs-validation" id="formPrenotazioneTavolo" novalidate>
                     <h2 class="col-12 d-flex justify-content-center pb-md-5 pt-2">Prenotazione tavoli</h2>
 
                     <div class="col-md-6 px-3">
@@ -357,6 +358,26 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal 1 (booking a table success notification)  -->
+    <div class="modal fade modal-container" id="modalSuccesso" tabindex="-1" aria-labelledby="modalSuccessoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-style">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="modalSuccessoLabel">Prenotazione Confermata</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <p>La tua richiesta per il tavolo è stata ricevuta correttamente.</p>
+                    <p class="small text-muted mb-0">Riceverai a breve una mail di conferma all'indirizzo indicato.</p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-modal px-4 rounded-pill" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <!-- second section: description of booking a whole room -->
@@ -385,7 +406,8 @@
             <div class="liquidGlass-tint"></div>
 
             <div class="liquidGlass-text d-flex flex-column align-items-center">
-                <form class="row g-4 justify-content-center needs-validation" novalidate>
+
+                <form class="row g-4 justify-content-center needs-validation" id="formPrenotazioneSala" novalidate>
                     <h2 class="col-12 d-flex justify-content-center pb-md-5 pt-2">Prenotazione sala</h2>
 
                     <div class="col-md-6 px-3">
@@ -465,9 +487,8 @@
                         <input
                                 id="bookingNotes"
                                 placeholder="Note"
-                                required
                                 type="text"
-                                class="form-control ignore-validation"
+                                class="form-control"
                         >
                     </div>
 
@@ -481,9 +502,27 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </section>
+
+    <!-- Modal 2 (booking restaurant's wing success notification) -->
+    <div class="modal fade modal-container" id="modalSuccesso2" tabindex="-1" aria-labelledby="modalSuccessoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-style">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="modalSuccessoLabel2">Richiesta Confermata</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <p>La tua richiesta di prenotare una sala del ristorante è stata presa in considerazione</p>
+                    <p class="small text-muted mb-0">Riceverai a breve una mail a riguardo all'indirizzo indicato.</p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-modal px-4 rounded-pill" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
