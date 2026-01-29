@@ -1184,8 +1184,8 @@ video {
     padding: 10px 15px;
     border-radius: 4px;
 
-    background: var(--blue-5-70);
-    border: 1px solid var(--blue-70); /* highlighted border */
+    background: transparent;
+    /*border: 1px solid var(--blue-70); !* highlighted border *!*/
 
     color: var(--blue-70);
     font-family: 'Manrope', sans-serif;
@@ -1205,6 +1205,7 @@ video {
 
 /* rows within controls hint-panel */
 .key-row {
+    color: var(--blue-95);
     display: flex;
     align-items: center;
     gap: 8px;
