@@ -990,22 +990,15 @@ video {
     mix-blend-mode: screen !important;
 }
 
-/* === CALENDAR (prenota.html, inside form) === */
-/* <editor-fold> */
-/* toDo: @YuYU adjust from prenota.html to import here without catastrophic overrides */
-/* code goes here */
-/* </editor-fold> */
-
 /* === MAP (prenota.html) === */
 /* <editor-fold> */
 
 /* Map's container */
 #map-container {
     width: 100vw;
-    height: 100vh;
+    height: 70vh;
     position: relative;
-    /* Using blue-15 in the center for depth and blue-5 (darker) on the edges */
-    background: radial-gradient(circle at 50% 50%, var(--blue-15) 0%, var(--blue-5) 100%);
+    background-color: var(--blue-15);
     overflow: hidden;
 }
 
@@ -1013,7 +1006,6 @@ video {
 .country {
 
     fill: var(--blue-5);
-    stroke: var(--blue-50);
     stroke-width: 0.5px;
     transition: all 0.3s ease;
 
