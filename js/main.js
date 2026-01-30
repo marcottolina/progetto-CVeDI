@@ -368,6 +368,49 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // This event fires when the page is restored from the browser back/forward cache
+    window.addEventListener("pageshow", function (event) {
+
+        // event.persisted === true means the page was NOT reloaded,
+        // but restored from the browser's back-forward cache (bfcache)
+        if (event.persisted) {
+
+            // --- Stop and reset any playing audio ---
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAudio = null;
+            }
+
+            // --- Stop and reset any playing video ---
+            if (currentVideo) {
+                currentVideo.pause();
+                currentVideo.playbackRate = 1; // restore normal speed
+                currentVideo = null;
+            }
+
+            // --- Remove active state from the currently active button ---
+            if (currentButton) {
+                currentButton.classList.remove("attivo");
+                currentButton = null;
+            }
+
+            // --- Reset all animated bubbles back to their static images ---
+            document.querySelectorAll(".bubble-box img").forEach(img => {
+                const staticSrc = img.getAttribute("data-static");
+                if (staticSrc) {
+                    img.src = staticSrc;
+                }
+            });
+
+            // --- Clear any running fade-in / fade-out intervals ---
+            if (currentInterval) {
+                clearInterval(currentInterval);
+                currentInterval = null;
+            }
+        }
+    });
+
     // === INITIALIZATION ===
     addMediaControl("music-start1", "../media/audio/thalassa-hans-zimmer-cornfields.aac");
     addMediaControl("music-start2", "../media/audio/madreperla-mr-kitty-after-dark.aac");
