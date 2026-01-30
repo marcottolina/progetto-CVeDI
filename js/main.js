@@ -775,7 +775,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 tooltip.style("opacity", 1)
                     .html(`
                         <b>Riff</b><br/>
-                        <span style="opacity: 0.8">Atlas, P.zza Corolleo 1<br/>
+                        <span>Atlas, P.zza Corolleo 1<br/>
                         24°N - 46°O, -230 m<br/>
                         Settore abissale Ovest</span>
                     `);

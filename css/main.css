@@ -1052,7 +1052,6 @@ video {
 .sea-group:hover .sea-label-text {
     fill: var(--blue-95);
     opacity: 1;
-    text-shadow: 0 0 8px var(--blue-95); /* White glow effect */
 }
 
 /* Pop-up tooltip for various elements */
@@ -1060,7 +1059,6 @@ video {
 
     position: absolute;
     z-index: 1000; /* To put tooltips in front of the map (rather than behind it) */
-
     background: var(--blue-5-70); /* Dark semi-transparent background from palette */
     color: var(--blue-95);
 
@@ -1071,7 +1069,7 @@ video {
     opacity: 0;
     transition: opacity 0.2s;
 
-    box-shadow: 0 0 15px var(--blue-50-30); /* Mid-blue/transparent shadow glow */
+    box-shadow: 0 1px 4px var(--blue-50-30); /* Mid-blue/transparent shadow glow */
 
     transform: translate(-50%, -150%);
 
@@ -1090,7 +1088,7 @@ video {
 /* Riff's tooltip variant (orange) */
 .map-tooltip.riff-variant {
     border-color: var(--orange);
-    box-shadow: 0 0 15px rgba(246, 112, 85, 0.5);
+    box-shadow: 0 1px 4px rgba(246, 112, 85, 0.5);
     color: var(--blue-95);
 }
 
@@ -1106,9 +1104,7 @@ video {
 .riff-marker {
     fill: rgba(246, 112, 85, 0.9); /* var(--orange) with 0.9 opacity */
     stroke: none;
-
-    filter: blur(4px) drop-shadow(0 0 2px var(--orange)) drop-shadow(0 0 10px rgba(246, 112, 85, 0.6));
-
+    filter: blur(2px) drop-shadow(0 0 2px var(--orange)) drop-shadow(0 0 10px rgba(246, 112, 85, 0.6));
     opacity: 0.9;
     transition: all 0.4s ease-in-out;
     mix-blend-mode: screen;
@@ -1121,7 +1117,6 @@ video {
     font-size: 1.2rem;
     text-anchor: middle;
     font-weight: 400;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     pointer-events: none;
     transform: translateY(-20px);
     letter-spacing: 1px;
@@ -1129,7 +1124,7 @@ video {
 
 /* Hover effect container */
 .location-group:hover .riff-marker {
-    filter: blur(4px) drop-shadow(0 0 2px var(--orange)) drop-shadow(0 0 10px rgba(246, 112, 85, 0.6));
+    filter: blur(2px) drop-shadow(0 0 2px var(--orange)) drop-shadow(0 0 10px rgba(246, 112, 85, 0.6));
     scale: 1.2;
     animation: riffHoverColorPulse 0.8s infinite alternate ease-in-out;
 }
@@ -1162,12 +1157,12 @@ video {
     0% {
         fill: var(--orange);
         /* Orange Glow */
-        filter: blur(4px) drop-shadow(0 0 2px var(--orange)) drop-shadow(0 0 10px rgba(246, 112, 85, 0.6));
+        filter: blur(2px) drop-shadow(0 0 2px var(--orange)) drop-shadow(0 0 10px rgba(246, 112, 85, 0.6));
     }
     100% {
         fill: var(--pink);
         /* Pink Glow (slightly stronger for emphasis) */
-        filter: blur(4px) drop-shadow(0 0 5px var(--pink)) drop-shadow(0 0 15px rgba(255, 50, 118, 0.8));
+        filter: blur(2px) drop-shadow(0 0 5px var(--pink)) drop-shadow(0 0 15px rgba(255, 50, 118, 0.8));
     }
 }
 
@@ -1180,7 +1175,7 @@ video {
     right: 5rem;
     z-index: 50;
     white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     justify-self: end;
 }
 
