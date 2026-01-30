@@ -216,93 +216,91 @@ document.addEventListener("DOMContentLoaded", () => {
 
         btn.addEventListener("click", function () {
 
+            /* Find the parent container to scope search for related elements */
             const item = this.closest(".timeline-item");
             const video = item ? item.querySelector("video") : null;
             const bubbleImg = item ? item.querySelector(".bubble-box img") : null;
 
-            // Immediate STOP of any previous transitions
+            /* ROBUST SELECTION: Capture all bubble images (both mobile and desktop versions) */
+            /* This ensures the GIF starts even if one version is hidden via CSS (d-none) */
+            const bubbleImages = item ? item.querySelectorAll(".bubble-box img, .bubble-box-descr img") : [];
+
+            /* Stop any ongoing fade-in/fade-out transitions */
             if (currentInterval) clearInterval(currentInterval);
 
-            // === CASE 1: CLICK ON THE SAME BUTTON (STOP / PAUSE) ===
+            // === CASE 1: TOGGLE OFF (Clicking the active button again) ===
             if (currentButton === this) {
+                if (currentAudio) currentAudio.pause();
 
-                // Audio: PAUSE & RESET
-                if (currentAudio) {
-                    currentAudio.pause();
-                }
+                /* RESET ALL BUBBLES: Loop through both mobile and desktop images */
+                bubbleImages.forEach(img => {
+                    img.src = img.getAttribute('data-static');
+                });
 
-                /* NEW: Reset bubble to static image */
-                if (bubbleImg) {
-                    bubbleImg.src = bubbleImg.getAttribute('data-static');
-                }
-
-                // Video: FADE OUT
-                // FIX: Save reference to the video BEFORE setting currentVideo to null
+                /* VIDEO FADE OUT: Gradually decrease playback rate before pausing */
                 if (currentVideo) {
-                    const videoToFade = currentVideo; // Safe local reference
+                    const videoToFade = currentVideo;
                     let rate = videoToFade.playbackRate;
 
                     currentInterval = setInterval(() => {
                         rate -= 0.1;
-
-                        // Safety check: if rate becomes too low or negative
                         if (rate <= 0.1) {
                             videoToFade.pause();
-                            videoToFade.playbackRate = 1; // Reset speed for the future
+                            videoToFade.playbackRate = 1; // Reset to default speed
+                            clearInterval(currentInterval);
                         } else {
                             videoToFade.playbackRate = rate;
                         }
                     }, 50);
                 }
 
-                // UI Update
                 this.classList.remove('attivo');
-
-                // Reset Global Variables
                 currentAudio = null;
-                currentVideo = null; // This was the error: it made the reference null inside the interval
+                currentVideo = null;
                 currentButton = null;
                 return;
             }
 
-            // === CASE 2: CLICK ON A DIFFERENT BUTTON (CHANGE) ===
+            // === CASE 2: GLOBAL RESET (Switching to a different track/plate) ===
 
-            // Stop Previous Audio
+            /* 1. Reset previous Audio */
             if (currentAudio && currentAudio !== audio) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
             }
 
-            /* Reset previous bubble to static before switching */
+            /* 2. Reset previous Bubble animations across the whole document */
             if (currentButton) {
                 const prevItem = currentButton.closest(".timeline-item");
-                const prevBubble = prevItem ? prevItem.querySelector(".bubble-box img") : null;
-                if (prevBubble) {
-                    prevBubble.src = prevBubble.getAttribute('data-static');
-                }
+                const prevBubbles = prevItem ? prevItem.querySelectorAll(".bubble-box img, .bubble-box-descr img") : [];
+                prevBubbles.forEach(img => {
+                    img.src = img.getAttribute('data-static');
+                });
             }
 
-            // Stop Previous Video
+            /* 3. Reset previous Video speed */
             if (currentVideo && currentVideo !== video) {
                 currentVideo.pause();
-                currentVideo.playbackRate = 1; // Reset speed
+                currentVideo.playbackRate = 1;
             }
 
-            // Reset UI of Previous Button
+            /* 4. Reset UI of the previously active button */
             if (currentButton && currentButton !== this) {
                 currentButton.classList.remove('attivo');
             }
 
-            // === CASE 3: START NEW AUDIO ===
+            // === CASE 3: START NEW MEDIA ===
+
+            /* AUDIO: Play from the beginning */
             audio.currentTime = 0;
             audio.play();
 
-            /* Activate animated bubble (GIF) */
-            if (bubbleImg) {
-                bubbleImg.src = bubbleImg.getAttribute('data-gif');
-            }
+            /* BUBBLES: Activate animated GIF for both display versions */
+            bubbleImages.forEach(img => {
+                img.src = img.getAttribute('data-gif');
+            });
 
-            // === CASE 4: START NEW VIDEO (FADE IN) ===
+            /* VIDEO FADE IN: Start slow and accelerate to normal speed */
             if (video) {
                 video.playbackRate = 0.1;
                 video.play();
@@ -312,13 +310,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     rate += 0.1;
                     if (rate >= 1) {
                         video.playbackRate = 1;
+                        clearInterval(currentInterval);
                     } else {
                         video.playbackRate = rate;
                     }
                 }, 50);
             }
 
-            // Update global state
+            /* Update Global State */
             currentAudio = audio;
             currentVideo = video;
             currentButton = this;
@@ -326,7 +325,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* SECONDARY FUNCTION: Handles plate descriptions (Audio only) */
+    /**
+     * SECONDARY FUNCTION: addSimpleAudioControl
+     * Handles specific plate descriptions. Stops all background timeline media
+     * to focus on the specific audio track selected.
+     */
     function addSimpleAudioControl(btnId, audioUrl) {
         const playBtn = document.getElementById(btnId);
         if (!playBtn) return;
@@ -335,28 +338,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
         playBtn.addEventListener('click', () => {
 
-            /* toDo: edit this part so that the video stops rather than resetting */
+            /* Stop any active video globally */
             if (currentVideo) {
                 currentVideo.pause();
                 currentVideo = null;
             }
 
-            /* Reset any active bubble in the timeline when playing simple audio */
+            /* Clear timeline bubble animations and reset active state */
             if (currentButton) {
                 const activeItem = currentButton.closest(".timeline-item");
-                const activeBubble = activeItem ? activeItem.querySelector(".bubble-box img") : null;
-                if (activeBubble) {
-                    activeBubble.src = activeBubble.getAttribute('data-static');
-                }
+                const activeBubbles = activeItem ? activeItem.querySelectorAll(".bubble-box img, .bubble-box-descr img") : [];
+                activeBubbles.forEach(img => {
+                    img.src = img.getAttribute('data-static');
+                });
                 currentButton.classList.remove('attivo');
                 currentButton = null;
             }
 
-            if (currentAudio) { // Stop the audio of the timeline
+            /* Stop active timeline audio */
+            if (currentAudio) {
                 currentAudio.pause();
                 currentAudio = null;
             }
 
+            /* Simple Toggle: Play or Pause with UI feedback */
             if (audio.paused) {
                 audio.play();
                 playBtn.classList.add('attivo');
@@ -367,49 +372,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-
-    // This event fires when the page is restored from the browser back/forward cache
-    window.addEventListener("pageshow", function (event) {
-
-        // event.persisted === true means the page was NOT reloaded,
-        // but restored from the browser's back-forward cache (bfcache)
-        if (event.persisted) {
-
-            // --- Stop and reset any playing audio ---
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-                currentAudio = null;
-            }
-
-            // --- Stop and reset any playing video ---
-            if (currentVideo) {
-                currentVideo.pause();
-                currentVideo.playbackRate = 1; // restore normal speed
-                currentVideo = null;
-            }
-
-            // --- Remove active state from the currently active button ---
-            if (currentButton) {
-                currentButton.classList.remove("attivo");
-                currentButton = null;
-            }
-
-            // --- Reset all animated bubbles back to their static images ---
-            document.querySelectorAll(".bubble-box img").forEach(img => {
-                const staticSrc = img.getAttribute("data-static");
-                if (staticSrc) {
-                    img.src = staticSrc;
-                }
-            });
-
-            // --- Clear any running fade-in / fade-out intervals ---
-            if (currentInterval) {
-                clearInterval(currentInterval);
-                currentInterval = null;
-            }
-        }
-    });
 
     // === INITIALIZATION ===
     addMediaControl("music-start1", "../media/audio/thalassa-hans-zimmer-cornfields.aac");
@@ -775,7 +737,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 tooltip.style("opacity", 1)
                     .html(`
                         <b>Riff</b><br/>
-                        <span>Atlas, P.zza Corolleo 1<br/>
+                        <span style="opacity: 0.8">Atlas, P.zza Corolleo 1<br/>
                         24°N - 46°O, -230 m<br/>
                         Settore abissale Ovest</span>
                     `);
